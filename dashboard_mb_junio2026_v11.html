@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard Muebles Bonitos · Junio 2026</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+:root {
+  --bg:         #F0F5FA;
+  --panel:      #FFFFFF;
+  --panel-alt:  #F5F9FD;
+  --acc:        #2577B5;
+  --acc-dark:   #0E4B7A;
+  --acc-light:  #5BA3D9;
+  --acc-pale:   #EBF5FC;
+  --acc-mid:    #93C5E8;
+  --text:       #0D1B2A;
+  --text-mid:   #1E3A5F;
+  --text-soft:  #5B7FA6;
+  --up:         #2E6B48;
+  --up-bg:      #E8F3EE;
+  --down:       #A83030;
+  --down-bg:    #FAECEC;
+  --neutral:    #607080;
+  --neutral-bg: #EDF1F5;
+  --border:     #B8D4EA;
+  --border-s:   #D4E8F5;
+  --warn:       #9A6A10;
+  --warn-bg:    #FDF4E0;
+  --shadow:     0 1px 6px rgba(14,75,122,.09);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.5}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:100;background:var(--acc-dark);color:#fff;padding:0 24px;display:flex;align-items:center;gap:0;border-bottom:3px solid var(--acc)}
+.nav-brand{font-size:15px;font-weight:700;letter-spacing:.3px;padding:14px 0;margin-right:28px;white-space:nowrap;color:#fff}
+.nav-brand span{opacity:.65;font-weight:400;font-size:12px;margin-left:6px}
+.nav-markets{display:flex;gap:0}
+.nav-markets button{background:none;border:none;color:rgba(255,255,255,.65);font-size:13px;padding:14px 14px;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-3px;transition:color .15s,border-color .15s;white-space:nowrap}
+.nav-markets button:hover{color:#fff}
+.nav-markets button.active{color:#fff;border-bottom-color:var(--acc-mid);font-weight:600}
+.nav-sep{width:1px;background:rgba(255,255,255,.15);margin:10px 8px}
+.nav-periods{display:flex;gap:0;margin-left:auto}
+.nav-periods button{background:none;border:none;color:rgba(255,255,255,.6);font-size:12px;padding:8px 10px;cursor:pointer;border-radius:4px;transition:all .15s;white-space:nowrap}
+.nav-periods button:hover{color:#fff;background:rgba(255,255,255,.1)}
+.nav-periods button.active{color:var(--acc-dark);background:#fff;font-weight:600}
+
+/* LAYOUT */
+.wrap{max-width:1240px;margin:0 auto;padding:24px 20px}
+
+/* PERIOD BANNER */
+.period-banner{background:var(--acc-dark);color:#fff;border-radius:10px;padding:14px 20px;margin-bottom:20px;display:flex;align-items:center;gap:12px}
+.period-banner .pb-icon{font-size:20px;opacity:.8}
+.period-banner .pb-title{font-size:15px;font-weight:700}
+.period-banner .pb-sub{font-size:12px;opacity:.7;margin-top:1px}
+
+/* MARKET CARDS */
+.market-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+.mc{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:14px 16px;cursor:pointer;transition:all .15s;border-top:3px solid var(--border)}
+.mc:hover{box-shadow:var(--shadow);border-color:var(--acc-mid)}
+.mc.active{border-top-color:var(--acc);background:var(--acc-pale)}
+.mc-flag{font-size:18px;margin-bottom:6px}
+.mc-label{font-size:11px;color:var(--text-soft);text-transform:uppercase;letter-spacing:.5px;font-weight:600}
+.mc-gmv{font-size:17px;font-weight:700;color:var(--text);margin:2px 0}
+.mc-ads{font-size:12px;color:var(--text-mid)}
+.mc-delta{font-size:11px;font-weight:600;margin-top:4px}
+.mc-delta.up{color:var(--up)}
+.mc-delta.down{color:var(--down)}
+.mc-delta.neu{color:var(--neutral)}
+
+/* SECTION */
+.section{background:var(--panel);border:1px solid var(--border);border-radius:12px;margin-bottom:16px;overflow:hidden}
+.sec-head{padding:14px 20px 10px;border-bottom:1px solid var(--border-s);display:flex;align-items:center;gap:10px}
+.sec-head h2{font-size:14px;font-weight:700;color:var(--acc-dark);text-transform:uppercase;letter-spacing:.6px}
+.sec-head .sec-badge{background:var(--acc-pale);color:var(--acc);font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;letter-spacing:.3px}
+.sec-body{padding:16px 20px}
+.sec-foot{padding:8px 20px 10px;border-top:1px solid var(--border-s);display:flex;align-items:center;gap:8px}
+.sec-source{font-size:11px;color:var(--text-soft);display:flex;align-items:center;gap:5px}
+.sec-source .src-badge{background:var(--neutral-bg);color:var(--neutral);font-size:10px;font-weight:700;padding:2px 7px;border-radius:3px;letter-spacing:.2px}
+
+/* KPI */
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
+.kpi{background:var(--panel-alt);border:1px solid var(--border-s);border-radius:8px;padding:12px 14px;position:relative}
+.kpi-label{font-size:11px;color:var(--text-soft);font-weight:600;text-transform:uppercase;letter-spacing:.4px;margin-bottom:4px}
+.kpi-val{font-size:20px;font-weight:700;color:var(--text);line-height:1}
+.kpi-val.sm{font-size:17px}
+.kpi-val.xs{font-size:14px}
+.kpi-sub{font-size:11px;color:var(--text-soft);margin-top:3px}
+.kpi-delta{display:inline-flex;align-items:center;gap:2px;font-size:11px;font-weight:700;padding:2px 6px;border-radius:4px}
+.kpi-delta.up{background:var(--up-bg);color:var(--up)}
+.kpi-delta.down{background:var(--down-bg);color:var(--down)}
+.kpi-delta.neu{background:var(--neutral-bg);color:var(--neutral)}
+.kpi-divider{grid-column:1/-1;border:none;border-top:1px dashed var(--border);margin:4px 0}
+.kpi-comps{display:flex;gap:5px;flex-wrap:wrap;margin-top:5px;align-items:center;row-gap:3px}
+.kpi-comp-label{font-size:9px;color:var(--text-soft);font-weight:700;letter-spacing:.4px;text-transform:uppercase;min-width:24px}
+
+/* CHART */
+.chart-wrap{margin-top:16px;background:var(--panel-alt);border:1px solid var(--border-s);border-radius:8px;padding:14px 16px}
+.chart-title{font-size:12px;font-weight:700;color:var(--text-mid);text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px}
+.chart-canvas{position:relative;height:200px}
+
+/* PRIME DAY */
+.pd-hero{background:linear-gradient(135deg,var(--acc-dark),var(--acc));border-radius:10px;color:#fff;padding:16px 20px;margin-bottom:12px}
+.pd-hero h3{font-size:14px;font-weight:700;letter-spacing:.3px;margin-bottom:2px}
+.pd-hero .pd-dates{font-size:11px;opacity:.7}
+.pd-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-top:10px}
+.pd-kpi{background:rgba(255,255,255,.12);border-radius:7px;padding:10px 12px}
+.pd-kpi-label{font-size:10px;opacity:.75;font-weight:600;text-transform:uppercase;letter-spacing:.4px}
+.pd-kpi-val{font-size:16px;font-weight:700;margin-top:2px}
+.pd-kpi-sub{font-size:10px;opacity:.65;margin-top:1px}
+.pd-countries{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.pd-country{background:var(--panel-alt);border:1px solid var(--border);border-radius:8px;padding:12px 14px}
+.pd-country-name{font-size:12px;font-weight:700;color:var(--acc-dark);margin-bottom:8px}
+.pd-row{display:flex;justify-content:space-between;font-size:12px;padding:3px 0;border-bottom:1px solid var(--border-s)}
+.pd-row:last-child{border:none}
+.pd-row-label{color:var(--text-soft)}
+.pd-row-val{font-weight:600}
+
+/* PORTFOLIO TABLE */
+.port-table{width:100%;border-collapse:collapse;font-size:12.5px}
+.port-table th{background:var(--acc-dark);color:#fff;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;padding:9px 12px;text-align:right;white-space:nowrap}
+.port-table th:first-child{text-align:left;border-radius:6px 0 0 0}
+.port-table th:last-child{border-radius:0 6px 0 0}
+.port-table td{padding:8px 12px;border-bottom:1px solid var(--border-s);text-align:right;font-variant-numeric:tabular-nums;vertical-align:middle}
+.port-table td:first-child{text-align:left}
+.port-table .tot{background:var(--acc-pale)!important;font-weight:700}
+.port-table .tot td{border-top:2px solid var(--border)}
+.port-pf-row{cursor:pointer;transition:background .12s}
+.port-pf-row:hover td{background:var(--acc-pale)}
+.pf-toggle{display:inline-block;width:14px;font-size:10px;color:var(--acc);transition:transform .2s;margin-right:2px}
+.pf-detail-row td{background:#F8FBFF!important;padding:12px 14px 14px 32px!important;border-bottom:1px solid var(--border-s)!important}
+.pf-detail-row.hidden{display:none}
+
+/* ASIN MINI TABLE */
+.asin-table{width:100%;border-collapse:collapse;font-size:11.5px;margin-top:8px}
+.asin-table th{background:var(--acc-pale);color:var(--acc-dark);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;padding:5px 8px;text-align:right;border-bottom:1px solid var(--border)}
+.asin-table th:first-child,.asin-table th:nth-child(2){text-align:left}
+.asin-table td{padding:5px 8px;border-bottom:1px solid var(--border-s);text-align:right;font-variant-numeric:tabular-nums;vertical-align:middle}
+.asin-table td:first-child{text-align:left;font-family:monospace;font-size:10px;color:var(--text-soft);white-space:nowrap}
+.asin-table td:nth-child(2){text-align:left;max-width:220px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.asin-table tr:last-child td{border-bottom:none}
+.asin-table tr:hover td{background:var(--acc-pale)}
+
+/* TOP TABLE */
+.top-table{width:100%;border-collapse:collapse;font-size:12.5px}
+.top-table th{background:var(--acc-pale);color:var(--acc-dark);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;padding:8px 12px;text-align:right;border-bottom:2px solid var(--border)}
+.top-table th:first-child,.top-table th:nth-child(2){text-align:left}
+.top-table td{padding:9px 12px;border-bottom:1px solid var(--border-s);text-align:right;font-variant-numeric:tabular-nums;vertical-align:middle}
+.top-table td:first-child,.top-table td:nth-child(2){text-align:left}
+.top-table tr:last-child td{border-bottom:none}
+.top-rank{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;background:var(--acc-dark);color:#fff;border-radius:50%;font-size:10px;font-weight:700;margin-right:6px;flex-shrink:0}
+
+/* ACOS */
+.acos-good{color:var(--up);font-weight:700}
+.acos-warn{color:var(--warn);font-weight:700}
+.acos-bad{color:var(--down);font-weight:700}
+.port-bar-wrap{display:flex;align-items:center;gap:6px}
+.port-bar{height:6px;background:var(--acc);border-radius:3px;min-width:3px}
+
+/* MISC */
+.disc-note{background:var(--warn-bg);border:1px solid #e8c860;border-radius:8px;padding:10px 14px;margin-bottom:14px;font-size:12px;color:var(--warn)}
+.disc-note strong{font-weight:700}
+.footer{text-align:center;padding:24px 0 16px;font-size:11px;color:var(--text-soft)}
+.footer strong{color:var(--acc)}
+.hidden{display:none!important}
+.text-up{color:var(--up)}
+.text-down{color:var(--down)}
+.info-note{font-size:11px;color:var(--text-soft);background:var(--neutral-bg);border-radius:5px;padding:5px 10px;display:inline-block;margin-top:6px}
+.dash{color:var(--text-soft)}
+.nuevo-badge{background:var(--acc-pale);color:var(--acc);font-size:10px;font-weight:700;padding:1px 5px;border-radius:3px}
+
+@media(max-width:768px){
+  .market-cards{grid-template-columns:repeat(2,1fr)}
+  .nav-periods{display:none}
+  .kpi-grid{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-brand">Muebles Bonitos <span>Amazon Seller · Junio 2026</span></div>
+  <div class="nav-markets">
+    <button class="active" onclick="setMarket('global')">🌍 Global</button>
+    <button onclick="setMarket('es')">🇪🇸 España</button>
+    <button onclick="setMarket('fr')">🇫🇷 Francia</button>
+    <button onclick="setMarket('it')">🇮🇹 Italia</button>
+    <button onclick="setMarket('de')">🇩🇪 Alemania</button>
+  </div>
+  <div class="nav-sep"></div>
+  <div class="nav-periods">
+    <button onclick="setPeriod(0)">Ene</button>
+    <button onclick="setPeriod(1)">Feb</button>
+    <button onclick="setPeriod(2)">Mar</button>
+    <button onclick="setPeriod(3)">Abr</button>
+    <button onclick="setPeriod(4)">May</button>
+    <button class="active" onclick="setPeriod(5)">Jun</button>
+    <button onclick="setPeriod(-1)">YTD</button>
+  </div>
+</nav>
+
+<div class="wrap">
+  <div id="market-cards-wrap"></div>
+  <div id="disc-wrap"></div>
+  <div id="content"></div>
+</div>
+
+<div class="footer">
+  Datos: <strong>MerchantSpring</strong> (ventas ene–jun 2026 &amp; 2025, EUR bruto con IVA) · <strong>Pacvue</strong> (publicidad ene–jun 2026) · <strong>Muebles Bonitos</strong> Amazon Seller Pan-EU · Elaborado por Roicos
+</div>
+
+<script>
+const MONTHS   = ['Enero','Febrero','Marzo','Abril','Mayo','Junio'];
+const MONTHS_S = ['Ene','Feb','Mar','Abr','May','Jun'];
+
+// ── VENTAS 2026 (MerchantSpring, EUR bruto con IVA) ───────────────────────────
+const SALES = {
+  global: {
+    gmv:    [157611,138148,145016,114977,129870,145190],
+    orders: [1210,  1083,  1130,  928,   894,   988],
+    units:  [1269,  1150,  1224,  985,   955,   1054],
+    pv:     [343701,262267,256620,230077,222427,219057],
+    cvr:    [0.369, 0.438, 0.477, 0.428, 0.429, 0.481],
+    buybox: [null,  null,  null,  null,  null,  96.8]
+  },
+  es: {
+    gmv:    [65639, 56604, 61333, 55740, 63684, 67046],
+    orders: [580,   503,   525,   498,   498,   522],
+    units:  [607,   538,   571,   535,   526,   560],
+    pv:     [173457,128294,124443,122992,114715,106456],
+    cvr:    [0.350, 0.419, 0.459, 0.435, 0.459, 0.526],
+    buybox: [null,  null,  null,  null,  null,  96.6]
+  },
+  fr: {
+    gmv:    [51885, 51945, 52834, 34040, 36672, 43423],
+    orders: [369,   377,   382,   261,   232,   270],
+    units:  [385,   396,   412,   275,   250,   286],
+    pv:     [70633, 63242, 61355, 45996, 45586, 45978],
+    cvr:    [0.545, 0.626, 0.671, 0.598, 0.548, 0.622],
+    buybox: [null,  null,  null,  null,  null,  98.6]
+  },
+  it: {
+    gmv:    [29363, 21429, 20947, 17659, 19745, 23876],
+    orders: [184,   142,   151,   111,   98,    124],
+    units:  [196,   154,   161,   115,   107,   133],
+    pv:     [80854, 57698, 57520, 45559, 46246, 50424],
+    cvr:    [0.242, 0.267, 0.280, 0.252, 0.231, 0.264],
+    buybox: [null,  null,  null,  null,  null,  94.7]
+  },
+  de: {
+    gmv:    [10724, 8170,  9902,  7538,  9769,  10845],
+    orders: [77,    61,    72,    58,    66,    72],
+    units:  [81,    62,    80,    60,    72,    75],
+    pv:     [18757, 13033, 13302, 15530, 15880, 16199],
+    cvr:    [0.432, 0.476, 0.601, 0.386, 0.453, 0.463],
+    buybox: [null,  null,  null,  null,  null,  96.0]
+  }
+};
+
+// ── VENTAS 2025 YoY (MerchantSpring, EUR bruto con IVA) ──────────────────────
+const SALES_YOY = {
+  global: {
+    gmv:    [193962,155594,154293,119017,118789,110605],
+    orders: [1333,  1100,  1061,  825,   807,   686],
+    units:  [1423,  1172,  1111,  867,   857,   720],
+    pv:     [360556,294646,282260,217479,187816,150724],
+    cvr:    [0.395, 0.398, 0.394, 0.399, 0.456, 0.478]
+  },
+  es: {
+    gmv:    [75745, 71009, 69815, 55863, 60841, 60536],
+    orders: [601,   573,   545,   423,   436,   413],
+    units:  [639,   618,   571,   445,   471,   434],
+    pv:     [182905,156866,151874,116243,106743,86983],
+    cvr:    [0.349, 0.394, 0.376, 0.383, 0.441, 0.499]
+  },
+  fr: {
+    gmv:    [87094, 60591, 61730, 46694, 43062, 35706],
+    orders: [544,   387,   387,   304,   282,   197],
+    units:  [579,   403,   402,   317,   292,   207],
+    pv:     [106081,79229, 76770, 58209, 50719, 34785],
+    cvr:    [0.546, 0.509, 0.524, 0.545, 0.576, 0.595]
+  },
+  it: {
+    gmv:    [27337, 19708, 17786, 14037, 10678, 11770],
+    orders: [161,   112,   104,   85,    68,    59],
+    units:  [178,   119,   112,   90,    70,    62],
+    pv:     [65852, 54503, 50470, 40752, 27311, 26468],
+    cvr:    [0.270, 0.218, 0.222, 0.221, 0.256, 0.234]
+  },
+  de: {
+    gmv:    [3786,  4286,  4962,  2423,  4208,  2593],
+    orders: [27,    28,    25,    13,    21,    17],
+    units:  [27,    32,    26,    15,    24,    17],
+    pv:     [5718,  4048,  3146,  2275,  3043,  2488],
+    cvr:    [0.472, 0.791, 0.826, 0.660, 0.789, 0.683]
+  }
+};
+
+// ── ADS 2026 (Pacvue) ─────────────────────────────────────────────────────────
+const ADS = {
+  global: {
+    spend:       [8293,  6482,  7852,  7673,  9402, 11412],
+    adSales:     [48516, 46129, 50836, 38883, 51117,66774],
+    orders:      [372,   344,   396,   324,   427,  538],
+    acos:        [17.1,  14.1,  15.4,  19.7,  18.4, 17.1],
+    roas:        [5.85,  7.12,  6.47,  5.07,  5.44, 5.85],
+    impressions: [5321194,4081526,5437809,5308489,5166864,7328361],
+    clicks:      [45203, 37249, 45408, 46158, 44059,66033]
+  },
+  es: {
+    spend:       [3342, 2435, 3187, 3222, 4261, 4701],
+    adSales:     [15781,13537,17756,18272,25826,29222],
+    orders:      [152,  123,  158,  170,  248,  267],
+    acos:        [21.2, 18.0, 18.0, 17.6, 16.5, 16.1],
+    roas:        [4.72, 5.56, 5.57, 5.67, 6.06, 6.22],
+    impressions: [2118768,1564134,2211366,2268584,2275657,2523353],
+    clicks:      [17357,12727,18056,20927,19834,23191]
+  },
+  fr: {
+    spend:       [1531, 1478, 1966, 1120, 2055, 2964],
+    adSales:     [15560,20189,21413,9476, 14122,22620],
+    orders:      [108,  138,  150,  74,   105,  164],
+    acos:        [9.8,  7.3,  9.2,  11.8, 14.6, 13.1],
+    roas:        [10.16,13.66,10.89,8.46, 6.87, 7.63],
+    impressions: [1053848,977250,1496995,777913,740241,1119243],
+    clicks:      [9662, 10515,12716, 7963, 7035, 9496]
+  },
+  it: {
+    spend:       [1899, 1475, 1512, 1889, 1786, 2354],
+    adSales:     [11565,9319, 8039, 7800, 6460, 9477],
+    orders:      [71,   57,   58,   51,   43,   66],
+    acos:        [16.4, 15.8, 18.8, 24.2, 27.6, 24.8],
+    roas:        [6.09, 6.32, 5.32, 4.13, 3.62, 4.03],
+    impressions: [1680885,1213267,1354619,1576530,1528836,1785167],
+    clicks:      [13817,11064,11277,12043,12078,16931]
+  },
+  de: {
+    spend:       [1521, 1094, 1187, 1442, 1300, 1393],
+    adSales:     [5610, 3084, 3628, 3335, 4710, 5456],
+    orders:      [41,   26,   30,   29,   31,   41],
+    acos:        [27.1, 35.5, 32.7, 43.3, 27.6, 25.5],
+    roas:        [3.69, 2.82, 3.06, 2.31, 3.62, 3.92],
+    impressions: [467693,326875,374829,685462,622130,650165],
+    clicks:      [4367, 2943, 3359, 5225, 5112, 6038]
+  }
+};
+
+// ── YOY ADS (junio 2026 vs junio 2025 · solo ES y FR disponible) ───────────────
+const YOY = {
+  es: { spend25:3499, adSales25:27006, acos25:12.96, roas25:7.72 },
+  fr: { spend25:1629, adSales25:16220, acos25:10.04, roas25:9.96 }
+};
+
+// ── PORTFOLIOS por mercado · junio 2026 (Pacvue campañas agrupadas) ───────────
+const PORTFOLIOS = {
+  es: [
+    { name:'ROICOS - APARADORES',  spend:1829, sales:11860, acos:15.4, orders:98,  impressions:1054176, clicks:11004 },
+    { name:'ROICOS - MUEBLES TV',  spend:1154, sales:6351,  acos:18.2, orders:59,  impressions:831509,  clicks:7399  },
+    { name:'ROICOS - RECIBIDORES', spend:1135, sales:4717,  acos:24.1, orders:56,  impressions:622726,  clicks:5197  },
+    { name:'ROICOS - MESA ALTA',   spend:331,  sales:3119,  acos:10.6, orders:37,  impressions:204963,  clicks:2145  },
+    { name:'ROICOS - Top Ventas',  spend:65,   sales:1190,  acos:5.4,  orders:7,   impressions:83835,   clicks:806   },
+    { name:'ROICOS - CAMAS',       spend:112,  sales:1212,  acos:9.2,  orders:4,   impressions:70850,   clicks:373   },
+    { name:'ROICOS - MARCA',       spend:84,   sales:714,   acos:11.8, orders:7,   impressions:50741,   clicks:479   }
+  ],
+  fr: [
+    { name:'ROICOS - APARADORES',  spend:1288, sales:11936, acos:10.8, orders:77,  impressions:836347,  clicks:7570  },
+    { name:'ROICOS - Top Ventas',  spend:961,  sales:5023,  acos:19.1, orders:34,  impressions:693011,  clicks:4145  },
+    { name:'ROICOS - MUEBLES TV',  spend:276,  sales:2099,  acos:13.1, orders:22,  impressions:248793,  clicks:2068  },
+    { name:'ROICOS - MESA ALTA',   spend:282,  sales:1714,  acos:16.4, orders:18,  impressions:141404,  clicks:1280  },
+    { name:'ROICOS - MARCA',       spend:114,  sales:1064,  acos:10.7, orders:7,   impressions:57240,   clicks:455   },
+    { name:'ROICOS - RECIBIDORES', spend:65,   sales:575,   acos:11.3, orders:5,   impressions:42626,   clicks:376   },
+    { name:'ROICOS - CAMAS',       spend:23,   sales:291,   acos:7.9,  orders:1,   impressions:16419,   clicks:130   }
+  ],
+  it: [
+    { name:'ROICOS - APARADORES',  spend:2192, sales:8091,  acos:27.1, orders:58,  impressions:1648978, clicks:15518 },
+    { name:'ROICOS - MUEBLES TV',  spend:107,  sales:792,   acos:13.5, orders:5,   impressions:87244,   clicks:974   },
+    { name:'ROICOS - Top Ventas',  spend:10,   sales:497,   acos:2.1,  orders:3,   impressions:22372,   clicks:208   },
+    { name:'ROICOS - MARCA',       spend:32,   sales:392,   acos:8.1,  orders:3,   impressions:15940,   clicks:116   }
+  ],
+  de: [
+    { name:'ROICOS - APARADORES',  spend:716,  sales:3338,  acos:21.5, orders:21,  impressions:329147,  clicks:3534  },
+    { name:'ROICOS - MUEBLES TV',  spend:355,  sales:843,   acos:42.1, orders:9,   impressions:209543,  clicks:1672  },
+    { name:'ROICOS - RECIBIDORES', spend:275,  sales:994,   acos:27.7, orders:9,   impressions:98938,   clicks:606   },
+    { name:'ROICOS - MARCA',       spend:27,   sales:343,   acos:7.8,  orders:2,   impressions:7900,    clicks:87    }
+  ]
+};
+
+// ── ASINS por mercado · junio 2026 (Pacvue ProductsADReport) ─────────────────
+// portfolio = clave uppercase del portfolio (debe coincidir con getPfKey())
+// spend/adSales/acos = datos publicidad Pacvue · impressions/clicks = Pacvue
+const ASINS = {
+  es: [
+    { asin:'B0FPMD6W2T', title:'Aparador bajo Kai con 3 Puertas',       portfolio:'APARADORES',  spend:121.63, adSales:818.95,  acos:14.85, units:9,  impressions:73185,  clicks:778  },
+    { asin:'B085DQLFGQ', title:'Aparador Clark Negro 3 Puertas LED',    portfolio:'APARADORES',  spend:105.88, adSales:842.53,  acos:12.57, units:6,  impressions:56717,  clicks:636  },
+    { asin:'B08HDJZ5BK', title:'Aparador Sefora LED 135cm',             portfolio:'APARADORES',  spend:87.24,  adSales:706.57,  acos:12.35, units:6,  impressions:59184,  clicks:532  },
+    { asin:'B0F8W33TBY', title:'Aparador Yanis Blanco Sonoma',          portfolio:'APARADORES',  spend:113.50, adSales:600.79,  acos:18.89, units:4,  impressions:47089,  clicks:715  },
+    { asin:'B0F8W6YCHG', title:'Aparador Yanis Blanco',                 portfolio:'APARADORES',  spend:95.94,  adSales:666.90,  acos:14.39, units:4,  impressions:42074,  clicks:625  },
+    { asin:'B0FD43LKP7', title:'Aparador Renzo Roble Alba',             portfolio:'APARADORES',  spend:66.58,  adSales:609.50,  acos:10.92, units:5,  impressions:35599,  clicks:417  },
+    { asin:'B09LMR77GN', title:'Aparador Roque 140cm',                  portfolio:'APARADORES',  spend:78.11,  adSales:394.20,  acos:19.81, units:3,  impressions:41929,  clicks:484  },
+    { asin:'B0GBY7KTD1', title:'Aparador Renzo acanaladas Blanco',      portfolio:'APARADORES',  spend:68.42,  adSales:364.01,  acos:18.80, units:3,  impressions:33917,  clicks:438  },
+    { asin:'B0888TSXBJ', title:'Aparador Roque Blanco Sonoma',          portfolio:'APARADORES',  spend:74.77,  adSales:47.10,   acos:158.8, units:1,  impressions:50733,  clicks:495  },
+    { asin:'B0D37W28K6', title:'Recibidor Colgante Neo con Espejo',     portfolio:'RECIBIDORES', spend:250.50, adSales:1178.60, acos:21.25, units:18, impressions:125883, clicks:1135 },
+    { asin:'B0F99LVL87', title:'Recibidor Zapatero Paola LED',          portfolio:'RECIBIDORES', spend:163.77, adSales:512.28,  acos:31.97, units:6,  impressions:58951,  clicks:661  },
+    { asin:'B09MV14ZGT', title:'Conjunto Recibidor Paola LED',          portfolio:'RECIBIDORES', spend:157.57, adSales:411.52,  acos:38.29, units:4,  impressions:79220,  clicks:709  },
+    { asin:'B0FHBQ6DX4', title:'Recibidor Colgante Amira con Espejo',   portfolio:'RECIBIDORES', spend:131.04, adSales:264.40,  acos:49.56, units:4,  impressions:58752,  clicks:744  },
+    { asin:'B09SBLS2YS', title:'Recibidor Zapatero LED Gris',           portfolio:'RECIBIDORES', spend:109.75, adSales:272.67,  acos:40.25, units:3,  impressions:89205,  clicks:460  },
+    { asin:'B0D923FPZH', title:'Mueble TV Colgante Aitana M2 180cm',   portfolio:'MUEBLES TV',  spend:62.78,  adSales:557.02,  acos:11.27, units:6,  impressions:46405,  clicks:546  },
+    { asin:'B0FM3Q13ZG', title:'Mueble TV bajo Aitana M1 120cm',       portfolio:'MUEBLES TV',  spend:60.83,  adSales:251.63,  acos:24.17, units:3,  impressions:39398,  clicks:521  },
+    { asin:'B0CJ3453TM', title:'Mueble TV Colgante Aydin 150cm',       portfolio:'MUEBLES TV',  spend:70.59,  adSales:144.18,  acos:48.96, units:2,  impressions:73017,  clicks:625  },
+    { asin:'B0D8TRG533', title:'Mueble TV Colgante Aitana M1 120cm',   portfolio:'MUEBLES TV',  spend:117.61, adSales:173.54,  acos:67.77, units:2,  impressions:81137,  clicks:1059 },
+    { asin:'B0DBM5HDCH', title:'Mesa Alta Bar Kyra Blanco Sonoma',     portfolio:'MESA ALTA',   spend:80.60,  adSales:147.10,  acos:54.79, units:2,  impressions:0,      clicks:0    },
+    { asin:'B07MMZKDJS', title:'Cama Matrimonio Canapé Estructura',     portfolio:'Top Ventas',  spend:26.36, adSales:526.83, acos:5.0,   units:2, impressions:30153,  clicks:226  },
+    { asin:'B085DQLFGQ', title:'Aparador Clark Negro 3 Puertas LED',    portfolio:'Top Ventas',  spend:5.99,  adSales:328.90, acos:1.82,  units:2, impressions:5962,   clicks:110  },
+    { asin:'B07JR57YZ8', title:'Aparador Mueble TV Armario',            portfolio:'Top Ventas',  spend:3.95,  adSales:271.06, acos:1.46,  units:2, impressions:4072,   clicks:73   },
+    { asin:'B07JYZYGJK', title:'Aparador Mueble TV Armario V2',         portfolio:'Top Ventas',  spend:0.60,  adSales:156.23, acos:0.38,  units:1, impressions:661,    clicks:10   },
+    { asin:'B07JQFPPNR', title:'Aparador Mueble TV Armario V3',         portfolio:'Top Ventas',  spend:3.14,  adSales:131.40, acos:2.39,  units:1, impressions:8107,   clicks:61   },
+    { asin:'B01MDODH00', title:'Vitrina con Cristal Salon',             portfolio:'Top Ventas',  spend:0.97,  adSales:47.10,  acos:2.06,  units:1, impressions:937,    clicks:23   },
+    { asin:'B07JQCCVC9', title:'Aparador Mueble TV Colgante Luke A2',   portfolio:'Top Ventas',  spend:4.45,  adSales:0,      acos:0,     units:0, impressions:9046,   clicks:81   },
+    { asin:'B07M5M22S8', title:'Cama Matrimonio Canapé V2',             portfolio:'Top Ventas',  spend:4.15,  adSales:0,      acos:0,     units:0, impressions:5214,   clicks:38   },
+    { asin:'B075GXTQPN', title:'Cama Canapé Abatible Matrimonio',       portfolio:'Camas',       spend:5.79,  adSales:353.29, acos:1.64,  units:1, impressions:8132,   clicks:30   },
+    { asin:'B01ITQRBU8', title:'Cama Matrimonio Colchón 140cm',         portfolio:'Camas',       spend:0.82,  adSales:338.40, acos:0.24,  units:2, impressions:290,    clicks:2    },
+    { asin:'B075GWJ3RH', title:'Cama Canapé Abatible Matrimonio V2',    portfolio:'Camas',       spend:14.06, adSales:289.24, acos:4.86,  units:1, impressions:9658,   clicks:63   },
+    { asin:'B073QQBNH5', title:'Cama Canapé Abatible Matrimonio V3',    portfolio:'Camas',       spend:12.88, adSales:0,      acos:0,     units:0, impressions:4960,   clicks:40   },
+    { asin:'B07M9CGZV9', title:'Cama Matrimonio Rodas Colchón',         portfolio:'Camas',       spend:10.00, adSales:0,      acos:0,     units:0, impressions:4382,   clicks:28   },
+    { asin:'B073QQ3YLB', title:'Cama Canapé Abatible Matrimonio V4',    portfolio:'Camas',       spend:9.96,  adSales:0,      acos:0,     units:0, impressions:6207,   clicks:28   },
+    { asin:'B0757MGYW1', title:'Cama Canapé Abatible Matrimonio V5',    portfolio:'Camas',       spend:7.25,  adSales:0,      acos:0,     units:0, impressions:5119,   clicks:23   },
+    { asin:'B075GX7VGJ', title:'Cama Canapé Abatible Matrimonio V6',    portfolio:'Camas',       spend:6.07,  adSales:0,      acos:0,     units:0, impressions:6303,   clicks:22   },
+    { asin:'B0FL2TVNLX', title:'Recibidor Suspendido Neo con Espejo',   portfolio:'MARCA',       spend:3.34,  adSales:189.23, acos:1.77,  units:2, impressions:1668,   clicks:6    },
+    { asin:'B07JQCCVC9', title:'Aparador Mueble TV Colgante Luke A2',   portfolio:'MARCA',       spend:1.88,  adSales:125.60, acos:1.5,   units:1, impressions:806,    clicks:10   },
+    { asin:'B08HDJZ5BK', title:'Aparador Sefora LED 135cm',             portfolio:'MARCA',       spend:2.87,  adSales:123.95, acos:2.32,  units:1, impressions:1200,   clicks:18   },
+    { asin:'B085GGY8ZB', title:'Aparador Mueble TV con LED Armario',    portfolio:'MARCA',       spend:2.24,  adSales:123.95, acos:1.81,  units:1, impressions:995,    clicks:14   },
+    { asin:'B0FMRKT63W', title:'Aparador con Puertas y cajones Serenity',portfolio:'MARCA',      spend:1.48,  adSales:123.95, acos:1.19,  units:1, impressions:703,    clicks:8    },
+    { asin:'B0D925QV5C', title:'Mueble TV Colgante Aitana M1',          portfolio:'MARCA',       spend:0.69,  adSales:81.81,  acos:0.84,  units:1, impressions:756,    clicks:4    },
+    { asin:'B0FMFL3TYW', title:'Mesa Alta de Cocina Industrial',        portfolio:'MARCA',       spend:0.08,  adSales:69.87,  acos:0.11,  units:1, impressions:8,      clicks:1    },
+    { asin:'B0FMFMN4B4', title:'Mesa Alta de Cocina Industrial V2',     portfolio:'MARCA',       spend:0.32,  adSales:65.28,  acos:0.49,  units:1, impressions:8,      clicks:2    }
+  ],
+  fr: [
+    { asin:'B0888TSXBJ', title:'Buffet Roque Blanc Sonoma 140cm',                portfolio:'APARADORES', spend:63.88,  adSales:1492.93, acos:4.28,  units:9,  impressions:70905,  clicks:476  },
+    { asin:'B0DBM5HDCH', title:'Table Bar Kyra 2 Personnes Blanc Sonoma',        portfolio:'MESA ALTA',  spend:142.59, adSales:441.31,  acos:32.31, units:6,  impressions:61035,  clicks:637  },
+    { asin:'B085DQLFGQ', title:'Buffet Clark Blanc Brillant LED 150cm',           portfolio:'Top Ventas', spend:377.49, adSales:1754.18, acos:21.52, units:11, impressions:247007, clicks:1586 },
+    { asin:'B07DYCZR3W', title:'Buffet Bahut Meuble Salon Largeur',              portfolio:'Top Ventas', spend:46.90,  adSales:829.15,  acos:5.66,  units:5,  impressions:39367,  clicks:208  },
+    { asin:'B07DY6TJXL', title:'Buffet Bahut Meuble Salon Salle',                portfolio:'Top Ventas', spend:83.08,  adSales:655.45,  acos:12.68, units:4,  impressions:88336,  clicks:366  },
+    { asin:'B07JR57YZ8', title:'Buffet Bahut Meuble Salon V2',                   portfolio:'Top Ventas', spend:51.89,  adSales:489.62,  acos:10.6,  units:3,  impressions:18618,  clicks:217  },
+    { asin:'B07XTLXQTY', title:'Meuble TV 2 tiroirs',                            portfolio:'Top Ventas', spend:20.04,  adSales:472.50,  acos:4.24,  units:3,  impressions:12322,  clicks:91   },
+    { asin:'B0888VW41V', title:'Buffet Bahut Meuble Salon V3',                   portfolio:'Top Ventas', spend:57.63,  adSales:364.15,  acos:15.83, units:2,  impressions:59033,  clicks:244  },
+    { asin:'B07RM2M1JJ', title:'Meuble TV avec Rangement',                       portfolio:'Top Ventas', spend:26.82,  adSales:292.55,  acos:9.17,  units:3,  impressions:42724,  clicks:126  },
+    { asin:'B07PPNSW2W', title:'Meuble TV 1 tiroir',                             portfolio:'Top Ventas', spend:7.46,   adSales:187.50,  acos:3.98,  units:3,  impressions:4978,   clicks:35   },
+    { asin:'B07MZWG3F6', title:'Lit Double Alessia Matelas 140cm',               portfolio:'CAMAS',      spend:2.95,   adSales:290.83,  acos:1.01,  units:1,  impressions:1037,   clicks:17   },
+    { asin:'B07N4BG9RC', title:'Lit Double Alessia Matelas 180cm',               portfolio:'CAMAS',      spend:4.90,   adSales:0,       acos:0,     units:0,  impressions:5201,   clicks:31   },
+    { asin:'B08GG9VFV2', title:'Lit Double Rodas Matelas 160x200',               portfolio:'CAMAS',      spend:2.96,   adSales:0,       acos:0,     units:0,  impressions:1794,   clicks:16   },
+    { asin:'B08GG9QSW8', title:'Lit Double Rodas Matelas 180x200',               portfolio:'CAMAS',      spend:2.66,   adSales:0,       acos:0,     units:0,  impressions:1283,   clicks:13   },
+    { asin:'B073QQ97MY', title:'Lit Double Parisina Matelas 180cm',              portfolio:'CAMAS',      spend:1.71,   adSales:0,       acos:0,     units:0,  impressions:490,    clicks:10   },
+    { asin:'B0DWN7NQM1', title:'Lit Double Diana Matelas 160x200',               portfolio:'CAMAS',      spend:1.19,   adSales:0,       acos:0,     units:0,  impressions:502,    clicks:6    },
+    { asin:'B07M9CGZV9', title:'Lit Double Rodas 160x200cm',                     portfolio:'CAMAS',      spend:0.88,   adSales:0,       acos:0,     units:0,  impressions:303,    clicks:4    },
+    { asin:'B01ITQRDFQ', title:'Lit Double Alessia Matelas 140cm V2',            portfolio:'CAMAS',      spend:0.84,   adSales:0,       acos:0,     units:0,  impressions:336,    clicks:4    },
+    { asin:'B0FPMD6W2T', title:'Buffet Bass Kai 3 Portes',                        portfolio:'MARCA',      spend:3.69,   adSales:193.38,  acos:1.91,  units:2,  impressions:1933,   clicks:18   },
+    { asin:'B085HV6SXW', title:'Buffet de Salon Bas 3 Portes 140cm',             portfolio:'MARCA',      spend:5.80,   adSales:182.50,  acos:3.18,  units:1,  impressions:3089,   clicks:26   },
+    { asin:'B0F8W33TBY', title:'Buffet avec Deux Portes et Trois cajons',        portfolio:'MARCA',      spend:5.29,   adSales:182.50,  acos:2.9,   units:1,  impressions:1924,   clicks:24   },
+    { asin:'B085HWV6CD', title:'Buffet Clark avec Lumière LED 3 portes',         portfolio:'MARCA',      spend:3.64,   adSales:182.50,  acos:1.99,  units:1,  impressions:1211,   clicks:18   },
+    { asin:'B0F8W6YCHG', title:'Buffet avec Deux Portes et Trois cajons V2',     portfolio:'MARCA',      spend:6.28,   adSales:173.37,  acos:3.62,  units:1,  impressions:2597,   clicks:29   },
+    { asin:'B0BDG8Z6ZZ', title:'Buffet Bahut Moderne Largeur 135cm',             portfolio:'MARCA',      spend:6.43,   adSales:165.83,  acos:3.88,  units:1,  impressions:2669,   clicks:27   },
+    { asin:'B0FD43LKP7', title:'Buffet Portes cannelées Renzo',                  portfolio:'MARCA',      spend:0.49,   adSales:157.50,  acos:0.31,  units:1,  impressions:324,    clicks:2    },
+    { asin:'B0D925QV5C', title:'Meuble TV Mural Aitana M1',                      portfolio:'MARCA',      spend:5.24,   adSales:124.17,  acos:4.22,  units:1,  impressions:1464,   clicks:17   }
+  ],
+  it: [
+    { asin:'B0CNDCH8SR', title:'Credenza Lander L2 Bianco 60x71cm',             portfolio:'APARADORES', spend:287.26, adSales:356.97, acos:80.47, units:5, impressions:150897, clicks:2072 },
+    { asin:'B0CNDD8KPB', title:'Credenza Lander L2 Bianco Sonoma',              portfolio:'APARADORES', spend:195.83, adSales:316.45, acos:61.88, units:5, impressions:100885, clicks:1398 },
+    { asin:'B085DQLFGQ', title:'Credenza Clark LED Bianco Lucido 150cm',         portfolio:'APARADORES', spend:171.83, adSales:0,      acos:0,     units:0, impressions:210878, clicks:1237 },
+    { asin:'B0888TSXBJ', title:'Credenza Roque Bianco Sonoma 140cm',            portfolio:'APARADORES', spend:102.25, adSales:154.96, acos:65.98, units:1, impressions:129710, clicks:726  },
+    { asin:'B0FPMD6W2T', title:'Credenza Kai 3 Ante Nero Sonoma 130cm',         portfolio:'APARADORES', spend:96.18,  adSales:838.58, acos:11.47, units:7, impressions:62127,  clicks:690  },
+    { asin:'B0GBY7KTD1', title:'Credenza Renzo ante scanalate Bianco',          portfolio:'APARADORES', spend:89.32,  adSales:309.84, acos:28.83, units:2, impressions:59598,  clicks:628  },
+    { asin:'B0F8W33TBY', title:'Credenza Yanis due ante Bianco Sonoma',         portfolio:'APARADORES', spend:82.78,  adSales:0,      acos:0,     units:0, impressions:32131,  clicks:582  },
+    { asin:'B0FM87GYRB', title:'Credenza Lander L2 Noce e Grigio',              portfolio:'APARADORES', spend:81.88,  adSales:162.30, acos:50.45, units:2, impressions:45023,  clicks:588  },
+    { asin:'B0F8W6YCHG', title:'Credenza Yanis due ante Bianco',                portfolio:'APARADORES', spend:70.62,  adSales:492.25, acos:14.35, units:3, impressions:40640,  clicks:496  },
+    { asin:'B085GGV7NW', title:'Mobile TV Aker Soggiorno Moderno',              portfolio:'Marca',      spend:1.11,  adSales:286.56, acos:0.39,  units:2, impressions:435,    clicks:4    },
+    { asin:'B01N0GPN37', title:'Mobile TV Sospeso Tibi LED',                    portfolio:'Marca',      spend:0.86,  adSales:105.74, acos:0.81,  units:1, impressions:314,    clicks:2    },
+    { asin:'B0D925QV5C', title:'Mobile TV Sospeso Aitana M1',                   portfolio:'Marca',      spend:4.06,  adSales:0,      acos:0,     units:0, impressions:1272,   clicks:13   },
+    { asin:'B01M1BN67C', title:'Mobile TV Sospeso Nora H2',                     portfolio:'Marca',      spend:2.11,  adSales:0,      acos:0,     units:0, impressions:1007,   clicks:5    },
+    { asin:'B0D923FPZH', title:'Mobile TV Sospeso Aitana M2',                   portfolio:'Marca',      spend:1.71,  adSales:0,      acos:0,     units:0, impressions:152,    clicks:6    },
+    { asin:'B0FLQB8XQT', title:'Mobile TV con piedini Nora H2',                 portfolio:'Marca',      spend:1.45,  adSales:0,      acos:0,     units:0, impressions:531,    clicks:5    },
+    { asin:'B085GG6FD1', title:'Mobile TV Aker Soggiorno Moderno V2',           portfolio:'Marca',      spend:1.43,  adSales:0,      acos:0,     units:0, impressions:209,    clicks:4    },
+    { asin:'B0FLQBBYTC', title:'Mobile TV con piedini Nora H2 V2',              portfolio:'Marca',      spend:1.28,  adSales:0,      acos:0,     units:0, impressions:127,    clicks:3    }
+  ],
+  de: [
+    { asin:'B0FD43LKP7', title:'Sideboard Renzo gerillte Türen Eiche',          portfolio:'APARADORES', spend:118.79, adSales:1475.43, acos:8.05,  units:10, impressions:38506, clicks:659 },
+    { asin:'B085DQLFGQ', title:'Sideboard Clark Weiß Hochglanz LED',             portfolio:'APARADORES', spend:94.03,  adSales:175.63,  acos:53.54, units:1,  impressions:54884, clicks:473 },
+    { asin:'B0D8TRG533', title:'TV-Lowboard Aitana M1 Eiche 120cm',             portfolio:'MUEBLES TV', spend:96.45,  adSales:300.00,  acos:32.15, units:3,  impressions:53074, clicks:460 },
+    { asin:'B0FM3S6YM1', title:'TV-Möbel Aitana M2 Weiß 180cm',                portfolio:'MUEBLES TV', spend:62.73,  adSales:92.14,   acos:68.08, units:1,  impressions:34231, clicks:290 },
+    { asin:'B07XTFVGJF', title:'Vitrinenschrank Luke V6 Breite 40cm',           portfolio:'Top Ventas', spend:6.13,  adSales:106.43, acos:5.76,  units:1, impressions:2824,   clicks:30  },
+    { asin:'B07JNLJ5D7', title:'Vitrinenschrank Luke V4 Breite 40cm',           portfolio:'Top Ventas', spend:9.01,  adSales:0,      acos:0,     units:0, impressions:2887,   clicks:44  },
+    { asin:'B09L8L7RVW', title:'Vitrinenschrank Luke V3 Breite 40cm',           portfolio:'Top Ventas', spend:3.60,  adSales:0,      acos:0,     units:0, impressions:828,    clicks:17  },
+    { asin:'B08T1FXV65', title:'Vitrinenschrank Luke V3 Breite 40cm V2',        portfolio:'Top Ventas', spend:3.45,  adSales:0,      acos:0,     units:0, impressions:724,    clicks:16  },
+    { asin:'B07XTJVF8Y', title:'Vitrinenschrank Luke V5 Breite 40cm',           portfolio:'Top Ventas', spend:2.95,  adSales:0,      acos:0,     units:0, impressions:1152,   clicks:14  },
+    { asin:'B07XTFVBPQ', title:'Vitrinenschrank Luke V4 Breite 40cm V2',        portfolio:'Top Ventas', spend:1.76,  adSales:0,      acos:0,     units:0, impressions:706,    clicks:9   },
+    { asin:'B08W2CSHY1', title:'Vitrinenschrank Luke V6 Breite 40cm V2',        portfolio:'Top Ventas', spend:1.03,  adSales:0,      acos:0,     units:0, impressions:956,    clicks:5   },
+    { asin:'B07JQPHRMF', title:'Vitrinenschrank Luke V1 Breite 40cm',           portfolio:'Top Ventas', spend:0.87,  adSales:0,      acos:0,     units:0, impressions:296,    clicks:4   },
+    { asin:'B08HDKNRJ9', title:'Sideboard Wohnzimmer Esszimmer',                portfolio:'Marca',      spend:1.40,  adSales:175.63, acos:0.8,   units:1, impressions:414,    clicks:5   },
+    { asin:'B07PFVLPQZ', title:'Sideboard Wohnzimmer Esszimmer V2',             portfolio:'Marca',      spend:4.42,  adSales:167.23, acos:2.64,  units:1, impressions:945,    clicks:16  },
+    { asin:'B08HDJZ5BK', title:'Sideboard Wohnzimmer Esszimmer V3',             portfolio:'Marca',      spend:4.61,  adSales:0,      acos:0,     units:0, impressions:1170,   clicks:17  },
+    { asin:'B0CJ2PXN2N', title:'Flurmöbel mit Spiegel und Schubladen',          portfolio:'Marca',      spend:2.19,  adSales:0,      acos:0,     units:0, impressions:388,    clicks:6   },
+    { asin:'B09SBLRXV3', title:'Flurmöbel mit Schuhschrank Breit',              portfolio:'Marca',      spend:1.36,  adSales:0,      acos:0,     units:0, impressions:58,     clicks:3   },
+    { asin:'B0888VG5GK', title:'Modernes Sideboard Wohnzimmer',                 portfolio:'Marca',      spend:1.19,  adSales:0,      acos:0,     units:0, impressions:172,    clicks:3   },
+    { asin:'B085GGKNJ2', title:'Modernes Sideboard Breite 155cm',               portfolio:'Marca',      spend:1.15,  adSales:0,      acos:0,     units:0, impressions:449,    clicks:3   },
+    { asin:'B07DY6TJXL', title:'Modernes Sideboard Wohnzimmer V2',              portfolio:'Marca',      spend:1.04,  adSales:0,      acos:0,     units:0, impressions:334,    clicks:4   }
+  ]
+};
+
+const PRIME_DAY = {
+  global: { sales:15084, pctJun:22.6 },
+  es: { sales:5632, pctJun:19.3, uplift:44.6, spend:714, acos:12.7, orders:50 },
+  fr: { sales:4112, pctJun:18.2, uplift:36.4, spend:552, acos:13.4, orders:31 },
+  it: { sales:3163, pctJun:33.4, uplift:150.3, spend:445, acos:14.1, orders:21 },
+  de: { sales:2176, pctJun:39.9, uplift:199.2, spend:270, acos:12.4, orders:null }
+};
+
+// ── CAMPAIGN TYPE DATA (Pacvue · Ene–Jun 2026) ────────────────────────────────
+// idx: 0=Ene, 1=Feb, 2=Mar, 3=Abr, 4=May, 5=Jun
+const CAMPAIGN_TYPE = {
+  es: [
+    {SP:{spend:3495.01,sales:20390.36,acos:17.14,roas:5.83,impr:2221125,clicks:22910,conv:184},SB:{spend:0,sales:0,acos:0,roas:0,impr:0,clicks:0,conv:0},SD:{spend:683.62,sales:1891.62,acos:36.14,roas:2.77,impr:536109,clicks:1647,conv:16}},
+    {SP:{spend:2670.08,sales:18446.63,acos:14.47,roas:6.91,impr:1632096,clicks:16971,conv:161},SB:{spend:0,sales:0,acos:0,roas:0,impr:0,clicks:0,conv:0},SD:{spend:453.70,sales:984.24,acos:46.10,roas:2.17,impr:381004,clicks:1100,conv:9}},
+    {SP:{spend:3395.03,sales:20513.24,acos:16.55,roas:6.04,impr:2330636,clicks:22292,conv:197},SB:{spend:35.80,sales:0,acos:0,roas:0,impr:3846,clicks:90,conv:0},SD:{spend:615.68,sales:2857.64,acos:21.55,roas:4.64,impr:424771,clicks:1606,conv:16}},
+    {SP:{spend:3601.23,sales:24284.45,acos:14.83,roas:6.74,impr:2499714,clicks:25308,conv:217},SB:{spend:329.80,sales:0,acos:0,roas:0,impr:114111,clicks:1620,conv:0},SD:{spend:530.03,sales:1758.56,acos:30.14,roas:3.32,impr:367310,clicks:1481,conv:14}},
+    {SP:{spend:3511.01,sales:22720.78,acos:15.45,roas:6.47,impr:2498650,clicks:23918,conv:223},SB:{spend:162.78,sales:0,acos:0,roas:0,impr:51463,clicks:973,conv:0},SD:{spend:586.83,sales:1486.66,acos:39.47,roas:2.53,impr:375042,clicks:1917,conv:12}},
+    {SP:{spend:4036.18,sales:28139.01,acos:14.34,roas:6.97,impr:2509956,clicks:24922,conv:264},SB:{spend:111.15,sales:0,acos:0,roas:0,impr:37746,clicks:713,conv:0},SD:{spend:551.67,sales:992.59,acos:55.58,roas:1.80,impr:355651,clicks:1708,conv:8}}
+  ],
+  fr: [
+    {SP:{spend:1996.28,sales:17189.88,acos:11.61,roas:8.61,impr:1244395,clicks:11483,conv:122},SB:{spend:0,sales:0,acos:0,roas:0,impr:0,clicks:0,conv:0},SD:{spend:36.69,sales:0,acos:0,roas:0,impr:26716,clicks:85,conv:0}},
+    {SP:{spend:1888.32,sales:22400.01,acos:8.43,roas:11.86,impr:1151974,clicks:12263,conv:157},SB:{spend:0,sales:0,acos:0,roas:0,impr:0,clicks:0,conv:0},SD:{spend:35.63,sales:165,acos:21.59,roas:4.63,impr:24335,clicks:68,conv:2}},
+    {SP:{spend:2577.90,sales:26610.84,acos:9.69,roas:10.32,impr:1790610,clicks:15382,conv:192},SB:{spend:4.40,sales:0,acos:0,roas:0,impr:10180,clicks:15,conv:0},SD:{spend:43.57,sales:65.83,acos:66.19,roas:1.51,impr:25743,clicks:136,conv:1}},
+    {SP:{spend:1758.22,sales:13466.67,acos:13.06,roas:7.66,impr:1135725,clicks:10797,conv:108},SB:{spend:259.88,sales:0,acos:0,roas:0,impr:271912,clicks:1102,conv:0},SD:{spend:30.82,sales:430.83,acos:7.15,roas:13.98,impr:25030,clicks:244,conv:3}},
+    {SP:{spend:1791.49,sales:16002.49,acos:11.20,roas:8.93,impr:1184392,clicks:10594,conv:115},SB:{spend:224.84,sales:0,acos:0,roas:0,impr:209170,clicks:1034,conv:0},SD:{spend:38.85,sales:65.83,acos:59.02,roas:1.69,impr:25552,clicks:245,conv:1}},
+    {SP:{spend:2733.21,sales:22092.16,acos:12.37,roas:8.08,impr:1914067,clicks:14629,conv:162},SB:{spend:198.27,sales:0,acos:0,roas:0,impr:55289,clicks:834,conv:0},SD:{spend:31.18,sales:464.17,acos:6.72,roas:14.89,impr:19663,clicks:214,conv:2}}
+  ],
+  it: [
+    {SP:{spend:1898.58,sales:13342.10,acos:14.23,roas:7.03,impr:1680885,clicks:13817,conv:83},SB:{spend:0,sales:0,acos:0,roas:0,impr:0,clicks:0,conv:0},SD:{spend:0,sales:0,acos:0,roas:0,impr:0,clicks:0,conv:0}},
+    {SP:{spend:1474.78,sales:10477.98,acos:14.08,roas:7.10,impr:1213267,clicks:11064,conv:64},SB:{spend:0,sales:0,acos:0,roas:0,impr:0,clicks:0,conv:0},SD:{spend:0,sales:0,acos:0,roas:0,impr:0,clicks:0,conv:0}},
+    {SP:{spend:1507.27,sales:8620.84,acos:17.48,roas:5.72,impr:1340193,clicks:11257,conv:61},SB:{spend:5.09,sales:0,acos:0,roas:0,impr:14426,clicks:20,conv:0},SD:{spend:0,sales:0,acos:0,roas:0,impr:0,clicks:0,conv:0}},
+    {SP:{spend:1636.43,sales:8295.72,acos:19.73,roas:5.07,impr:1329913,clicks:10878,conv:56},SB:{spend:251.49,sales:0,acos:0,roas:0,impr:244376,clicks:1162,conv:0},SD:{spend:0.59,sales:0,acos:0,roas:0,impr:2241,clicks:3,conv:0}},
+    {SP:{spend:1718.64,sales:6687.64,acos:25.70,roas:3.89,impr:1502228,clicks:11702,conv:45},SB:{spend:65.12,sales:0,acos:0,roas:0,impr:22204,clicks:364,conv:0},SD:{spend:2.31,sales:0,acos:0,roas:0,impr:4404,clicks:12,conv:0}},
+    {SP:{spend:2293.30,sales:10322.78,acos:22.22,roas:4.50,impr:1758279,clicks:16635,conv:73},SB:{spend:42.57,sales:0,acos:0,roas:0,impr:14775,clicks:218,conv:0},SD:{spend:14.47,sales:0,acos:0,roas:0,impr:12083,clicks:78,conv:0}}
+  ],
+  de: [
+    {SP:{spend:1520.79,sales:5885.56,acos:25.84,roas:3.87,impr:467693,clicks:4367,conv:43},SB:{spend:0,sales:0,acos:0,roas:0,impr:0,clicks:0,conv:0},SD:{spend:0,sales:0,acos:0,roas:0,impr:0,clicks:0,conv:0}},
+    {SP:{spend:1094.19,sales:3549.54,acos:30.83,roas:3.24,impr:326875,clicks:2943,conv:30},SB:{spend:0,sales:0,acos:0,roas:0,impr:0,clicks:0,conv:0},SD:{spend:0,sales:0,acos:0,roas:0,impr:0,clicks:0,conv:0}},
+    {SP:{spend:1185.63,sales:4087.36,acos:29.01,roas:3.45,impr:374001,clicks:3356,conv:33},SB:{spend:0.90,sales:0,acos:0,roas:0,impr:828,clicks:3,conv:0},SD:{spend:0,sales:0,acos:0,roas:0,impr:0,clicks:0,conv:0}},
+    {SP:{spend:1352.77,sales:4296.63,acos:31.48,roas:3.18,impr:554816,clicks:4829,conv:35},SB:{spend:89.64,sales:0,acos:0,roas:0,impr:130646,clicks:396,conv:0},SD:{spend:0,sales:0,acos:0,roas:0,impr:0,clicks:0,conv:0}},
+    {SP:{spend:1299.91,sales:5410.91,acos:24.02,roas:4.16,impr:622097,clicks:5112,conv:36},SB:{spend:0,sales:0,acos:0,roas:0,impr:0,clicks:0,conv:0},SD:{spend:0,sales:0,acos:0,roas:0,impr:33,clicks:0,conv:0}},
+    {SP:{spend:1389.31,sales:5548.07,acos:25.04,roas:3.99,impr:644881,clicks:6018,conv:42},SB:{spend:0,sales:0,acos:0,roas:0,impr:0,clicks:0,conv:0},SD:{spend:4.99,sales:0,acos:0,roas:0,impr:5279,clicks:18,conv:0}}
+  ]
+};
+
+// ── SEARCH TERMS DATA (Pacvue · Top términos por impresiones) ─────────────────
+// Datos disponibles: ES/FR idx 0 (Ene 2026) y todos los mercados idx 5 (Jun 2026)
+const SEARCH_TERMS = {
+  es: {
+    0:[
+      {q:'aparadores para salon',impr:162405,clicks:1489,spend:280.16,sales:481.75,acos:58.15,conv:6},
+      {q:'aparador salon',impr:86762,clicks:763,spend:156.97,sales:837.97,acos:18.73,conv:6},
+      {q:'aparador',impr:55360,clicks:492,spend:92.35,sales:180.15,acos:51.26,conv:2},
+      {q:'muebles de salon',impr:45138,clicks:527,spend:75.91,sales:575.17,acos:13.20,conv:4},
+      {q:'cama matrimonio',impr:34360,clicks:282,spend:70.25,sales:0,acos:0,conv:0},
+      {q:'mueble aparador salon',impr:33655,clicks:324,spend:64.14,sales:262.80,acos:24.41,conv:2},
+      {q:'cama matrimonio 150x190',impr:20964,clicks:170,spend:46.74,sales:0,acos:0,conv:0},
+      {q:'aparador entrada',impr:18961,clicks:197,spend:33.17,sales:279.32,acos:11.88,conv:2}
+    ],
+    5:[
+      {q:'muebles bonitos',impr:42514,clicks:367,spend:78.22,sales:373.50,acos:20.94,conv:3},
+      {q:'aparador entrada',impr:27864,clicks:320,spend:48.87,sales:707.36,acos:6.91,conv:6},
+      {q:'mueble aparador',impr:7379,clicks:71,spend:10.81,sales:0,acos:0,conv:0},
+      {q:'mb muebles bonitos aparadores para salon',impr:6204,clicks:68,spend:26.67,sales:262.80,acos:10.15,conv:2},
+      {q:'recibidores de entrada modernos',impr:6075,clicks:44,spend:8.55,sales:186.34,acos:4.59,conv:2},
+      {q:'aparador salon modernos',impr:4192,clicks:80,spend:11.85,sales:0,acos:0,conv:0},
+      {q:'mueble salon',impr:3624,clicks:79,spend:10.78,sales:0,acos:0,conv:0},
+      {q:'aparador y mueble tv',impr:1924,clicks:30,spend:11.85,sales:0,acos:0,conv:0}
+    ]
+  },
+  fr: {
+    0:[
+      {q:'buffet salle a manger',impr:30030,clicks:344,spend:48.39,sales:331.66,acos:14.59,conv:2},
+      {q:'buffet',impr:14262,clicks:121,spend:16.03,sales:514.16,acos:3.12,conv:3},
+      {q:'meuble tv',impr:14090,clicks:155,spend:25.31,sales:0,acos:0,conv:0},
+      {q:'buffet salon',impr:13860,clicks:171,spend:23.93,sales:505.83,acos:4.73,conv:3},
+      {q:'meuble salon',impr:9854,clicks:76,spend:9.08,sales:165.83,acos:5.48,conv:1},
+      {q:'olivier artificiel',impr:7386,clicks:47,spend:20.73,sales:0,acos:0,conv:0},
+      {q:'lit double',impr:4882,clicks:45,spend:17.43,sales:0,acos:0,conv:0},
+      {q:'ilot central cuisine',impr:4629,clicks:59,spend:12.35,sales:0,acos:0,conv:0}
+    ],
+    5:[
+      {q:'meuble salle a manger',impr:156024,clicks:1018,spend:257.93,sales:1788.52,acos:14.42,conv:12},
+      {q:'meuble tv',impr:38378,clicks:200,spend:37.79,sales:0,acos:0,conv:0},
+      {q:'buffet',impr:14690,clicks:123,spend:24.75,sales:654.99,acos:3.78,conv:4},
+      {q:'mange debout',impr:7551,clicks:75,spend:16.43,sales:545.83,acos:3.01,conv:4},
+      {q:'table bar',impr:2080,clicks:30,spend:6.46,sales:0,acos:0,conv:0},
+      {q:'mange debout cuisine',impr:1217,clicks:17,spend:3.78,sales:0,acos:0,conv:0},
+      {q:'bahut de salle a manger',impr:893,clicks:23,spend:5.41,sales:0,acos:0,conv:0},
+      {q:'buffet salle a manger blanc',impr:196,clicks:13,spend:1.82,sales:348.33,acos:0.52,conv:2}
+    ]
+  },
+  it: {
+    5:[
+      {q:'madia',impr:36739,clicks:328,spend:47.15,sales:227.86,acos:20.69,conv:2},
+      {q:'credenza soggiorno',impr:21408,clicks:227,spend:30.64,sales:105.74,acos:28.98,conv:1},
+      {q:'madia soggiorno',impr:19196,clicks:192,spend:27.71,sales:465.24,acos:5.96,conv:3},
+      {q:'mobile tv',impr:9712,clicks:157,spend:17.18,sales:0,acos:0,conv:0},
+      {q:'mb muebles bonitos',impr:6293,clicks:52,spend:10.53,sales:0,acos:0,conv:0},
+      {q:'mb muebles bonitos mobile tv',impr:1625,clicks:28,spend:10.08,sales:105.74,acos:9.53,conv:1},
+      {q:'madia bianco lucido',impr:2009,clicks:22,spend:3.36,sales:0,acos:0,conv:0},
+      {q:'credenza bianco lucido',impr:673,clicks:13,spend:2.07,sales:179.51,acos:1.15,conv:1}
+    ]
+  },
+  de: {
+    5:[
+      {q:'sideboard',impr:35602,clicks:425,spend:90.77,sales:444.38,acos:20.43,conv:3},
+      {q:'sideboard wohnzimmer',impr:22149,clicks:250,spend:54.62,sales:150.13,acos:36.38,conv:2},
+      {q:'schuhschrank mit spiegel',impr:6009,clicks:40,spend:15.62,sales:0,acos:0,conv:0},
+      {q:'kommode',impr:13009,clicks:169,spend:36.55,sales:127.86,acos:28.59,conv:1},
+      {q:'tv schrank',impr:5097,clicks:71,spend:15.90,sales:0,acos:0,conv:0},
+      {q:'highboard',impr:3990,clicks:67,spend:14.02,sales:0,acos:0,conv:0},
+      {q:'flur möbel',impr:2901,clicks:38,spend:9.97,sales:0,acos:0,conv:0},
+      {q:'sideboard weiss',impr:2116,clicks:33,spend:6.98,sales:0,acos:0,conv:0}
+    ]
+  }
+};
+
+// ── ANOTACIONES MENSUALES (análisis Roicos · Ene–Jun 2026) ───────────────────
+const ANNOTATIONS = {
+  es:[
+    {insights:['SP ACOS 17.1% — sobre objetivo global del 10%. SD muy alto (36%). Camas aparecen con volumen pero sin conversión.'],hypotheses:['El término "cama matrimonio" genera 34K impresiones pero 0 ventas — posible arrastre por targeting amplio en campañas de aparadores/recibidores.'],actions:['Revisar targeting SD: alto ACOS sugiere posicionamiento en placements de bajo CVR.'],negatives:['Negativizar en campañas de aparadores/recibidores: "cama matrimonio", "cama matrimonio 150x190", "cama 180x200".']},
+    {insights:['SP mejora a ACOS 14.5% — progreso positivo. SD se deteriora a ACOS 46%.'],hypotheses:['La mejora de SP refleja optimización post-enero. SD con ACOS 46% indica conversión baja en display — posiblemente audiencias de retargeting amplias.'],actions:['Evaluar pausa o reducción de SD en ES hasta que el ACOS mejore a <20%.'],negatives:['Continuar negativizando términos de camas en campañas de aparadores.']},
+    {insights:['Primera activación SB (35.80€, 0 ventas directas). SD mejora a 21.5%. SP estable 16.6%.'],hypotheses:['SB en fase de lanzamiento — sin ventas directas las primeras semanas es normal; el objetivo es visibilidad de marca y branded searches.'],actions:['Monitorizar CTR de SB para evaluar si la creatividad conecta. SD muestra mejora — mantener y optimizar bids.'],negatives:[]},
+    {insights:['Mejor mes SP hasta la fecha: 24.284€ ventas, ACOS 14.8%. SB escala a 329.80€ — solo impresiones (branding). SD ACOS 30%.'],hypotheses:['Posible efecto pre-verano: mayor demanda de muebles de salón y recibidores. SB genera visibilidad de marca sin conversión directa medible — efecto halo en búsquedas de marca.'],actions:['SP rinde bien: valorar aumentar presupuesto. Revisar si SD puede mejorar con bids más bajos o segmentar por ASIN.'],negatives:[]},
+    {insights:['SP 15.5% ACOS — estable. SD empeora a 39.5%. SB activa (163€, 0 ventas).'],hypotheses:['SD sigue sin mejorar en ES. La audiencia de display puede no coincidir con el perfil del comprador de muebles de salón.'],actions:['Considerar reformular campañas SD en ES o pausarlas si no hay mejora en junio. Enfocar presupuesto en SP.'],negatives:[]},
+    {insights:['Mejor mes en SP: 28.139€ ventas, ACOS 14.3%. SD alcanza máximo histórico de ACOS (55.6%). Prime Day (23–26 jun) representa el 19.3% de las ventas del mes.'],hypotheses:['"Muebles bonitos" con 42K impresiones señala fuerte búsqueda de marca — buen reconocimiento. "Aparador entrada" con ACOS 6.9% es el término estrella: alta intención de compra.'],actions:['Valorar pausa completa de SD en ES (ACOS >55% no sostenible). Aumentar bids en "aparador entrada" y "recibidores de entrada modernos" para julio.'],negatives:['Revisar: "aparador salon modernos" (4.2K impr, 0 ventas), "mueble salon" (3.6K impr, 0 ventas) — negativizar o bajar bid.']}
+  ],
+  fr:[
+    {insights:['Francia: mercado más eficiente. SP ACOS 11.6%. SD no convierte (0 ventas con 85 clics).'],hypotheses:['"Buffet salle à manger" es el término dominante con alta intención de compra. Francia tiene buyer intent más focalizado en categoría específica vs ES.'],actions:['Mantener estrategia SP actual. Analizar SI SD puede convertir con audiencias de remarketing más precisas.'],negatives:['Negativizar en SD/SP: "olivier artificiel" (7.4K impr, €21 spend, 0 ventas), "ilot central cuisine" (4.6K impr, 0 ventas), "lit double" (4.9K impr, 0 ventas) — no son del catálogo.']},
+    {insights:['Mejor mes absoluto de FR: 22.400€ ventas, ACOS 8.4%. Excelente. SD genera primera conversión (€165 ventas).'],hypotheses:['Posible efecto post-temporada alta o catálogo actualizado. La eficiencia superior en inversión similar sugiere mejor calidad de tráfico.'],actions:['Analizar qué campañas/portfolios impulsaron este mes para replicar la estructura.'],negatives:[]},
+    {insights:['Máximo histórico FR: 26.610€ ventas SP, ACOS 9.7%. Inicio SB (4.40€ simbólico). SD con ACOS 66%.'],hypotheses:['Marzo es temporada alta en FR para muebles (renovaciones de primavera). "Meuble salle à manger" es el driver principal.'],actions:['Maximizar presupuesto en Q1 FR. FR es el mercado más rentable de todos — priorizar inversión aquí.'],negatives:[]},
+    {insights:['Caída a 13.466€ ventas (vs 26K mar). ACOS sube a 13%. SB lanza con 259.88€ (solo impresiones). SD destaca con ACOS 7.15% (€431 ventas).'],hypotheses:['Caída post-Semana Santa y mayor competencia. La SD en abril muestra excelente eficiencia — potenciar este canal cuando las condiciones son favorables.'],actions:['Potenciar SD en FR para futuros meses — mejor ACOS que SP en este período. Revisar y reducir bids SP para mejorar ACOS.'],negatives:[]},
+    {insights:['Recuperación a 16.002€ ventas, ACOS 11.2%. SB activa (225€). "Mange debout" (mesa bar) empieza a aparecer como término emergente.'],hypotheses:['Mayo es pre-verano: búsquedas de mobiliario de exterior/cocina empiezan a ganar peso. "Mange debout" con ACOS 3% es señal de alta conversión en mesa alta.'],actions:['Preparar campañas específicas de Mesa Alta / Mange Debout para verano.'],negatives:[]},
+    {insights:['22.092€ ventas SP, ACOS 12.4%. SD recupera con €464 ventas (ACOS 6.7% — excelente). Prime Day: 18.2% de ventas del mes. "Meuble salle à manger" domina con 156K impr y €1.789 ventas.'],hypotheses:['"Mange debout" destaca con ACOS 3.0% y 4 conversiones — tendencia clara de verano. "Meuble tv" con 38K impr y 0 ventas puede no tener buen match de producto.'],actions:['Escalar inversión en "mange debout" para julio. SD en FR funciona — mantener y aumentar budget. Revisar match de "meuble tv" con el catálogo disponible.'],negatives:['"Meuble tv" (38K impr, 0 ventas) — revisar si el catálogo de muebles TV en FR está activo o negativizar temporalmente.']}
+  ],
+  it:[
+    {insights:['IT solo con SP activo. ACOS 14.2% — dentro de rango aceptable para el mercado.'],hypotheses:['Italia en fase SP pura. Las credenze (aparadores italianos) y mobili TV son las categorías principales.'],actions:['Explorar activar SB en IT para ganar visibilidad de marca. Analizar qué ASINs tienen mejor CVR.'],negatives:[]},
+    {insights:['SP ACOS 14.1% — estable. Inversión y ventas bajan ligeramente vs enero.'],hypotheses:['Febrero estacionalmente más bajo. La eficiencia se mantiene — buena señal de gestión.'],actions:['Mantener estrategia. Analizar oportunidades de lanzar nuevos ASINs con mejor precio competitivo.'],negatives:[]},
+    {insights:['SP ACOS sube a 17.5%. Primera SB activa (5€ simbólico). Ventas SP bajan a 8.620€.'],hypotheses:['Caída de ventas puede relacionarse con mayor competencia en "credenza" en primavera. El deterioro de ACOS es la primera señal de alerta.'],actions:['Auditar keywords de menor rendimiento. Revisar qué ASINs tienen ACOS > 30% y reducir bids.'],negatives:[]},
+    {insights:['ACOS SP sube a 19.7%. SB activa agresivamente (251€, 0 conversiones). Ventas SP en mínimos (8.295€).'],hypotheses:['La activación agresiva de SB puede estar compitiendo por las mismas búsquedas que SP, elevando el CPC. Evaluar si SB canibaliza presupuesto SP.'],actions:['Revisar distribución de presupuesto SP vs SB. En IT, SP necesita optimización urgente antes de escalar SB.'],negatives:[]},
+    {insights:['ACOS SP crítico: 25.7%. SB (65€, 0 ventas). Ventas en mínimos: 6.687€. Tendencia negativa consistente desde enero.'],hypotheses:['IT puede estar enfrentando presión de precio de competidores locales. El deterioro continuo de ACOS sugiere bids desalineados con CVR real.'],actions:['Auditoría completa de campañas IT. Reducir bids a ACOS objetivo por ASIN. Considerar pausa de campañas con ACOS > 40%.'],negatives:[]},
+    {insights:['Recuperación: 10.322€ ventas, ACOS 22.2%. "Madia soggiorno" con ACOS 5.96% es el término estrella. "Credenza soggiorno" convierte a ACOS 29%.'],hypotheses:['"Madia soggiorno" (19K impr, €465 ventas, ACOS 5.96%) es el término más eficiente — campañas bien posicionadas en esta keyword. La mejora vs mayo indica que las optimizaciones están dando resultados.'],actions:['Aumentar bids en "madia soggiorno" — mejor término del mercado IT. Reducir bids en "credenza soggiorno" hasta bajar ACOS a <20%.'],negatives:['Revisar: "mobile tv" (9.7K impr, 0 ventas), "mb muebles bonitos" (6.3K impr, 0 ventas) — pueden ser búsquedas de marca sin catálogo activo en IT o términos fuera de target.']}
+  ],
+  de:[
+    {insights:['DE solo con SP. ACOS 25.8% — mercado con mayor dificultad de eficiencia. Sin SB ni SD.'],hypotheses:['Alemania es un mercado muy competitivo en precio. Los sideboards/aparadores tienen mucha competencia local (IKEA, Otto, etc.).'],actions:['Evaluar precio competitivo de los productos clave en DE vs competencia local.'],negatives:[]},
+    {insights:['ACOS SP sube a 30.8% — peor mes del período. Ventas 3.549€.'],hypotheses:['Febrero es temporada baja. Presupuesto dispersado en términos de baja conversión.'],actions:['Concentrar inversión en términos probados: "sideboard" y "kommode". Reducir bids en todos los demás.'],negatives:[]},
+    {insights:['Ligera mejora: ACOS 29%. Primera SB (0.90€ simbólico). Ventas 4.087€.'],hypotheses:['Mejora marginal indica respuesta a optimizaciones. "Sideboard" es el término alemán principal.'],actions:['Evaluar keywords alemanas de alta conversión: "sideboard wohnzimmer", "kommode weiß".'],negatives:[]},
+    {insights:['ACOS sube a 31.5%. SB activa (89€, 0 ventas). Impresiones aumentan significativamente.'],hypotheses:['Mayor competencia en primavera. SB genera impresiones de marca pero sin conversión directa medible.'],actions:['Reducir presupuesto SB hasta que SP mejore. Auditar campañas con ACOS > 40%.'],negatives:[]},
+    {insights:['Mejor mes en DE: ACOS 24%, ventas 5.410€. Mejor resultado relativo del período.'],hypotheses:['La mejora puede reflejar efecto de optimizaciones acumuladas y mayor demanda pre-verano de muebles.'],actions:['Identificar qué cambió en mayo para replicarlo en junio. Capitalizar la tendencia positiva.'],negatives:[]},
+    {insights:['"Sideboard" domina con 35.6K impr y €444 ventas (ACOS 20.4%). "Kommode" segundo (13K impr, €128 ventas). "Schuhschrank mit spiegel" genera 6K impr sin conversión.'],hypotheses:['"Sideboard" es el principal driver de DE — alta intención de compra. "Schuhschrank mit spiegel" (zapatero con espejo) puede estar apareciendo por campañas de recibidores con targeting amplio.'],actions:['Aumentar bids en "sideboard" — balance volumen/conversión aceptable. Monitorizar "kommode" (ACOS 28.6%) para optimización.'],negatives:['"Schuhschrank mit spiegel" (6K impr, 0 ventas) — negativizar en campañas de aparadores/sideboards.']}
+  ]
+};
+
+let state = { market:'global', period:5 };
+let chartSales = null, chartAds = null;
+
+// ── UTILITIES ─────────────────────────────────────────────────────────────────
+function fmt(v, type='eur') {
+  if(v===null||v===undefined) return '<span class="dash">—</span>';
+  if(type==='eur') return '€'+v.toLocaleString('es-ES',{maximumFractionDigits:0});
+  if(type==='pct') return v.toFixed(1)+'%';
+  if(type==='num') return v.toLocaleString('es-ES',{maximumFractionDigits:0});
+  return v;
+}
+
+function fmtDec(v) {
+  if(v===null||v===undefined) return '<span class="dash">—</span>';
+  return '€'+v.toLocaleString('es-ES',{minimumFractionDigits:2,maximumFractionDigits:2});
+}
+
+function delta(cur, prev, invert=false) {
+  if(cur===null||cur===undefined||prev===null||prev===undefined||prev===0) return '';
+  const d = ((cur-prev)/Math.abs(prev))*100;
+  const isUp = invert ? d<0 : d>0;
+  const cls = Math.abs(d)<0.5 ? 'neu' : (isUp ? 'up' : 'down');
+  const sign = d>0?'+':'';
+  return `<span class="kpi-delta ${cls}">${sign}${d.toFixed(1)}%</span>`;
+}
+
+function kpiComps(mom, yoy) {
+  if(!mom && !yoy) return '';
+  let out = '<div class="kpi-comps">';
+  if(mom) out += `<span class="kpi-comp-label">MoM</span>${mom}`;
+  if(yoy) out += `<span class="kpi-comp-label">YoY</span>${yoy}`;
+  return out + '</div>';
+}
+
+function acosClass(v) {
+  if(v===null||v===undefined||v===0) return '';
+  if(v<=15) return 'acos-good';
+  if(v<=22) return 'acos-warn';
+  return 'acos-bad';
+}
+
+function getAds(m, idx) {
+  const d = ADS[m];
+  if(idx===-1) {
+    const spend = d.spend.reduce((a,b)=>a+b,0), sales = d.adSales.reduce((a,b)=>a+b,0);
+    return { spend, adSales:sales, orders:d.orders.reduce((a,b)=>a+b,0),
+             acos:spend/sales*100, roas:sales/spend,
+             impressions:d.impressions.reduce((a,b)=>a+b,0), clicks:d.clicks.reduce((a,b)=>a+b,0) };
+  }
+  return { spend:d.spend[idx], adSales:d.adSales[idx], orders:d.orders[idx],
+           acos:d.acos[idx], roas:d.roas[idx], impressions:d.impressions[idx], clicks:d.clicks[idx] };
+}
+
+function getSales(m, idx) {
+  const d=SALES[m], d25=SALES_YOY[m];
+  if(idx===-1) {
+    const g=d.gmv.reduce((a,b)=>a+(b||0),0), o=d.orders.reduce((a,b)=>a+(b||0),0),
+          u=d.units.reduce((a,b)=>a+(b||0),0), p=d.pv.reduce((a,b)=>a+(b||0),0);
+    const g25=d25.gmv.reduce((a,b)=>a+(b||0),0), o25=d25.orders.reduce((a,b)=>a+(b||0),0),
+          u25=d25.units.reduce((a,b)=>a+(b||0),0), p25=d25.pv.reduce((a,b)=>a+(b||0),0);
+    return { gmv:g, orders:o, units:u, pv:p, cvr:p?u/p*100:null, buybox:d.buybox[5],
+             gmv25:g25, orders25:o25, units25:u25, pv25:p25, cvr25:p25?u25/p25*100:null };
+  }
+  return { gmv:d.gmv[idx], orders:d.orders[idx], units:d.units[idx], pv:d.pv[idx],
+           cvr:d.cvr[idx], buybox:d.buybox[idx], gmv25:d25.gmv[idx], orders25:d25.orders[idx],
+           units25:d25.units[idx], pv25:d25.pv[idx], cvr25:d25.cvr[idx] };
+}
+
+// ── ASIN HELPERS ──────────────────────────────────────────────────────────────
+function getPfKey(pfName) {
+  return pfName.replace('ROICOS - ','').trim();
+}
+
+function getAsinsByPortfolio(m, pfName) {
+  const key = getPfKey(pfName);
+  if(m === 'global') {
+    const all = ['es','fr','it','de'].flatMap(mk =>
+      (ASINS[mk]||[]).map(a => ({...a, _mkt:mk}))
+    );
+    return all.filter(a => a.portfolio === key).sort((a,b) => b.adSales - a.adSales);
+  }
+  return (ASINS[m]||[]).filter(a => a.portfolio === key).sort((a,b) => b.adSales - a.adSales);
+}
+
+function getTopAsins(m, n) {
+  n = n || 5;
+  if(m === 'global') {
+    const map = {};
+    ['es','fr','it','de'].forEach(mk => {
+      (ASINS[mk]||[]).forEach(a => {
+        if(!map[a.asin]) {
+          map[a.asin] = { asin:a.asin, title:a.title, portfolio:a.portfolio,
+                          spend:0, adSales:0, units:0, impressions:0, clicks:0, _mkts:[] };
+        }
+        map[a.asin].spend       += a.spend;
+        map[a.asin].adSales     += a.adSales;
+        map[a.asin].units       += a.units;
+        map[a.asin].impressions += a.impressions;
+        map[a.asin].clicks      += a.clicks;
+        map[a.asin]._mkts.push(mk);
+      });
+    });
+    return Object.values(map).map(a => ({
+      ...a,
+      acos: a.adSales > 0 ? (a.spend / a.adSales * 100) : 0
+    })).sort((a,b) => b.adSales - a.adSales).slice(0, n);
+  }
+  return [...(ASINS[m]||[])].sort((a,b) => b.adSales - a.adSales).slice(0, n);
+}
+
+// ── PORTFOLIO EXPAND TOGGLE ───────────────────────────────────────────────────
+function togglePf(pfId, rowEl) {
+  const detail = document.getElementById(pfId);
+  const toggle = document.getElementById(pfId+'-t');
+  if(!detail) return;
+  const isHidden = detail.classList.toggle('hidden');
+  if(toggle) toggle.style.transform = isHidden ? '' : 'rotate(90deg)';
+  if(rowEl) { Array.from(rowEl.cells).forEach(c=>c.style.background=isHidden?'':'var(--acc-pale)'); }
+}
+
+// ── RENDER FUNCTIONS ──────────────────────────────────────────────────────────
+function renderMarketCards() {
+  const flags={es:'🇪🇸',fr:'🇫🇷',it:'🇮🇹',de:'🇩🇪'}, names={es:'España',fr:'Francia',it:'Italia',de:'Alemania'};
+  let html = '<div class="market-cards">';
+  ['es','fr','it','de'].forEach(m=>{
+    const s=getSales(m,state.period), a=getAds(m,state.period);
+    const prevIdx=state.period>0?state.period-1:null, sP=prevIdx!==null?getSales(m,prevIdx):null;
+    let delt='';
+    if(s.gmv&&sP&&sP.gmv){
+      const d=((s.gmv-sP.gmv)/Math.abs(sP.gmv))*100, cls=d>0?'up':d<0?'down':'neu';
+      delt=`<div class="mc-delta ${cls}">${d>0?'▲':'▼'} ${Math.abs(d).toFixed(1)}% MoM`;
+      if(s.gmv25){const dy=((s.gmv-s.gmv25)/Math.abs(s.gmv25))*100, clsy=dy>0?'up':dy<0?'down':'neu';delt+=` · <span class="${clsy}">${dy>0?'▲':'▼'}${Math.abs(dy).toFixed(0)}% YoY</span>`;}
+      delt+='</div>';
+    }
+    html+=`<div class="mc${state.market===m?' active':''}" onclick="setMarket('${m}')">
+      <div class="mc-flag">${flags[m]}</div><div class="mc-label">${names[m]}</div>
+      <div class="mc-gmv">${fmt(s.gmv)}</div>
+      <div class="mc-ads">Ventas · ACoS ${a.acos.toFixed(1)}%</div>${delt}</div>`;
+  });
+  html+='</div>';
+  document.getElementById('market-cards-wrap').innerHTML=html;
+}
+
+function renderDiscrepancy(m) {
+  const wrap=document.getElementById('disc-wrap');
+  if((m==='es'||m==='fr')&&state.period>=4)
+    wrap.innerHTML=`<div class="disc-note">⚠ <strong>Nota:</strong> Datos publicidad ES/FR may–jun del fichero MB_Analisis (fuente autorizada). API Pacvue refleja cifras menores por perfiles incompletos.</div>`;
+  else wrap.innerHTML='';
+}
+
+function renderSalesSection(m, idx) {
+  const cur=getSales(m,idx), prevIdx=(idx===-1||idx===0)?null:idx-1, prev=prevIdx!==null?getSales(m,prevIdx):null;
+  const a=getAds(m,idx);
+  const adsAttr=(cur.gmv&&a.adSales)?(a.adSales/cur.gmv*100):null;
+  const aov=cur.orders?cur.gmv/cur.orders:null, prevAov=prev&&prev.orders?prev.gmv/prev.orders:null;
+  const aov25=cur.orders25&&cur.gmv25?cur.gmv25/cur.orders25:null;
+
+  return `<div class="section">
+    <div class="sec-head"><h2>Ventas Totales</h2></div>
+    <div class="sec-body">
+      <div class="kpi-grid">
+        <div class="kpi"><div class="kpi-label">Ventas</div><div class="kpi-val sm">${fmt(cur.gmv)}</div>
+          ${kpiComps(delta(cur.gmv,prev&&prev.gmv),delta(cur.gmv,cur.gmv25))}
+          ${prev&&prev.gmv?`<div class="kpi-sub">ant: ${fmt(prev.gmv)} · 2025: ${fmt(cur.gmv25)}</div>`:''}</div>
+        <div class="kpi"><div class="kpi-label">Pedidos Totales</div><div class="kpi-val sm">${fmt(cur.orders,'num')}</div>
+          ${kpiComps(delta(cur.orders,prev&&prev.orders),delta(cur.orders,cur.orders25))}
+          ${prev&&prev.orders?`<div class="kpi-sub">ant: ${fmt(prev.orders,'num')} · 2025: ${fmt(cur.orders25,'num')}</div>`:''}</div>
+        <div class="kpi"><div class="kpi-label">Unidades</div><div class="kpi-val sm">${fmt(cur.units,'num')}</div>
+          ${kpiComps(delta(cur.units,prev&&prev.units),delta(cur.units,cur.units25))}
+          ${prev&&prev.units?`<div class="kpi-sub">ant: ${fmt(prev.units,'num')} · 2025: ${fmt(cur.units25,'num')}</div>`:''}</div>
+        <div class="kpi"><div class="kpi-label">Page Views</div><div class="kpi-val sm">${fmt(cur.pv,'num')}</div>
+          ${kpiComps(delta(cur.pv,prev&&prev.pv),delta(cur.pv,cur.pv25))}
+          ${prev&&prev.pv?`<div class="kpi-sub">ant: ${fmt(prev.pv,'num')} · 2025: ${fmt(cur.pv25,'num')}</div>`:''}</div>
+        <div class="kpi"><div class="kpi-label">Sesiones CVR</div><div class="kpi-val sm">${cur.cvr!==null?cur.cvr.toFixed(3)+'%':'<span class="dash">—</span>'}</div>
+          ${kpiComps(delta(cur.cvr,prev&&prev.cvr),delta(cur.cvr,cur.cvr25))}
+          ${prev&&prev.cvr?`<div class="kpi-sub">ant: ${prev.cvr.toFixed(3)}% · 2025: ${cur.cvr25?cur.cvr25.toFixed(3)+'%':'—'}</div>`:''}</div>
+        <div class="kpi"><div class="kpi-label">Buy Box</div><div class="kpi-val sm">${cur.buybox!==null?cur.buybox.toFixed(1)+'%':'<span class="dash">—</span>'}</div>
+          ${cur.buybox!==null&&cur.buybox>=95?'<div class="kpi-sub text-up">✓ Óptimo</div>':''}</div>
+        <div class="kpi"><div class="kpi-label">AOV Medio</div><div class="kpi-val sm">${fmt(aov)}</div>
+          ${kpiComps(delta(aov,prevAov),delta(aov,aov25))}
+          ${prev&&prevAov?`<div class="kpi-sub">ant: ${fmt(prevAov)} · 2025: ${fmt(aov25)}</div>`:''}</div>
+        <div class="kpi"><div class="kpi-label">% Ads / Ventas</div><div class="kpi-val sm">${adsAttr!==null?adsAttr.toFixed(1)+'%':'<span class="dash">—</span>'}</div>
+          <div class="kpi-sub">Atribución publicidad</div></div>
+      </div>
+      <div class="chart-wrap">
+        <div class="chart-title">Evolución ventas &amp; tráfico — ene–jun 2026</div>
+        <div class="chart-canvas"><canvas id="chartSales"></canvas></div>
+      </div>
+    </div>
+    <div class="sec-foot"><div class="sec-source">Fuente: <span class="src-badge">MerchantSpring</span> <span style="color:var(--text-soft)">Ene–Jun 2026 &amp; 2025 · USD÷1.085</span></div></div>
+  </div>`;
+}
+
+function renderAdsSection(m, idx) {
+  const cur=getAds(m,idx), prevIdx=(idx===-1||idx===0)?null:idx-1, prev=prevIdx!==null?getAds(m,prevIdx):null;
+  const hasYoy=idx===5&&(m==='es'||m==='fr')&&YOY[m];
+  const yoy=hasYoy?YOY[m]:null;
+  const ctr=cur.clicks&&cur.impressions?cur.clicks/cur.impressions*100:null;
+  const cpc=cur.clicks&&cur.spend?cur.spend/cur.clicks:null;
+  const aovAds=cur.orders&&cur.adSales?cur.adSales/cur.orders:null;
+  const prevCtr=prev?(prev.clicks&&prev.impressions?prev.clicks/prev.impressions*100:null):null;
+  const prevCpc=prev?(prev.clicks&&prev.spend?prev.spend/prev.clicks:null):null;
+  const prevAov=prev?(prev.orders&&prev.adSales?prev.adSales/prev.orders:null):null;
+
+  return `<div class="section">
+    <div class="sec-head"><h2>Rendimiento Publicidad</h2></div>
+    <div class="sec-body">
+      <div class="kpi-grid">
+        <div class="kpi"><div class="kpi-label">Inversión</div><div class="kpi-val sm">${fmt(cur.spend)}</div>
+          ${kpiComps(delta(cur.spend,prev&&prev.spend,true),yoy?delta(cur.spend,yoy.spend25,true):'')}
+          ${prev?`<div class="kpi-sub">ant: ${fmt(prev.spend)}${yoy?` · 2025: ${fmt(yoy.spend25)}`:''}</div>`:''}</div>
+        <div class="kpi"><div class="kpi-label">Ventas Ads</div><div class="kpi-val sm">${fmt(cur.adSales)}</div>
+          ${kpiComps(delta(cur.adSales,prev&&prev.adSales),yoy?delta(cur.adSales,yoy.adSales25):'')}
+          ${prev?`<div class="kpi-sub">ant: ${fmt(prev.adSales)}${yoy?` · 2025: ${fmt(yoy.adSales25)}`:''}</div>`:''}</div>
+        <div class="kpi"><div class="kpi-label">ACoS</div><div class="kpi-val sm ${acosClass(cur.acos)}">${cur.acos.toFixed(1)}%</div>
+          ${kpiComps(delta(cur.acos,prev&&prev.acos,true),yoy?delta(cur.acos,yoy.acos25,true):'')}
+          ${prev?`<div class="kpi-sub">ant: ${prev.acos.toFixed(1)}%${yoy?` · 2025: ${yoy.acos25.toFixed(1)}%`:''}</div>`:''}</div>
+        <div class="kpi"><div class="kpi-label">ROAS</div><div class="kpi-val sm">${cur.roas.toFixed(2)}x</div>
+          ${kpiComps(delta(cur.roas,prev&&prev.roas),yoy?delta(cur.roas,yoy.roas25):'')}
+          ${prev?`<div class="kpi-sub">ant: ${prev.roas.toFixed(2)}x${yoy?` · 2025: ${yoy.roas25.toFixed(2)}x`:''}</div>`:''}</div>
+        <div class="kpi"><div class="kpi-label">Pedidos Ads</div><div class="kpi-val sm">${fmt(cur.orders,'num')}</div>
+          ${kpiComps(delta(cur.orders,prev&&prev.orders),'')}
+          ${prev?`<div class="kpi-sub">ant: ${fmt(prev.orders,'num')}</div>`:''}</div>
+        <hr class="kpi-divider">
+        <div class="kpi"><div class="kpi-label">Impresiones</div><div class="kpi-val xs">${fmt(cur.impressions,'num')}</div>
+          ${kpiComps(delta(cur.impressions,prev&&prev.impressions),'')}</div>
+        <div class="kpi"><div class="kpi-label">Clics</div><div class="kpi-val xs">${fmt(cur.clicks,'num')}</div>
+          ${kpiComps(delta(cur.clicks,prev&&prev.clicks),'')}</div>
+        <div class="kpi"><div class="kpi-label">CTR</div><div class="kpi-val xs">${ctr!==null?ctr.toFixed(2)+'%':'—'}</div>
+          ${kpiComps(delta(ctr,prevCtr),'')}</div>
+        <div class="kpi"><div class="kpi-label">CPC</div><div class="kpi-val xs">${cpc!==null?'€'+cpc.toFixed(2):'—'}</div>
+          ${kpiComps(delta(cpc,prevCpc,true),'')}</div>
+        <div class="kpi"><div class="kpi-label">AOV Ads</div><div class="kpi-val xs">${aovAds!==null?fmt(aovAds):'—'}</div>
+          ${kpiComps(delta(aovAds,prevAov),'')}</div>
+      </div>
+      ${hasYoy?`<div class="info-note" style="margin-top:10px">ℹ YoY publicidad disponible para junio 2026 vs junio 2025 en ES y FR (Inversión, Ventas Ads, ACoS, ROAS).</div>`:''}
+      <div class="chart-wrap">
+        <div class="chart-title">Evolución mensual — Inversión &amp; Ventas Ads · ACoS</div>
+        <div class="chart-canvas"><canvas id="chartAds"></canvas></div>
+      </div>
+    </div>
+    <div class="sec-foot"><div class="sec-source">Fuente: <span class="src-badge">Pacvue</span> <span style="color:var(--text-soft)">Enero–Junio 2026</span></div></div>
+  </div>`;
+}
+
+function renderPrimeDaySection(m, idx) {
+  if(idx!==-1&&idx!==5) return '';
+  const pd=PRIME_DAY[m]; if(!pd) return '';
+  const isGlobal=m==='global', mkts=isGlobal?['es','fr','it','de']:[m];
+  let countryCards='';
+  mkts.forEach(mk=>{
+    const p=PRIME_DAY[mk]; if(!p) return;
+    const fl={es:'🇪🇸',fr:'🇫🇷',it:'🇮🇹',de:'🇩🇪'}, nm={es:'España',fr:'Francia',it:'Italia',de:'Alemania'};
+    countryCards+=`<div class="pd-country"><div class="pd-country-name">${fl[mk]} ${nm[mk]}</div>
+      <div class="pd-row"><span class="pd-row-label">Ventas Prime Day</span><span class="pd-row-val">${fmt(p.sales)}</span></div>
+      <div class="pd-row"><span class="pd-row-label">% s/Junio</span><span class="pd-row-val">${p.pctJun}%</span></div>
+      ${p.uplift!==undefined?`<div class="pd-row"><span class="pd-row-label">Uplift vs media</span><span class="pd-row-val text-up">+${p.uplift}%</span></div>`:''}
+      ${p.spend!==undefined?`<div class="pd-row"><span class="pd-row-label">Inversión 4d</span><span class="pd-row-val">${fmt(p.spend)}</span></div>`:''}
+      ${p.acos!==undefined?`<div class="pd-row"><span class="pd-row-label">ACoS 4d</span><span class="pd-row-val">${p.acos}%</span></div>`:''}
+      ${p.orders!==null&&p.orders!==undefined?`<div class="pd-row"><span class="pd-row-label">Pedidos</span><span class="pd-row-val">${p.orders}</span></div>`:''}
+    </div>`;
+  });
+  return `<div class="section">
+    <div class="sec-head"><h2>Prime Day 2026</h2><span class="sec-badge">23–26 junio · 4 días</span></div>
+    <div class="sec-body">
+      <div class="pd-hero"><h3>Prime Day Muebles Bonitos</h3><div class="pd-dates">23–26 junio 2026 · 4 días · Seller Pan-EU</div>
+        <div class="pd-kpis">
+          <div class="pd-kpi"><div class="pd-kpi-label">Ventas totales 4d</div><div class="pd-kpi-val">${fmt(pd.sales)}</div><div class="pd-kpi-sub">${pd.pctJun}% del mes de junio</div></div>
+          ${!isGlobal&&pd.uplift!==undefined?`<div class="pd-kpi"><div class="pd-kpi-label">Uplift vs media</div><div class="pd-kpi-val">+${pd.uplift}%</div></div>`:''}
+        </div>
+      </div>
+      ${isGlobal||mkts.length>1?`<div class="pd-countries">${countryCards}</div>`:countryCards}
+    </div>
+  </div>`;
+}
+
+function getPortfolioList(m) {
+  if(m!=='global') return (PORTFOLIOS[m]||[]).map(p=>({...p}));
+  const map={};
+  ['es','fr','it','de'].forEach(mk=>{
+    (PORTFOLIOS[mk]||[]).forEach(pf=>{
+      if(!map[pf.name]) map[pf.name]={name:pf.name,spend:0,sales:0,orders:0,impressions:0,clicks:0};
+      map[pf.name].spend+=pf.spend; map[pf.name].sales+=pf.sales;
+      map[pf.name].orders+=pf.orders; map[pf.name].impressions+=pf.impressions; map[pf.name].clicks+=pf.clicks;
+    });
+  });
+  return Object.values(map).map(p=>({...p, acos:p.sales?p.spend/p.sales*100:0})).sort((a,b)=>b.sales-a.sales);
+}
+
+function renderAsinDetailContent(m, pf) {
+  const asins = getAsinsByPortfolio(m, pf.name);
+  const isGlobal = m === 'global';
+
+  if(asins.length === 0) {
+    return `<div style="font-size:11.5px;color:var(--text-soft);padding:4px 0">
+      <strong style="color:var(--acc-dark)">${pf.name}</strong><br>
+      <span style="opacity:.8">No se dispone de desglose por ASIN para este portfolio en el período seleccionado.</span>
+    </div>`;
+  }
+
+  const flag = {es:'🇪🇸',fr:'🇫🇷',it:'🇮🇹',de:'🇩🇪'};
+  const asinRows = asins.map(a => {
+    const acosVal = a.acos > 0 ? a.acos : null;
+    const mktCol = isGlobal ? `<td style="text-align:center">${(a._mkts||[]).map(k=>flag[k]).join(' ')}</td>` : '';
+    return `<tr>
+      <td>${a.asin}</td>
+      <td title="${a.title}">${a.title}</td>
+      ${mktCol}
+      <td>${a.spend > 0 ? fmtDec(a.spend) : '<span class="dash">—</span>'}</td>
+      <td style="font-weight:600">${a.adSales > 0 ? fmtDec(a.adSales) : '<span class="dash">—</span>'}</td>
+      <td>${acosVal ? `<span class="${acosClass(acosVal)}">${acosVal.toFixed(1)}%</span>` : '<span class="dash">—</span>'}</td>
+      <td>${a.units}</td>
+      <td>${a.impressions > 0 ? fmt(a.impressions,'num') : '<span class="dash">—</span>'}</td>
+      <td>${a.clicks > 0 ? fmt(a.clicks,'num') : '<span class="dash">—</span>'}</td>
+    </tr>`;
+  }).join('');
+
+  const mktHeader = isGlobal ? '<th style="text-align:center">Mkt</th>' : '';
+  return `<div style="margin-bottom:6px;display:flex;align-items:center;gap:8px">
+    <strong style="color:var(--acc-dark);font-size:12px">${pf.name}</strong>
+    <span class="info-note" style="margin-top:0">${asins.length} ASIN${asins.length>1?'s':''} · Datos publicidad (Pacvue · jun 2026)</span>
+  </div>
+  <div style="overflow-x:auto">
+    <table class="asin-table">
+      <thead><tr>
+        <th>ASIN</th>
+        <th>Producto</th>
+        ${mktHeader}
+        <th>Inversión</th>
+        <th>Vtas Ads</th>
+        <th>ACoS</th>
+        <th>Uds</th>
+        <th>Impresiones</th>
+        <th>Clics</th>
+      </tr></thead>
+      <tbody>${asinRows}</tbody>
+    </table>
+  </div>`;
+}
+
+function renderPortfolioSection(m, idx) {
+  const mktNames={es:'España',fr:'Francia',it:'Italia',de:'Alemania'};
+  const pfList=getPortfolioList(m);
+  const maxSales=pfList.length?Math.max(...pfList.map(p=>p.sales)):1;
+  let rows='', gtSpend=0, gtSales=0, gtOrders=0, gtImpr=0, gtClicks=0;
+
+  pfList.forEach((pf,i)=>{
+    const pfId=`pf-${m.replace(/[^a-z]/g,'')}-${i}`;
+    const acos=pf.acos!==undefined?pf.acos:(pf.sales?pf.spend/pf.sales*100:0);
+    const barW=Math.round(pf.sales/maxSales*80);
+    gtSpend+=pf.spend; gtSales+=pf.sales; gtOrders+=pf.orders; gtImpr+=pf.impressions; gtClicks+=pf.clicks;
+    const detailContent = renderAsinDetailContent(m, pf);
+
+    rows+=`<tr class="port-pf-row" onclick="togglePf('${pfId}',this)">
+      <td><span class="pf-toggle" id="${pfId}-t">▶</span> ${pf.name}</td>
+      <td>${fmt(pf.spend)}</td>
+      <td><div class="port-bar-wrap"><div class="port-bar" style="width:${barW}px"></div>${fmt(pf.sales)}</div></td>
+      <td class="${acosClass(acos)}">${acos.toFixed(1)}%</td>
+      <td>${fmt(pf.orders,'num')}</td>
+      <td>${fmt(pf.impressions,'num')}</td>
+      <td>${fmt(pf.clicks,'num')}</td>
+    </tr>
+    <tr id="${pfId}" class="pf-detail-row hidden">
+      <td colspan="7">${detailContent}</td>
+    </tr>`;
+  });
+
+  const gtAcos=gtSales?gtSpend/gtSales*100:0;
+  rows+=`<tr class="tot"><td>TOTAL</td><td>${fmt(gtSpend)}</td><td>${fmt(gtSales)}</td>
+    <td class="${acosClass(gtAcos)}">${gtAcos.toFixed(1)}%</td>
+    <td>${fmt(gtOrders,'num')}</td><td>${fmt(gtImpr,'num')}</td><td>${fmt(gtClicks,'num')}</td></tr>`;
+
+  const label=m==='global'?'Todos los mercados (consolidado)':mktNames[m];
+  return `<div class="section">
+    <div class="sec-head">
+      <h2>Portfolios Publicidad</h2>
+      <span class="sec-badge">${label} · Junio 2026</span>
+    </div>
+    <div class="sec-body">
+      <div style="overflow-x:auto">
+        <table class="port-table">
+          <thead><tr>
+            <th style="text-align:left">Portfolio <span style="opacity:.55;font-weight:400;font-size:10px">▶ clic para ver ASINs</span></th>
+            <th>Inversión</th><th>Ventas Ads</th><th>ACoS</th><th>Pedidos</th><th>Impresiones</th><th>Clics</th>
+          </tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+      </div>
+    </div>
+    <div class="sec-foot"><div class="sec-source">Fuente: <span class="src-badge">Pacvue</span> <span style="color:var(--text-soft)">Portfolios y ASINs Pacvue · Clic en portfolio para desglosar por ASIN</span></div></div>
+  </div>`;
+}
+
+function renderTopSection(m, idx) {
+  if(idx!==-1&&idx!==5) return '';
+  const top5 = getTopAsins(m, 5);
+  if(!top5.length) return '';
+
+  const flag = {es:'🇪🇸',fr:'🇫🇷',it:'🇮🇹',de:'🇩🇪'};
+  const isGlobal = m === 'global';
+  const mktNames = {es:'España',fr:'Francia',it:'Italia',de:'Alemania'};
+
+  const rows = top5.map((a, i) => {
+    const acosVal = a.acos > 0 ? a.acos : null;
+    const mktCol = isGlobal
+      ? `<td style="text-align:center;font-size:13px">${(a._mkts||[]).map(k=>flag[k]).join('')}</td>`
+      : '';
+    return `<tr>
+      <td><span class="top-rank">${i+1}</span><span style="color:var(--text-soft);font-family:monospace;font-size:10.5px">${a.asin}</span></td>
+      <td style="font-weight:600;color:var(--acc-dark)">${a.title}</td>
+      ${mktCol}
+      <td>${a.spend > 0 ? fmtDec(a.spend) : '<span class="dash">—</span>'}</td>
+      <td><strong>${a.adSales > 0 ? fmtDec(a.adSales) : '<span class="dash">—</span>'}</strong></td>
+      <td>${acosVal ? `<span class="${acosClass(acosVal)}">${acosVal.toFixed(1)}%</span>` : '<span class="dash">—</span>'}</td>
+      <td>${a.units}</td>
+      <td>${a.impressions > 0 ? fmt(a.impressions,'num') : '<span class="dash">—</span>'}</td>
+      <td>${a.clicks > 0 ? fmt(a.clicks,'num') : '<span class="dash">—</span>'}</td>
+    </tr>`;
+  }).join('');
+
+  const mktHeader = isGlobal ? '<th style="text-align:center">Mkt</th>' : '';
+  const label = isGlobal ? 'Consolidado Pan-EU' : mktNames[m];
+
+  return `<div class="section">
+    <div class="sec-head">
+      <h2>Top 5 ASINs</h2>
+      <span class="sec-badge">${label} · Junio 2026 · por Ventas Ads</span>
+    </div>
+    <div class="sec-body">
+      <div style="overflow-x:auto">
+        <table class="top-table">
+          <thead><tr>
+            <th>ASIN</th>
+            <th>Producto</th>
+            ${mktHeader}
+            <th>Inversión</th>
+            <th>Vtas Ads</th>
+            <th>ACoS</th>
+            <th>Uds</th>
+            <th>Impresiones</th>
+            <th>Clics</th>
+          </tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+      </div>
+      <div class="info-note" style="margin-top:10px">ℹ Top 5 ASINs por ventas ads (Pacvue · junio 2026).</div>
+    </div>
+    <div class="sec-foot"><div class="sec-source">Fuente: <span class="src-badge">Pacvue</span> <span style="color:var(--text-soft)">Junio 2026 · Top 5 ASINs por ventas atribuidas a publicidad</span></div></div>
+  </div>`;
+}
+
+function renderPeriodBanner(m, idx) {
+  const flags={global:'🌍',es:'🇪🇸',fr:'🇫🇷',it:'🇮🇹',de:'🇩🇪'}, names={global:'Global Pan-EU',es:'España',fr:'Francia',it:'Italia',de:'Alemania'};
+  const periodLabel=idx===-1?'YTD Ene–Jun 2026':MONTHS[idx]+' 2026';
+  const prevLabel=idx>0?'vs '+MONTHS[idx-1]+' 2026 (MoM) · vs '+MONTHS[idx]+' 2025 (YoY)':idx===-1?'6 meses acumulados · comparativa 2025':'';
+  return `<div class="period-banner"><div class="pb-icon">${flags[m]}</div><div>
+    <div class="pb-title">${flags[m]} ${names[m]} · ${periodLabel}</div>
+    <div class="pb-sub">${prevLabel}</div>
+  </div></div>`;
+}
+
+function initChartSales(m) {
+  const canvas=document.getElementById('chartSales'); if(!canvas) return;
+  if(chartSales){chartSales.destroy();chartSales=null;}
+  const s=SALES[m], a=ADS[m];
+  chartSales=new Chart(canvas,{type:'bar',data:{labels:MONTHS_S,datasets:[
+    {label:'Ventas 2026',data:s.gmv,backgroundColor:'rgba(37,119,181,0.72)',borderColor:'rgba(37,119,181,1)',borderWidth:1,borderRadius:4,yAxisID:'y'},
+    {label:'Ventas Ads',data:a.adSales,backgroundColor:'rgba(91,163,217,0.42)',borderColor:'rgba(91,163,217,0.8)',borderWidth:1,borderRadius:4,yAxisID:'y'},
+    {label:'Page Views',data:s.pv,type:'line',borderColor:'#2E6B48',backgroundColor:'rgba(46,107,72,0.1)',borderWidth:2,pointRadius:4,pointBackgroundColor:'#2E6B48',tension:0.3,yAxisID:'y2',fill:true}
+  ]},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+    plugins:{legend:{position:'top',labels:{font:{size:11},boxWidth:12,padding:8}},
+      tooltip:{callbacks:{label:ctx=>{const v=ctx.parsed.y;if(v===null||v===undefined)return ctx.dataset.label+': —';if(ctx.datasetIndex===2)return 'Page Views: '+v.toLocaleString('es-ES');return ctx.dataset.label+': €'+v.toLocaleString('es-ES',{maximumFractionDigits:0});}}}},
+    scales:{y:{position:'left',beginAtZero:true,grid:{color:'rgba(0,0,0,.05)'},ticks:{font:{size:10},callback:v=>'€'+(v/1000).toFixed(0)+'k'}},
+            y2:{position:'right',beginAtZero:true,grid:{drawOnChartArea:false},ticks:{font:{size:10},callback:v=>(v/1000).toFixed(0)+'K PV'}}}}});
+}
+
+function initChartAds(m) {
+  const canvas=document.getElementById('chartAds'); if(!canvas) return;
+  if(chartAds){chartAds.destroy();chartAds=null;}
+  const a=ADS[m];
+  chartAds=new Chart(canvas,{type:'bar',data:{labels:MONTHS_S,datasets:[
+    {label:'Inversión',data:a.spend,backgroundColor:'rgba(14,75,122,0.72)',borderColor:'rgba(14,75,122,1)',borderWidth:1,borderRadius:4,yAxisID:'y'},
+    {label:'Ventas Ads',data:a.adSales,backgroundColor:'rgba(147,197,232,0.55)',borderColor:'rgba(147,197,232,0.9)',borderWidth:1,borderRadius:4,yAxisID:'y'},
+    {label:'ACoS %',data:a.acos,type:'line',borderColor:'#A83030',backgroundColor:'rgba(168,48,48,0.08)',borderWidth:2,pointRadius:4,pointBackgroundColor:'#A83030',tension:0.3,yAxisID:'y2',fill:true}
+  ]},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+    plugins:{legend:{position:'top',labels:{font:{size:11},boxWidth:12,padding:8}},
+      tooltip:{callbacks:{label:ctx=>{const v=ctx.parsed.y;if(ctx.datasetIndex===2)return 'ACoS: '+v.toFixed(1)+'%';return ctx.dataset.label+': €'+v.toLocaleString('es-ES',{maximumFractionDigits:0});}}}},
+    scales:{y:{position:'left',beginAtZero:true,grid:{color:'rgba(0,0,0,.05)'},ticks:{font:{size:10},callback:v=>'€'+(v/1000).toFixed(0)+'k'}},
+            y2:{position:'right',beginAtZero:true,max:60,grid:{drawOnChartArea:false},ticks:{font:{size:10},callback:v=>v+'%'}}}}});
+}
+
+// ── CAMPAIGN TYPE SECTION ─────────────────────────────────────────────────────
+function getCTData(m, idx) {
+  if(m==='global') {
+    const types=['SP','SB','SD'];
+    const out={};
+    types.forEach(t=>{
+      out[t]={spend:0,sales:0,impr:0,clicks:0,conv:0};
+      ['es','fr','it','de'].forEach(mk=>{
+        const d=(CAMPAIGN_TYPE[mk]||[])[idx];
+        if(d&&d[t]){out[t].spend+=d[t].spend;out[t].sales+=d[t].sales;out[t].impr+=d[t].impr;out[t].clicks+=d[t].clicks;out[t].conv+=d[t].conv;}
+      });
+      out[t].acos=out[t].sales>0?out[t].spend/out[t].sales*100:0;
+      out[t].roas=out[t].spend>0?out[t].sales/out[t].spend:0;
+    });
+    return out;
+  }
+  return (CAMPAIGN_TYPE[m]||[])[idx]||null;
+}
+
+function renderCampaignTypeSection(m, idx) {
+  const mktNames={global:'Global Pan-EU',es:'España',fr:'Francia',it:'Italia',de:'Alemania'};
+  const rows=[];
+  const data=idx===-1?null:getCTData(m,idx);
+  const prevData=(idx>0&&idx!==-1)?getCTData(m,idx-1):null;
+
+  if(idx===-1){
+    // YTD: aggregate all months
+    const types=['SP','SB','SD'];
+    const totals={SP:{spend:0,sales:0,impr:0,clicks:0,conv:0},SB:{spend:0,sales:0,impr:0,clicks:0,conv:0},SD:{spend:0,sales:0,impr:0,clicks:0,conv:0}};
+    const mkts=m==='global'?['es','fr','it','de']:[m];
+    mkts.forEach(mk=>{(CAMPAIGN_TYPE[mk]||[]).forEach(mo=>{types.forEach(t=>{if(mo[t]){totals[t].spend+=mo[t].spend;totals[t].sales+=mo[t].sales;totals[t].impr+=mo[t].impr;totals[t].clicks+=mo[t].clicks;totals[t].conv+=mo[t].conv;}});});});
+    types.forEach(t=>{totals[t].acos=totals[t].sales>0?totals[t].spend/totals[t].sales*100:0;totals[t].roas=totals[t].spend>0?totals[t].sales/totals[t].spend:0;});
+
+    const typeLabels={SP:'Sponsored Products',SB:'Sponsored Brands',SD:'Sponsored Display'};
+    const typeDesc={SP:'Keywords y Auto — tráfico de alta intención',SB:'Brand Store + Video — visibilidad de marca',SD:'Display — audiencias y remarketing'};
+    types.forEach(t=>{
+      const d=totals[t]; if(!d.spend) return;
+      const acosClass2=d.acos===0?'':d.acos<=15?'acos-good':d.acos<=25?'acos-warn':'acos-bad';
+      rows.push(`<tr>
+        <td><strong>${typeLabels[t]}</strong><div style="font-size:10.5px;color:var(--text-soft);margin-top:2px">${typeDesc[t]}</div></td>
+        <td>${fmt(d.spend)}</td>
+        <td>${d.sales>0?fmt(d.sales):'<span class="dash">—</span>'}</td>
+        <td class="${acosClass2}">${d.acos>0?d.acos.toFixed(1)+'%':'<span class="dash">—</span>'}</td>
+        <td>${d.roas>0?d.roas.toFixed(2)+'x':'<span class="dash">—</span>'}</td>
+        <td>${fmt(d.impr,'num')}</td><td>${fmt(d.clicks,'num')}</td><td>${fmt(d.conv,'num')}</td>
+      </tr>`);
+    });
+  } else if(data) {
+    const typeLabels={SP:'Sponsored Products',SB:'Sponsored Brands',SD:'Sponsored Display'};
+    const typeDesc={SP:'Keywords y Auto — tráfico de alta intención',SB:'Brand Store + Video — visibilidad de marca',SD:'Display — audiencias y remarketing'};
+    ['SP','SB','SD'].forEach(t=>{
+      const d=data[t]; if(!d||!d.spend) return;
+      const p=prevData?prevData[t]:null;
+      const acosClass2=d.acos===0?'':d.acos<=15?'acos-good':d.acos<=25?'acos-warn':'acos-bad';
+      const mom=p&&p.spend>0?`<div style="font-size:10px;color:var(--text-soft);margin-top:2px">MoM inv: ${((d.spend-p.spend)/p.spend*100).toFixed(1)}%</div>`:'';
+      rows.push(`<tr>
+        <td><strong>${typeLabels[t]}</strong><div style="font-size:10.5px;color:var(--text-soft);margin-top:2px">${typeDesc[t]}</div></td>
+        <td>${fmt(d.spend)}${mom}</td>
+        <td>${d.sales>0?fmt(d.sales):'<span style="color:var(--text-soft);font-size:11px">—&nbsp;visibilidad</span>'}</td>
+        <td class="${acosClass2}">${d.acos>0?d.acos.toFixed(1)+'%':'<span class="dash">—</span>'}</td>
+        <td>${d.roas>0?d.roas.toFixed(2)+'x':'<span class="dash">—</span>'}</td>
+        <td>${fmt(d.impr,'num')}</td><td>${fmt(d.clicks,'num')}</td><td>${fmt(d.conv,'num')}</td>
+      </tr>`);
+    });
+  }
+
+  if(!rows.length) return '';
+  const periodLabel=idx===-1?'YTD Ene–Jun 2026':MONTHS[idx]+' 2026';
+  return `<div class="section">
+    <div class="sec-head"><h2>Tipo de Campaña</h2><span class="sec-badge">${mktNames[m]||m} · ${periodLabel}</span></div>
+    <div class="sec-body">
+      <div style="overflow-x:auto">
+        <table class="port-table">
+          <thead><tr><th style="text-align:left">Tipo</th><th>Inversión</th><th>Ventas Ads</th><th>ACoS</th><th>ROAS</th><th>Impresiones</th><th>Clics</th><th>Conv.</th></tr></thead>
+          <tbody>${rows.join('')}</tbody>
+        </table>
+      </div>
+      <div class="info-note" style="margin-top:10px">ℹ Ventas SB = atribución indirecta (halo). ACoS SB no se calcula sobre ventas directas.</div>
+    </div>
+    <div class="sec-foot"><div class="sec-source">Fuente: <span class="src-badge">Pacvue</span> <span style="color:var(--text-soft)">Ene–Jun 2026 · SP+SB+SD</span></div></div>
+  </div>`;
+}
+
+// ── SEARCH TERMS SECTION ──────────────────────────────────────────────────────
+function renderSearchTermsSection(m, idx) {
+  const mktNames={global:'Global Pan-EU',es:'España',fr:'Francia',it:'Italia',de:'Alemania'};
+  const mkts=m==='global'?['es','fr','it','de']:[m];
+  let hasData=false;
+  let html='';
+
+  mkts.forEach(mk=>{
+    const d=(SEARCH_TERMS[mk]||{})[idx];
+    if(!d||!d.length) return;
+    hasData=true;
+    const flag={es:'🇪🇸',fr:'🇫🇷',it:'🇮🇹',de:'🇩🇪'};
+    const mktLabel=m==='global'?`<div style="font-size:11px;font-weight:600;color:var(--acc-dark);margin-bottom:6px">${flag[mk]} ${mktNames[mk]}</div>`:'';
+    const rows=d.map(r=>{
+      const acosClass2=r.acos===0?'':r.acos<=15?'acos-good':r.acos<=25?'acos-warn':'acos-bad';
+      const noConv=r.sales===0?'style="opacity:.55"':'';
+      return `<tr ${noConv}>
+        <td style="font-size:11.5px">${r.q}${r.sales===0?'<span style="font-size:9.5px;color:var(--text-soft);margin-left:4px">sin conv.</span>':''}</td>
+        <td>${fmt(r.impr,'num')}</td>
+        <td>${r.clicks}</td>
+        <td>${fmtDec(r.spend)}</td>
+        <td>${r.sales>0?fmtDec(r.sales):'<span class="dash">—</span>'}</td>
+        <td class="${acosClass2}">${r.acos>0?r.acos.toFixed(2)+'%':'<span class="dash">—</span>'}</td>
+        <td>${r.conv>0?r.conv:'<span class="dash">—</span>'}</td>
+      </tr>`;
+    }).join('');
+    html+=`${mktLabel}<div style="overflow-x:auto;margin-bottom:${m==='global'?'16px':'0'}">
+      <table class="asin-table">
+        <thead><tr><th>Término de búsqueda</th><th>Impresiones</th><th>Clics</th><th>Inversión</th><th>Ventas Ads</th><th>ACoS</th><th>Conv.</th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table></div>`;
+  });
+
+  if(!hasData){
+    const avail=idx===0?'Enero':'junio';
+    return `<div class="section">
+      <div class="sec-head"><h2>Términos de Búsqueda</h2><span class="sec-badge">${mktNames[m]||m} · ${MONTHS[idx]||'YTD'} 2026</span></div>
+      <div class="sec-body"><div class="info-note">ℹ Datos de términos de búsqueda disponibles para enero y junio 2026. Selecciona uno de esos períodos para ver el desglose.</div></div>
+    </div>`;
+  }
+
+  const dataNote=idx===0?'enero 2026 (histórico)':'junio 2026 (más reciente)';
+  const periodLabel=idx===-1?'YTD':MONTHS[idx]+' 2026';
+  return `<div class="section">
+    <div class="sec-head"><h2>Términos de Búsqueda</h2><span class="sec-badge">${mktNames[m]||m} · ${periodLabel} · por volumen</span></div>
+    <div class="sec-body">
+      ${html}
+      <div class="info-note" style="margin-top:10px">ℹ Top 8 términos por impresiones · Datos ${dataNote} · Términos sin conversión en gris — candidatos a negativizar o revisar bid.</div>
+    </div>
+    <div class="sec-foot"><div class="sec-source">Fuente: <span class="src-badge">Pacvue</span> <span style="color:var(--text-soft)">Search Term Report · excluyendo ASINs directos</span></div></div>
+  </div>`;
+}
+
+// ── ANNOTATIONS SECTION ───────────────────────────────────────────────────────
+function renderAnnotationsSection(m, idx) {
+  const mktNames={global:'Global Pan-EU',es:'España',fr:'Francia',it:'Italia',de:'Alemania'};
+  const mkts=m==='global'?['es','fr','it','de']:[m];
+  let html='';
+
+  mkts.forEach(mk=>{
+    const ann=(ANNOTATIONS[mk]||[])[idx];
+    if(!ann) return;
+    const flag={es:'🇪🇸',fr:'🇫🇷',it:'🇮🇹',de:'🇩🇪'};
+    const mktLabel=m==='global'?`<div style="font-size:12px;font-weight:700;color:var(--acc-dark);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--border)">${flag[mk]} ${mktNames[mk]}</div>`:'';
+
+    const insightRows=ann.insights.map(i=>`<div style="display:flex;gap:8px;margin-bottom:6px"><span style="color:var(--acc-dark);flex-shrink:0">◆</span><span>${i}</span></div>`).join('');
+    const hypRows=ann.hypotheses.map(h=>`<div style="display:flex;gap:8px;margin-bottom:5px"><span style="color:#8B6914;flex-shrink:0">💡</span><span>${h}</span></div>`).join('');
+    const actRows=ann.actions.map(a=>`<div style="display:flex;gap:8px;margin-bottom:5px"><span style="color:#2E6B48;flex-shrink:0">→</span><span>${a}</span></div>`).join('');
+    const negRows=ann.negatives.length?ann.negatives.map(n=>`<div style="display:flex;gap:8px;margin-bottom:5px"><span style="color:#A83030;flex-shrink:0">✕</span><span style="font-family:monospace;font-size:11px">${n}</span></div>`).join(''):'';
+
+    html+=`<div style="margin-bottom:${m==='global'?'20px':'0'};padding-bottom:${m==='global'?'20px':'0'};border-bottom:${m==='global'?'1px solid var(--border)':'none'}">
+      ${mktLabel}
+      ${insightRows?`<div style="font-size:11.5px;margin-bottom:10px">${insightRows}</div>`:''}
+      ${hypRows?`<div style="background:rgba(139,105,20,.07);border-left:3px solid #C9A227;border-radius:0 6px 6px 0;padding:10px 12px;margin-bottom:10px;font-size:11.5px">${hypRows}</div>`:''}
+      ${actRows?`<div style="background:rgba(46,107,72,.07);border-left:3px solid #2E6B48;border-radius:0 6px 6px 0;padding:10px 12px;margin-bottom:10px;font-size:11.5px">${actRows}</div>`:''}
+      ${negRows?`<div style="background:rgba(168,48,48,.07);border-left:3px solid #A83030;border-radius:0 6px 6px 0;padding:10px 12px;font-size:11.5px"><div style="font-size:10.5px;font-weight:600;color:#A83030;margin-bottom:6px;text-transform:uppercase;letter-spacing:.05em">Keywords a negativizar</div>${negRows}</div>`:''}
+    </div>`;
+  });
+
+  if(!html) return '';
+  const periodLabel=idx===-1?'YTD Ene–Jun 2026':MONTHS[idx]+' 2026';
+  return `<div class="section">
+    <div class="sec-head"><h2>Anotaciones del Período</h2><span class="sec-badge">${mktNames[m]||m} · ${periodLabel}</span></div>
+    <div class="sec-body">${html}</div>
+    <div class="sec-foot"><div class="sec-source">Fuente: <span class="src-badge">Análisis Roicos</span> <span style="color:var(--text-soft)">Basado en datos Pacvue + MerchantSpring</span></div></div>
+  </div>`;
+}
+
+function render() {
+  const {market:m,period:idx}=state;
+  renderMarketCards(); renderDiscrepancy(m);
+  let html=renderPeriodBanner(m,idx);
+  html+=renderSalesSection(m,idx);
+  html+=renderAdsSection(m,idx);
+  html+=renderCampaignTypeSection(m,idx);
+  if(idx===5||idx===-1) html+=renderPrimeDaySection(m,idx);
+  html+=renderPortfolioSection(m,idx);
+  html+=renderTopSection(m,idx);
+  html+=renderSearchTermsSection(m,idx);
+  html+=renderAnnotationsSection(m,idx);
+  document.getElementById('content').innerHTML=html;
+  setTimeout(()=>{initChartSales(m);initChartAds(m);},50);
+  document.querySelectorAll('.nav-markets button').forEach(b=>b.classList.toggle('active',b.getAttribute('onclick').includes(`'${m}'`)));
+  document.querySelectorAll('.nav-periods button').forEach((b,i)=>b.classList.toggle('active',[0,1,2,3,4,5,-1][i]===idx));
+}
+
+function setMarket(m){state.market=m;render();window.scrollTo({top:0,behavior:'smooth'});}
+function setPeriod(idx){state.period=idx;render();}
+
+render();
+</script>
+</body>
+</html>
