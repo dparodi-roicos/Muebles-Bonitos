@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dashboard Muebles Bonitos · Junio 2026</title>
+<title>Dashboard Muebles Bonitos · Julio 2026</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <style>
 :root {
@@ -181,7 +181,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
 <body>
 
 <nav class="nav">
-  <div class="nav-brand">Muebles Bonitos <span>Amazon Seller · Junio 2026</span></div>
+  <div class="nav-brand">Muebles Bonitos <span>Amazon Seller · Julio 2026</span></div>
   <div class="nav-markets">
     <button class="active" onclick="setMarket('global')">🌍 Global</button>
     <button onclick="setMarket('es')">🇪🇸 España</button>
@@ -196,7 +196,8 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
     <button onclick="setPeriod(2)">Mar</button>
     <button onclick="setPeriod(3)">Abr</button>
     <button onclick="setPeriod(4)">May</button>
-    <button class="active" onclick="setPeriod(5)">Jun</button>
+    <button onclick="setPeriod(5)">Jun</button>
+    <button class="active" onclick="setPeriod(6)">Jul</button>
     <button onclick="setPeriod(-1)">YTD</button>
   </div>
 </nav>
@@ -208,142 +209,142 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
 </div>
 
 <div class="footer">
-  Datos: <strong>MerchantSpring</strong> (ventas ene–jun 2026 &amp; 2025, EUR bruto con IVA) · <strong>Pacvue</strong> (publicidad ene–jun 2026) · <strong>Muebles Bonitos</strong> Amazon Seller Pan-EU · Elaborado por Roicos
+  Datos: <strong>MerchantSpring</strong> (ventas ene–jul 2026 &amp; 2025, EUR bruto con IVA) · <strong>Pacvue</strong> (publicidad ene–jul 2026) · <strong>Muebles Bonitos</strong> Amazon Seller Pan-EU · Elaborado por Roicos
 </div>
 
 <script>
-const MONTHS   = ['Enero','Febrero','Marzo','Abril','Mayo','Junio'];
-const MONTHS_S = ['Ene','Feb','Mar','Abr','May','Jun'];
+const MONTHS   = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio'];
+const MONTHS_S = ['Ene','Feb','Mar','Abr','May','Jun','Jul'];
 
 // ── VENTAS 2026 (MerchantSpring, EUR bruto con IVA) ───────────────────────────
 const SALES = {
   global: {
-    gmv:    [157611,138148,145016,114977,129870,145190],
-    orders: [1210,  1083,  1130,  928,   894,   988],
-    units:  [1269,  1150,  1224,  985,   955,   1054],
-    pv:     [343701,262267,256620,230077,222427,219057],
-    cvr:    [0.369, 0.438, 0.477, 0.428, 0.429, 0.481],
-    buybox: [null,  null,  null,  null,  null,  96.8]
+    gmv:    [157611,138148,145016,114977,129870,145190,142264],
+    orders: [1210,  1083,  1130,  928,   894,   988,   995],
+    units:  [1269,  1150,  1224,  985,   955,   1054,  1031],
+    pv:     [343701,262267,256620,230077,222427,219057,438402],
+    cvr:    [0.369, 0.438, 0.477, 0.428, 0.429, 0.481, 0.318],
+    buybox: [null,  null,  null,  null,  null,  96.8,  96.6]
   },
   es: {
-    gmv:    [65639, 56604, 61333, 55740, 63684, 67046],
-    orders: [580,   503,   525,   498,   498,   522],
-    units:  [607,   538,   571,   535,   526,   560],
-    pv:     [173457,128294,124443,122992,114715,106456],
-    cvr:    [0.350, 0.419, 0.459, 0.435, 0.459, 0.526],
-    buybox: [null,  null,  null,  null,  null,  96.6]
+    gmv:    [65639, 56604, 61333, 55740, 63684, 67046, 69256],
+    orders: [580,   503,   525,   498,   498,   522,   534],
+    units:  [607,   538,   571,   535,   526,   560,   557],
+    pv:     [173457,128294,124443,122992,114715,106456,222598],
+    cvr:    [0.350, 0.419, 0.459, 0.435, 0.459, 0.526, 0.341],
+    buybox: [null,  null,  null,  null,  null,  96.6,  96.2]
   },
   fr: {
-    gmv:    [51885, 51945, 52834, 34040, 36672, 43423],
-    orders: [369,   377,   382,   261,   232,   270],
-    units:  [385,   396,   412,   275,   250,   286],
-    pv:     [70633, 63242, 61355, 45996, 45586, 45978],
-    cvr:    [0.545, 0.626, 0.671, 0.598, 0.548, 0.622],
-    buybox: [null,  null,  null,  null,  null,  98.6]
+    gmv:    [51885, 51945, 52834, 34040, 36672, 43423, 42187],
+    orders: [369,   377,   382,   261,   232,   270,   272],
+    units:  [385,   396,   412,   275,   250,   286,   278],
+    pv:     [70633, 63242, 61355, 45996, 45586, 45978, 94090],
+    cvr:    [0.545, 0.626, 0.671, 0.598, 0.548, 0.622, 0.401],
+    buybox: [null,  null,  null,  null,  null,  98.6,  98.7]
   },
   it: {
-    gmv:    [29363, 21429, 20947, 17659, 19745, 23876],
-    orders: [184,   142,   151,   111,   98,    124],
-    units:  [196,   154,   161,   115,   107,   133],
-    pv:     [80854, 57698, 57520, 45559, 46246, 50424],
-    cvr:    [0.242, 0.267, 0.280, 0.252, 0.231, 0.264],
-    buybox: [null,  null,  null,  null,  null,  94.7]
+    gmv:    [29363, 21429, 20947, 17659, 19745, 23876, 23273],
+    orders: [184,   142,   151,   111,   98,    124,   138],
+    units:  [196,   154,   161,   115,   107,   133,   147],
+    pv:     [80854, 57698, 57520, 45559, 46246, 50424, 93504],
+    cvr:    [0.242, 0.267, 0.280, 0.252, 0.231, 0.264, 0.202],
+    buybox: [null,  null,  null,  null,  null,  94.7,  94.3]
   },
   de: {
-    gmv:    [10724, 8170,  9902,  7538,  9769,  10845],
-    orders: [77,    61,    72,    58,    66,    72],
-    units:  [81,    62,    80,    60,    72,    75],
-    pv:     [18757, 13033, 13302, 15530, 15880, 16199],
-    cvr:    [0.432, 0.476, 0.601, 0.386, 0.453, 0.463],
-    buybox: [null,  null,  null,  null,  null,  96.0]
+    gmv:    [10724, 8170,  9902,  7538,  9769,  10845, 7548],
+    orders: [77,    61,    72,    58,    66,    72,    51],
+    units:  [81,    62,    80,    60,    72,    75,    49],
+    pv:     [18757, 13033, 13302, 15530, 15880, 16199, 28210],
+    cvr:    [0.432, 0.476, 0.601, 0.386, 0.453, 0.463, 0.245],
+    buybox: [null,  null,  null,  null,  null,  96.0,  95.6]
   }
 };
 
 // ── VENTAS 2025 YoY (MerchantSpring, EUR bruto con IVA) ──────────────────────
 const SALES_YOY = {
   global: {
-    gmv:    [193962,155594,154293,119017,118789,110605],
-    orders: [1333,  1100,  1061,  825,   807,   686],
-    units:  [1423,  1172,  1111,  867,   857,   720],
-    pv:     [360556,294646,282260,217479,187816,150724],
-    cvr:    [0.395, 0.398, 0.394, 0.399, 0.456, 0.478]
+    gmv:    [193962,155594,154293,119017,118789,110605,123593],
+    orders: [1333,  1100,  1061,  825,   807,   686,   798],
+    units:  [1423,  1172,  1111,  867,   857,   720,   807],
+    pv:     [360556,294646,282260,217479,187816,150724,348290],
+    cvr:    [0.395, 0.398, 0.394, 0.399, 0.456, 0.478, 0.313]
   },
   es: {
-    gmv:    [75745, 71009, 69815, 55863, 60841, 60536],
-    orders: [601,   573,   545,   423,   436,   413],
-    units:  [639,   618,   571,   445,   471,   434],
-    pv:     [182905,156866,151874,116243,106743,86983],
-    cvr:    [0.349, 0.394, 0.376, 0.383, 0.441, 0.499]
+    gmv:    [75745, 71009, 69815, 55863, 60841, 60536, 66664],
+    orders: [601,   573,   545,   423,   436,   413,   482],
+    units:  [639,   618,   571,   445,   471,   434,   489],
+    pv:     [182905,156866,151874,116243,106743,86983, 205628],
+    cvr:    [0.349, 0.394, 0.376, 0.383, 0.441, 0.499, 0.326]
   },
   fr: {
-    gmv:    [87094, 60591, 61730, 46694, 43062, 35706],
-    orders: [544,   387,   387,   304,   282,   197],
-    units:  [579,   403,   402,   317,   292,   207],
-    pv:     [106081,79229, 76770, 58209, 50719, 34785],
-    cvr:    [0.546, 0.509, 0.524, 0.545, 0.576, 0.595]
+    gmv:    [87094, 60591, 61730, 46694, 43062, 35706, 40418],
+    orders: [544,   387,   387,   304,   282,   197,   229],
+    units:  [579,   403,   402,   317,   292,   207,   230],
+    pv:     [106081,79229, 76770, 58209, 50719, 34785, 82028],
+    cvr:    [0.546, 0.509, 0.524, 0.545, 0.576, 0.595, 0.379]
   },
   it: {
-    gmv:    [27337, 19708, 17786, 14037, 10678, 11770],
-    orders: [161,   112,   104,   85,    68,    59],
-    units:  [178,   119,   112,   90,    70,    62],
-    pv:     [65852, 54503, 50470, 40752, 27311, 26468],
-    cvr:    [0.270, 0.218, 0.222, 0.221, 0.256, 0.234]
+    gmv:    [27337, 19708, 17786, 14037, 10678, 11770, 15078],
+    orders: [161,   112,   104,   85,    68,    59,    79],
+    units:  [178,   119,   112,   90,    70,    62,    79],
+    pv:     [65852, 54503, 50470, 40752, 27311, 26468, 54758],
+    cvr:    [0.270, 0.218, 0.222, 0.221, 0.256, 0.234, 0.187]
   },
   de: {
-    gmv:    [3786,  4286,  4962,  2423,  4208,  2593],
-    orders: [27,    28,    25,    13,    21,    17],
-    units:  [27,    32,    26,    15,    24,    17],
-    pv:     [5718,  4048,  3146,  2275,  3043,  2488],
-    cvr:    [0.472, 0.791, 0.826, 0.660, 0.789, 0.683]
+    gmv:    [3786,  4286,  4962,  2423,  4208,  2593,  1433],
+    orders: [27,    28,    25,    13,    21,    17,    8],
+    units:  [27,    32,    26,    15,    24,    17,    9],
+    pv:     [5718,  4048,  3146,  2275,  3043,  2488,  5876],
+    cvr:    [0.472, 0.791, 0.826, 0.660, 0.789, 0.683, 0.179]
   }
 };
 
 // ── ADS 2026 (Pacvue) ─────────────────────────────────────────────────────────
 const ADS = {
   global: {
-    spend:       [8293,  6482,  7852,  7673,  9402, 11412],
-    adSales:     [48516, 46129, 50836, 38883, 51117,66774],
-    orders:      [372,   344,   396,   324,   427,  538],
-    acos:        [17.1,  14.1,  15.4,  19.7,  18.4, 17.1],
-    roas:        [5.85,  7.12,  6.47,  5.07,  5.44, 5.85],
-    impressions: [5321194,4081526,5437809,5308489,5166864,7328361],
-    clicks:      [45203, 37249, 45408, 46158, 44059,66033]
+    spend:       [8293,  6482,  7852,  7673,  9402, 11412, 11500],
+    adSales:     [48516, 46129, 50836, 38883, 51117,66774, 61774],
+    orders:      [372,   344,   396,   324,   427,  538,   485],
+    acos:        [17.1,  14.1,  15.4,  19.7,  18.4, 17.1,  18.6],
+    roas:        [5.85,  7.12,  6.47,  5.07,  5.44, 5.85,  5.37],
+    impressions: [5321194,4081526,5437809,5308489,5166864,7328361,7193988],
+    clicks:      [45203, 37249, 45408, 46158, 44059,66033, 65988]
   },
   es: {
-    spend:       [3342, 2435, 3187, 3222, 4261, 4701],
-    adSales:     [15781,13537,17756,18272,25826,29222],
-    orders:      [152,  123,  158,  170,  248,  267],
-    acos:        [21.2, 18.0, 18.0, 17.6, 16.5, 16.1],
-    roas:        [4.72, 5.56, 5.57, 5.67, 6.06, 6.22],
-    impressions: [2118768,1564134,2211366,2268584,2275657,2523353],
-    clicks:      [17357,12727,18056,20927,19834,23191]
+    spend:       [3342, 2435, 3187, 3222, 4261, 4701, 4773],
+    adSales:     [15781,13537,17756,18272,25826,29222,29767],
+    orders:      [152,  123,  158,  170,  248,  267,  256],
+    acos:        [21.2, 18.0, 18.0, 17.6, 16.5, 16.1, 16.0],
+    roas:        [4.72, 5.56, 5.57, 5.67, 6.06, 6.22, 6.23],
+    impressions: [2118768,1564134,2211366,2268584,2275657,2523353,3006148],
+    clicks:      [17357,12727,18056,20927,19834,23191,28923]
   },
   fr: {
-    spend:       [1531, 1478, 1966, 1120, 2055, 2964],
-    adSales:     [15560,20189,21413,9476, 14122,22620],
-    orders:      [108,  138,  150,  74,   105,  164],
-    acos:        [9.8,  7.3,  9.2,  11.8, 14.6, 13.1],
-    roas:        [10.16,13.66,10.89,8.46, 6.87, 7.63],
-    impressions: [1053848,977250,1496995,777913,740241,1119243],
-    clicks:      [9662, 10515,12716, 7963, 7035, 9496]
+    spend:       [1531, 1478, 1966, 1120, 2055, 2964, 3410],
+    adSales:     [15560,20189,21413,9476, 14122,22620,17876],
+    orders:      [108,  138,  150,  74,   105,  164,  135],
+    acos:        [9.8,  7.3,  9.2,  11.8, 14.6, 13.1, 19.1],
+    roas:        [10.16,13.66,10.89,8.46, 6.87, 7.63, 5.24],
+    impressions: [1053848,977250,1496995,777913,740241,1119243,2035926],
+    clicks:      [9662, 10515,12716, 7963, 7035, 9496, 16803]
   },
   it: {
-    spend:       [1899, 1475, 1512, 1889, 1786, 2354],
-    adSales:     [11565,9319, 8039, 7800, 6460, 9477],
-    orders:      [71,   57,   58,   51,   43,   66],
-    acos:        [16.4, 15.8, 18.8, 24.2, 27.6, 24.8],
-    roas:        [6.09, 6.32, 5.32, 4.13, 3.62, 4.03],
-    impressions: [1680885,1213267,1354619,1576530,1528836,1785167],
-    clicks:      [13817,11064,11277,12043,12078,16931]
+    spend:       [1899, 1475, 1512, 1889, 1786, 2354, 2036],
+    adSales:     [11565,9319, 8039, 7800, 6460, 9477, 10456],
+    orders:      [71,   57,   58,   51,   43,   66,   68],
+    acos:        [16.4, 15.8, 18.8, 24.2, 27.6, 24.8, 19.5],
+    roas:        [6.09, 6.32, 5.32, 4.13, 3.62, 4.03, 5.14],
+    impressions: [1680885,1213267,1354619,1576530,1528836,1785167,1557130],
+    clicks:      [13817,11064,11277,12043,12078,16931,14986]
   },
   de: {
-    spend:       [1521, 1094, 1187, 1442, 1300, 1393],
-    adSales:     [5610, 3084, 3628, 3335, 4710, 5456],
-    orders:      [41,   26,   30,   29,   31,   41],
-    acos:        [27.1, 35.5, 32.7, 43.3, 27.6, 25.5],
-    roas:        [3.69, 2.82, 3.06, 2.31, 3.62, 3.92],
-    impressions: [467693,326875,374829,685462,622130,650165],
-    clicks:      [4367, 2943, 3359, 5225, 5112, 6038]
+    spend:       [1521, 1094, 1187, 1442, 1300, 1393, 1281],
+    adSales:     [5610, 3084, 3628, 3335, 4710, 5456, 3675],
+    orders:      [41,   26,   30,   29,   31,   41,   26],
+    acos:        [27.1, 35.5, 32.7, 43.3, 27.6, 25.5, 34.9],
+    roas:        [3.69, 2.82, 3.06, 2.31, 3.62, 3.92, 2.87],
+    impressions: [467693,326875,374829,685462,622130,650165,594784],
+    clicks:      [4367, 2943, 3359, 5225, 5112, 6038, 5276]
   }
 };
 
@@ -353,37 +354,37 @@ const YOY = {
   fr: { spend25:1629, adSales25:16220, acos25:10.04, roas25:9.96 }
 };
 
-// ── PORTFOLIOS por mercado · junio 2026 (Pacvue campañas agrupadas) ───────────
+// ── PORTFOLIOS por mercado · julio 2026 (Pacvue campañas agrupadas) ───────────
 const PORTFOLIOS = {
   es: [
-    { name:'ROICOS - APARADORES',  spend:1829, sales:11860, acos:15.4, orders:98,  impressions:1054176, clicks:11004 },
-    { name:'ROICOS - MUEBLES TV',  spend:1154, sales:6351,  acos:18.2, orders:59,  impressions:831509,  clicks:7399  },
-    { name:'ROICOS - RECIBIDORES', spend:1135, sales:4717,  acos:24.1, orders:56,  impressions:622726,  clicks:5197  },
-    { name:'ROICOS - MESA ALTA',   spend:331,  sales:3119,  acos:10.6, orders:37,  impressions:204963,  clicks:2145  },
-    { name:'ROICOS - Top Ventas',  spend:65,   sales:1190,  acos:5.4,  orders:7,   impressions:83835,   clicks:806   },
-    { name:'ROICOS - CAMAS',       spend:112,  sales:1212,  acos:9.2,  orders:4,   impressions:70850,   clicks:373   },
-    { name:'ROICOS - MARCA',       spend:84,   sales:714,   acos:11.8, orders:7,   impressions:50741,   clicks:479   }
+    { name:'ROICOS - APARADORES',  spend:1987, sales:14380, acos:13.8, orders:113, impressions:1230688, clicks:12711 },
+    { name:'ROICOS - MUEBLES TV',  spend:1221, sales:6332,  acos:19.3, orders:61,  impressions:875742,  clicks:7941  },
+    { name:'ROICOS - RECIBIDORES', spend:997,  sales:3788,  acos:26.3, orders:45,  impressions:560038,  clicks:4863  },
+    { name:'ROICOS - MESA ALTA',   spend:234,  sales:1715,  acos:13.7, orders:20,  impressions:138205,  clicks:1539  },
+    { name:'ROICOS - MARCA',       spend:192,  sales:827,   acos:23.2, orders:7,   impressions:87767,   clicks:1158  },
+    { name:'ROICOS - CAMAS',       spend:108,  sales:744,   acos:14.5, orders:3,   impressions:73880,   clicks:310   },
+    { name:'ROICOS - Top Ventas',  spend:35,   sales:1982,  acos:1.8,  orders:7,   impressions:39828,   clicks:401   }
   ],
   fr: [
-    { name:'ROICOS - APARADORES',  spend:1288, sales:11936, acos:10.8, orders:77,  impressions:836347,  clicks:7570  },
-    { name:'ROICOS - Top Ventas',  spend:961,  sales:5023,  acos:19.1, orders:34,  impressions:693011,  clicks:4145  },
-    { name:'ROICOS - MUEBLES TV',  spend:276,  sales:2099,  acos:13.1, orders:22,  impressions:248793,  clicks:2068  },
-    { name:'ROICOS - MESA ALTA',   spend:282,  sales:1714,  acos:16.4, orders:18,  impressions:141404,  clicks:1280  },
-    { name:'ROICOS - MARCA',       spend:114,  sales:1064,  acos:10.7, orders:7,   impressions:57240,   clicks:455   },
-    { name:'ROICOS - RECIBIDORES', spend:65,   sales:575,   acos:11.3, orders:5,   impressions:42626,   clicks:376   },
-    { name:'ROICOS - CAMAS',       spend:23,   sales:291,   acos:7.9,  orders:1,   impressions:16419,   clicks:130   }
+    { name:'ROICOS - APARADORES',  spend:1122, sales:8889,  acos:12.6, orders:63,  impressions:708394,  clicks:5844  },
+    { name:'ROICOS - Top Ventas',  spend:1057, sales:3920,  acos:27.0, orders:26,  impressions:732800,  clicks:4779  },
+    { name:'ROICOS - MARCA',       spend:635,  sales:1531,  acos:41.5, orders:13,  impressions:225769,  clicks:2592  },
+    { name:'ROICOS - MUEBLES TV',  spend:313,  sales:1691,  acos:18.5, orders:17,  impressions:226252,  clicks:2257  },
+    { name:'ROICOS - MESA ALTA',   spend:223,  sales:1372,  acos:16.3, orders:14,  impressions:95707,   clicks:985   },
+    { name:'ROICOS - RECIBIDORES', spend:43,   sales:91,    acos:47.3, orders:1,   impressions:34271,   clicks:255   },
+    { name:'ROICOS - CAMAS',       spend:16,   sales:383,   acos:4.2,  orders:1,   impressions:12733,   clicks:91    }
   ],
   it: [
-    { name:'ROICOS - APARADORES',  spend:2192, sales:8091,  acos:27.1, orders:58,  impressions:1648978, clicks:15518 },
-    { name:'ROICOS - MUEBLES TV',  spend:107,  sales:792,   acos:13.5, orders:5,   impressions:87244,   clicks:974   },
-    { name:'ROICOS - Top Ventas',  spend:10,   sales:497,   acos:2.1,  orders:3,   impressions:22372,   clicks:208   },
-    { name:'ROICOS - MARCA',       spend:32,   sales:392,   acos:8.1,  orders:3,   impressions:15940,   clicks:116   }
+    { name:'ROICOS - APARADORES',  spend:1683, sales:8553,  acos:19.7, orders:54,  impressions:1285761, clicks:12323 },
+    { name:'ROICOS - MUEBLES TV',  spend:194,  sales:979,   acos:19.8, orders:8,   impressions:170773,  clicks:1630  },
+    { name:'ROICOS - MARCA',       spend:153,  sales:745,   acos:20.6, orders:5,   impressions:88345,   clicks:915   },
+    { name:'ROICOS - Top Ventas',  spend:6,    sales:180,   acos:3.2,  orders:1,   impressions:12251,   clicks:118   }
   ],
   de: [
-    { name:'ROICOS - APARADORES',  spend:716,  sales:3338,  acos:21.5, orders:21,  impressions:329147,  clicks:3534  },
-    { name:'ROICOS - MUEBLES TV',  spend:355,  sales:843,   acos:42.1, orders:9,   impressions:209543,  clicks:1672  },
-    { name:'ROICOS - RECIBIDORES', spend:275,  sales:994,   acos:27.7, orders:9,   impressions:98938,   clicks:606   },
-    { name:'ROICOS - MARCA',       spend:27,   sales:343,   acos:7.8,  orders:2,   impressions:7900,    clicks:87    }
+    { name:'ROICOS - APARADORES',  spend:720,  sales:1846,  acos:39.0, orders:13,  impressions:351511,  clicks:3588  },
+    { name:'ROICOS - RECIBIDORES', spend:399,  sales:1052,  acos:37.9, orders:7,   impressions:157924,  clicks:878   },
+    { name:'ROICOS - MUEBLES TV',  spend:133,  sales:425,   acos:31.4, orders:4,   impressions:73332,   clicks:711   },
+    { name:'ROICOS - MARCA',       spend:29,   sales:351,   acos:8.4,  orders:2,   impressions:12017,   clicks:99    }
   ]
 };
 
@@ -524,7 +525,8 @@ const CAMPAIGN_TYPE = {
     {SP:{spend:3395.03,sales:20513.24,acos:16.55,roas:6.04,impr:2330636,clicks:22292,conv:197},SB:{spend:35.80,sales:0,acos:0,roas:0,impr:3846,clicks:90,conv:0},SD:{spend:615.68,sales:2857.64,acos:21.55,roas:4.64,impr:424771,clicks:1606,conv:16}},
     {SP:{spend:3601.23,sales:24284.45,acos:14.83,roas:6.74,impr:2499714,clicks:25308,conv:217},SB:{spend:329.80,sales:0,acos:0,roas:0,impr:114111,clicks:1620,conv:0},SD:{spend:530.03,sales:1758.56,acos:30.14,roas:3.32,impr:367310,clicks:1481,conv:14}},
     {SP:{spend:3511.01,sales:22720.78,acos:15.45,roas:6.47,impr:2498650,clicks:23918,conv:223},SB:{spend:162.78,sales:0,acos:0,roas:0,impr:51463,clicks:973,conv:0},SD:{spend:586.83,sales:1486.66,acos:39.47,roas:2.53,impr:375042,clicks:1917,conv:12}},
-    {SP:{spend:4036.18,sales:28139.01,acos:14.34,roas:6.97,impr:2509956,clicks:24922,conv:264},SB:{spend:111.15,sales:0,acos:0,roas:0,impr:37746,clicks:713,conv:0},SD:{spend:551.67,sales:992.59,acos:55.58,roas:1.80,impr:355651,clicks:1708,conv:8}}
+    {SP:{spend:4036.18,sales:28139.01,acos:14.34,roas:6.97,impr:2509956,clicks:24922,conv:264},SB:{spend:111.15,sales:0,acos:0,roas:0,impr:37746,clicks:713,conv:0},SD:{spend:551.67,sales:992.59,acos:55.58,roas:1.80,impr:355651,clicks:1708,conv:8}},
+    {SP:{spend:4053.40,sales:28020.33,acos:14.47,roas:6.91,impr:2593861,clicks:26239,conv:242},SB:{spend:113.61,sales:0,acos:0,roas:0,impr:34091,clicks:718,conv:0},SD:{spend:606.41,sales:1746.17,acos:34.73,roas:2.88,impr:378196,clicks:1966,conv:14}}
   ],
   fr: [
     {SP:{spend:1996.28,sales:17189.88,acos:11.61,roas:8.61,impr:1244395,clicks:11483,conv:122},SB:{spend:0,sales:0,acos:0,roas:0,impr:0,clicks:0,conv:0},SD:{spend:36.69,sales:0,acos:0,roas:0,impr:26716,clicks:85,conv:0}},
@@ -532,7 +534,8 @@ const CAMPAIGN_TYPE = {
     {SP:{spend:2577.90,sales:26610.84,acos:9.69,roas:10.32,impr:1790610,clicks:15382,conv:192},SB:{spend:4.40,sales:0,acos:0,roas:0,impr:10180,clicks:15,conv:0},SD:{spend:43.57,sales:65.83,acos:66.19,roas:1.51,impr:25743,clicks:136,conv:1}},
     {SP:{spend:1758.22,sales:13466.67,acos:13.06,roas:7.66,impr:1135725,clicks:10797,conv:108},SB:{spend:259.88,sales:0,acos:0,roas:0,impr:271912,clicks:1102,conv:0},SD:{spend:30.82,sales:430.83,acos:7.15,roas:13.98,impr:25030,clicks:244,conv:3}},
     {SP:{spend:1791.49,sales:16002.49,acos:11.20,roas:8.93,impr:1184392,clicks:10594,conv:115},SB:{spend:224.84,sales:0,acos:0,roas:0,impr:209170,clicks:1034,conv:0},SD:{spend:38.85,sales:65.83,acos:59.02,roas:1.69,impr:25552,clicks:245,conv:1}},
-    {SP:{spend:2733.21,sales:22092.16,acos:12.37,roas:8.08,impr:1914067,clicks:14629,conv:162},SB:{spend:198.27,sales:0,acos:0,roas:0,impr:55289,clicks:834,conv:0},SD:{spend:31.18,sales:464.17,acos:6.72,roas:14.89,impr:19663,clicks:214,conv:2}}
+    {SP:{spend:2733.21,sales:22092.16,acos:12.37,roas:8.08,impr:1914067,clicks:14629,conv:162},SB:{spend:198.27,sales:0,acos:0,roas:0,impr:55289,clicks:834,conv:0},SD:{spend:31.18,sales:464.17,acos:6.72,roas:14.89,impr:19663,clicks:214,conv:2}},
+    {SP:{spend:2888.19,sales:17710.03,acos:16.31,roas:6.13,impr:1830100,clicks:14310,conv:134},SB:{spend:470.39,sales:0,acos:0,roas:0,impr:159955,clicks:2100,conv:0},SD:{spend:50.97,sales:165.83,acos:30.74,roas:3.25,impr:45871,clicks:393,conv:1}}
   ],
   it: [
     {SP:{spend:1898.58,sales:13342.10,acos:14.23,roas:7.03,impr:1680885,clicks:13817,conv:83},SB:{spend:0,sales:0,acos:0,roas:0,impr:0,clicks:0,conv:0},SD:{spend:0,sales:0,acos:0,roas:0,impr:0,clicks:0,conv:0}},
@@ -540,7 +543,8 @@ const CAMPAIGN_TYPE = {
     {SP:{spend:1507.27,sales:8620.84,acos:17.48,roas:5.72,impr:1340193,clicks:11257,conv:61},SB:{spend:5.09,sales:0,acos:0,roas:0,impr:14426,clicks:20,conv:0},SD:{spend:0,sales:0,acos:0,roas:0,impr:0,clicks:0,conv:0}},
     {SP:{spend:1636.43,sales:8295.72,acos:19.73,roas:5.07,impr:1329913,clicks:10878,conv:56},SB:{spend:251.49,sales:0,acos:0,roas:0,impr:244376,clicks:1162,conv:0},SD:{spend:0.59,sales:0,acos:0,roas:0,impr:2241,clicks:3,conv:0}},
     {SP:{spend:1718.64,sales:6687.64,acos:25.70,roas:3.89,impr:1502228,clicks:11702,conv:45},SB:{spend:65.12,sales:0,acos:0,roas:0,impr:22204,clicks:364,conv:0},SD:{spend:2.31,sales:0,acos:0,roas:0,impr:4404,clicks:12,conv:0}},
-    {SP:{spend:2293.30,sales:10322.78,acos:22.22,roas:4.50,impr:1758279,clicks:16635,conv:73},SB:{spend:42.57,sales:0,acos:0,roas:0,impr:14775,clicks:218,conv:0},SD:{spend:14.47,sales:0,acos:0,roas:0,impr:12083,clicks:78,conv:0}}
+    {SP:{spend:2293.30,sales:10322.78,acos:22.22,roas:4.50,impr:1758279,clicks:16635,conv:73},SB:{spend:42.57,sales:0,acos:0,roas:0,impr:14775,clicks:218,conv:0},SD:{spend:14.47,sales:0,acos:0,roas:0,impr:12083,clicks:78,conv:0}},
+    {SP:{spend:1890.30,sales:10456.39,acos:18.08,roas:5.53,impr:1458150,clicks:14035,conv:68},SB:{spend:111.18,sales:0,acos:0,roas:0,impr:60222,clicks:725,conv:0},SD:{spend:34.69,sales:0,acos:0,roas:0,impr:38758,clicks:226,conv:0}}
   ],
   de: [
     {SP:{spend:1520.79,sales:5885.56,acos:25.84,roas:3.87,impr:467693,clicks:4367,conv:43},SB:{spend:0,sales:0,acos:0,roas:0,impr:0,clicks:0,conv:0},SD:{spend:0,sales:0,acos:0,roas:0,impr:0,clicks:0,conv:0}},
@@ -548,7 +552,8 @@ const CAMPAIGN_TYPE = {
     {SP:{spend:1185.63,sales:4087.36,acos:29.01,roas:3.45,impr:374001,clicks:3356,conv:33},SB:{spend:0.90,sales:0,acos:0,roas:0,impr:828,clicks:3,conv:0},SD:{spend:0,sales:0,acos:0,roas:0,impr:0,clicks:0,conv:0}},
     {SP:{spend:1352.77,sales:4296.63,acos:31.48,roas:3.18,impr:554816,clicks:4829,conv:35},SB:{spend:89.64,sales:0,acos:0,roas:0,impr:130646,clicks:396,conv:0},SD:{spend:0,sales:0,acos:0,roas:0,impr:0,clicks:0,conv:0}},
     {SP:{spend:1299.91,sales:5410.91,acos:24.02,roas:4.16,impr:622097,clicks:5112,conv:36},SB:{spend:0,sales:0,acos:0,roas:0,impr:0,clicks:0,conv:0},SD:{spend:0,sales:0,acos:0,roas:0,impr:33,clicks:0,conv:0}},
-    {SP:{spend:1389.31,sales:5548.07,acos:25.04,roas:3.99,impr:644881,clicks:6018,conv:42},SB:{spend:0,sales:0,acos:0,roas:0,impr:0,clicks:0,conv:0},SD:{spend:4.99,sales:0,acos:0,roas:0,impr:5279,clicks:18,conv:0}}
+    {SP:{spend:1389.31,sales:5548.07,acos:25.04,roas:3.99,impr:644881,clicks:6018,conv:42},SB:{spend:0,sales:0,acos:0,roas:0,impr:0,clicks:0,conv:0},SD:{spend:4.99,sales:0,acos:0,roas:0,impr:5279,clicks:18,conv:0}},
+    {SP:{spend:1252.05,sales:3499.14,acos:35.78,roas:2.80,impr:577574,clicks:5181,conv:25},SB:{spend:0,sales:0,acos:0,roas:0,impr:0,clicks:0,conv:0},SD:{spend:28.93,sales:175.63,acos:16.47,roas:6.07,impr:17210,clicks:95,conv:1}}
   ]
 };
 
@@ -625,7 +630,7 @@ const SEARCH_TERMS = {
   }
 };
 
-// ── ANOTACIONES MENSUALES (análisis Roicos · Ene–Jun 2026) ───────────────────
+// ── ANOTACIONES MENSUALES (análisis Roicos · Ene–Jul 2026) ───────────────────
 const ANNOTATIONS = {
   es:[
     {insights:['SP ACOS 17.1% — sobre objetivo global del 10%. SD muy alto (36%). Camas aparecen con volumen pero sin conversión.'],hypotheses:['El término "cama matrimonio" genera 34K impresiones pero 0 ventas — posible arrastre por targeting amplio en campañas de aparadores/recibidores.'],actions:['Revisar targeting SD: alto ACOS sugiere posicionamiento en placements de bajo CVR.'],negatives:['Negativizar en campañas de aparadores/recibidores: "cama matrimonio", "cama matrimonio 150x190", "cama 180x200".']},
@@ -633,7 +638,8 @@ const ANNOTATIONS = {
     {insights:['Primera activación SB (35.80€, 0 ventas directas). SD mejora a 21.5%. SP estable 16.6%.'],hypotheses:['SB en fase de lanzamiento — sin ventas directas las primeras semanas es normal; el objetivo es visibilidad de marca y branded searches.'],actions:['Monitorizar CTR de SB para evaluar si la creatividad conecta. SD muestra mejora — mantener y optimizar bids.'],negatives:[]},
     {insights:['Mejor mes SP hasta la fecha: 24.284€ ventas, ACOS 14.8%. SB escala a 329.80€ — solo impresiones (branding). SD ACOS 30%.'],hypotheses:['Posible efecto pre-verano: mayor demanda de muebles de salón y recibidores. SB genera visibilidad de marca sin conversión directa medible — efecto halo en búsquedas de marca.'],actions:['SP rinde bien: valorar aumentar presupuesto. Revisar si SD puede mejorar con bids más bajos o segmentar por ASIN.'],negatives:[]},
     {insights:['SP 15.5% ACOS — estable. SD empeora a 39.5%. SB activa (163€, 0 ventas).'],hypotheses:['SD sigue sin mejorar en ES. La audiencia de display puede no coincidir con el perfil del comprador de muebles de salón.'],actions:['Considerar reformular campañas SD en ES o pausarlas si no hay mejora en junio. Enfocar presupuesto en SP.'],negatives:[]},
-    {insights:['Mejor mes en SP: 28.139€ ventas, ACOS 14.3%. SD alcanza máximo histórico de ACOS (55.6%). Prime Day (23–26 jun) representa el 19.3% de las ventas del mes.'],hypotheses:['"Muebles bonitos" con 42K impresiones señala fuerte búsqueda de marca — buen reconocimiento. "Aparador entrada" con ACOS 6.9% es el término estrella: alta intención de compra.'],actions:['Valorar pausa completa de SD en ES (ACOS >55% no sostenible). Aumentar bids en "aparador entrada" y "recibidores de entrada modernos" para julio.'],negatives:['Revisar: "aparador salon modernos" (4.2K impr, 0 ventas), "mueble salon" (3.6K impr, 0 ventas) — negativizar o bajar bid.']}
+    {insights:['Mejor mes en SP: 28.139€ ventas, ACOS 14.3%. SD alcanza máximo histórico de ACOS (55.6%). Prime Day (23–26 jun) representa el 19.3% de las ventas del mes.'],hypotheses:['"Muebles bonitos" con 42K impresiones señala fuerte búsqueda de marca — buen reconocimiento. "Aparador entrada" con ACOS 6.9% es el término estrella: alta intención de compra.'],actions:['Valorar pausa completa de SD en ES (ACOS >55% no sostenible). Aumentar bids en "aparador entrada" y "recibidores de entrada modernos" para julio.'],negatives:['Revisar: "aparador salon modernos" (4.2K impr, 0 ventas), "mueble salon" (3.6K impr, 0 ventas) — negativizar o bajar bid.']},
+    {insights:['SP ACOS 14.47% — mejor mes del año en eficiencia SP. SD mejora drásticamente a ACOS 34.7% (vs 55.6% junio). GMV total 69.256€ (+3.3% YoY). APARADORES es el portfolio más rentable (ACOS 13.8%, 113 órdenes).'],hypotheses:['El incremento de páginas vistas a 222K (vs 106K junio) sin aumento proporcional en pedidos sugiere tráfico de verano con menor intención de compra inmediata. La mejora de SD refleja el efecto de las optimizaciones post-junio.'],actions:['Mantener bids en APARADORES (ACOS 13.8%) — portfolio más eficiente. Revisar bids en RECIBIDORES (ACOS 26.3%) — reducir para mejorar eficiencia. Monitorizar SD: si ACOS baja de 25% en agosto, aumentar budget.'],negatives:[]}
   ],
   fr:[
     {insights:['Francia: mercado más eficiente. SP ACOS 11.6%. SD no convierte (0 ventas con 85 clics).'],hypotheses:['"Buffet salle à manger" es el término dominante con alta intención de compra. Francia tiene buyer intent más focalizado en categoría específica vs ES.'],actions:['Mantener estrategia SP actual. Analizar SI SD puede convertir con audiencias de remarketing más precisas.'],negatives:['Negativizar en SD/SP: "olivier artificiel" (7.4K impr, €21 spend, 0 ventas), "ilot central cuisine" (4.6K impr, 0 ventas), "lit double" (4.9K impr, 0 ventas) — no son del catálogo.']},
@@ -641,7 +647,8 @@ const ANNOTATIONS = {
     {insights:['Máximo histórico FR: 26.610€ ventas SP, ACOS 9.7%. Inicio SB (4.40€ simbólico). SD con ACOS 66%.'],hypotheses:['Marzo es temporada alta en FR para muebles (renovaciones de primavera). "Meuble salle à manger" es el driver principal.'],actions:['Maximizar presupuesto en Q1 FR. FR es el mercado más rentable de todos — priorizar inversión aquí.'],negatives:[]},
     {insights:['Caída a 13.466€ ventas (vs 26K mar). ACOS sube a 13%. SB lanza con 259.88€ (solo impresiones). SD destaca con ACOS 7.15% (€431 ventas).'],hypotheses:['Caída post-Semana Santa y mayor competencia. La SD en abril muestra excelente eficiencia — potenciar este canal cuando las condiciones son favorables.'],actions:['Potenciar SD en FR para futuros meses — mejor ACOS que SP en este período. Revisar y reducir bids SP para mejorar ACOS.'],negatives:[]},
     {insights:['Recuperación a 16.002€ ventas, ACOS 11.2%. SB activa (225€). "Mange debout" (mesa bar) empieza a aparecer como término emergente.'],hypotheses:['Mayo es pre-verano: búsquedas de mobiliario de exterior/cocina empiezan a ganar peso. "Mange debout" con ACOS 3% es señal de alta conversión en mesa alta.'],actions:['Preparar campañas específicas de Mesa Alta / Mange Debout para verano.'],negatives:[]},
-    {insights:['22.092€ ventas SP, ACOS 12.4%. SD recupera con €464 ventas (ACOS 6.7% — excelente). Prime Day: 18.2% de ventas del mes. "Meuble salle à manger" domina con 156K impr y €1.789 ventas.'],hypotheses:['"Mange debout" destaca con ACOS 3.0% y 4 conversiones — tendencia clara de verano. "Meuble tv" con 38K impr y 0 ventas puede no tener buen match de producto.'],actions:['Escalar inversión en "mange debout" para julio. SD en FR funciona — mantener y aumentar budget. Revisar match de "meuble tv" con el catálogo disponible.'],negatives:['"Meuble tv" (38K impr, 0 ventas) — revisar si el catálogo de muebles TV en FR está activo o negativizar temporalmente.']}
+    {insights:['22.092€ ventas SP, ACOS 12.4%. SD recupera con €464 ventas (ACOS 6.7% — excelente). Prime Day: 18.2% de ventas del mes. "Meuble salle à manger" domina con 156K impr y €1.789 ventas.'],hypotheses:['"Mange debout" destaca con ACOS 3.0% y 4 conversiones — tendencia clara de verano. "Meuble tv" con 38K impr y 0 ventas puede no tener buen match de producto.'],actions:['Escalar inversión en "mange debout" para julio. SD en FR funciona — mantener y aumentar budget. Revisar match de "meuble tv" con el catálogo disponible.'],negatives:['"Meuble tv" (38K impr, 0 ventas) — revisar si el catálogo de muebles TV en FR está activo o negativizar temporalmente.']},
+    {insights:['SP ACOS 16.31% — eficiencia correcta. SBV escala a 470€ (31% del gasto total, 0 ventas directas). GMV 42.187€ (+4.4% YoY). APARADORES lidera con ACOS 12.6%. adSales totales 17.876€ — caída vs junio (22.620€) típica de temporada estival.'],hypotheses:['Julio es temporada más baja en FR para muebles — la caída de adSales es estacional. La alta inversión en SBV puede mejorar reconocimiento de marca para Q3 pero penaliza el ACOS global (19.1% vs 13.1% junio).'],actions:['Evaluar reducir SBV a 200-250€/mes para recuperar eficiencia global. Mantener SP estable — ACOS 16.3% aceptable para temporada baja. Escalar "Top Sales/Converting" si el ROAS mejora en agosto.'],negatives:[]}
   ],
   it:[
     {insights:['IT solo con SP activo. ACOS 14.2% — dentro de rango aceptable para el mercado.'],hypotheses:['Italia en fase SP pura. Las credenze (aparadores italianos) y mobili TV son las categorías principales.'],actions:['Explorar activar SB en IT para ganar visibilidad de marca. Analizar qué ASINs tienen mejor CVR.'],negatives:[]},
@@ -649,7 +656,8 @@ const ANNOTATIONS = {
     {insights:['SP ACOS sube a 17.5%. Primera SB activa (5€ simbólico). Ventas SP bajan a 8.620€.'],hypotheses:['Caída de ventas puede relacionarse con mayor competencia en "credenza" en primavera. El deterioro de ACOS es la primera señal de alerta.'],actions:['Auditar keywords de menor rendimiento. Revisar qué ASINs tienen ACOS > 30% y reducir bids.'],negatives:[]},
     {insights:['ACOS SP sube a 19.7%. SB activa agresivamente (251€, 0 conversiones). Ventas SP en mínimos (8.295€).'],hypotheses:['La activación agresiva de SB puede estar compitiendo por las mismas búsquedas que SP, elevando el CPC. Evaluar si SB canibaliza presupuesto SP.'],actions:['Revisar distribución de presupuesto SP vs SB. En IT, SP necesita optimización urgente antes de escalar SB.'],negatives:[]},
     {insights:['ACOS SP crítico: 25.7%. SB (65€, 0 ventas). Ventas en mínimos: 6.687€. Tendencia negativa consistente desde enero.'],hypotheses:['IT puede estar enfrentando presión de precio de competidores locales. El deterioro continuo de ACOS sugiere bids desalineados con CVR real.'],actions:['Auditoría completa de campañas IT. Reducir bids a ACOS objetivo por ASIN. Considerar pausa de campañas con ACOS > 40%.'],negatives:[]},
-    {insights:['Recuperación: 10.322€ ventas, ACOS 22.2%. "Madia soggiorno" con ACOS 5.96% es el término estrella. "Credenza soggiorno" convierte a ACOS 29%.'],hypotheses:['"Madia soggiorno" (19K impr, €465 ventas, ACOS 5.96%) es el término más eficiente — campañas bien posicionadas en esta keyword. La mejora vs mayo indica que las optimizaciones están dando resultados.'],actions:['Aumentar bids en "madia soggiorno" — mejor término del mercado IT. Reducir bids en "credenza soggiorno" hasta bajar ACOS a <20%.'],negatives:['Revisar: "mobile tv" (9.7K impr, 0 ventas), "mb muebles bonitos" (6.3K impr, 0 ventas) — pueden ser búsquedas de marca sin catálogo activo en IT o términos fuera de target.']}
+    {insights:['Recuperación: 10.322€ ventas, ACOS 22.2%. "Madia soggiorno" con ACOS 5.96% es el término estrella. "Credenza soggiorno" convierte a ACOS 29%.'],hypotheses:['"Madia soggiorno" (19K impr, €465 ventas, ACOS 5.96%) es el término más eficiente — campañas bien posicionadas en esta keyword. La mejora vs mayo indica que las optimizaciones están dando resultados.'],actions:['Aumentar bids en "madia soggiorno" — mejor término del mercado IT. Reducir bids en "credenza soggiorno" hasta bajar ACOS a <20%.'],negatives:['Revisar: "mobile tv" (9.7K impr, 0 ventas), "mb muebles bonitos" (6.3K impr, 0 ventas) — pueden ser búsquedas de marca sin catálogo activo en IT o términos fuera de target.']},
+    {insights:['SP ACOS 18.08% — mejor eficiencia SP del año en IT. GMV 23.273€ con crecimiento YoY del +54.4% (vs 15.078€ julio 2025). APARADORES lidera con 54 órdenes y ACOS 19.7%. Inversión total 2.036€ — más eficiente que junio (2.354€) con resultados similares.'],hypotheses:['El crecimiento YoY del 54% en GMV refleja mejor posicionamiento de catálogo y madurez de las campañas SP. La reducción de ACOS de 22.2% (junio) a 18.1% (julio) confirma que las optimizaciones de bids están dando fruto.'],actions:['Capitalizar la mejora: mantener estructura de campañas SP actual. Explorar aumentar bids en APARADORES — es el portfolio con mayor volumen y eficiencia aceptable. Evaluar escalar SBV de 111€ a 200€ si la tendencia de ACOS se mantiene estable.'],negatives:[]}
   ],
   de:[
     {insights:['DE solo con SP. ACOS 25.8% — mercado con mayor dificultad de eficiencia. Sin SB ni SD.'],hypotheses:['Alemania es un mercado muy competitivo en precio. Los sideboards/aparadores tienen mucha competencia local (IKEA, Otto, etc.).'],actions:['Evaluar precio competitivo de los productos clave en DE vs competencia local.'],negatives:[]},
@@ -657,11 +665,12 @@ const ANNOTATIONS = {
     {insights:['Ligera mejora: ACOS 29%. Primera SB (0.90€ simbólico). Ventas 4.087€.'],hypotheses:['Mejora marginal indica respuesta a optimizaciones. "Sideboard" es el término alemán principal.'],actions:['Evaluar keywords alemanas de alta conversión: "sideboard wohnzimmer", "kommode weiß".'],negatives:[]},
     {insights:['ACOS sube a 31.5%. SB activa (89€, 0 ventas). Impresiones aumentan significativamente.'],hypotheses:['Mayor competencia en primavera. SB genera impresiones de marca pero sin conversión directa medible.'],actions:['Reducir presupuesto SB hasta que SP mejore. Auditar campañas con ACOS > 40%.'],negatives:[]},
     {insights:['Mejor mes en DE: ACOS 24%, ventas 5.410€. Mejor resultado relativo del período.'],hypotheses:['La mejora puede reflejar efecto de optimizaciones acumuladas y mayor demanda pre-verano de muebles.'],actions:['Identificar qué cambió en mayo para replicarlo en junio. Capitalizar la tendencia positiva.'],negatives:[]},
-    {insights:['"Sideboard" domina con 35.6K impr y €444 ventas (ACOS 20.4%). "Kommode" segundo (13K impr, €128 ventas). "Schuhschrank mit spiegel" genera 6K impr sin conversión.'],hypotheses:['"Sideboard" es el principal driver de DE — alta intención de compra. "Schuhschrank mit spiegel" (zapatero con espejo) puede estar apareciendo por campañas de recibidores con targeting amplio.'],actions:['Aumentar bids en "sideboard" — balance volumen/conversión aceptable. Monitorizar "kommode" (ACOS 28.6%) para optimización.'],negatives:['"Schuhschrank mit spiegel" (6K impr, 0 ventas) — negativizar en campañas de aparadores/sideboards.']}
+    {insights:['"Sideboard" domina con 35.6K impr y €444 ventas (ACOS 20.4%). "Kommode" segundo (13K impr, €128 ventas). "Schuhschrank mit spiegel" genera 6K impr sin conversión.'],hypotheses:['"Sideboard" es el principal driver de DE — alta intención de compra. "Schuhschrank mit spiegel" (zapatero con espejo) puede estar apareciendo por campañas de recibidores con targeting amplio.'],actions:['Aumentar bids en "sideboard" — balance volumen/conversión aceptable. Monitorizar "kommode" (ACOS 28.6%) para optimización.'],negatives:['"Schuhschrank mit spiegel" (6K impr, 0 ventas) — negativizar en campañas de aparadores/sideboards.']},
+    {insights:['SP ACOS 35.78% — empeora vs junio (25.0%). GMV 7.548€ — caída estival vs junio (10.845€) pero crecimiento YoY impresionante (+426% vs 1.433€ julio 2025). SD activa con ACOS 16.47% y 1 conversión (€176 ventas) — pequeño pero eficiente. RECIBIDORES con ACOS 37.9% arrastra la eficiencia global.'],hypotheses:['La caída de ventas vs junio es estacional (temporada de vacaciones en DE). El ACOS elevado en APARADORES (39%) y RECIBIDORES (37.9%) indica mayor competencia o bids desalineados con el CVR de verano.'],actions:['Reducir bids en APARADORES y RECIBIDORES DE — objetivo ACOS <30% antes de escalar. Mantener SD (ACOS 16.47%) y valorar aumentar su budget en agosto. El crecimiento YoY del 426% es positivo — hay oportunidad real en DE.'],negatives:[]}
   ]
 };
 
-let state = { market:'global', period:5 };
+let state = { market:'global', period:6 };
 let chartSales = null, chartAds = null;
 
 // ── UTILITIES ─────────────────────────────────────────────────────────────────
@@ -721,7 +730,7 @@ function getSales(m, idx) {
           u=d.units.reduce((a,b)=>a+(b||0),0), p=d.pv.reduce((a,b)=>a+(b||0),0);
     const g25=d25.gmv.reduce((a,b)=>a+(b||0),0), o25=d25.orders.reduce((a,b)=>a+(b||0),0),
           u25=d25.units.reduce((a,b)=>a+(b||0),0), p25=d25.pv.reduce((a,b)=>a+(b||0),0);
-    return { gmv:g, orders:o, units:u, pv:p, cvr:p?u/p*100:null, buybox:d.buybox[5],
+    return { gmv:g, orders:o, units:u, pv:p, cvr:p?u/p*100:null, buybox:d.buybox[d.buybox.length-1],
              gmv25:g25, orders25:o25, units25:u25, pv25:p25, cvr25:p25?u25/p25*100:null };
   }
   return { gmv:d.gmv[idx], orders:d.orders[idx], units:d.units[idx], pv:d.pv[idx],
@@ -846,11 +855,11 @@ function renderSalesSection(m, idx) {
           <div class="kpi-sub">Atribución publicidad</div></div>
       </div>
       <div class="chart-wrap">
-        <div class="chart-title">Evolución ventas &amp; tráfico — ene–jun 2026</div>
+        <div class="chart-title">Evolución ventas &amp; tráfico — ene–jul 2026</div>
         <div class="chart-canvas"><canvas id="chartSales"></canvas></div>
       </div>
     </div>
-    <div class="sec-foot"><div class="sec-source">Fuente: <span class="src-badge">MerchantSpring</span> <span style="color:var(--text-soft)">Ene–Jun 2026 &amp; 2025 · USD÷1.085</span></div></div>
+    <div class="sec-foot"><div class="sec-source">Fuente: <span class="src-badge">MerchantSpring</span> <span style="color:var(--text-soft)">Ene–Jul 2026 &amp; 2025 · EUR bruto con IVA</span></div></div>
   </div>`;
 }
 
@@ -1114,8 +1123,8 @@ function renderTopSection(m, idx) {
 
 function renderPeriodBanner(m, idx) {
   const flags={global:'🌍',es:'🇪🇸',fr:'🇫🇷',it:'🇮🇹',de:'🇩🇪'}, names={global:'Global Pan-EU',es:'España',fr:'Francia',it:'Italia',de:'Alemania'};
-  const periodLabel=idx===-1?'YTD Ene–Jun 2026':MONTHS[idx]+' 2026';
-  const prevLabel=idx>0?'vs '+MONTHS[idx-1]+' 2026 (MoM) · vs '+MONTHS[idx]+' 2025 (YoY)':idx===-1?'6 meses acumulados · comparativa 2025':'';
+  const periodLabel=idx===-1?'YTD Ene–Jul 2026':MONTHS[idx]+' 2026';
+  const prevLabel=idx>0?'vs '+MONTHS[idx-1]+' 2026 (MoM) · vs '+MONTHS[idx]+' 2025 (YoY)':idx===-1?'7 meses acumulados · comparativa 2025':'';
   return `<div class="period-banner"><div class="pb-icon">${flags[m]}</div><div>
     <div class="pb-title">${flags[m]} ${names[m]} · ${periodLabel}</div>
     <div class="pb-sub">${prevLabel}</div>
@@ -1219,7 +1228,7 @@ function renderCampaignTypeSection(m, idx) {
   }
 
   if(!rows.length) return '';
-  const periodLabel=idx===-1?'YTD Ene–Jun 2026':MONTHS[idx]+' 2026';
+  const periodLabel=idx===-1?'YTD Ene–Jul 2026':MONTHS[idx]+' 2026';
   return `<div class="section">
     <div class="sec-head"><h2>Tipo de Campaña</h2><span class="sec-badge">${mktNames[m]||m} · ${periodLabel}</span></div>
     <div class="sec-body">
@@ -1231,7 +1240,7 @@ function renderCampaignTypeSection(m, idx) {
       </div>
       <div class="info-note" style="margin-top:10px">ℹ Ventas SB = atribución indirecta (halo). ACoS SB no se calcula sobre ventas directas.</div>
     </div>
-    <div class="sec-foot"><div class="sec-source">Fuente: <span class="src-badge">Pacvue</span> <span style="color:var(--text-soft)">Ene–Jun 2026 · SP+SB+SD</span></div></div>
+    <div class="sec-foot"><div class="sec-source">Fuente: <span class="src-badge">Pacvue</span> <span style="color:var(--text-soft)">Ene–Jul 2026 · SP+SB+SD</span></div></div>
   </div>`;
 }
 
@@ -1315,7 +1324,7 @@ function renderAnnotationsSection(m, idx) {
   });
 
   if(!html) return '';
-  const periodLabel=idx===-1?'YTD Ene–Jun 2026':MONTHS[idx]+' 2026';
+  const periodLabel=idx===-1?'YTD Ene–Jul 2026':MONTHS[idx]+' 2026';
   return `<div class="section">
     <div class="sec-head"><h2>Anotaciones del Período</h2><span class="sec-badge">${mktNames[m]||m} · ${periodLabel}</span></div>
     <div class="sec-body">${html}</div>
