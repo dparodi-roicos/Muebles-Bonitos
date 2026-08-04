@@ -956,7 +956,7 @@ function renderAdsSection(m, idx) {
 }
 
 function renderPrimeDaySection(m, idx) {
-  if(idx!==-1&&idx!==5) return '';
+  if(idx!==5) return '';
   const pd=PRIME_DAY[m]; if(!pd) return '';
   const isGlobal=m==='global', mkts=isGlobal?['es','fr','it','de']:[m];
   let countryCards='';
@@ -1379,7 +1379,7 @@ function render() {
   html+=renderSalesSection(m,idx);
   html+=renderAdsSection(m,idx);
   html+=renderCampaignTypeSection(m,idx);
-  if(idx===5||idx===-1) html+=renderPrimeDaySection(m,idx);
+  if(idx===5) html+=renderPrimeDaySection(m,idx);
   html+=renderPortfolioSection(m,idx);
   html+=renderTopSection(m,idx);
   html+=renderSearchTermsSection(m,idx);
