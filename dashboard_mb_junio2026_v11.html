@@ -918,6 +918,8 @@ function renderAdsSection(m, idx) {
   const prevCtr=prev?(prev.clicks&&prev.impressions?prev.clicks/prev.impressions*100:null):null;
   const prevCpc=prev?(prev.clicks&&prev.spend?prev.spend/prev.clicks:null):null;
   const prevAov=prev?(prev.orders&&prev.adSales?prev.adSales/prev.orders:null):null;
+  const tacos=SALES[m]&&SALES[m].gmv[idx]?cur.spend/SALES[m].gmv[idx]*100:null;
+  const prevTacos=(prev&&SALES[m]&&prevIdx!==null&&SALES[m].gmv[prevIdx])?prev.spend/SALES[m].gmv[prevIdx]*100:null;
 
   return `<div class="section">
     <div class="sec-head"><h2>Rendimiento Publicidad</h2></div>
@@ -935,6 +937,9 @@ function renderAdsSection(m, idx) {
         <div class="kpi"><div class="kpi-label">ROAS</div><div class="kpi-val sm">${cur.roas.toFixed(2)}x</div>
           ${kpiComps(delta(cur.roas,prev&&prev.roas),yoy?delta(cur.roas,yoy.roas25):'')}
           ${prev?`<div class="kpi-sub">ant: ${prev.roas.toFixed(2)}x${yoy?` · 2025: ${yoy.roas25.toFixed(2)}x`:''}</div>`:''}</div>
+        <div class="kpi"><div class="kpi-label">TACoS</div><div class="kpi-val sm">${tacos!==null?tacos.toFixed(1)+'%':'—'}</div>
+          ${kpiComps(delta(tacos,prevTacos,true),'')}
+          ${prevTacos!==null?`<div class="kpi-sub">ant: ${prevTacos.toFixed(1)}%</div>`:''}</div>
         <div class="kpi"><div class="kpi-label">Pedidos Ads</div><div class="kpi-val sm">${fmt(cur.orders,'num')}</div>
           ${kpiComps(delta(cur.orders,prev&&prev.orders),'')}
           ${prev?`<div class="kpi-sub">ant: ${fmt(prev.orders,'num')}</div>`:''}</div>
