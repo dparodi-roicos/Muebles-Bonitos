@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dashboard Muebles Bonitos · Julio 2026</title>
+<title>Dashboard Muebles Bonitos · Agosto 2026</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <style>
 :root {
@@ -181,7 +181,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
 <body>
 
 <nav class="nav">
-  <div class="nav-brand">Muebles Bonitos <span>Amazon Seller · Julio 2026</span></div>
+  <div class="nav-brand">Muebles Bonitos <span>Amazon Seller · Agosto 2026</span></div>
   <div class="nav-markets">
     <button class="active" onclick="setMarket('global')">🌍 Global</button>
     <button onclick="setMarket('es')">🇪🇸 España</button>
@@ -197,7 +197,8 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
     <button onclick="setPeriod(3)">Abr</button>
     <button onclick="setPeriod(4)">May</button>
     <button onclick="setPeriod(5)">Jun</button>
-    <button class="active" onclick="setPeriod(6)">Jul</button>
+    <button onclick="setPeriod(6)">Jul</button>
+    <button class="active" onclick="setPeriod(7)">Ago</button>
     <button onclick="setPeriod(-1)">YTD</button>
   </div>
 </nav>
@@ -213,50 +214,50 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
 </div>
 
 <script>
-const MONTHS   = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio'];
-const MONTHS_S = ['Ene','Feb','Mar','Abr','May','Jun','Jul'];
+const MONTHS   = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto'];
+const MONTHS_S = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago'];
 
 // ── VENTAS 2026 (MerchantSpring, EUR bruto con IVA) ───────────────────────────
 const SALES = {
   global: {
-    gmv:    [180610,157989,165750,131257,129870,145190,142145],
-    orders: [1258,  1123,  1173,  959,   929,   1023,  998],
-    units:  [1269,  1150,  1224,  985,   955,   1054,  1030],
-    pv:     [687402,262267,256620,230077,222427,219057,219201],
-    cvr:    [0.185, 0.439, 0.477, 0.428, 0.429, 0.481, 0.470],
-    buybox: [97.5,  97.4,  96.4,  95.8,  95.0,  96.9,  96.6]
+    gmv:    [180610,157989,165750,131257,129870,145190,142145, 167022],
+    orders: [1258,  1123,  1173,  959,   929,   1023,  998,   1174],
+    units:  [1269,  1150,  1224,  985,   955,   1054,  1030,  1218],
+    pv:     [687402,262267,256620,230077,222427,219057,219201, 262943],
+    cvr:    [0.185, 0.439, 0.477, 0.428, 0.429, 0.481, 0.470, 0.463],
+    buybox: [97.5,  97.4,  96.4,  95.8,  95.0,  96.9,  96.6,  96.9]
   },
   es: {
-    gmv:    [75601, 65222, 70594, 64037, 63684, 67046, 69434],
-    orders: [597,   512,   537,   505,   515,   534,   534],
-    units:  [607,   538,   571,   535,   526,   560,   559],
-    pv:     [346914,128294,124443,122992,114715,106456,111299],
-    cvr:    [0.175, 0.419, 0.459, 0.435, 0.459, 0.526, 0.502],
-    buybox: [97.0,  96.5,  95.5,  95.8,  95.0,  96.6,  96.2]
+    gmv:    [75601, 65222, 70594, 64037, 63684, 67046, 69434, 81901],
+    orders: [597,   512,   537,   505,   515,   534,   534,   621],
+    units:  [607,   538,   571,   535,   526,   560,   559,   644],
+    pv:     [346914,128294,124443,122992,114715,106456,111299, 136705],
+    cvr:    [0.175, 0.419, 0.459, 0.435, 0.459, 0.526, 0.502, 0.471],
+    buybox: [97.0,  96.5,  95.5,  95.8,  95.0,  96.6,  96.2,  96.7]
   },
   fr: {
-    gmv:    [59008, 59082, 59978, 38645, 36672, 43423, 42187],
-    orders: [386,   392,   402,   274,   239,   278,   274],
-    units:  [385,   396,   412,   275,   250,   286,   278],
-    pv:     [141266,63242, 61355, 45996, 45586, 45978, 47045],
-    cvr:    [0.273, 0.626, 0.671, 0.598, 0.549, 0.622, 0.591],
-    buybox: [98.2,  98.6,  98.1,  97.7,  96.4,  98.6,  98.7]
+    gmv:    [59008, 59082, 59978, 38645, 36672, 43423, 42187, 47561],
+    orders: [386,   392,   402,   274,   239,   278,   274,   325],
+    units:  [385,   396,   412,   275,   250,   286,   278,   333],
+    pv:     [141266,63242, 61355, 45996, 45586, 45978, 47045, 53034],
+    cvr:    [0.273, 0.626, 0.671, 0.598, 0.549, 0.622, 0.591, 0.628],
+    buybox: [98.2,  98.6,  98.1,  97.7,  96.4,  98.6,  98.7,  98.5]
   },
   it: {
-    gmv:    [33961, 24461, 24017, 20078, 19745, 23876, 23273],
-    orders: [195,   151,   158,   115,   105,   131,   138],
-    units:  [196,   154,   161,   115,   107,   133,   147],
-    pv:     [161708,57698, 57520, 45559, 46246, 50424, 46752],
-    cvr:    [0.121, 0.267, 0.280, 0.252, 0.231, 0.264, 0.314],
-    buybox: [99.5,  99.3,  96.9,  93.9,  94.3,  94.7,  94.3]
+    gmv:    [33961, 24461, 24017, 20078, 19745, 23876, 23273, 26586],
+    orders: [195,   151,   158,   115,   105,   131,   138,   164],
+    units:  [196,   154,   161,   115,   107,   133,   147,   173],
+    pv:     [161708,57698, 57520, 45559, 46246, 50424, 46752, 56752],
+    cvr:    [0.121, 0.267, 0.280, 0.252, 0.231, 0.264, 0.314, 0.305],
+    buybox: [99.5,  99.3,  96.9,  93.9,  94.3,  94.7,  94.3,  94.6]
   },
   de: {
-    gmv:    [12040, 9224,  11161, 8497,  9769,  10845, 7548],
-    orders: [80,    68,    76,    65,    70,    80,    52],
-    units:  [81,    62,    80,    60,    72,    75,    49],
-    pv:     [37514, 13033, 13302, 15530, 15880, 16199, 14105],
-    cvr:    [0.216, 0.476, 0.601, 0.386, 0.454, 0.463, 0.347],
-    buybox: [92.5,  93.2,  92.7,  90.3,  91.3,  96.0,  95.6]
+    gmv:    [12040, 9224,  11161, 8497,  9769,  10845, 7548,  10974],
+    orders: [80,    68,    76,    65,    70,    80,    52,    64],
+    units:  [81,    62,    80,    60,    72,    75,    49,    68],
+    pv:     [37514, 13033, 13302, 15530, 15880, 16199, 14105, 16452],
+    cvr:    [0.216, 0.476, 0.601, 0.386, 0.454, 0.463, 0.347, 0.413],
+    buybox: [92.5,  93.2,  92.7,  90.3,  91.3,  96.0,  95.6,  97.8]
   }
 };
 
@@ -299,57 +300,57 @@ const SALES_YOY = {
   }
 };
 
-// ── ADS 2026 (Pacvue ene–jun · Documento Ads julio 2026 para julio) ──────────
+// ── ADS 2026 (Pacvue ene–ago · Documentos Ads mensuales) ─────────────────────
 const ADS = {
   global: {
-    spend:       [9632,  7617,  9372,  9841,  9402, 11412, 11500],
-    adSales:     [58700, 56024, 62756, 52534, 51117,66774, 62750],
-    orders:      [448,   423,   500,   433,   427,  538,   490],
-    acos:        [16.4,  13.6,  14.9,  18.7,  18.4, 17.1,  18.33],
-    roas:        [6.09,  7.35,  6.70,  5.34,  5.44, 5.85,  5.46],
-    impressions: [6176923,4729551,6315234,6675794,5166864,7328361,7193958],
-    clicks:      [54309, 44409, 54157, 57820, 44059,66033, 65983],
-    adUnits:     [null,  null,  null,  null,  null,  null,  null]
+    spend:       [9632,  7617,  9372,  9841,  9402, 11412, 11500, 12583],
+    adSales:     [58700, 56024, 62756, 52534, 51117,66774, 62750, 74631],
+    orders:      [448,   423,   500,   433,   427,  538,   490,   593],
+    acos:        [16.4,  13.6,  14.9,  18.7,  18.4, 17.1,  18.33, 16.86],
+    roas:        [6.09,  7.35,  6.70,  5.34,  5.44, 5.85,  5.46,  5.93],
+    impressions: [6176923,4729551,6315234,6675794,5166864,7328361,7193958, 7939874],
+    clicks:      [54309, 44409, 54157, 57820, 44059,66033, 65983,  77377],
+    adUnits:     [null,  null,  null,  null,  null,  null,  null,   null]
   },
   es: {
-    spend:       [4179, 3124, 4047, 4461, 4261, 4701, 4773],
-    adSales:     [22282,19431,23371,26043,25826,29222,31047],
-    orders:      [200,  170,  213,  231,  248,  267,  262],
-    acos:        [18.8, 16.1, 17.3, 17.1, 16.5, 16.1, 15.37],
-    roas:        [5.33, 6.22, 5.78, 5.84, 6.06, 6.22, 6.50],
-    impressions: [2757234,2013100,2759253,2981135,2275657,2523353,3006136],
-    clicks:      [24557,18071,23988,28409,19834,23191,28922],
-    adUnits:     [null, null, null, null, null, null, null]
+    spend:       [4179, 3124, 4047, 4461, 4261, 4701, 4773, 5424],
+    adSales:     [22282,19431,23371,26043,25826,29222,31047, 36106],
+    orders:      [200,  170,  213,  231,  248,  267,  262,  322],
+    acos:        [18.8, 16.1, 17.3, 17.1, 16.5, 16.1, 15.37, 15.02],
+    roas:        [5.33, 6.22, 5.78, 5.84, 6.06, 6.22, 6.50, 6.66],
+    impressions: [2757234,2013100,2759253,2981135,2275657,2523353,3006136, 3434019],
+    clicks:      [24557,18071,23988,28409,19834,23191,28922, 37231],
+    adUnits:     [null, null, null, null, null, null, null, null]
   },
   fr: {
-    spend:       [2033, 1924, 2626, 2049, 2055, 2964, 3410],
-    adSales:     [17190,22565,26677,13898,14122,22620,18664],
-    orders:      [122,  159,  193,  111,  105,  164,  139],
-    acos:        [11.8, 8.5,  9.8,  14.7, 14.6, 13.1, 18.27],
-    roas:        [8.46, 11.73,10.16,6.78, 6.87, 7.63, 5.47],
-    impressions: [1271111,1176309,1826533,1432667,740241,1119243,2035926],
-    clicks:      [11568,12331,15533,12143, 7035, 9496,16803],
-    adUnits:     [null, null, null, null, null, null, null]
+    spend:       [2033, 1924, 2626, 2049, 2055, 2964, 3410, 3407],
+    adSales:     [17190,22565,26677,13898,14122,22620,18664, 21288],
+    orders:      [122,  159,  193,  111,  105,  164,  139,  154],
+    acos:        [11.8, 8.5,  9.8,  14.7, 14.6, 13.1, 18.27, 16.00],
+    roas:        [8.46, 11.73,10.16,6.78, 6.87, 7.63, 5.47, 6.25],
+    impressions: [1271111,1176309,1826533,1432667,740241,1119243,2035926, 2105632],
+    clicks:      [11568,12331,15533,12143, 7035, 9496, 16803, 16957],
+    adUnits:     [null, null, null, null, null, null, null, null]
   },
   it: {
-    spend:       [1899, 1475, 1512, 1889, 1786, 2354, 2036],
-    adSales:     [11565,9319, 8039, 7800, 6460, 9477,  9490],
-    orders:      [71,   57,   58,   51,   43,   66,   64],
-    acos:        [16.4, 15.8, 18.8, 24.2, 27.6, 24.8, 21.45],
-    roas:        [6.09, 6.32, 5.32, 4.13, 3.62, 4.03, 4.66],
-    impressions: [1680885,1213267,1354619,1576530,1528836,1785167,1557115],
-    clicks:      [13817,11064,11277,12043,12078,16931,14982],
-    adUnits:     [null, null, null, null, null, null, null]
+    spend:       [1899, 1475, 1512, 1889, 1786, 2354, 2036, 2189],
+    adSales:     [11565,9319, 8039, 7800, 6460, 9477,  9490, 11008],
+    orders:      [71,   57,   58,   51,   43,   66,   64,   80],
+    acos:        [16.4, 15.8, 18.8, 24.2, 27.6, 24.8, 21.45, 19.88],
+    roas:        [6.09, 6.32, 5.32, 4.13, 3.62, 4.03, 4.66, 5.03],
+    impressions: [1680885,1213267,1354619,1576530,1528836,1785167,1557115, 1688709],
+    clicks:      [13817,11064,11277,12043,12078,16931,14982, 16500],
+    adUnits:     [null, null, null, null, null, null, null, null]
   },
   de: {
-    spend:       [1521, 1094, 1187, 1442, 1300, 1393, 1281],
-    adSales:     [5610, 3084, 3628, 3335, 4710, 5456, 3550],
-    orders:      [41,   26,   30,   29,   31,   41,   25],
-    acos:        [27.1, 35.5, 32.7, 43.3, 27.6, 25.5, 36.09],
-    roas:        [3.69, 2.82, 3.06, 2.31, 3.62, 3.92, 2.77],
-    impressions: [467693,326875,374829,685462,622130,650165,594781],
-    clicks:      [4367, 2943, 3359, 5225, 5112, 6038, 5276],
-    adUnits:     [null, null, null, null, null, null, null]
+    spend:       [1521, 1094, 1187, 1442, 1300, 1393, 1281, 1564],
+    adSales:     [5610, 3084, 3628, 3335, 4710, 5456, 3550, 6229],
+    orders:      [41,   26,   30,   29,   31,   41,   25,   37],
+    acos:        [27.1, 35.5, 32.7, 43.3, 27.6, 25.5, 36.09, 25.12],
+    roas:        [3.69, 2.82, 3.06, 2.31, 3.62, 3.92, 2.77, 3.98],
+    impressions: [467693,326875,374829,685462,622130,650165,594781, 711514],
+    clicks:      [4367, 2943, 3359, 5225, 5112, 6038, 5276, 6689],
+    adUnits:     [null, null, null, null, null, null, null, null]
   }
 };
 
@@ -521,7 +522,7 @@ const PRIME_DAY = {
   de: { sales:2176, pctJun:39.9, uplift:199.2, spend:270, acos:12.4, orders:null }
 };
 
-// ── CAMPAIGN TYPE DATA (Pacvue · Ene–Jul 2026) ────────────────────────────────
+// ── CAMPAIGN TYPE DATA (Pacvue · Ene–Ago 2026) ────────────────────────────────
 // idx: 0=Ene, 1=Feb, 2=Mar, 3=Abr, 4=May, 5=Jun
 const CAMPAIGN_TYPE = {
   es: [
@@ -675,7 +676,7 @@ const SEARCH_TERMS = {
   }
 };
 
-// ── ANOTACIONES MENSUALES (análisis Roicos · Ene–Jul 2026) ───────────────────
+// ── ANOTACIONES MENSUALES (análisis Roicos · Ene–Ago 2026) ───────────────────
 const ANNOTATIONS = {
   es:[
     {insights:['SP ACOS 17.1% — sobre objetivo global del 10%. SD muy alto (36%). Camas aparecen con volumen pero sin conversión.'],hypotheses:['El término "cama matrimonio" genera 34K impresiones pero 0 ventas — posible arrastre por targeting amplio en campañas de aparadores/recibidores.'],actions:['Revisar targeting SD: alto ACOS sugiere posicionamiento en placements de bajo CVR.'],negatives:['Negativizar en campañas de aparadores/recibidores: "cama matrimonio", "cama matrimonio 150x190", "cama 180x200".']},
@@ -684,7 +685,8 @@ const ANNOTATIONS = {
     {insights:['Mejor mes SP hasta la fecha: 24.284€ ventas, ACOS 14.8%. SB escala a 329.80€ — solo impresiones (branding). SD ACOS 30%.'],hypotheses:['Posible efecto pre-verano: mayor demanda de muebles de salón y recibidores. SB genera visibilidad de marca sin conversión directa medible — efecto halo en búsquedas de marca.'],actions:['SP rinde bien: valorar aumentar presupuesto. Revisar si SD puede mejorar con bids más bajos o segmentar por ASIN.'],negatives:[]},
     {insights:['SP 15.5% ACOS — estable. SD empeora a 39.5%. SB activa (163€, 0 ventas).'],hypotheses:['SD sigue sin mejorar en ES. La audiencia de display puede no coincidir con el perfil del comprador de muebles de salón.'],actions:['Considerar reformular campañas SD en ES o pausarlas si no hay mejora en junio. Enfocar presupuesto en SP.'],negatives:[]},
     {insights:['Mejor mes en SP: 28.139€ ventas, ACOS 14.3%. SD alcanza máximo histórico de ACOS (55.6%). Prime Day (23–26 jun) representa el 19.3% de las ventas del mes.'],hypotheses:['"Muebles bonitos" con 42K impresiones señala fuerte búsqueda de marca — buen reconocimiento. "Aparador entrada" con ACOS 6.9% es el término estrella: alta intención de compra.'],actions:['Valorar pausa completa de SD en ES (ACOS >55% no sostenible). Aumentar bids en "aparador entrada" y "recibidores de entrada modernos" para julio.'],negatives:['Revisar: "aparador salon modernos" (4.2K impr, 0 ventas), "mueble salon" (3.6K impr, 0 ventas) — negativizar o bajar bid.']},
-    {insights:['España firma su mejor mes del año: 31.047€ ventas (+5,8% vs jun), ACOS 15,37% con CPC un 4% más barato. Crecimiento repartido — Aparador Roque +2.067€, entran ~3.000€ de nuevas referencias (vitrinas, camas, mueble TV). Campañas de puja baja: 2.370€ ventas con ROAS 23,5x (1% de inversión → 4,8% de facturación). 5 referencias con rotura de stock (Aitana desde 13-jul): impacto estimado 900€.'],hypotheses:['El ACOS baja junto con la venta porque la segmentación compra tráfico más barato. La puja baja es la palanca más eficiente de la cuenta — se desplegó en julio y el resultado valida la estrategia.'],actions:['Ampliar campañas de puja baja a más referencias de aparadores en agosto. Reforzar Mesa Alta (mejor conversión de la cuenta — perdió visibilidad en julio, -49% ventas). Gestionar rotura de stock Aitana y Factory R1. Revisar segmentación RECIBIDORES (ACOS 29,1%).'],negatives:['Mesa Alta -49% ventas vs junio — pérdida de visibilidad; revisar bids y segmentación urgente.']}
+    {insights:['España firma su mejor mes del año: 31.047€ ventas (+5,8% vs jun), ACOS 15,37% con CPC un 4% más barato. Crecimiento repartido — Aparador Roque +2.067€, entran ~3.000€ de nuevas referencias (vitrinas, camas, mueble TV). Campañas de puja baja: 2.370€ ventas con ROAS 23,5x (1% de inversión → 4,8% de facturación). 5 referencias con rotura de stock (Aitana desde 13-jul): impacto estimado 900€.'],hypotheses:['El ACOS baja junto con la venta porque la segmentación compra tráfico más barato. La puja baja es la palanca más eficiente de la cuenta — se desplegó en julio y el resultado valida la estrategia.'],actions:['Ampliar campañas de puja baja a más referencias de aparadores en agosto. Reforzar Mesa Alta (mejor conversión de la cuenta — perdió visibilidad en julio, -49% ventas). Gestionar rotura de stock Aitana y Factory R1. Revisar segmentación RECIBIDORES (ACOS 29,1%).'],negatives:['Mesa Alta -49% ventas vs junio — pérdida de visibilidad; revisar bids y segmentación urgente.']},
+    {insights:['ES mejor mes del año en ventas ads: 36.106€ (+16,3% vs julio), ACOS 15,02% — nueva mejora. Nueva estructura de captación segmentada (por acabado LED, tamaño, color): ACOS 8,1% sobre 6,5% del presupuesto → 13,5% de las ventas. CPC baja a 0,15€ (−10% MoM). GMV total 81.901€ (+18,1% MoM). TACOS ES: 6,6% — dentro del objetivo 6–7%.'],hypotheses:['La segmentación por atributo compite en subastas menos saturadas, reduciendo CPC y mejorando la selección de tráfico. Es la palanca más eficiente desplegada en el año.'],actions:['Escalar la estructura segmentada de captación al resto de mercados. Mantener el impulso en Aparadores. Recuperar Mesa Alta tras la pérdida de visibilidad de julio.'],negatives:['Recibidores ES sigue con ACOS elevado — revisar segmentación y añadir negativos de términos no convertibles.']}
   ],
   fr:[
     {insights:['Francia: mercado más eficiente. SP ACOS 11.6%. SD no convierte (0 ventas con 85 clics).'],hypotheses:['"Buffet salle à manger" es el término dominante con alta intención de compra. Francia tiene buyer intent más focalizado en categoría específica vs ES.'],actions:['Mantener estrategia SP actual. Analizar SI SD puede convertir con audiencias de remarketing más precisas.'],negatives:['Negativizar en SD/SP: "olivier artificiel" (7.4K impr, €21 spend, 0 ventas), "ilot central cuisine" (4.6K impr, 0 ventas), "lit double" (4.9K impr, 0 ventas) — no son del catálogo.']},
@@ -693,7 +695,8 @@ const ANNOTATIONS = {
     {insights:['Caída a 13.466€ ventas (vs 26K mar). ACOS sube a 13%. SB lanza con 259.88€ (solo impresiones). SD destaca con ACOS 7.15% (€431 ventas).'],hypotheses:['Caída post-Semana Santa y mayor competencia. La SD en abril muestra excelente eficiencia — potenciar este canal cuando las condiciones son favorables.'],actions:['Potenciar SD en FR para futuros meses — mejor ACOS que SP en este período. Revisar y reducir bids SP para mejorar ACOS.'],negatives:[]},
     {insights:['Recuperación a 16.002€ ventas, ACOS 11.2%. SB activa (225€). "Mange debout" (mesa bar) empieza a aparecer como término emergente.'],hypotheses:['Mayo es pre-verano: búsquedas de mobiliario de exterior/cocina empiezan a ganar peso. "Mange debout" con ACOS 3% es señal de alta conversión en mesa alta.'],actions:['Preparar campañas específicas de Mesa Alta / Mange Debout para verano.'],negatives:[]},
     {insights:['22.092€ ventas SP, ACOS 12.4%. SD recupera con €464 ventas (ACOS 6.7% — excelente). Prime Day: 18.2% de ventas del mes. "Meuble salle à manger" domina con 156K impr y €1.789 ventas.'],hypotheses:['"Mange debout" destaca con ACOS 3.0% y 4 conversiones — tendencia clara de verano. "Meuble tv" con 38K impr y 0 ventas puede no tener buen match de producto.'],actions:['Escalar inversión en "mange debout" para julio. SD en FR funciona — mantener y aumentar budget. Revisar match de "meuble tv" con el catálogo disponible.'],negatives:['"Meuble tv" (38K impr, 0 ventas) — revisar si el catálogo de muebles TV en FR está activo o negativizar temporalmente.']},
-    {insights:['Francia: 18.664€ ventas (+32,2% vs mayo, último mes comparable). ACOS 18,27%. Campañas de puja baja: 671€ ventas con ROAS 56x. "Meuble salle à manger" crece un 78% (1.623€→2.892€, 11→20 pedidos). Se redujo inversión en aparadores de mayor volumen al caer su rentabilidad por debajo del umbral de eficiencia.'],hypotheses:['Junio operó con precio promocionado en aparadores; julio vuelve a tarifa normal — la comparación MoM no refleja caída real de rendimiento. La referencia correcta es mayo: sobre mayo FR crece +32,2%.'],actions:['Desplegar campañas de cola larga en agosto sobre términos ya validados (objetivo +1.500/2.500€). Cambiar "bahut" por "buffet" en títulos FR — es el término dominante en búsquedas. Mantener defensa de marca (9,3x ROAS).'],negatives:['Recibidores FR ACOS 47,3% — pausar o revisar segmentación urgente.']}
+    {insights:['Francia: 18.664€ ventas (+32,2% vs mayo, último mes comparable). ACOS 18,27%. Campañas de puja baja: 671€ ventas con ROAS 56x. "Meuble salle à manger" crece un 78% (1.623€→2.892€, 11→20 pedidos). Se redujo inversión en aparadores de mayor volumen al caer su rentabilidad por debajo del umbral de eficiencia.'],hypotheses:['Junio operó con precio promocionado en aparadores; julio vuelve a tarifa normal — la comparación MoM no refleja caída real de rendimiento. La referencia correcta es mayo: sobre mayo FR crece +32,2%.'],actions:['Desplegar campañas de cola larga en agosto sobre términos ya validados (objetivo +1.500/2.500€). Cambiar "bahut" por "buffet" en títulos FR — es el término dominante en búsquedas. Mantener defensa de marca (9,3x ROAS).'],negatives:['Recibidores FR ACOS 47,3% — pausar o revisar segmentación urgente.']},
+    {insights:['Francia: 21.288€ ventas ads (+14,1% vs julio) con inversión prácticamente idéntica (3.407€ vs 3.410€). ACOS mejora de 18,27% a 16,00%. ROAS 6,25x. La redistribución interna de presupuesto (de Top Ventas 32,6% ACOS → hacia Aparadores, Muebles TV, Mesa Alta, Camas) es el único driver del crecimiento.'],hypotheses:['Top Ventas operaba en julio por encima del umbral de eficiencia. Al redirigir ese presupuesto hacia categorías con mejor CVR se generan más ventas con el mismo coste total.'],actions:['Mantener la nueva distribución de presupuesto en FR. Escalar inversión en Mesa Alta / "mange debout" (mejor ACOS de la cuenta FR). Valorar reintroducir Top Ventas con bids más bajos y lista de negativos reforzada.'],negatives:['Monitorizar términos de marca en FR — Top Ventas reducido puede reducir visibilidad de búsquedas branded.']}
   ],
   it:[
     {insights:['IT solo con SP activo. ACOS 14.2% — dentro de rango aceptable para el mercado.'],hypotheses:['Italia en fase SP pura. Las credenze (aparadores italianos) y mobili TV son las categorías principales.'],actions:['Explorar activar SB en IT para ganar visibilidad de marca. Analizar qué ASINs tienen mejor CVR.'],negatives:[]},
@@ -702,7 +705,8 @@ const ANNOTATIONS = {
     {insights:['ACOS SP sube a 19.7%. SB activa agresivamente (251€, 0 conversiones). Ventas SP en mínimos (8.295€).'],hypotheses:['La activación agresiva de SB puede estar compitiendo por las mismas búsquedas que SP, elevando el CPC. Evaluar si SB canibaliza presupuesto SP.'],actions:['Revisar distribución de presupuesto SP vs SB. En IT, SP necesita optimización urgente antes de escalar SB.'],negatives:[]},
     {insights:['ACOS SP crítico: 25.7%. SB (65€, 0 ventas). Ventas en mínimos: 6.687€. Tendencia negativa consistente desde enero.'],hypotheses:['IT puede estar enfrentando presión de precio de competidores locales. El deterioro continuo de ACOS sugiere bids desalineados con CVR real.'],actions:['Auditoría completa de campañas IT. Reducir bids a ACOS objetivo por ASIN. Considerar pausa de campañas con ACOS > 40%.'],negatives:[]},
     {insights:['Recuperación: 10.322€ ventas, ACOS 22.2%. "Madia soggiorno" con ACOS 5.96% es el término estrella. "Credenza soggiorno" convierte a ACOS 29%.'],hypotheses:['"Madia soggiorno" (19K impr, €465 ventas, ACOS 5.96%) es el término más eficiente — campañas bien posicionadas en esta keyword. La mejora vs mayo indica que las optimizaciones están dando resultados.'],actions:['Aumentar bids en "madia soggiorno" — mejor término del mercado IT. Reducir bids en "credenza soggiorno" hasta bajar ACOS a <20%.'],negatives:['Revisar: "mobile tv" (9.7K impr, 0 ventas), "mb muebles bonitos" (6.3K impr, 0 ventas) — pueden ser búsquedas de marca sin catálogo activo en IT o términos fuera de target.']},
-    {insights:['Italia gestiona julio de forma óptima: inversión -13,4% (2.036€) y facturación plana (-0,5%, 9.490€), lo que eleva el ROAS un 14,8% (4,7x) y reduce el ACOS 3,18 p.p. a 21,45%. Sobre mayo: +46,9% en ventas. GMV total 23.273€ (+54,4% YoY).'],hypotheses:['El punto de atención no está en publicidad sino en conversión: 0,43% vs 0,91% en España. Con 14.982 clics se cierran solo 64 pedidos — diferencia estructural que no se corrige con más inversión publicitaria; requiere mejora de ficha de producto.'],actions:['Mantener ajuste de inversión — la gestión de bids es correcta. Abordar la conversión a nivel de ficha (imágenes, descripción, precio competitivo) antes de escalar presupuesto. Replicar análisis estratégico de ES/FR en Italia.'],negatives:['APARADORES IT ACOS 23,7% — ligeramente alto; continuar optimización de bids.']}
+    {insights:['Italia gestiona julio de forma óptima: inversión -13,4% (2.036€) y facturación plana (-0,5%, 9.490€), lo que eleva el ROAS un 14,8% (4,7x) y reduce el ACOS 3,18 p.p. a 21,45%. Sobre mayo: +46,9% en ventas. GMV total 23.273€ (+54,4% YoY).'],hypotheses:['El punto de atención no está en publicidad sino en conversión: 0,43% vs 0,91% en España. Con 14.982 clics se cierran solo 64 pedidos — diferencia estructural que no se corrige con más inversión publicitaria; requiere mejora de ficha de producto.'],actions:['Mantener ajuste de inversión — la gestión de bids es correcta. Abordar la conversión a nivel de ficha (imágenes, descripción, precio competitivo) antes de escalar presupuesto. Replicar análisis estratégico de ES/FR en Italia.'],negatives:['APARADORES IT ACOS 23,7% — ligeramente alto; continuar optimización de bids.']},
+    {insights:['Italia: 11.008€ ventas ads (+16,0% vs julio), ACOS 19,88% (mejora desde 21,45%). ROAS 5,03x vs 4,66x. Mejor mes absoluto del año en ventas publicitarias. La inversión crece un +7,5% y las ventas aumentan proporcionalmente más — señal de mejora de eficiencia acumulada. GMV total 26.586€ (+14,3% MoM).'],hypotheses:['La optimización de bids iniciada desde mayo continúa dando resultados. IT mejora por cuarto mes consecutivo desde el mínimo de mayo. CVR (0,30%) sigue siendo el factor limitante estructural — no se corrige con publicidad.'],actions:['Continuar optimización de bids. Abordar CVR a nivel de ficha (imágenes, A+, precio competitivo) antes de escalar presupuesto. Preparar análisis de competencia IT para identificar ventajas de posicionamiento.'],negatives:['CVR IT 0,30% — el más bajo de los 4 mercados; requiere mejora de ficha, no de publicidad.']}
   ],
   de:[
     {insights:['DE solo con SP. ACOS 25.8% — mercado con mayor dificultad de eficiencia. Sin SB ni SD.'],hypotheses:['Alemania es un mercado muy competitivo en precio. Los sideboards/aparadores tienen mucha competencia local (IKEA, Otto, etc.).'],actions:['Evaluar precio competitivo de los productos clave en DE vs competencia local.'],negatives:[]},
@@ -711,11 +715,12 @@ const ANNOTATIONS = {
     {insights:['ACOS sube a 31.5%. SB activa (89€, 0 ventas). Impresiones aumentan significativamente.'],hypotheses:['Mayor competencia en primavera. SB genera impresiones de marca pero sin conversión directa medible.'],actions:['Reducir presupuesto SB hasta que SP mejore. Auditar campañas con ACOS > 40%.'],negatives:[]},
     {insights:['Mejor mes en DE: ACOS 24%, ventas 5.410€. Mejor resultado relativo del período.'],hypotheses:['La mejora puede reflejar efecto de optimizaciones acumuladas y mayor demanda pre-verano de muebles.'],actions:['Identificar qué cambió en mayo para replicarlo en junio. Capitalizar la tendencia positiva.'],negatives:[]},
     {insights:['"Sideboard" domina con 35.6K impr y €444 ventas (ACOS 20.4%). "Kommode" segundo (13K impr, €128 ventas). "Schuhschrank mit spiegel" genera 6K impr sin conversión.'],hypotheses:['"Sideboard" es el principal driver de DE — alta intención de compra. "Schuhschrank mit spiegel" (zapatero con espejo) puede estar apareciendo por campañas de recibidores con targeting amplio.'],actions:['Aumentar bids en "sideboard" — balance volumen/conversión aceptable. Monitorizar "kommode" (ACOS 28.6%) para optimización.'],negatives:['"Schuhschrank mit spiegel" (6K impr, 0 ventas) — negativizar en campañas de aparadores/sideboards.']},
-    {insights:['Alemania retrocede a 3.550€ (-34,9% vs junio). El 69% del retroceso corresponde a una única referencia (Buffet Renzo): pasa de 1.475€ a 167€ tras perder el 74% de sus visitas pese a mantener stock disponible, precio estable desde abril y valoración 4,7★. ACOS 36,09% — mercado en fase de aprendizaje.'],hypotheses:['Alemania es el mercado más joven de los cuatro — sus indicadores todavía reflejan una etapa de maduración. La caída está concentrada en Buffet Renzo (en diagnóstico con la gestora de la cuenta), no es una tendencia generalizada.'],actions:['Diagnosticar y resolver la pérdida de visibilidad de Buffet Renzo (algoritmo, Buy Box, contenido de ficha). Reducir bids en APARADORES (ACOS 42,4%) y RECIBIDORES (ACOS 37,9%) — objetivo <30% antes de escalar.'],negatives:['Buffet Renzo — causa de caída de visibilidad sin identificar; prioridad de diagnóstico.']}
+    {insights:['Alemania retrocede a 3.550€ (-34,9% vs junio). El 69% del retroceso corresponde a una única referencia (Buffet Renzo): pasa de 1.475€ a 167€ tras perder el 74% de sus visitas pese a mantener stock disponible, precio estable desde abril y valoración 4,7★. ACOS 36,09% — mercado en fase de aprendizaje.'],hypotheses:['Alemania es el mercado más joven de los cuatro — sus indicadores todavía reflejan una etapa de maduración. La caída está concentrada en Buffet Renzo (en diagnóstico con la gestora de la cuenta), no es una tendencia generalizada.'],actions:['Diagnosticar y resolver la pérdida de visibilidad de Buffet Renzo (algoritmo, Buy Box, contenido de ficha). Reducir bids en APARADORES (ACOS 42,4%) y RECIBIDORES (ACOS 37,9%) — objetivo <30% antes de escalar.'],negatives:['Buffet Renzo — causa de caída de visibilidad sin identificar; prioridad de diagnóstico.']},
+    {insights:['Alemania: mejor mes del año. 6.229€ ventas ads (+75,5% vs julio 3.550€), ACOS 25,12% (vs 36,09% julio — mejora de 11 p.p.). ROAS 3,98x vs 2,77x. Aparadores triplica sus ventas. Renzo Sideboard se recupera tras el diagnóstico del mes anterior. Inversión +22% (1.564€ vs 1.281€). GMV total 10.974€ (+45,4% MoM).'],hypotheses:['La recuperación de Renzo Sideboard y la reactivación de Aparadores son el driver principal del salto. El trabajo de diagnóstico de julio (visibilidad, Buy Box, contenido de ficha) ha tenido impacto inmediato y medible.'],actions:['Capitalizar la recuperación: aumentar inversión en Aparadores DE con ACOS controlado. Replicar el diagnóstico de visibilidad en otras referencias DE con caídas sin explicar. Continuar reduciendo bids donde ACOS > 30%.'],negatives:['ACOS DE 25,12% — aún por encima del objetivo 10–12%; mercado en maduración con tendencia clara de mejora.']}
   ]
 };
 
-let state = { market:'global', period:6 };
+let state = { market:'global', period:7 };
 let chartSales = null, chartAds = null;
 
 // ── UTILITIES ─────────────────────────────────────────────────────────────────
@@ -900,11 +905,11 @@ function renderSalesSection(m, idx) {
           <div class="kpi-sub">Atribución publicidad</div></div>
       </div>
       <div class="chart-wrap">
-        <div class="chart-title">Evolución ventas &amp; tráfico — ene–jul 2026</div>
+        <div class="chart-title">Evolución ventas &amp; tráfico — ene–ago 2026</div>
         <div class="chart-canvas"><canvas id="chartSales"></canvas></div>
       </div>
     </div>
-    <div class="sec-foot"><div class="sec-source">Fuente: <span class="src-badge">MerchantSpring</span> <span style="color:var(--text-soft)">Ene–Jul 2026 &amp; 2025 · EUR bruto con IVA</span></div></div>
+    <div class="sec-foot"><div class="sec-source">Fuente: <span class="src-badge">MerchantSpring</span> <span style="color:var(--text-soft)">Ene–Ago 2026 &amp; 2025 · EUR bruto con IVA</span></div></div>
   </div>`;
 }
 
@@ -964,7 +969,7 @@ function renderAdsSection(m, idx) {
         <div class="chart-canvas"><canvas id="chartAds"></canvas></div>
       </div>
     </div>
-    <div class="sec-foot"><div class="sec-source">Fuente: <span class="src-badge">Pacvue</span> <span style="color:var(--text-soft)">Enero–Julio 2026</span></div></div>
+    <div class="sec-foot"><div class="sec-source">Fuente: <span class="src-badge">Pacvue</span> <span style="color:var(--text-soft)">Enero–Agosto 2026</span></div></div>
   </div>`;
 }
 
@@ -1176,8 +1181,8 @@ function renderTopSection(m, idx) {
 
 function renderPeriodBanner(m, idx) {
   const flags={global:'🌍',es:'🇪🇸',fr:'🇫🇷',it:'🇮🇹',de:'🇩🇪'}, names={global:'Global Pan-EU',es:'España',fr:'Francia',it:'Italia',de:'Alemania'};
-  const periodLabel=idx===-1?'YTD Ene–Jul 2026':MONTHS[idx]+' 2026';
-  const prevLabel=idx>0?'vs '+MONTHS[idx-1]+' 2026 (MoM) · vs '+MONTHS[idx]+' 2025 (YoY)':idx===-1?'7 meses acumulados · comparativa 2025':'';
+  const periodLabel=idx===-1?'YTD Ene–Ago 2026':MONTHS[idx]+' 2026';
+  const prevLabel=idx>0?'vs '+MONTHS[idx-1]+' 2026 (MoM) · vs '+MONTHS[idx]+' 2025 (YoY)':idx===-1?'8 meses acumulados · comparativa 2025':'';
   return `<div class="period-banner"><div class="pb-icon">${flags[m]}</div><div>
     <div class="pb-title">${flags[m]} ${names[m]} · ${periodLabel}</div>
     <div class="pb-sub">${prevLabel}</div>
@@ -1281,7 +1286,7 @@ function renderCampaignTypeSection(m, idx) {
   }
 
   if(!rows.length) return '';
-  const periodLabel=idx===-1?'YTD Ene–Jul 2026':MONTHS[idx]+' 2026';
+  const periodLabel=idx===-1?'YTD Ene–Ago 2026':MONTHS[idx]+' 2026';
   return `<div class="section">
     <div class="sec-head"><h2>Tipo de Campaña</h2><span class="sec-badge">${mktNames[m]||m} · ${periodLabel}</span></div>
     <div class="sec-body">
@@ -1293,7 +1298,7 @@ function renderCampaignTypeSection(m, idx) {
       </div>
       <div class="info-note" style="margin-top:10px">ℹ Ventas SB = atribución indirecta (halo). ACoS SB no se calcula sobre ventas directas.</div>
     </div>
-    <div class="sec-foot"><div class="sec-source">Fuente: <span class="src-badge">Pacvue</span> <span style="color:var(--text-soft)">Ene–Jul 2026 · SP+SB+SD</span></div></div>
+    <div class="sec-foot"><div class="sec-source">Fuente: <span class="src-badge">Pacvue</span> <span style="color:var(--text-soft)">Ene–Ago 2026 · SP+SB+SD</span></div></div>
   </div>`;
 }
 
@@ -1377,7 +1382,7 @@ function renderAnnotationsSection(m, idx) {
   });
 
   if(!html) return '';
-  const periodLabel=idx===-1?'YTD Ene–Jul 2026':MONTHS[idx]+' 2026';
+  const periodLabel=idx===-1?'YTD Ene–Ago 2026':MONTHS[idx]+' 2026';
   return `<div class="section">
     <div class="sec-head"><h2>Anotaciones del Período</h2><span class="sec-badge">${mktNames[m]||m} · ${periodLabel}</span></div>
     <div class="sec-body">${html}</div>
@@ -1387,9 +1392,9 @@ function renderAnnotationsSection(m, idx) {
 
 // ── GLOBAL CONCLUSIONS ────────────────────────────────────────────────────────
 function renderGlobalConclusionsSection(idx) {
-  if(idx!==6) return '';
+  if(idx!==6 && idx!==7) return '';
   const row=(icon,color,t)=>`<div style="display:flex;gap:8px;margin-bottom:5px"><span style="color:${color};flex-shrink:0">${icon}</span><span style="font-size:11.5px">${t}</span></div>`;
-  return `<div class="section">
+  if(idx===6) return `<div class="section">
     <div class="sec-head"><h2>Conclusiones Julio 2026</h2><span class="sec-badge">Global Pan-EU</span></div>
     <div class="sec-body">
       <div style="margin-bottom:14px">
@@ -1416,6 +1421,40 @@ function renderGlobalConclusionsSection(idx) {
     </div>
     <div class="sec-foot"><div class="sec-source">Fuente: <span class="src-badge">Análisis Roicos</span> <span style="color:var(--text-soft)">Síntesis Julio 2026 · Pacvue + MerchantSpring</span></div></div>
   </div>`;
+  // ── Agosto 2026 ──
+  return `<div class="section">
+    <div class="sec-head"><h2>Conclusiones Agosto 2026</h2><span class="sec-badge">Global Pan-EU</span></div>
+    <div class="sec-body">
+      <div style="margin-bottom:14px">
+        <div style="font-size:11px;font-weight:700;color:var(--text-soft);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">Rendimiento del mes</div>
+        ${row('◆','var(--acc-dark)','Sell-out total <strong>167.022€ (+17,5% MoM)</strong>. Crecimiento en los 4 mercados. Buy Box global 96,9%.')}
+        ${row('◆','var(--acc-dark)','Publicidad: 74.631€ ventas ads · 12.583€ inversión → ACOS 16,86% (vs 18,33% julio) · ROAS 5,93x. <strong>Primer mes del año en que los 4 mercados mejoran ACOS simultáneamente.</strong>')}
+        ${row('◆','var(--acc-dark)','Nueva estructura de captación segmentada (por atributo: acabado LED, tamaño, color) → ACOS 8,1% sobre 6,5% del presupuesto → 13,5% de las ventas publicitarias.')}
+        ${row('◆','var(--acc-dark)','Alemania: salto del +75,5% en ventas ads. España: mejor mes del año (36.106€ ads). Francia: +14,1% con inversión idéntica.')}
+      </div>
+      <div style="background:rgba(180,40,40,.07);border-left:3px solid #B42828;border-radius:0 6px 6px 0;padding:10px 12px;margin-bottom:14px">
+        <div style="font-size:11px;font-weight:700;color:#B42828;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">⚠ Alertas y discrepancias</div>
+        ${row('!','#B42828','<strong>TACOS global:</strong> el informe de ads registra 9,06% (spend 12.583€ / revenue 138.850€) — por encima del objetivo 6–7%. El dashboard lo calcula sobre GMV MerchantSpring (167.022€) → 7,53%. Diferencia por fuente de revenue: validar con equipo.')}
+        ${row('!','#B42828','<strong>ACOS global 16,86%</strong> — por encima del objetivo 10–12%. Todos los mercados mejoran, pero la distancia al objetivo sigue siendo relevante.')}
+        ${row('!','#B42828','<strong>Prime badge ausente</strong> en ~97% del catálogo (FBM sin Prime): suelo estructural de conversión que limita el CVR y el impacto de publicidad.')}
+      </div>
+      <div style="background:rgba(139,105,20,.07);border-left:3px solid #C9A227;border-radius:0 6px 6px 0;padding:10px 12px;margin-bottom:14px">
+        <div style="font-size:11px;font-weight:700;color:#8B6914;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">Categorías destacadas</div>
+        ${row('◆','#C9A227','<strong>Aparadores</strong> — motor en los 4 mercados. DE: Aparadores triplica ventas. ES: ACOS 15% con nueva segmentación.')}
+        ${row('◆','#C9A227','<strong>Alemania</strong> — recuperación de Renzo Sideboard y Aparadores: salto de 3.550€ a 6.229€ en ventas ads.')}
+        ${row('◆','#C9A227','<strong>Mesa Alta / "Mange debout"</strong> — mejor ROAS de la cuenta en ES y FR con campañas de puja baja.')}
+      </div>
+      <div style="background:rgba(46,107,72,.07);border-left:3px solid #2E6B48;border-radius:0 6px 6px 0;padding:10px 12px">
+        <div style="font-size:11px;font-weight:700;color:#2E6B48;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">Next steps</div>
+        ${row('→','#2E6B48','<strong>Global:</strong> Escalar la nueva estructura de captación segmentada al resto de mercados (validada en ES con ACOS 8,1%).')}
+        ${row('→','#2E6B48','<strong>ES:</strong> Recuperar visibilidad Mesa Alta. Reforzar Recibidores (ACOS elevado). Confirmar campañas Top Ventas activas.')}
+        ${row('→','#2E6B48','<strong>FR:</strong> Mantener redistribución de presupuesto (Top Ventas → Aparadores/Mesa Alta). Escalar "mange debout".')}
+        ${row('→','#2E6B48','<strong>IT:</strong> Mejorar fichas antes de escalar presupuesto — CVR 0,30% es el factor limitante. Análisis de competencia IT pendiente.')}
+        ${row('→','#2E6B48','<strong>DE:</strong> Capitalizar recuperación de Aparadores. Diagnóstico de referencias con caídas de visibilidad no resueltas. Validar términos sin conversión con Carla.')}
+      </div>
+    </div>
+    <div class="sec-foot"><div class="sec-source">Fuente: <span class="src-badge">Análisis Roicos</span> <span style="color:var(--text-soft)">Síntesis Agosto 2026 · Pacvue + MerchantSpring</span></div></div>
+  </div>`;
 }
 
 function render() {
@@ -1434,7 +1473,7 @@ function render() {
   document.getElementById('content').innerHTML=html;
   setTimeout(()=>{initChartSales(m);initChartAds(m);},50);
   document.querySelectorAll('.nav-markets button').forEach(b=>b.classList.toggle('active',b.getAttribute('onclick').includes(`'${m}'`)));
-  document.querySelectorAll('.nav-periods button').forEach((b,i)=>b.classList.toggle('active',[0,1,2,3,4,5,6,-1][i]===idx));
+  document.querySelectorAll('.nav-periods button').forEach((b,i)=>b.classList.toggle('active',[0,1,2,3,4,5,6,7,-1][i]===idx));
 }
 
 function setMarket(m){state.market=m;render();window.scrollTo({top:0,behavior:'smooth'});}
