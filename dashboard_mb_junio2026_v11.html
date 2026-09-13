@@ -1452,15 +1452,12 @@ function renderTop5CategorySection(m, idx) {
     if(!items||!items.length) return;
     const rows=items.map((it,i)=>{
       const mktCol = isGlobal ? `<td style="text-align:center;font-size:12px">${(it.mkts||[]).map(k=>flag[k]).join('')}</td>` : '';
-      const coincide = it.adSales>0;
       return `<tr>
         <td><span class="top-rank">${i+1}</span></td>
         <td style="font-size:11.5px">${it.title}<span style="color:var(--text-soft);font-family:monospace;font-size:9.5px;margin-left:5px">${it.asin}</span></td>
         ${mktCol}
         <td><strong>${fmtDec(it.sales)}</strong></td>
         <td>${it.units}</td>
-        <td>${coincide?fmtDec(it.adSales):'<span class="dash">—</span>'}</td>
-        <td style="text-align:center">${coincide?'<span style="color:#2E6B48">✓</span>':'<span style="color:var(--text-soft)">○</span>'}</td>
       </tr>`;
     }).join('');
     const mktHeader = isGlobal ? '<th style="text-align:center">Mkt</th>' : '';
@@ -1468,7 +1465,7 @@ function renderTop5CategorySection(m, idx) {
       <div style="font-size:12px;font-weight:700;color:var(--acc-dark);margin-bottom:6px">${cat}</div>
       <div style="overflow-x:auto">
         <table class="asin-table">
-          <thead><tr><th></th><th>Producto</th>${mktHeader}<th>Ventas reales</th><th>Uds</th><th>Ventas Ads</th><th>En Ads</th></tr></thead>
+          <thead><tr><th></th><th>Producto</th>${mktHeader}<th>Ventas reales</th><th>Uds</th></tr></thead>
           <tbody>${rows}</tbody>
         </table>
       </div>
@@ -1477,8 +1474,8 @@ function renderTop5CategorySection(m, idx) {
   if(!blocks) return '';
 
   const crossNote = isGlobal
-    ? 'ℹ <strong>Ventas reales</strong> = MerchantSpring (generateSalesByProductReport, ads + orgánico) sumado ES+FR+IT+DE · <strong>Ventas Ads</strong> = Pacvue, para validar si el top real coincide con el top de publicidad. ✓ = el ASIN también aparece entre los más vendidos en Ads (coincide) · ○ = vende bien de forma orgánica pero sin apenas inversión en Ads — oportunidad de reforzar con publicidad.'
-    : 'ℹ <strong>Ventas reales</strong> = MerchantSpring (ads + orgánico) · <strong>Ventas Ads</strong> = Pacvue (para contraste) · ✓ = coincide con el top de Ads · ○ = vende orgánicamente, poca o ninguna inversión en Ads.';
+    ? 'ℹ <strong>Ventas reales</strong> y <strong>Uds.</strong> = MerchantSpring (ventas totales, ads + orgánico), ASIN agregado sumando ES+FR+IT+DE.'
+    : 'ℹ <strong>Ventas reales</strong> y <strong>Uds.</strong> = MerchantSpring (ventas totales, ads + orgánico) para agosto 2026.';
 
   return `<div class="section">
     <div class="sec-head">
@@ -1489,7 +1486,7 @@ function renderTop5CategorySection(m, idx) {
       ${blocks}
       <div class="info-note">${crossNote}</div>
     </div>
-    <div class="sec-foot"><div class="sec-source">Fuente: <span class="src-badge">MerchantSpring</span> ${isGlobal?'<span class="src-badge">Pacvue</span> ':''}<span style="color:var(--text-soft)">Sales by Product Report agosto 2026${isGlobal?' · cross-check Ads Pacvue':''}</span></div></div>
+    <div class="sec-foot"><div class="sec-source">Fuente: <span class="src-badge">MerchantSpring</span> <span style="color:var(--text-soft)">Sales by Product Report agosto 2026</span></div></div>
   </div>`;
 }
 
