@@ -534,6 +534,203 @@ const ASINS = {
   ]
 };
 
+// ── TOP 5 VENTAS POR CATEGORÍA · agosto 2026 (MerchantSpring generateSalesByProductReport) ──
+// sales = ventas reales totales (ads + orgánico) por ASIN · adSales = ventas Ads Pacvue (cross-check)
+// global = ASIN agregado sumando ES+FR+IT+DE (mkts = mercados donde vende)
+const TOP5_CATEGORY = {
+  es: {
+    'APARADORES': [
+      {asin:'B0FPMD6W2T',title:'Aparador bajo Kai con 3 Puertas para Salón Comedor Moderno',sales:3202.64,units:36,adSales:1250.35},
+      {asin:'B0F8W33TBY',title:'Aparador con Puertas y cajones Yanis para Salón Comedor...',sales:2929.32,units:14,adSales:345.44},
+      {asin:'B09LMR77GN',title:'Aparador Roque Mueble Auxiliar Moderno de Salón y Comed...',sales:2702.83,units:17,adSales:163.62},
+      {asin:'B0888VW41V',title:'Aparador Roque Mueble Auxiliar Moderno de Salón y Comed...',sales:2225.86,units:14,adSales:525.58},
+      {asin:'B085DQLFGQ',title:'Aparador Clark con 3 Puertas para Salón con Luz LED',sales:1919.76,units:12,adSales:989.94}
+    ],
+    'MESA ALTA': [
+      {asin:'B0FMFLM8YT',title:'Mesa Alta de Cocina con 2 Taburetes Estilo Industrial',sales:1031.91,units:8,adSales:0.0},
+      {asin:'B0FMFFNY83',title:'Mesa Alta de Cocina con 2 Taburetes Estilo Industrial',sales:975.23,units:7,adSales:114.87},
+      {asin:'B0FMFMQFKK',title:'Mesa Alta de Cocina con 2 Taburetes Estilo Industrial',sales:833.95,units:6,adSales:0.0},
+      {asin:'B0FMFMN4B4',title:'Mesa Alta de Cocina Estilo Industrial Modelo Ani',sales:791.2,units:10,adSales:261.12},
+      {asin:'B0FNDDS39P',title:'Mesa Alta de Cocina Estilo Industrial Modelo Ani',sales:721.31,units:8,adSales:223.08}
+    ],
+    'MUEBLES TV': [
+      {asin:'B0FM3TXQ4J',title:'Mueble TV bajo con Patas Aitana M2 para Salón Moderno',sales:2972.75,units:25,adSales:1571.79},
+      {asin:'B0D8TQK2SY',title:'Mueble TV Colgante Aitana M2 para Salón Moderno',sales:951.92,units:8,adSales:393.36},
+      {asin:'B0D923FPZH',title:'Mueble TV Colgante Aitana M2 para Salón Moderno',sales:951.92,units:8,adSales:196.68},
+      {asin:'B0CJ3453TM',title:'Mueble TV Colgante Aydin para Salón Moderno',sales:620.91,units:9,adSales:228.08},
+      {asin:'B0FM3S6YM1',title:'Mueble TV bajo con Patas Aitana M2 para Salón Moderno',sales:596.92,units:5,adSales:98.34}
+    ],
+    'CAMAS': [
+      {asin:'B07DY9LLWB',title:'Cama de Matrimonio Nitas para Colchón de 150x190 cm',sales:1899.9,units:5,adSales:0.0},
+      {asin:'B07N1RFJ5C',title:'Cama de Matrimonio Nitas para Colchón de 150x190 cm',sales:1139.94,units:3,adSales:0.0},
+      {asin:'B07M5M22S8',title:'Cama de Matrimonio Rodas para Colchón de 180x200 cm',sales:979.96,units:2,adSales:0.0},
+      {asin:'B07JH94KW7',title:'Cama de Matrimonio Nitas para Colchón de 160x200 cm',sales:779.96,units:2,adSales:0.0},
+      {asin:'B0D8BT87VW',title:'Cama de Matrimonio Nitas con Colchón de 150x190 cm',sales:609.98,units:1,adSales:0.0}
+    ],
+    'RECIBIDORES': [
+      {asin:'B09MV14ZGT',title:'Conjunto Recibidor Paola Set con Zapatero Espejo',sales:1430.91,units:9,adSales:0.0},
+      {asin:'B0D37W28K6',title:'Recibidor Suspendido Neo con Espejo Modular y Cajón',sales:839.76,units:12,adSales:173.49},
+      {asin:'B0CJ2MSD4L',title:'Recibidor Suspendido Neo con Espejo Modular y Cajón',sales:699.8,units:10,adSales:0.0},
+      {asin:'B08NTHT243',title:'Recibidor Zapatero Paola con Luz LED para Recibidor',sales:659.88,units:6,adSales:0.0},
+      {asin:'B0FHBQ6DX4',title:'Recibidor Colgante Amira con Espejo Blanco',sales:639.84,units:8,adSales:264.4}
+    ],
+    'VITRINAS': [
+      {asin:'B09L8LV6ZX',title:'Vitrina con Patas 2 cm Luke V6 para Salón o Comedor Mod...',sales:1250.91,units:9,adSales:0.0},
+      {asin:'B07XTJVF8Y',title:'Vitrina con Patas 2 cm Luke V5 para Salón o Comedor Mod...',sales:1114.22,units:8,adSales:0.0},
+      {asin:'B07JNP7W7M',title:'Vitrina Colgante Luke V5 para Salón o Comedor Moderno c...',sales:833.94,units:6,adSales:0.0},
+      {asin:'B09L8LC5TQ',title:'Vitrina Colgante Luke V5 para Salón o Comedor Moderno c...',sales:416.97,units:3,adSales:0.0},
+      {asin:'B07JNQV812',title:'Vitrina con Patas 2 cm Luke V5 para Salón o Comedor Mod...',sales:416.97,units:3,adSales:0.0}
+    ]
+  },
+  fr: {
+    'APARADORES': [
+      {asin:'B0888WC4Z8',title:'Buffet Roque pour Salon et Salle à Manger Moderne',sales:2588.65,units:13,adSales:663.32},
+      {asin:'B085GGY8ZB',title:'Buffet Salle à Manger Aker - Bahut Salon Design Moderne...',sales:2409.0,units:11,adSales:555.83},
+      {asin:'B085DQLFGQ',title:'Buffet Clark avec Lumière LED et 3 Portes pour Salon et...',sales:2189.0,units:11,adSales:829.15},
+      {asin:'B0FPMD6W2T',title:'Bahut Bas Kai avec 3 Portes pour Salon et Salle à Mange...',sales:2023.0,units:17,adSales:595.01},
+      {asin:'B0888VG5GK',title:'Buffet Roque pour Salon et Salle à Manger Moderne',sales:1592.0,units:8,adSales:165.83}
+    ],
+    'MESA ALTA': [
+      {asin:'B0DBM5HDCH',title:'Table Haute de Cuisine Kyra avec 3 Étagères de Rangement',sales:1335.0,units:15,adSales:593.36},
+      {asin:'B0FMFMVFN6',title:'Table Haute de Cuisine Kyra avec 3 Étagères de Rangement',sales:697.17,units:8,adSales:370.85},
+      {asin:'B0FMFMQFKK',title:'Table de Bar Haute ANI avec Deux tabourets pour 2 Perso...',sales:596.0,units:4,adSales:0.0},
+      {asin:'B0H4GRBQ5Q',title:'Ensemble Table Haute et 2 Tabourets Kyra Mange-Debout d...',sales:596.0,units:4,adSales:0.0},
+      {asin:'B0FMFLX6QS',title:'Ensemble Table Haute et 2 Tabourets Kyra Mange-Debout d...',sales:477.0,units:3,adSales:0.0}
+    ],
+    'MUEBLES TV': [
+      {asin:'B0FM3TXQ4J',title:'Meuble TV avec Pieds Aitana M2 pour Salon Moderne',sales:2064.0,units:16,adSales:537.5},
+      {asin:'B0D8TQK2SY',title:'Meuble TV Mural Aitana M2 pour Salon Moderne',sales:1290.0,units:10,adSales:430.0},
+      {asin:'B0D925QV5C',title:'Meuble TV Mural Aitana M1 pour Salon Moderne',sales:654.0,units:6,adSales:181.66},
+      {asin:'B0FPMJ1D87',title:'Meuble TV Bas Kai avec 1 Porte pour Salon Moderne',sales:649.0,units:11,adSales:147.51},
+      {asin:'B01M1BN67C',title:'Meuble TV Mural Nora H2 pour Salon Moderne',sales:447.0,units:3,adSales:248.34}
+    ],
+    'CAMAS': [
+      {asin:'B0DWN56PFZ',title:'Lit Double Diana avec Matelas 150x190cm Design Flottant...',sales:699.0,units:1,adSales:0.0},
+      {asin:'B07DY4G37G',title:'Lit Double Nitas pour Matelas 160x200 cm Lumière LED',sales:539.0,units:1,adSales:449.17}
+    ],
+    'RECIBIDORES': [
+      {asin:'B0D37W28K6',title:'Meuble d’Entrée Mural Neo avec Miroir et Tiroir',sales:436.0,units:4,adSales:0.0},
+      {asin:'B0FL2TVNLX',title:'Meuble d’Entrée Mural Neo avec Miroir et Tiroir',sales:218.0,units:2,adSales:0.0},
+      {asin:'B09MV14ZGT',title:'Ensemble Meuble d’Entrée Paola Set avec Meuble à Chauss...',sales:179.0,units:1,adSales:0.0},
+      {asin:'B09LHZZ2ZR',title:'Meuble d’Entrée Meuble à Chaussures Paola avec Lumière LED',sales:119.0,units:1,adSales:0.0},
+      {asin:'B0CJ2MSD4L',title:'Meuble d’Entrée Mural Neo avec Miroir et Tiroir',sales:109.0,units:1,adSales:0.0}
+    ],
+    'VITRINAS': [
+      {asin:'B07XTJVF8Y',title:'Vitrine avec Pieds 2 cm Luke V5 pour Salon ou Salle à M...',sales:596.0,units:4,adSales:0.0},
+      {asin:'B09L8LQRXX',title:'Vitrine Luke V5 avec pieds standard',sales:149.0,units:1,adSales:0.0},
+      {asin:'B08T1FXV65',title:'Vitrine Mural Luke V3 pour Salon ou Salle à Manger Mode...',sales:57.0,units:1,adSales:0.0}
+    ]
+  },
+  it: {
+    'APARADORES': [
+      {asin:'B0FPMD6W2T',title:'Credenza Bassa Kai con 3 Ante per Soggiorno e Sala da P...',sales:1116.22,units:9,adSales:529.57},
+      {asin:'B0CXYV9M1L',title:'Credenza Madia Clark L Soggiorno Moderno LED',sales:876.0,units:4,adSales:0.0},
+      {asin:'B0GBY7KTD1',title:'Credenza con ante scanalate Renzo per Soggiorno-Pranzo...',sales:846.6,units:5,adSales:156.2},
+      {asin:'B09LMR77GN',title:'Credenza Stile Moderno Roque Melamina Sonoma',sales:796.0,units:4,adSales:0.0},
+      {asin:'B0DTTYQD15',title:'Credenza Madia Soggiorno Zoel Melamina Opaca',sales:765.0,units:9,adSales:278.68}
+    ],
+    'MESA ALTA': [
+      {asin:'B0FMFFNY83',title:'Tavolo Alto da bar con 2 Sgabelli Ani Barra da cucina i...',sales:149.0,units:1,adSales:0.0},
+      {asin:'B0FMFJM2H5',title:'Tavolo Alto da bar Ani Barra da cucina in Stile Minimal...',sales:109.0,units:1,adSales:0.0}
+    ],
+    'MUEBLES TV': [
+      {asin:'B0FLQBBYTC',title:'Mobile TV con piedini Nora H2 Soggiorno Moderno',sales:596.0,units:4,adSales:0.0},
+      {asin:'B0FM3TXQ4J',title:'Mobile TV con piedini Aitana M2 Soggiorno Moderno',sales:516.0,units:4,adSales:105.74},
+      {asin:'B0D923FPZH',title:'Mobile TV Sospeso a Parete Aitana M2 Soggiorno Moderno',sales:278.0,units:2,adSales:227.86},
+      {asin:'B0FLQ5KKD9',title:'Mobile TV con piedini Tibi Soggiorno Moderno',sales:189.0,units:1,adSales:0.0},
+      {asin:'B0FLQB8XQT',title:'Mobile TV con piedini Nora H2 Soggiorno Moderno',sales:149.0,units:1,adSales:0.0}
+    ],
+    'CAMAS': [
+      {asin:'B0FHBQ5MFP',title:'Toeletta Sospesa con Specchio Velia Toeletta con Cassetto',sales:414.05,units:4,adSales:0.0},
+      {asin:'B07N4BG9RC',title:'Letto Matrimoniale Alessia Legno e Ecoleather',sales:389.0,units:1,adSales:0.0}
+    ],
+    'RECIBIDORES': [
+      {asin:'B0FL2TVNLX',title:'Mobile Ingresso Sospeso Neo con Specchio e Cassetto',sales:218.0,units:2,adSales:0.0},
+      {asin:'B0CJ2PXN2N',title:'Mobile Ingresso Sospeso Neo con Specchio e Cassetto',sales:218.0,units:2,adSales:0.0},
+      {asin:'B08NTHT243',title:'Scarpiera Paola con luce LED per ingresso design moderno',sales:129.0,units:1,adSales:0.0}
+    ],
+    'VITRINAS': [
+      {asin:'B07JMZJP9Y',title:'Vetrina Pensile Luke V5 LED Melamina Finitura Lucida',sales:477.0,units:3,adSales:0.0},
+      {asin:'B07JNP7W7M',title:'Vetrina Pensile Luke V5 LED Melamina Finitura Lucida',sales:477.0,units:3,adSales:0.0},
+      {asin:'B07JNDM1TW',title:'Vetrina Pensile Luke V3 LED Melamina Finitura Lucida',sales:201.0,units:3,adSales:0.0},
+      {asin:'B09L8LC5TQ',title:'Vetrina Pensile Luke V5 LED Melamina Finitura Opaca e L...',sales:159.0,units:1,adSales:0.0},
+      {asin:'B07JNQV812',title:'Vetrina Con Piedini 2cm Luke V5 LED Melamina',sales:159.0,units:1,adSales:0.0}
+    ]
+  },
+  de: {
+    'APARADORES': [
+      {asin:'B0FD43LKP7',title:'Sideboard Renzo mit gerillten Türen für modernes Wohn-...',sales:1831.14,units:10,adSales:1505.07},
+      {asin:'B0F8W6YCHG',title:'Sideboard mit Türen und Schubladen Yanis für modernes W...',sales:747.0,units:3,adSales:209.24},
+      {asin:'B07DYCZR3W',title:'Modernes Sideboard Wohnzimmer oder Esszimmer',sales:627.0,units:3,adSales:0.0},
+      {asin:'B085GGM485',title:'Modernes Sideboard Breite 155 x Höhe 91',sales:478.0,units:2,adSales:401.68},
+      {asin:'B0CXYV9M1L',title:'Sideboard Wohnzimmer',sales:458.0,units:2,adSales:0.0}
+    ],
+    'MUEBLES TV': [
+      {asin:'B0FM3TXQ4J',title:'TV-Möbel mit Füßen TV-Lowboard Farbe Eiche',sales:516.0,units:4,adSales:0.0},
+      {asin:'B0FM3S6YM1',title:'TV-Möbel mit Füßen TV-Lowboard Farbe Weiß',sales:129.0,units:1,adSales:0.0},
+      {asin:'B0D8TQK2SY',title:'Hängendes TV-Möbel TV-Lowboard Farbe Eiche',sales:129.0,units:1,adSales:108.4},
+      {asin:'B0FM3RFS98',title:'TV-Möbel mit Füßen TV-Lowboard Farbe Weiß',sales:119.0,units:1,adSales:100.0}
+    ],
+    'RECIBIDORES': [
+      {asin:'B09HXNC1ZH',title:'Flurmöbel mit Schuhschrank',sales:387.0,units:3,adSales:216.8},
+      {asin:'B0D3VBJ1WF',title:'Flurmöbel Set mit Schuhschrank Spiegel und Garderobe',sales:378.0,units:2,adSales:158.82},
+      {asin:'B09SBMV4G3',title:'Flurmöbel Set mit Schuhschrank Spiegel und Garderobe',sales:189.0,units:1,adSales:0.0},
+      {asin:'B0FL2TVNLX',title:'Flurmöbel mit Spiegel und Schublade Dielenmöbel',sales:109.0,units:1,adSales:0.0}
+    ],
+    'VITRINAS': [
+      {asin:'B07XTJVF8Y',title:'Vitrinenschrank Luke V5',sales:318.0,units:2,adSales:267.22},
+      {asin:'B07XTFVGJF',title:'Vitrinenschrank Luke V6',sales:298.0,units:2,adSales:0.0},
+      {asin:'B07JMZH75L',title:'Vitrinenschrank Luke V6',sales:149.0,units:1,adSales:0.0},
+      {asin:'B07JNLP43M',title:'Vitrinenschrank Luke V3',sales:134.0,units:2,adSales:0.0},
+      {asin:'B07JN2WH63',title:'Vitrinenschrank Luke V4',sales:119.0,units:1,adSales:0.0}
+    ]
+  },
+  global: {
+    'APARADORES': [
+      {asin:'B0FPMD6W2T',title:'Credenza Bassa Kai con 3 Ante per Soggiorno e Sala da P...',sales:6341.86,units:62,adSales:2374.93,mkts:['es','fr','it']},
+      {asin:'B085GGY8ZB',title:'Modernes Sideboard Breite 155 x Höhe 91',sales:4896.9,units:23,adSales:1413.13,mkts:['de','es','fr','it']},
+      {asin:'B085DQLFGQ',title:'Credenza Madia Clark Soggiorno Moderno LED',sales:4735.76,units:26,adSales:1990.4,mkts:['es','fr','it']},
+      {asin:'B0FD43LKP7',title:'Sideboard Renzo mit gerillten Türen für modernes Wohn-...',sales:4724.06,units:27,adSales:2695.94,mkts:['de','es','fr','it']},
+      {asin:'B09LMR77GN',title:'Modernes Sideboard Wohnzimmer oder Esszimmer',sales:4702.83,units:27,adSales:329.45,mkts:['de','es','fr','it']}
+    ],
+    'MESA ALTA': [
+      {asin:'B0DBM5HDCH',title:'Table Haute de Cuisine Kyra avec 3 Étagères de Rangement',sales:1690.96,units:19,adSales:666.91,mkts:['es','fr']},
+      {asin:'B0FMFMQFKK',title:'Table de Bar Haute ANI avec Deux tabourets pour 2 Perso...',sales:1429.95,units:10,adSales:0.0,mkts:['es','fr']},
+      {asin:'B0FMFFNY83',title:'Tavolo Alto da bar con 2 Sgabelli Ani Barra da cucina i...',sales:1422.23,units:10,adSales:114.87,mkts:['es','fr','it']},
+      {asin:'B0FMFLM8YT',title:'Table de Bar Haute ANI avec Deux tabourets pour 2 Perso...',sales:1309.91,units:10,adSales:0.0,mkts:['es','fr']},
+      {asin:'B0FMFLX6QS',title:'Ensemble Table Haute et 2 Tabourets Kyra Mange-Debout d...',sales:992.96,units:7,adSales:319.8,mkts:['es','fr']}
+    ],
+    'MUEBLES TV': [
+      {asin:'B0FM3TXQ4J',title:'TV-Möbel mit Füßen TV-Lowboard Farbe Eiche',sales:6068.75,units:49,adSales:2215.03,mkts:['de','es','fr','it']},
+      {asin:'B0D8TQK2SY',title:'Hängendes TV-Möbel TV-Lowboard Farbe Eiche',sales:2370.92,units:19,adSales:931.76,mkts:['de','es','fr']},
+      {asin:'B0FPMJ1D87',title:'Mobile TV Basso Kai con 1 Anta per Soggiorno Moderno',sales:1317.91,units:22,adSales:545.32,mkts:['es','fr','it']},
+      {asin:'B0D923FPZH',title:'Mobile TV Sospeso a Parete Aitana M2 Soggiorno Moderno',sales:1229.92,units:10,adSales:424.54,mkts:['es','it']},
+      {asin:'B0FLQBBYTC',title:'Mobile TV con piedini Nora H2 Soggiorno Moderno',sales:1184.92,units:9,adSales:0.0,mkts:['es','fr','it']}
+    ],
+    'CAMAS': [
+      {asin:'B07DY9LLWB',title:'Cama de Matrimonio Nitas para Colchón de 150x190 cm',sales:1899.9,units:5,adSales:0.0,mkts:['es']},
+      {asin:'B07N1RFJ5C',title:'Cama de Matrimonio Nitas para Colchón de 150x190 cm',sales:1139.94,units:3,adSales:0.0,mkts:['es']},
+      {asin:'B07M5M22S8',title:'Cama de Matrimonio Rodas para Colchón de 180x200 cm',sales:979.96,units:2,adSales:0.0,mkts:['es']},
+      {asin:'B07JH94KW7',title:'Cama de Matrimonio Nitas para Colchón de 160x200 cm',sales:779.96,units:2,adSales:0.0,mkts:['es']},
+      {asin:'B0DWN56PFZ',title:'Lit Double Diana avec Matelas 150x190cm Design Flottant...',sales:699.0,units:1,adSales:0.0,mkts:['fr']}
+    ],
+    'RECIBIDORES': [
+      {asin:'B09MV14ZGT',title:'Ensemble Meuble d’Entrée Paola Set avec Meuble à Chauss...',sales:1609.91,units:10,adSales:0.0,mkts:['es','fr']},
+      {asin:'B0D37W28K6',title:'Meuble d’Entrée Mural Neo avec Miroir et Tiroir',sales:1275.76,units:16,adSales:173.49,mkts:['es','fr']},
+      {asin:'B0FL2TVNLX',title:'Flurmöbel mit Spiegel und Schublade Dielenmöbel',sales:1034.86,units:12,adSales:0.0,mkts:['de','es','fr','it']},
+      {asin:'B0CJ2MSD4L',title:'Meuble d’Entrée Mural Neo avec Miroir et Tiroir',sales:808.8,units:11,adSales:0.0,mkts:['es','fr']},
+      {asin:'B08NTHT243',title:'Scarpiera Paola con luce LED per ingresso design moderno',sales:788.88,units:7,adSales:0.0,mkts:['es','it']}
+    ],
+    'VITRINAS': [
+      {asin:'B07XTJVF8Y',title:'Vitrinenschrank Luke V5',sales:2028.22,units:14,adSales:267.22,mkts:['de','es','fr']},
+      {asin:'B07JNP7W7M',title:'Vetrina Pensile Luke V5 LED Melamina Finitura Lucida',sales:1310.94,units:9,adSales:0.0,mkts:['es','it']},
+      {asin:'B07XTFVGJF',title:'Vitrinenschrank Luke V6',sales:585.99,units:4,adSales:0.0,mkts:['de','es','fr']},
+      {asin:'B09L8LC5TQ',title:'Vetrina Pensile Luke V5 LED Melamina Finitura Opaca e L...',sales:575.97,units:4,adSales:0.0,mkts:['es','it']},
+      {asin:'B07JNQV812',title:'Vetrina Con Piedini 2cm Luke V5 LED Melamina',sales:575.97,units:4,adSales:0.0,mkts:['es','it']}
+    ]
+  }
+};
+
 const PRIME_DAY = {
   global: { sales:15084, pctJun:22.6 },
   es: { sales:5632, pctJun:19.3, uplift:44.6, spend:714, acos:12.7, orders:50 },
@@ -1239,6 +1436,63 @@ function renderTopSection(m, idx) {
   </div>`;
 }
 
+function renderTop5CategorySection(m, idx) {
+  if(idx!==7) return '';
+  const data = TOP5_CATEGORY[m];
+  if(!data) return '';
+  const CATS=['APARADORES','MESA ALTA','MUEBLES TV','CAMAS','RECIBIDORES','VITRINAS'];
+  const flag={es:'🇪🇸',fr:'🇫🇷',it:'🇮🇹',de:'🇩🇪'};
+  const isGlobal = m==='global';
+  const mktNames = {es:'España',fr:'Francia',it:'Italia',de:'Alemania'};
+  const label = isGlobal?'Consolidado Pan-EU':mktNames[m];
+
+  let blocks='';
+  CATS.forEach(cat=>{
+    const items=data[cat];
+    if(!items||!items.length) return;
+    const rows=items.map((it,i)=>{
+      const mktCol = isGlobal ? `<td style="text-align:center;font-size:12px">${(it.mkts||[]).map(k=>flag[k]).join('')}</td>` : '';
+      const coincide = it.adSales>0;
+      return `<tr>
+        <td><span class="top-rank">${i+1}</span></td>
+        <td style="font-size:11.5px">${it.title}<span style="color:var(--text-soft);font-family:monospace;font-size:9.5px;margin-left:5px">${it.asin}</span></td>
+        ${mktCol}
+        <td><strong>${fmtDec(it.sales)}</strong></td>
+        <td>${it.units}</td>
+        <td>${coincide?fmtDec(it.adSales):'<span class="dash">—</span>'}</td>
+        <td style="text-align:center">${coincide?'<span style="color:#2E6B48">✓</span>':'<span style="color:var(--text-soft)">○</span>'}</td>
+      </tr>`;
+    }).join('');
+    const mktHeader = isGlobal ? '<th style="text-align:center">Mkt</th>' : '';
+    blocks+=`<div style="margin-bottom:16px">
+      <div style="font-size:12px;font-weight:700;color:var(--acc-dark);margin-bottom:6px">${cat}</div>
+      <div style="overflow-x:auto">
+        <table class="asin-table">
+          <thead><tr><th></th><th>Producto</th>${mktHeader}<th>Ventas reales</th><th>Uds</th><th>Ventas Ads</th><th>En Ads</th></tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+      </div>
+    </div>`;
+  });
+  if(!blocks) return '';
+
+  const crossNote = isGlobal
+    ? 'ℹ <strong>Ventas reales</strong> = MerchantSpring (generateSalesByProductReport, ads + orgánico) sumado ES+FR+IT+DE · <strong>Ventas Ads</strong> = Pacvue, para validar si el top real coincide con el top de publicidad. ✓ = el ASIN también aparece entre los más vendidos en Ads (coincide) · ○ = vende bien de forma orgánica pero sin apenas inversión en Ads — oportunidad de reforzar con publicidad.'
+    : 'ℹ <strong>Ventas reales</strong> = MerchantSpring (ads + orgánico) · <strong>Ventas Ads</strong> = Pacvue (para contraste) · ✓ = coincide con el top de Ads · ○ = vende orgánicamente, poca o ninguna inversión en Ads.';
+
+  return `<div class="section">
+    <div class="sec-head">
+      <h2>Top 5 Ventas por Categoría</h2>
+      <span class="sec-badge">${label} · Agosto 2026 · ventas reales</span>
+    </div>
+    <div class="sec-body">
+      ${blocks}
+      <div class="info-note">${crossNote}</div>
+    </div>
+    <div class="sec-foot"><div class="sec-source">Fuente: <span class="src-badge">MerchantSpring</span> ${isGlobal?'<span class="src-badge">Pacvue</span> ':''}<span style="color:var(--text-soft)">Sales by Product Report agosto 2026${isGlobal?' · cross-check Ads Pacvue':''}</span></div></div>
+  </div>`;
+}
+
 function renderPeriodBanner(m, idx) {
   const flags={global:'🌍',es:'🇪🇸',fr:'🇫🇷',it:'🇮🇹',de:'🇩🇪'}, names={global:'Global Pan-EU',es:'España',fr:'Francia',it:'Italia',de:'Alemania'};
   const periodLabel=idx===-1?'YTD Ene–Ago 2026':MONTHS[idx]+' 2026';
@@ -1396,14 +1650,13 @@ function renderSearchTermsSection(m, idx) {
   });
 
   if(!hasData){
-    const avail=idx===0?'Enero':'junio';
     return `<div class="section">
       <div class="sec-head"><h2>Términos de Búsqueda</h2><span class="sec-badge">${mktNames[m]||m} · ${MONTHS[idx]||'YTD'} 2026</span></div>
-      <div class="sec-body"><div class="info-note">ℹ Datos de términos de búsqueda disponibles para enero y julio 2026. Selecciona uno de esos períodos para ver el desglose.</div></div>
+      <div class="sec-body"><div class="info-note">ℹ Datos de términos de búsqueda disponibles para enero, junio, julio y agosto 2026. Selecciona uno de esos períodos para ver el desglose.</div></div>
     </div>`;
   }
 
-  const dataNote=idx===0?'enero 2026 (histórico)':idx===6?'julio 2026 (más reciente)':'junio 2026 (más reciente)';
+  const dataNote=idx===7?'agosto 2026 (más reciente)':`${(MONTHS[idx]||'').toLowerCase()} 2026`;
   const periodLabel=idx===-1?'YTD':MONTHS[idx]+' 2026';
   return `<div class="section">
     <div class="sec-head"><h2>Términos de Búsqueda</h2><span class="sec-badge">${mktNames[m]||m} · ${periodLabel} · por volumen</span></div>
@@ -1527,6 +1780,7 @@ function render() {
   if(idx===5) html+=renderPrimeDaySection(m,idx);
   html+=renderPortfolioSection(m,idx);
   html+=renderTopSection(m,idx);
+  html+=renderTop5CategorySection(m,idx);
   html+=renderSearchTermsSection(m,idx);
   if(m!=='global') html+=renderAnnotationsSection(m,idx);
   if(m==='global') html+=renderGlobalConclusionsSection(idx);
