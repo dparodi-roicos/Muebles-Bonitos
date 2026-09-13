@@ -1517,8 +1517,8 @@ function render() {
   html+=renderPortfolioSection(m,idx);
   html+=renderTopSection(m,idx);
   html+=renderSearchTermsSection(m,idx);
-  html+=renderAnnotationsSection(m,idx);
-  html+=renderGlobalConclusionsSection(idx);
+  if(m!=='global') html+=renderAnnotationsSection(m,idx);
+  if(m==='global') html+=renderGlobalConclusionsSection(idx);
   document.getElementById('content').innerHTML=html;
   setTimeout(()=>{initChartSales(m);initChartAds(m);},50);
   document.querySelectorAll('.nav-markets button').forEach(b=>b.classList.toggle('active',b.getAttribute('onclick').includes(`'${m}'`)));
