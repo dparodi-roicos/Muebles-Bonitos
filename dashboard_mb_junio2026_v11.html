@@ -264,39 +264,39 @@ const SALES = {
 // ── VENTAS 2025 YoY (MerchantSpring, EUR bruto con IVA) ──────────────────────
 const SALES_YOY = {
   global: {
-    gmv:    [222172,178302,177000,136182,135972,110605,123593],
-    orders: [1381,  1125,  1107,  857,   832,   700,   798],
-    units:  [1423,  1172,  1111,  867,   857,   720,   807],
-    pv:     [721112,294646,282264,217479,187816,150724,174145],
-    cvr:    [0.197, 0.398, 0.394, 0.399, 0.456, 0.478, 0.463]
+    gmv:    [222172,178302,177000,136182,135972,110605,123593,110494],
+    orders: [1381,  1125,  1107,  857,   832,   700,   798,   763],
+    units:  [1423,  1172,  1111,  867,   857,   720,   807,   769],
+    pv:     [721112,294646,282264,217479,187816,150724,174145,170250],
+    cvr:    [0.197, 0.398, 0.394, 0.399, 0.456, 0.478, 0.463, 0.448]
   },
   es: {
-    gmv:    [87131, 81815, 80443, 64311, 69962, 60536, 66664],
-    orders: [603,   580,   561,   438,   451,   419,   482],
-    units:  [639,   618,   571,   445,   471,   434,   489],
-    pv:     [365810,156866,151874,116243,106743,86983, 102814],
-    cvr:    [0.175, 0.394, 0.376, 0.383, 0.441, 0.499, 0.476]
+    gmv:    [87131, 81815, 80443, 64311, 69962, 60536, 66664, 57579],
+    orders: [603,   580,   561,   438,   451,   419,   482,   434],
+    units:  [639,   618,   571,   445,   471,   434,   489,   442],
+    pv:     [365810,156866,151874,116243,106743,86983, 102814,95701],
+    cvr:    [0.175, 0.394, 0.376, 0.383, 0.441, 0.499, 0.476, 0.454]
   },
   fr: {
-    gmv:    [99290, 69081, 70446, 53152, 49086, 35706, 40418],
-    orders: [576,   399,   411,   316,   290,   200,   229],
-    units:  [579,   403,   402,   317,   292,   207,   230],
-    pv:     [212162,79229, 76774, 58209, 50719, 34785, 41014],
-    cvr:    [0.273, 0.509, 0.524, 0.545, 0.576, 0.595, 0.561]
+    gmv:    [99290, 69081, 70446, 53152, 49086, 35706, 40418, 38845],
+    orders: [576,   399,   411,   316,   290,   200,   229,   241],
+    units:  [579,   403,   402,   317,   292,   207,   230,   240],
+    pv:     [212162,79229, 76774, 58209, 50719, 34785, 41014, 41292],
+    cvr:    [0.273, 0.509, 0.524, 0.545, 0.576, 0.595, 0.561, 0.584]
   },
   it: {
-    gmv:    [31504, 22557, 20490, 15974, 12319, 11770, 15078],
-    orders: [174,   117,   110,   88,    69,    63,    79],
-    units:  [178,   119,   112,   90,    70,    62,    79],
-    pv:     [131704,54503, 50470, 40752, 27311, 26468, 27379],
-    cvr:    [0.135, 0.218, 0.222, 0.221, 0.256, 0.234, 0.289]
+    gmv:    [31504, 22557, 20490, 15974, 12319, 11770, 15078, 11148],
+    orders: [174,   117,   110,   88,    69,    63,    79,    69],
+    units:  [178,   119,   112,   90,    70,    62,    79,    68],
+    pv:     [131704,54503, 50470, 40752, 27311, 26468, 27379, 31139],
+    cvr:    [0.135, 0.218, 0.222, 0.221, 0.256, 0.234, 0.289, 0.222]
   },
   de: {
-    gmv:    [4247,  4849,  5621,  2745,  4605,  2593,  1433],
-    orders: [28,    29,    25,    15,    22,    18,    8],
-    units:  [27,    32,    26,    15,    24,    17,    9],
-    pv:     [11436, 4048,  3146,  2275,  3043,  2488,  2938],
-    cvr:    [0.236, 0.791, 0.826, 0.659, 0.789, 0.683, 0.306]
+    gmv:    [4247,  4849,  5621,  2745,  4605,  2593,  1433,  2921],
+    orders: [28,    29,    25,    15,    22,    18,    8,     19],
+    units:  [27,    32,    26,    15,    24,    17,    9,     19],
+    pv:     [11436, 4048,  3146,  2275,  3043,  2488,  2938,  2118],
+    cvr:    [0.236, 0.791, 0.826, 0.659, 0.789, 0.683, 0.306, 0.897]
   }
 };
 
@@ -356,8 +356,17 @@ const ADS = {
 
 // ── YOY ADS (junio 2026 vs junio 2025 · solo ES y FR disponible) ───────────────
 const YOY = {
-  es: { spend25:3499, adSales25:27006, acos25:12.96, roas25:7.72 },
-  fr: { spend25:1629, adSales25:16220, acos25:10.04, roas25:9.96 }
+  5: {
+    es: { spend25:3499, adSales25:27006, orders25:null, acos25:12.96, roas25:7.72 },
+    fr: { spend25:1629, adSales25:16220, orders25:null, acos25:10.04, roas25:9.96 }
+  },
+  7: {
+    global: { spend25:5533, adSales25:45632, orders25:334, acos25:12.12, roas25:8.25 },
+    es:     { spend25:3295, adSales25:25067, orders25:188, acos25:13.15, roas25:7.61 },
+    fr:     { spend25:1880, adSales25:17394, orders25:126, acos25:10.81, roas25:9.25 },
+    it:     { spend25:249,  adSales25:2754,  orders25:16,  acos25:9.04,  roas25:11.06 },
+    de:     { spend25:108,  adSales25:417,   orders25:4,   acos25:25.91, roas25:3.86 }
+  }
 };
 
 // ── PORTFOLIOS por mercado · julio 2026 (Pacvue campañas agrupadas) ───────────
@@ -955,8 +964,8 @@ function renderSalesSection(m, idx) {
 
 function renderAdsSection(m, idx) {
   const cur=getAds(m,idx), prevIdx=(idx===-1||idx===0)?null:idx-1, prev=prevIdx!==null?getAds(m,prevIdx):null;
-  const hasYoy=idx===5&&(m==='es'||m==='fr')&&YOY[m];
-  const yoy=hasYoy?YOY[m]:null;
+  const hasYoy=YOY[idx]&&YOY[idx][m];
+  const yoy=hasYoy?YOY[idx][m]:null;
   const ctr=cur.clicks&&cur.impressions?cur.clicks/cur.impressions*100:null;
   const cpc=cur.clicks&&cur.spend?cur.spend/cur.clicks:null;
   const aovAds=cur.orders&&cur.adSales?cur.adSales/cur.orders:null;
@@ -986,8 +995,8 @@ function renderAdsSection(m, idx) {
           ${kpiComps(delta(tacos,prevTacos,true),'')}
           ${prevTacos!==null?`<div class="kpi-sub">ant: ${prevTacos.toFixed(1)}%</div>`:''}</div>
         <div class="kpi"><div class="kpi-label">Pedidos Ads</div><div class="kpi-val sm">${fmt(cur.orders,'num')}</div>
-          ${kpiComps(delta(cur.orders,prev&&prev.orders),'')}
-          ${prev?`<div class="kpi-sub">ant: ${fmt(prev.orders,'num')}</div>`:''}</div>
+          ${kpiComps(delta(cur.orders,prev&&prev.orders),yoy&&yoy.orders25!=null?delta(cur.orders,yoy.orders25):'')}
+          ${prev?`<div class="kpi-sub">ant: ${fmt(prev.orders,'num')}${yoy&&yoy.orders25!=null?` · 2025: ${fmt(yoy.orders25,'num')}`:''}</div>`:''}</div>
         <div class="kpi"><div class="kpi-label">Uds. Ads</div><div class="kpi-val sm">${fmt(cur.adUnits,'num')}</div>
           ${kpiComps(delta(cur.adUnits,prev&&prev.adUnits),'')}
           ${prev&&prev.adUnits!==null?`<div class="kpi-sub">ant: ${fmt(prev.adUnits,'num')}</div>`:''}</div>
