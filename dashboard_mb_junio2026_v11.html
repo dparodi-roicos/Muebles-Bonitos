@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dashboard Muebles Bonitos · Agosto 2026</title>
+<title>Dashboard Muebles Bonitos · Septiembre 2026</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <style>
 :root {
@@ -181,7 +181,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
 <body>
 
 <nav class="nav">
-  <div class="nav-brand">Muebles Bonitos <span>Amazon Seller · Agosto 2026</span></div>
+  <div class="nav-brand">Muebles Bonitos <span>Amazon Seller · Septiembre 2026</span></div>
   <div class="nav-markets">
     <button class="active" onclick="setMarket('global')">🌍 Global</button>
     <button onclick="setMarket('es')">🇪🇸 España</button>
@@ -198,7 +198,8 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
     <button onclick="setPeriod(4)">May</button>
     <button onclick="setPeriod(5)">Jun</button>
     <button onclick="setPeriod(6)">Jul</button>
-    <button class="active" onclick="setPeriod(7)">Ago</button>
+    <button onclick="setPeriod(7)">Ago</button>
+    <button class="active" onclick="setPeriod(8)">Sep</button>
     <button onclick="setPeriod(-1)">YTD</button>
   </div>
 </nav>
@@ -210,147 +211,147 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
 </div>
 
 <div class="footer">
-  Datos: <strong>MerchantSpring</strong> (ventas ene–jul 2026 &amp; 2025, EUR bruto con IVA) · <strong>Pacvue</strong> (publicidad ene–jul 2026) · <strong>Muebles Bonitos</strong> Amazon Seller Pan-EU · Elaborado por Roicos
+  Datos: <strong>MerchantSpring</strong> (ventas ene–sep 2026 &amp; 2025, EUR bruto con IVA) · <strong>Pacvue</strong> (publicidad ene–sep 2026) · <strong>Muebles Bonitos</strong> Amazon Seller Pan-EU · Elaborado por Roicos
 </div>
 
 <script>
-const MONTHS   = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto'];
-const MONTHS_S = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago'];
+const MONTHS   = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre'];
+const MONTHS_S = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep'];
 
 // ── VENTAS 2026 (MerchantSpring, EUR bruto con IVA) ───────────────────────────
 const SALES = {
   global: {
-    gmv:    [180610,157989,165750,131257,129870,145190,142145, 167022],
-    orders: [1258,  1123,  1173,  959,   929,   1023,  998,   1174],
-    units:  [1269,  1150,  1224,  985,   955,   1054,  1030,  1218],
-    pv:     [687402,262267,256620,230077,222427,219057,219201, 262943],
-    cvr:    [0.185, 0.439, 0.477, 0.428, 0.429, 0.481, 0.470, 0.463],
-    buybox: [97.5,  97.4,  96.4,  95.8,  95.0,  96.9,  96.6,  96.9]
+    gmv:    [180610,157989,165750,131257,129870,145190,142145, 167022, 157306],
+    orders: [1258,  1123,  1173,  959,   929,   1023,  998,   1174, 1165],
+    units:  [1269,  1150,  1224,  985,   955,   1054,  1030,  1218, 1237],
+    pv:     [687402,262267,256620,230077,222427,219057,219201, 262943, 255344],
+    cvr:    [0.185, 0.439, 0.477, 0.428, 0.429, 0.481, 0.470, 0.463, 0.484],
+    buybox: [97.5,  97.4,  96.4,  95.8,  95.0,  96.9,  96.6,  96.9, 96.4]
   },
   es: {
-    gmv:    [75601, 65222, 70594, 64037, 63684, 67046, 69434, 81901],
-    orders: [597,   512,   537,   505,   515,   534,   534,   621],
-    units:  [607,   538,   571,   535,   526,   560,   559,   644],
-    pv:     [346914,128294,124443,122992,114715,106456,111299, 136705],
-    cvr:    [0.175, 0.419, 0.459, 0.435, 0.459, 0.526, 0.502, 0.471],
-    buybox: [97.0,  96.5,  95.5,  95.8,  95.0,  96.6,  96.2,  96.7]
+    gmv:    [75601, 65222, 70594, 64037, 63684, 67046, 69434, 81901, 84676],
+    orders: [597,   512,   537,   505,   515,   534,   534,   621, 690],
+    units:  [607,   538,   571,   535,   526,   560,   559,   644, 741],
+    pv:     [346914,128294,124443,122992,114715,106456,111299, 136705, 145534],
+    cvr:    [0.175, 0.419, 0.459, 0.435, 0.459, 0.526, 0.502, 0.471, 0.509],
+    buybox: [97.0,  96.5,  95.5,  95.8,  95.0,  96.6,  96.2,  96.7, 97.1]
   },
   fr: {
-    gmv:    [59008, 59082, 59978, 38645, 36672, 43423, 42187, 47561],
-    orders: [386,   392,   402,   274,   239,   278,   274,   325],
-    units:  [385,   396,   412,   275,   250,   286,   278,   333],
-    pv:     [141266,63242, 61355, 45996, 45586, 45978, 47045, 53034],
-    cvr:    [0.273, 0.626, 0.671, 0.598, 0.549, 0.622, 0.591, 0.628],
-    buybox: [98.2,  98.6,  98.1,  97.7,  96.4,  98.6,  98.7,  98.5]
+    gmv:    [59008, 59082, 59978, 38645, 36672, 43423, 42187, 47561, 40643],
+    orders: [386,   392,   402,   274,   239,   278,   274,   325, 264],
+    units:  [385,   396,   412,   275,   250,   286,   278,   333, 277],
+    pv:     [141266,63242, 61355, 45996, 45586, 45978, 47045, 53034, 43100],
+    cvr:    [0.273, 0.626, 0.671, 0.598, 0.549, 0.622, 0.591, 0.628, 0.643],
+    buybox: [98.2,  98.6,  98.1,  97.7,  96.4,  98.6,  98.7,  98.5, 96.8]
   },
   it: {
-    gmv:    [33961, 24461, 24017, 20078, 19745, 23876, 23273, 26586],
-    orders: [195,   151,   158,   115,   105,   131,   138,   164],
-    units:  [196,   154,   161,   115,   107,   133,   147,   173],
-    pv:     [161708,57698, 57520, 45559, 46246, 50424, 46752, 56752],
-    cvr:    [0.121, 0.267, 0.280, 0.252, 0.231, 0.264, 0.314, 0.305],
-    buybox: [99.5,  99.3,  96.9,  93.9,  94.3,  94.7,  94.3,  94.6]
+    gmv:    [33961, 24461, 24017, 20078, 19745, 23876, 23273, 26586, 20897],
+    orders: [195,   151,   158,   115,   105,   131,   138,   164, 138],
+    units:  [196,   154,   161,   115,   107,   133,   147,   173, 145],
+    pv:     [161708,57698, 57520, 45559, 46246, 50424, 46752, 56752, 49604],
+    cvr:    [0.121, 0.267, 0.280, 0.252, 0.231, 0.264, 0.314, 0.305, 0.292],
+    buybox: [99.5,  99.3,  96.9,  93.9,  94.3,  94.7,  94.3,  94.6, 92.1]
   },
   de: {
-    gmv:    [12040, 9224,  11161, 8497,  9769,  10845, 7548,  10974],
-    orders: [80,    68,    76,    65,    70,    80,    52,    64],
-    units:  [81,    62,    80,    60,    72,    75,    49,    68],
-    pv:     [37514, 13033, 13302, 15530, 15880, 16199, 14105, 16452],
-    cvr:    [0.216, 0.476, 0.601, 0.386, 0.454, 0.463, 0.347, 0.413],
-    buybox: [92.5,  93.2,  92.7,  90.3,  91.3,  96.0,  95.6,  97.8]
+    gmv:    [12040, 9224,  11161, 8497,  9769,  10845, 7548,  10974, 11089],
+    orders: [80,    68,    76,    65,    70,    80,    52,    64, 73],
+    units:  [81,    62,    80,    60,    72,    75,    49,    68, 74],
+    pv:     [37514, 13033, 13302, 15530, 15880, 16199, 14105, 16452, 17106],
+    cvr:    [0.216, 0.476, 0.601, 0.386, 0.454, 0.463, 0.347, 0.413, 0.433],
+    buybox: [92.5,  93.2,  92.7,  90.3,  91.3,  96.0,  95.6,  97.8, 98.0]
   }
 };
 
 // ── VENTAS 2025 YoY (MerchantSpring, EUR bruto con IVA) ──────────────────────
 const SALES_YOY = {
   global: {
-    gmv:    [222172,178302,177000,136182,135972,110605,123593,110494],
-    orders: [1381,  1125,  1107,  857,   832,   700,   798,   763],
-    units:  [1423,  1172,  1111,  867,   857,   720,   807,   769],
-    pv:     [721112,294646,282264,217479,187816,150724,174145,170250],
-    cvr:    [0.197, 0.398, 0.394, 0.399, 0.456, 0.478, 0.463, 0.448]
+    gmv:    [222172,178302,177000,136182,135972,110605,123593,110494, 129519],
+    orders: [1381,  1125,  1107,  857,   832,   700,   798,   763, 892],
+    units:  [1423,  1172,  1111,  867,   857,   720,   807,   769, 912],
+    pv:     [721112,294646,282264,217479,187816,150724,174145,170250, 209934],
+    cvr:    [0.197, 0.398, 0.394, 0.399, 0.456, 0.478, 0.463, 0.448, 0.434]
   },
   es: {
-    gmv:    [87131, 81815, 80443, 64311, 69962, 60536, 66664, 57579],
-    orders: [603,   580,   561,   438,   451,   419,   482,   434],
-    units:  [639,   618,   571,   445,   471,   434,   489,   442],
-    pv:     [365810,156866,151874,116243,106743,86983, 102814,95701],
-    cvr:    [0.175, 0.394, 0.376, 0.383, 0.441, 0.499, 0.476, 0.454]
+    gmv:    [87131, 81815, 80443, 64311, 69962, 60536, 66664, 57579, 59673],
+    orders: [603,   580,   561,   438,   451,   419,   482,   434, 467],
+    units:  [639,   618,   571,   445,   471,   434,   489,   442, 478],
+    pv:     [365810,156866,151874,116243,106743,86983, 102814,95701, 116755],
+    cvr:    [0.175, 0.394, 0.376, 0.383, 0.441, 0.499, 0.476, 0.454, 0.409]
   },
   fr: {
-    gmv:    [99290, 69081, 70446, 53152, 49086, 35706, 40418, 38845],
-    orders: [576,   399,   411,   316,   290,   200,   229,   241],
-    units:  [579,   403,   402,   317,   292,   207,   230,   240],
-    pv:     [212162,79229, 76774, 58209, 50719, 34785, 41014, 41292],
-    cvr:    [0.273, 0.509, 0.524, 0.545, 0.576, 0.595, 0.561, 0.584]
+    gmv:    [99290, 69081, 70446, 53152, 49086, 35706, 40418, 38845, 48476],
+    orders: [576,   399,   411,   316,   290,   200,   229,   241, 296],
+    units:  [579,   403,   402,   317,   292,   207,   230,   240, 302],
+    pv:     [212162,79229, 76774, 58209, 50719, 34785, 41014, 41292, 47852],
+    cvr:    [0.273, 0.509, 0.524, 0.545, 0.576, 0.595, 0.561, 0.584, 0.631]
   },
   it: {
-    gmv:    [31504, 22557, 20490, 15974, 12319, 11770, 15078, 11148],
-    orders: [174,   117,   110,   88,    69,    63,    79,    69],
-    units:  [178,   119,   112,   90,    70,    62,    79,    68],
-    pv:     [131704,54503, 50470, 40752, 27311, 26468, 27379, 31139],
-    cvr:    [0.135, 0.218, 0.222, 0.221, 0.256, 0.234, 0.289, 0.222]
+    gmv:    [31504, 22557, 20490, 15974, 12319, 11770, 15078, 11148, 16531],
+    orders: [174,   117,   110,   88,    69,    63,    79,    69, 97],
+    units:  [178,   119,   112,   90,    70,    62,    79,    68, 100],
+    pv:     [131704,54503, 50470, 40752, 27311, 26468, 27379, 31139, 39218],
+    cvr:    [0.135, 0.218, 0.222, 0.221, 0.256, 0.234, 0.289, 0.222, 0.255]
   },
   de: {
-    gmv:    [4247,  4849,  5621,  2745,  4605,  2593,  1433,  2921],
-    orders: [28,    29,    25,    15,    22,    18,    8,     19],
-    units:  [27,    32,    26,    15,    24,    17,    9,     19],
-    pv:     [11436, 4048,  3146,  2275,  3043,  2488,  2938,  2118],
-    cvr:    [0.236, 0.791, 0.826, 0.659, 0.789, 0.683, 0.306, 0.897]
+    gmv:    [4247,  4849,  5621,  2745,  4605,  2593,  1433,  2921, 4839],
+    orders: [28,    29,    25,    15,    22,    18,    8,     19, 32],
+    units:  [27,    32,    26,    15,    24,    17,    9,     19, 32],
+    pv:     [11436, 4048,  3146,  2275,  3043,  2488,  2938,  2118, 6109],
+    cvr:    [0.236, 0.791, 0.826, 0.659, 0.789, 0.683, 0.306, 0.897, 0.524]
   }
 };
 
-// ── ADS 2026 (Pacvue ene–ago · Documentos Ads mensuales) ─────────────────────
+// ── ADS 2026 (Pacvue ene–sep · Documentos Ads mensuales) ─────────────────────
 const ADS = {
   global: {
-    spend:       [9632,  7617,  9372,  9841,  9402, 11412, 11500, 12583],
-    adSales:     [58700, 56024, 62756, 52534, 51117,66774, 62750, 74631],
-    orders:      [448,   423,   500,   433,   427,  538,   490,   593],
-    acos:        [16.4,  13.6,  14.9,  18.7,  18.4, 17.1,  18.33, 16.86],
-    roas:        [6.09,  7.35,  6.70,  5.34,  5.44, 5.85,  5.46,  5.93],
-    impressions: [6176923,4729551,6315234,6675794,5166864,7328361,7193958, 7939874],
-    clicks:      [54309, 44409, 54157, 57820, 44059,66033, 65983,  77377],
-    adUnits:     [null,  null,  null,  null,  null,  null,  null,   null]
+    spend:       [9632,  7617,  9372,  9841,  9402, 11412, 11500, 12583, 11456],
+    adSales:     [58700, 56024, 62756, 52534, 51117,66774, 62750, 74631, 62378],
+    orders:      [448,   423,   500,   433,   427,  538,   490,   593, 512],
+    acos:        [16.4,  13.6,  14.9,  18.7,  18.4, 17.1,  18.33, 16.86, 18.37],
+    roas:        [6.09,  7.35,  6.70,  5.34,  5.44, 5.85,  5.46,  5.93, 5.45],
+    impressions: [6176923,4729551,6315234,6675794,5166864,7328361,7193958, 7939874, 7899118],
+    clicks:      [54309, 44409, 54157, 57820, 44059,66033, 65983,  77377, 72170],
+    adUnits:     [null,  null,  null,  null,  null,  null,  null,   null, null]
   },
   es: {
-    spend:       [4179, 3124, 4047, 4461, 4261, 4701, 4773, 5424],
-    adSales:     [22282,19431,23371,26043,25826,29222,31047, 36106],
-    orders:      [200,  170,  213,  231,  248,  267,  262,  322],
-    acos:        [18.8, 16.1, 17.3, 17.1, 16.5, 16.1, 15.37, 15.02],
-    roas:        [5.33, 6.22, 5.78, 5.84, 6.06, 6.22, 6.50, 6.66],
-    impressions: [2757234,2013100,2759253,2981135,2275657,2523353,3006136, 3434019],
-    clicks:      [24557,18071,23988,28409,19834,23191,28922, 37231],
-    adUnits:     [null, null, null, null, null, null, null, null]
+    spend:       [4179, 3124, 4047, 4461, 4261, 4701, 4773, 5424, 4916],
+    adSales:     [22282,19431,23371,26043,25826,29222,31047, 36106, 34396],
+    orders:      [200,  170,  213,  231,  248,  267,  262,  322, 318],
+    acos:        [18.8, 16.1, 17.3, 17.1, 16.5, 16.1, 15.37, 15.02, 14.29],
+    roas:        [5.33, 6.22, 5.78, 5.84, 6.06, 6.22, 6.50, 6.66, 7.00],
+    impressions: [2757234,2013100,2759253,2981135,2275657,2523353,3006136, 3434019, 3456958],
+    clicks:      [24557,18071,23988,28409,19834,23191,28922, 37231, 37127],
+    adUnits:     [null, null, null, null, null, null, null, null, null]
   },
   fr: {
-    spend:       [2033, 1924, 2626, 2049, 2055, 2964, 3410, 3407],
-    adSales:     [17190,22565,26677,13898,14122,22620,18664, 21288],
-    orders:      [122,  159,  193,  111,  105,  164,  139,  154],
-    acos:        [11.8, 8.5,  9.8,  14.7, 14.6, 13.1, 18.27, 16.00],
-    roas:        [8.46, 11.73,10.16,6.78, 6.87, 7.63, 5.47, 6.25],
-    impressions: [1271111,1176309,1826533,1432667,740241,1119243,2035926, 2105632],
-    clicks:      [11568,12331,15533,12143, 7035, 9496, 16803, 16957],
-    adUnits:     [null, null, null, null, null, null, null, null]
+    spend:       [2033, 1924, 2626, 2049, 2055, 2964, 3410, 3407, 3065],
+    adSales:     [17190,22565,26677,13898,14122,22620,18664, 21288, 16206],
+    orders:      [122,  159,  193,  111,  105,  164,  139,  154, 114],
+    acos:        [11.8, 8.5,  9.8,  14.7, 14.6, 13.1, 18.27, 16.00, 18.91],
+    roas:        [8.46, 11.73,10.16,6.78, 6.87, 7.63, 5.47, 6.25, 5.29],
+    impressions: [1271111,1176309,1826533,1432667,740241,1119243,2035926, 2105632, 2081303],
+    clicks:      [11568,12331,15533,12143, 7035, 9496, 16803, 16957, 13474],
+    adUnits:     [null, null, null, null, null, null, null, null, null]
   },
   it: {
-    spend:       [1899, 1475, 1512, 1889, 1786, 2354, 2036, 2189],
-    adSales:     [11565,9319, 8039, 7800, 6460, 9477,  9490, 11008],
-    orders:      [71,   57,   58,   51,   43,   66,   64,   80],
-    acos:        [16.4, 15.8, 18.8, 24.2, 27.6, 24.8, 21.45, 19.88],
-    roas:        [6.09, 6.32, 5.32, 4.13, 3.62, 4.03, 4.66, 5.03],
-    impressions: [1680885,1213267,1354619,1576530,1528836,1785167,1557115, 1688709],
-    clicks:      [13817,11064,11277,12043,12078,16931,14982, 16500],
-    adUnits:     [null, null, null, null, null, null, null, null]
+    spend:       [1899, 1475, 1512, 1889, 1786, 2354, 2036, 2189, 1920],
+    adSales:     [11565,9319, 8039, 7800, 6460, 9477,  9490, 11008, 7264],
+    orders:      [71,   57,   58,   51,   43,   66,   64,   80, 50],
+    acos:        [16.4, 15.8, 18.8, 24.2, 27.6, 24.8, 21.45, 19.88, 26.44],
+    roas:        [6.09, 6.32, 5.32, 4.13, 3.62, 4.03, 4.66, 5.03, 3.78],
+    impressions: [1680885,1213267,1354619,1576530,1528836,1785167,1557115, 1688709, 1600108],
+    clicks:      [13817,11064,11277,12043,12078,16931,14982, 16500, 14537],
+    adUnits:     [null, null, null, null, null, null, null, null, null]
   },
   de: {
-    spend:       [1521, 1094, 1187, 1442, 1300, 1393, 1281, 1564],
-    adSales:     [5610, 3084, 3628, 3335, 4710, 5456, 3550, 6229],
-    orders:      [41,   26,   30,   29,   31,   41,   25,   37],
-    acos:        [27.1, 35.5, 32.7, 43.3, 27.6, 25.5, 36.09, 25.12],
-    roas:        [3.69, 2.82, 3.06, 2.31, 3.62, 3.92, 2.77, 3.98],
-    impressions: [467693,326875,374829,685462,622130,650165,594781, 711514],
-    clicks:      [4367, 2943, 3359, 5225, 5112, 6038, 5276, 6689],
-    adUnits:     [null, null, null, null, null, null, null, null]
+    spend:       [1521, 1094, 1187, 1442, 1300, 1393, 1281, 1564, 1555],
+    adSales:     [5610, 3084, 3628, 3335, 4710, 5456, 3550, 6229, 4513],
+    orders:      [41,   26,   30,   29,   31,   41,   25,   37, 30],
+    acos:        [27.1, 35.5, 32.7, 43.3, 27.6, 25.5, 36.09, 25.12, 34.45],
+    roas:        [3.69, 2.82, 3.06, 2.31, 3.62, 3.92, 2.77, 3.98, 2.90],
+    impressions: [467693,326875,374829,685462,622130,650165,594781, 711514, 760749],
+    clicks:      [4367, 2943, 3359, 5225, 5112, 6038, 5276, 6689, 7032],
+    adUnits:     [null, null, null, null, null, null, null, null, null]
   }
 };
 
@@ -366,6 +367,13 @@ const YOY = {
     fr:     { spend25:1880, adSales25:17394, orders25:126, acos25:10.81, roas25:9.25 },
     it:     { spend25:249,  adSales25:2754,  orders25:16,  acos25:9.04,  roas25:11.06 },
     de:     { spend25:108,  adSales25:417,   orders25:4,   acos25:25.91, roas25:3.86 }
+  },
+  8: {
+    global: { spend25:7911, adSales25:53188, orders25:396, acos25:14.87, roas25:6.72 },
+    es:     { spend25:4336, adSales25:27450, orders25:224, acos25:15.80, roas25:6.33 },
+    fr:     { spend25:2079, adSales25:18732, orders25:129, acos25:11.10, roas25:9.01 },
+    it:     { spend25:1038, adSales25:5610,  orders25:34,  acos25:18.51, roas25:5.40 },
+    de:     { spend25:458,  adSales25:1396,  orders25:9,   acos25:32.82, roas25:3.05 }
   }
 };
 
@@ -401,6 +409,44 @@ const PORTFOLIOS = {
     { name:'ROICOS - MUEBLES TV',  spend:133,  sales:425,   acos:31.4, orders:4,   impressions:73332,   clicks:711   },
     { name:'ROICOS - MARCA',       spend:29,   sales:351,   acos:8.4,  orders:2,   impressions:12017,   clicks:99    }
   ]
+};
+
+// ── PORTFOLIOS por mes · septiembre 2026 (inversión/ventas/pedidos = cierre reporte Ads · impresiones/clics = Pacvue) ──
+// Los meses sin entrada usan PORTFOLIOS (julio 2026)
+const PORTFOLIOS_BY_MONTH = {
+  8: {
+    es: [
+      { name:'ROICOS - APARADORES',  spend:2412, sales:18734, acos:12.9, orders:160, impressions:1773561, clicks:18534 },
+      { name:'ROICOS - MUEBLES TV',  spend:1100, sales:6289,  acos:17.5, orders:64,  impressions:825845,  clicks:10051 },
+      { name:'ROICOS - MESA ALTA',   spend:500,  sales:3701,  acos:13.5, orders:41,  impressions:251180,  clicks:2944  },
+      { name:'ROICOS - RECIBIDORES', spend:500,  sales:2389,  acos:20.9, orders:29,  impressions:347433,  clicks:3793  },
+      { name:'ROICOS - MARCA',       spend:207,  sales:2400,  acos:8.6,  orders:20,  impressions:123154,  clicks:832   },
+      { name:'ROICOS - CAMAS',       spend:150,  sales:371,   acos:40.5, orders:2,   impressions:76884,   clicks:424   },
+      { name:'ROICOS - Top Ventas',  spend:47,   sales:512,   acos:9.2,  orders:2,   impressions:58901,   clicks:549   }
+    ],
+    fr: [
+      { name:'ROICOS - APARADORES',  spend:2136, sales:10658, acos:20.0, orders:64,  impressions:1419511, clicks:8081  },
+      { name:'ROICOS - MESA ALTA',   spend:326,  sales:1859,  acos:17.5, orders:18,  impressions:164716,  clicks:1468  },
+      { name:'ROICOS - MUEBLES TV',  spend:303,  sales:2545,  acos:11.9, orders:23,  impressions:331160,  clicks:2668  },
+      { name:'ROICOS - MARCA',       spend:173,  sales:944,   acos:18.3, orders:7,   impressions:68630,   clicks:562   },
+      { name:'ROICOS - RECIBIDORES', spend:100,  sales:199,   acos:50.3, orders:2,   impressions:73422,   clicks:528   },
+      { name:'ROICOS - CAMAS',       spend:26,   sales:0,     acos:0,    orders:0,   impressions:23864,   clicks:167   }
+    ],
+    it: [
+      { name:'ROICOS - APARADORES',  spend:1578, sales:5015,  acos:31.5, orders:36,  impressions:1311463, clicks:11708 },
+      { name:'ROICOS - MUEBLES TV',  spend:300,  sales:1031,  acos:29.1, orders:8,   impressions:245494,  clicks:2489  },
+      { name:'ROICOS - MARCA',       spend:31,   sales:1039,  acos:3.0,  orders:5,   impressions:14515,   clicks:111   },
+      { name:'ROICOS - Top Ventas',  spend:12,   sales:180,   acos:6.5,  orders:1,   impressions:27898,   clicks:228   },
+      { name:'ROICOS - RECIBIDORES', spend:0.17, sales:0,     acos:0,    orders:0,   impressions:738,     clicks:1     }
+    ],
+    de: [
+      { name:'ROICOS - APARADORES',  spend:1100, sales:3303,  acos:33.3, orders:20,  impressions:566399,  clicks:5240  },
+      { name:'ROICOS - RECIBIDORES', spend:195,  sales:83,    acos:234.2,orders:1,   impressions:78583,   clicks:464   },
+      { name:'ROICOS - MUEBLES TV',  spend:100,  sales:308,   acos:32.5, orders:3,   impressions:52975,   clicks:538   },
+      { name:'ROICOS - MARCA',       spend:88,   sales:576,   acos:15.2, orders:4,   impressions:21041,   clicks:210   },
+      { name:'ROICOS - Top Ventas',  spend:72,   sales:242,   acos:29.6, orders:2,   impressions:41751,   clicks:580   }
+    ]
+  }
 };
 
 // ── ASINS por mercado · agosto 2026 FR/IT/DE · julio 2026 ES (Pacvue ProductsADReport) ──
@@ -534,200 +580,593 @@ const ASINS = {
   ]
 };
 
-// ── TOP 5 VENTAS POR CATEGORÍA · agosto 2026 (MerchantSpring generateSalesByProductReport) ──
+// ── ASINS por mes · septiembre 2026 (Pacvue product_ad · top 12 por ventas ads + ASINs con ≥15€ de inversión sin ventas) ──
+// Los meses sin entrada usan ASINS
+const ASINS_BY_MONTH = {
+  8: {
+    es: [
+      { asin:'B0FPMD6W2T', title:'Aparador bajo Kai con 3 Puertas Negro y Sonoma 130cm', portfolio:'APARADORES', spend:241.28, adSales:2935.35, acos:8.22, units:30, impressions:165870, clicks:1831 },
+      { asin:'B0F8W6YCHG', title:'Aparador con Puertas y cajones Yanis Blanco 160cm', portfolio:'APARADORES', spend:102.44, adSales:1405.72, acos:7.29, units:9, impressions:45204, clicks:769 },
+      { asin:'B09LMR77GN', title:'Aparador Mueble TV Acabado Sonoma Mate', portfolio:'APARADORES', spend:162.71, adSales:1306.53, acos:12.45, units:10, impressions:137254, clicks:1409 },
+      { asin:'B085HWV6CD', title:'Aparador Clark con 3 Puertas Negro 150cm', portfolio:'APARADORES', spend:39.91, adSales:1003.24, acos:3.98, units:7, impressions:22591, clicks:282 },
+      { asin:'B07PDYL56Q', title:'Aparador Mueble TV Salón Comedor Moderno Sefora Ne…', portfolio:'APARADORES', spend:25.33, adSales:812.34, acos:3.12, units:7, impressions:16946, clicks:206 },
+      { asin:'B08HDJZ5BK', title:'Aparador Mueble TV Salón Comedor Moderno Sefora So…', portfolio:'APARADORES', spend:101.96, adSales:715.64, acos:14.25, units:6, impressions:102259, clicks:827 },
+      { asin:'B0FD43LKP7', title:'Aparador con Puertas acanaladas Renzo Roble Alba 1…', portfolio:'APARADORES', spend:93.59, adSales:631.34, acos:14.82, units:6, impressions:58470, clicks:639 },
+      { asin:'B07PFVLPQZ', title:'Aparador Mueble TV Salón Comedor Moderno Sefora Bl…', portfolio:'APARADORES', spend:86.27, adSales:625.56, acos:13.79, units:5, impressions:67558, clicks:737 },
+      { asin:'B07DY6TJXL', title:'Aparador Roque Blanco 140cm', portfolio:'APARADORES', spend:72.89, adSales:616.49, acos:11.82, units:5, impressions:65297, clicks:610 },
+      { asin:'B0GBY7KTD1', title:'Aparador con Puertas acanaladas Renzo Blanco 120cm', portfolio:'APARADORES', spend:82.01, adSales:554.5, acos:14.79, units:5, impressions:54022, clicks:525 },
+      { asin:'B085DQLFGQ', title:'Aparador salón Negro con Acabado Brillo', portfolio:'APARADORES', spend:131.18, adSales:552.01, acos:23.76, units:4, impressions:80615, clicks:930 },
+      { asin:'B0FM87GYRB', title:'Aparador pequeño Lander L2 Nogal Ambar y Gris 60cm', portfolio:'APARADORES', spend:97.38, adSales:536.25, acos:18.16, units:11, impressions:88214, clicks:742 },
+      { asin:'B0BDG8Z6ZZ', title:'Aparador Sefora 135cm', portfolio:'APARADORES', spend:20.04, adSales:0.0, acos:0, units:0, impressions:13257, clicks:182 },
+      { asin:'B085GGV7NW', title:'Mueble TV con LED Blanco', portfolio:'APARADORES', spend:15.35, adSales:0.0, acos:0, units:0, impressions:7036, clicks:65 },
+      { asin:'B0D8TQK2SY', title:'Mueble TV Colgante Aitana M2 Roble 180cm', portfolio:'MUEBLES TV', spend:105.14, adSales:899.1, acos:11.69, units:10, impressions:72918, clicks:1069 },
+      { asin:'B0FM3TXQ4J', title:'Mueble TV bajo con Patas Aitana M2 Roble 180cm', portfolio:'MUEBLES TV', spend:142.98, adSales:655.32, acos:21.82, units:7, impressions:109857, clicks:1370 },
+      { asin:'B0D925QV5C', title:'Mueble TV Colgante Aitana M1 Puerta de PVC Alto Br…', portfolio:'MUEBLES TV', spend:45.81, adSales:471.86, acos:9.71, units:5, impressions:25658, clicks:368 },
+      { asin:'B0CJ3453TM', title:'Mueble TV Colgante Aydin Blanco 150cm', portfolio:'MUEBLES TV', spend:85.14, adSales:457.81, acos:18.6, units:6, impressions:85871, clicks:808 },
+      { asin:'B0D923FPZH', title:'Mueble TV Colgante Aitana M2 Puerta de PVC Alto Br…', portfolio:'MUEBLES TV', spend:81.45, adSales:378.46, acos:21.52, units:4, impressions:58261, clicks:612 },
+      { asin:'B0D8TRG533', title:'Mueble TV Colgante Aitana M1 Roble 120cm', portfolio:'MUEBLES TV', spend:63.57, adSales:373.52, acos:17.02, units:4, impressions:43988, clicks:653 },
+      { asin:'B01LZD9355', title:'Mueble TV Colgante Nora H2 Blanco 160cm', portfolio:'MUEBLES TV', spend:18.62, adSales:369.38, acos:5.04, units:4, impressions:19821, clicks:129 },
+      { asin:'B0FM3Q13ZG', title:'Mueble TV bajo con Patas Aitana M1 Puerta de PVC A…', portfolio:'MUEBLES TV', spend:29.62, adSales:365.26, acos:8.11, units:4, impressions:15152, clicks:283 },
+      { asin:'B0D3M7LH8Y', title:'Aparador Mueble TV con LED Blanco', portfolio:'MUEBLES TV', spend:25.37, adSales:313.19, acos:8.1, units:2, impressions:14500, clicks:214 },
+      { asin:'B0FM3RFS98', title:'Mueble TV bajo con Patas Aitana M1 Puerta de PVC A…', portfolio:'MUEBLES TV', spend:25.02, adSales:278.49, acos:8.98, units:3, impressions:18634, clicks:196 },
+      { asin:'B0FPMJ1D87', title:'Mueble TV bajo Kai con 1 Puerta Negro y Sonoma 100cm', portfolio:'MUEBLES TV', spend:52.62, adSales:228.9, acos:22.99, units:3, impressions:26609, clicks:429 },
+      { asin:'B07RL78YVF', title:'Mueble TV Colgante Luke H2 Negro 160cm', portfolio:'MUEBLES TV', spend:2.47, adSales:196.67, acos:1.26, units:2, impressions:2488, clicks:45 },
+      { asin:'B0GJTDQK9F', title:'Mueble TV Colgante 150cm Blanco', portfolio:'MUEBLES TV', spend:42.54, adSales:0.0, acos:0, units:0, impressions:25202, clicks:274 },
+      { asin:'B085GG6FD1', title:'Mueble TV con LED Blanco y Negro', portfolio:'MUEBLES TV', spend:16.17, adSales:0.0, acos:0, units:0, impressions:23313, clicks:202 },
+      { asin:'B0FMFL1YM4', title:'Mesa Alta Bar Ani Blanco y Sonoma 100cm', portfolio:'MESA ALTA', spend:115.65, adSales:705.67, acos:16.39, units:9, impressions:43045, clicks:687 },
+      { asin:'B0FMFMN4B4', title:'Mesa Alta Bar Ani Negro y Sonoma 100cm', portfolio:'MESA ALTA', spend:66.13, adSales:597.45, acos:11.07, units:8, impressions:41069, clicks:399 },
+      { asin:'B0FMFLX6QS', title:'Mesa Alta Bar con 2 Taburetes Kyra Blanco y Sonoma…', portfolio:'MESA ALTA', spend:38.22, adSales:533.0, acos:7.17, units:5, impressions:16537, clicks:215 },
+      { asin:'B0DBM5HDCH', title:'Mesa Alta Bar Kyra Blanco y Sonoma 110cm', portfolio:'MESA ALTA', spend:71.11, adSales:367.73, acos:19.34, units:5, impressions:42000, clicks:421 },
+      { asin:'B0FMFM5MVQ', title:'Mesa Alta Bar con 2 Taburetes Kyra Blanco 110cm', portfolio:'MESA ALTA', spend:20.83, adSales:303.28, acos:6.87, units:3, impressions:15871, clicks:125 },
+      { asin:'B0FMFLZCM5', title:'Mesa Alta Bar con 2 Taburetes Ani Negro y Sonoma 1…', portfolio:'MESA ALTA', spend:7.39, adSales:213.2, acos:3.47, units:2, impressions:3519, clicks:44 },
+      { asin:'B0FMFMVFN6', title:'Mesa Alta Bar Kyra Negro y Sonoma 110cm', portfolio:'MESA ALTA', spend:33.86, adSales:213.2, acos:15.88, units:2, impressions:18025, clicks:186 },
+      { asin:'B0FMFKMK37', title:'Mesa Alta Bar Ani Blanco y Sonoma 120cm', portfolio:'MESA ALTA', spend:16.98, adSales:212.38, acos:8.0, units:3, impressions:6518, clicks:100 },
+      { asin:'B0FNDDS39P', title:'Mesa Alta Bar Ani Blanco y Sonoma 140cm', portfolio:'MESA ALTA', spend:39.4, adSales:195.84, acos:20.12, units:3, impressions:13063, clicks:227 },
+      { asin:'B0FMFLM8YT', title:'Mesa Alta Bar con 2 Taburetes Ani Blanco y Sonoma…', portfolio:'MESA ALTA', spend:10.57, adSales:114.87, acos:9.2, units:1, impressions:4021, clicks:60 },
+      { asin:'B0FMFMQFKK', title:'Mesa Alta Bar con 2 Taburetes Ani Negro y Sonoma 1…', portfolio:'MESA ALTA', spend:4.63, adSales:97.5, acos:4.75, units:2, impressions:3407, clicks:28 },
+      { asin:'B0DBM5DRMY', title:'Mesa Alta Bar Kyra Blanco 110cm', portfolio:'MESA ALTA', spend:24.81, adSales:73.55, acos:33.73, units:1, impressions:16363, clicks:150 },
+      { asin:'B0FL2TVNLX', title:'Recibidor Colgante Neo con Espejo y Cajón Nogal Am…', portfolio:'RECIBIDORES', spend:28.11, adSales:594.12, acos:4.73, units:5, impressions:13392, clicks:181 },
+      { asin:'B0D37W28K6', title:'Recibidor Colgante Neo con Espejo y Cajón Sonoma 5cm', portfolio:'RECIBIDORES', spend:76.18, adSales:346.98, acos:21.96, units:6, impressions:86604, clicks:607 },
+      { asin:'B0FHBQ6DX4', title:'Recibidor Colgante con Espejo Amira Blanco', portfolio:'RECIBIDORES', spend:149.12, adSales:322.23, acos:46.28, units:5, impressions:59848, clicks:1111 },
+      { asin:'B09SBLRXV3', title:'Recibidor Blanco y Negro', portfolio:'RECIBIDORES', spend:13.61, adSales:271.03, acos:5.02, units:3, impressions:11143, clicks:93 },
+      { asin:'B08NTFFCQ6', title:'Conjunto de Recibidor Zapatero con Espejo y Perche…', portfolio:'RECIBIDORES', spend:3.47, adSales:221.47, acos:1.57, units:2, impressions:5438, clicks:28 },
+      { asin:'B0CJ2MSD4L', title:'Recibidor Suspendido Neo con Espejo Modular y Cajó…', portfolio:'RECIBIDORES', spend:1.68, adSales:115.66, acos:1.45, units:2, impressions:3388, clicks:37 },
+      { asin:'B0F99LVL87', title:'Recibidor Zapatero Paola con Luz LED Blanco y Sono…', portfolio:'RECIBIDORES', spend:36.39, adSales:98.34, acos:37.0, units:1, impressions:21609, clicks:248 },
+      { asin:'B09SBLS2YS', title:'Recibidor Blanco y Gris', portfolio:'RECIBIDORES', spend:18.54, adSales:90.89, acos:20.4, units:1, impressions:18629, clicks:135 },
+      { asin:'B0F99QK727', title:'Conjunto Recibidor Paola Set con Zapatero Blanco y…', portfolio:'RECIBIDORES', spend:3.9, adSales:90.07, acos:4.33, units:1, impressions:4620, clicks:32 },
+      { asin:'B0HCWCNQKN', title:'Aparador Roble Salón Comedor Recibidor 110cm', portfolio:'RECIBIDORES', spend:17.89, adSales:73.55, acos:24.32, units:1, impressions:6619, clicks:135 },
+      { asin:'B0FHBJP86T', title:'Recibidor Colgante con Espejo Amira Negro', portfolio:'RECIBIDORES', spend:29.25, adSales:57.83, acos:50.58, units:1, impressions:16880, clicks:220 },
+      { asin:'B0CHYVNX9R', title:'Recibidor Colgante Isabela Blanco', portfolio:'RECIBIDORES', spend:1.81, adSales:57.83, acos:3.13, units:1, impressions:1350, clicks:39 },
+      { asin:'B085DQLFGQ', title:'Aparador Clark con 3 Puertas Blanco 150cm', portfolio:'MARCA', spend:15.76, adSales:428.07, acos:3.68, units:3, impressions:8034, clicks:55 },
+      { asin:'B085HV6SXW', title:'Aparador Nevada Blanco 140cm', portfolio:'MARCA', spend:2.37, adSales:394.19, acos:0.6, units:3, impressions:1485, clicks:9 },
+      { asin:'B0FPMD6W2T', title:'Aparador bajo Kai con 3 Puertas Negro y Sonoma 130cm', portfolio:'MARCA', spend:16.27, adSales:197.5, acos:8.24, units:2, impressions:9006, clicks:64 },
+      { asin:'B085GGKNJ2', title:'Aparador Mueble TV con LED Blanco y Gris', portfolio:'MARCA', spend:1.07, adSales:164.45, acos:0.65, units:1, impressions:761, clicks:6 },
+      { asin:'B09LMR77GN', title:'Aparador Roque Sonoma 140cm', portfolio:'MARCA', spend:4.01, adSales:131.4, acos:3.05, units:1, impressions:3088, clicks:16 },
+      { asin:'B0F8W6YCHG', title:'Aparador con Puertas y cajones Yanis Blanco 160cm', portfolio:'MARCA', spend:4.3, adSales:131.4, acos:3.27, units:1, impressions:1552, clicks:16 },
+      { asin:'B07DYCZR3W', title:'Aparador Roque Negro 140cm', portfolio:'MARCA', spend:0.43, adSales:131.4, acos:0.33, units:1, impressions:154, clicks:5 },
+      { asin:'B08NTFFCQ6', title:'Conjunto de Recibidor Zapatero con Espejo y Perche…', portfolio:'MARCA', spend:1.53, adSales:131.4, acos:1.16, units:1, impressions:927, clicks:5 },
+      { asin:'B09SBLCFDC', title:'Conjunto de Recibidor Zapatero con Espejo y Perche…', portfolio:'MARCA', spend:0.71, adSales:131.4, acos:0.54, units:1, impressions:227, clicks:5 },
+      { asin:'B07JQC8LKM', title:'Aparador Mueble TV con Patas 2 cm Luke A1 Negro y…', portfolio:'MARCA', spend:0.3, adSales:123.95, acos:0.24, units:1, impressions:303, clicks:3 },
+      { asin:'B07PFVLPQZ', title:'Aparador Sefora 135cm', portfolio:'MARCA', spend:8.96, adSales:115.69, acos:7.74, units:1, impressions:3123, clicks:34 },
+      { asin:'B0FMFK1QQK', title:'Mesa Alta de Cocina con 2 Taburetes Blanco 100cm', portfolio:'MARCA', spend:0.09, adSales:114.87, acos:0.08, units:1, impressions:5, clicks:1 },
+      { asin:'B08HDJZ5BK', title:'Aparador Sefora 135cm', portfolio:'MARCA', spend:18.76, adSales:0.0, acos:0, units:0, impressions:7032, clicks:81 },
+      { asin:'B07MMZKDJS', title:'Cama de Matrimonio con Canapé Negro 150cm', portfolio:'Top Ventas', spend:20.25, adSales:404.94, acos:5.0, units:1, impressions:16760, clicks:176 },
+      { asin:'B01MDODH00', title:'Vitrina con Cristal Puerta Alto Brillo PVC', portfolio:'Top Ventas', spend:1.35, adSales:106.6, acos:1.27, units:1, impressions:2409, clicks:37 },
+      { asin:'B075GWJ3RH', title:'Cama Canapé Abatible de Matrimonio Blanco y Negro', portfolio:'CAMAS', spend:9.06, adSales:314.03, acos:2.89, units:1, impressions:8514, clicks:21 },
+      { asin:'B075GXTQPN', title:'Cama Canapé Abatible de Matrimonio Blanco y Negro', portfolio:'CAMAS', spend:13.43, adSales:181.8, acos:7.39, units:1, impressions:4284, clicks:47 },
+      { asin:'B07DX73VMH', title:'Cama Canapé Abatible de Matrimonio con Colchón de…', portfolio:'CAMAS', spend:2.17, adSales:57.02, acos:3.81, units:1, impressions:751, clicks:3 },
+      { asin:'B07DY4G37G', title:'Cama de Matrimonio Nitas Blanco', portfolio:'CAMAS', spend:26.24, adSales:0.0, acos:0, units:0, impressions:7910, clicks:73 }
+    ],
+    fr: [
+      { asin:'B0888TSXBJ', title:'Buffet Bahut Meuble Salon Salle à Manger 140cm', portfolio:'APARADORES', spend:99.7, adSales:1160.81, acos:8.59, units:7, impressions:48880, clicks:362 },
+      { asin:'B0888VG5GK', title:'Buffet Bahut Meuble Salon Salle à Manger 140cm', portfolio:'APARADORES', spend:111.49, adSales:861.64, acos:12.94, units:6, impressions:72681, clicks:408 },
+      { asin:'B0FPMD6W2T', title:'Buffet Bass Kai Noir et Sonoma 130cm', portfolio:'APARADORES', spend:62.77, adSales:827.51, acos:7.59, units:7, impressions:34206, clicks:195 },
+      { asin:'B07PFVLPQZ', title:'Buffet Bahut Moderne Sefora Blanc', portfolio:'APARADORES', spend:124.91, adSales:704.99, acos:17.72, units:4, impressions:60157, clicks:402 },
+      { asin:'B085GGV7NW', title:'Meuble TV Blanc Brillant 140cm', portfolio:'APARADORES', spend:193.25, adSales:686.65, acos:28.14, units:6, impressions:158340, clicks:771 },
+      { asin:'B085HF5YPF', title:'Buffet Nevada Noir 140cm', portfolio:'APARADORES', spend:23.56, adSales:663.32, acos:3.55, units:4, impressions:23271, clicks:64 },
+      { asin:'B085GG6FD1', title:'Meuble TV Blanc et Noir Brillant 140cm', portfolio:'APARADORES', spend:31.73, adSales:596.66, acos:5.32, units:4, impressions:23891, clicks:122 },
+      { asin:'B07DY6TJXL', title:'Buffet Bahut Meuble Salon Salle à Manger 140cm', portfolio:'APARADORES', spend:54.11, adSales:505.83, acos:10.7, units:3, impressions:36737, clicks:203 },
+      { asin:'B09LMR77GN', title:'Buffet Bahut', portfolio:'APARADORES', spend:99.29, adSales:497.49, acos:19.96, units:3, impressions:52330, clicks:459 },
+      { asin:'B085GGM485', title:'Buffet Bahut Meuble Salon Salle à Manger Noir Bril…', portfolio:'APARADORES', spend:29.06, adSales:365.0, acos:7.96, units:2, impressions:14650, clicks:117 },
+      { asin:'B085DQLFGQ', title:'Buffet Clark Blanc 150cm', portfolio:'APARADORES', spend:175.65, adSales:348.33, acos:50.43, units:2, impressions:181142, clicks:846 },
+      { asin:'B08HDKNRJ9', title:'Buffet Bahut Moderne Sefora Gris', portfolio:'APARADORES', spend:18.21, adSales:340.0, acos:5.36, units:2, impressions:9404, clicks:67 },
+      { asin:'B08HDJZ5BK', title:'Buffet Bahut Moderne Sefora Sonoma', portfolio:'APARADORES', spend:115.89, adSales:0.0, acos:0, units:0, impressions:66752, clicks:293 },
+      { asin:'B085HZRY2K', title:'Meuble TV Noir Brillant 140cm', portfolio:'APARADORES', spend:59.04, adSales:0.0, acos:0, units:0, impressions:37201, clicks:228 },
+      { asin:'B07PDYL56Q', title:'Buffet Bahut Moderne Sefora Noir', portfolio:'APARADORES', spend:55.73, adSales:0.0, acos:0, units:0, impressions:23652, clicks:139 },
+      { asin:'B0D8TQK2SY', title:'Meuble TV Suspendu 1 Porte', portfolio:'MUEBLES TV', spend:83.5, adSales:729.16, acos:11.45, units:7, impressions:95024, clicks:779 },
+      { asin:'B0FM3TXQ4J', title:'Meuble TV Chêne 180cm', portfolio:'MUEBLES TV', spend:81.11, adSales:633.33, acos:12.81, units:6, impressions:85866, clicks:664 },
+      { asin:'B0FM3S6YM1', title:'Meuble TV Blanc 180cm', portfolio:'MUEBLES TV', spend:22.49, adSales:206.67, acos:10.88, units:2, impressions:29033, clicks:185 },
+      { asin:'B09LMR77GN', title:'Buffet Roque Sonoma Mat 140cm', portfolio:'MUEBLES TV', spend:1.82, adSales:165.83, acos:1.1, units:1, impressions:3339, clicks:36 },
+      { asin:'B085GGV7NW', title:'Meuble TV Aker - Support Télévision Design Moderne', portfolio:'MUEBLES TV', spend:1.64, adSales:115.83, acos:1.42, units:1, impressions:4359, clicks:29 },
+      { asin:'B091BBPQC9', title:'Meuble TV 1 Porte 100cm', portfolio:'MUEBLES TV', spend:3.3, adSales:107.5, acos:3.07, units:1, impressions:1798, clicks:17 },
+      { asin:'B0FM3Q13ZG', title:'Meuble TV Chêne 120cm', portfolio:'MUEBLES TV', spend:1.76, adSales:107.5, acos:1.64, units:1, impressions:929, clicks:11 },
+      { asin:'B071FJ5QWF', title:'Meuble TV Mural Tibi Blanc 160cm', portfolio:'MUEBLES TV', spend:0.12, adSales:107.5, acos:0.11, units:1, impressions:484, clicks:2 },
+      { asin:'B0D923FPZH', title:'Meuble TV Mural Aitana M2 Porte en PVC Haut Brilla…', portfolio:'MUEBLES TV', spend:21.58, adSales:107.5, acos:20.07, units:1, impressions:24178, clicks:215 },
+      { asin:'B07RMJKX74', title:'Meuble TV Noir 160cm', portfolio:'MUEBLES TV', spend:4.46, adSales:107.5, acos:4.15, units:1, impressions:3454, clicks:33 },
+      { asin:'B0D925QV5C', title:'Meuble TV Mural Aitana M1 Porte en PVC Haut Brilla…', portfolio:'MUEBLES TV', spend:5.41, adSales:90.83, acos:5.96, units:1, impressions:2843, clicks:54 },
+      { asin:'B0CJ3453TM', title:'Meuble TV Suspendu', portfolio:'MUEBLES TV', spend:12.96, adSales:65.83, acos:19.69, units:1, impressions:17362, clicks:82 },
+      { asin:'B01M1BN67C', title:'Meuble TV Mural Nora H2 Noir 160cm', portfolio:'MUEBLES TV', spend:23.0, adSales:0.0, acos:0, units:0, impressions:23492, clicks:211 },
+      { asin:'B0FMFMVFN6', title:'Table de Bar Haute Kyra Noir et Sonoma 110cm', portfolio:'MESA ALTA', spend:122.36, adSales:346.68, acos:35.29, units:4, impressions:53977, clicks:539 },
+      { asin:'B0FMFMN4B4', title:'Table de Bar Haute ANI Noir et Sonoma 100cm', portfolio:'MESA ALTA', spend:32.9, adSales:322.5, acos:10.2, units:3, impressions:17414, clicks:143 },
+      { asin:'B0FMFLZCM5', title:'Table de Bar Haute ANI Noir et Sonoma 120cm', portfolio:'MESA ALTA', spend:3.4, adSales:223.33, acos:1.52, units:2, impressions:3902, clicks:17 },
+      { asin:'B0FMFL1YM4', title:'Table de Bar Haute ANI Blanc et Sonoma 100cm', portfolio:'MESA ALTA', spend:15.83, adSales:190.0, acos:8.33, units:2, impressions:5447, clicks:67 },
+      { asin:'B0DBM5DRMY', title:'Table de Bar Haute Kyra Blanc 110cm', portfolio:'MESA ALTA', spend:12.74, adSales:148.34, acos:8.59, units:2, impressions:10277, clicks:59 },
+      { asin:'B0DBM5HDCH', title:'Table de Bar Haute Kyra Blanc et Sonoma 110cm', portfolio:'MESA ALTA', spend:56.71, adSales:148.34, acos:38.23, units:2, impressions:28132, clicks:272 },
+      { asin:'B0FMFM5MVQ', title:'Table de Bar Haute Blanc 110cm', portfolio:'MESA ALTA', spend:14.74, adSales:132.5, acos:11.12, units:1, impressions:7576, clicks:58 },
+      { asin:'B0FMFMQFKK', title:'Table de Bar Haute ANI Noir et Sonoma 140cm', portfolio:'MESA ALTA', spend:5.29, adSales:124.17, acos:4.26, units:1, impressions:4431, clicks:24 },
+      { asin:'B0FMFLM8YT', title:'Table de Bar Haute ANI Blanc et Sonoma 120cm', portfolio:'MESA ALTA', spend:0.93, adSales:115.83, acos:0.8, units:1, impressions:1268, clicks:5 },
+      { asin:'B0FMFK1QQK', title:'Table de Bar Haute ANI Blanc et Sonoma 100cm', portfolio:'MESA ALTA', spend:4.74, adSales:107.5, acos:4.41, units:1, impressions:1702, clicks:23 },
+      { asin:'B0FMFKMK37', title:'Table de Bar Haute ANI Blanc et Sonoma 120cm', portfolio:'MESA ALTA', spend:5.45, adSales:74.17, acos:7.35, units:1, impressions:3719, clicks:28 },
+      { asin:'B07PFVLPQZ', title:'Buffet Bahut Moderne Sefora Blanc', portfolio:'MARCA', spend:4.98, adSales:340.0, acos:1.46, units:2, impressions:1394, clicks:19 },
+      { asin:'B085HV6SXW', title:'Buffet Blanc Finition Brillante 140cm', portfolio:'MARCA', spend:2.67, adSales:315.0, acos:0.85, units:2, impressions:638, clicks:11 },
+      { asin:'B085HWV6CD', title:'Buffet Clark Noir 150cm', portfolio:'MARCA', spend:3.2, adSales:174.17, acos:1.84, units:1, impressions:2108, clicks:12 },
+      { asin:'B0D923FPZH', title:'Meuble TV Mural Aitana M2 Porte en PVC Haut Brilla…', portfolio:'MARCA', spend:2.83, adSales:107.5, acos:2.63, units:1, impressions:1263, clicks:11 },
+      { asin:'B0FM873983', title:'Buffet Bas Lander L17 Noyer et Gris 60cm', portfolio:'MARCA', spend:0.03, adSales:99.17, acos:0.03, units:1, impressions:422, clicks:1 },
+      { asin:'B0CJ3453TM', title:'Meuble TV Suspendu', portfolio:'MARCA', spend:13.53, adSales:65.82, acos:20.56, units:1, impressions:6468, clicks:36 },
+      { asin:'B0HCWCNQKN', title:'Buffet Bas Iris 2 Portes et Tiroir Chêne', portfolio:'RECIBIDORES', spend:2.68, adSales:108.32, acos:2.47, units:1, impressions:475, clicks:14 },
+      { asin:'B0FL2TVNLX', title:'Meuble d’Entrée Mural Neo Noyer Ambar 99cm', portfolio:'RECIBIDORES', spend:25.03, adSales:90.83, acos:27.56, units:1, impressions:19031, clicks:142 },
+      { asin:'B0FHBQ6DX4', title:'Meuble d’Entrée Mural Blanc', portfolio:'RECIBIDORES', spend:18.87, adSales:0.0, acos:0, units:0, impressions:6071, clicks:105 },
+      { asin:'B09MV14ZGT', title:'Ensemble de Meubles d’entrée à Chaussures Blanc Br…', portfolio:'RECIBIDORES', spend:17.03, adSales:0.0, acos:0, units:0, impressions:15433, clicks:83 }
+    ],
+    it: [
+      { asin:'B085GGV7NW', title:'Mobile TV Aker Bianco 140cm', portfolio:'MARCA', spend:2.12, adSales:455.72, acos:0.47, units:4, impressions:717, clicks:8 },
+      { asin:'B0F8W6YCHG', title:'Credenza a due ante e tre cassetti Madia Soggiorno…', portfolio:'MARCA', spend:2.12, adSales:403.31, acos:0.53, units:2, impressions:511, clicks:7 },
+      { asin:'B07N48N1FX', title:'Credenza Soggiorno Stile Moderno Roque Bianco e Ne…', portfolio:'MARCA', spend:0.55, adSales:179.51, acos:0.31, units:1, impressions:186, clicks:2 },
+      { asin:'B08HDKNRJ9', title:'Credenza Sefora Grigio 135cm', portfolio:'APARADORES', spend:23.35, adSales:375.41, acos:6.22, units:2, impressions:12597, clicks:174 },
+      { asin:'B07PDYL56Q', title:'Credenza Sefora Nero 135cm', portfolio:'APARADORES', spend:14.09, adSales:359.02, acos:3.92, units:2, impressions:8464, clicks:101 },
+      { asin:'B0CNDCH8SR', title:'Credenza piccola Lander L2 Bianco 60cm', portfolio:'APARADORES', spend:184.05, adSales:325.37, acos:56.57, units:5, impressions:120022, clicks:1422 },
+      { asin:'B091FGW3ZT', title:'Credenza Madia Nelia Bianco 144cm', portfolio:'APARADORES', spend:41.19, adSales:318.03, acos:12.95, units:2, impressions:25622, clicks:288 },
+      { asin:'B0FD43LKP7', title:'Credenza con ante scanalate Renzo Rovere Alba 120cm', portfolio:'APARADORES', spend:55.48, adSales:309.84, acos:17.91, units:2, impressions:37802, clicks:402 },
+      { asin:'B0DTTYQD15', title:'Credenza Madia Soggiorno Zoel Bianco e Sonoma 90cm', portfolio:'APARADORES', spend:114.21, adSales:290.16, acos:39.36, units:4, impressions:77373, clicks:846 },
+      { asin:'B0888WC4Z8', title:'Credenza Stile Moderno Roque Nero e Sonoma 140cm', portfolio:'APARADORES', spend:37.55, adSales:281.96, acos:13.32, units:2, impressions:67100, clicks:298 },
+      { asin:'B085DQLFGQ', title:'Credenza Madia Clark Bianco Lucido 150cm', portfolio:'APARADORES', spend:50.73, adSales:204.1, acos:24.86, units:1, impressions:77893, clicks:350 },
+      { asin:'B0F8W33TBY', title:'Credenza a due ante e tre cassetti Madia Soggiorno…', portfolio:'APARADORES', spend:109.36, adSales:195.9, acos:55.82, units:1, impressions:49323, clicks:806 },
+      { asin:'B08HDJZ5BK', title:'Credenza Sefora Sonoma 135cm', portfolio:'APARADORES', spend:55.3, adSales:179.51, acos:30.81, units:1, impressions:33021, clicks:414 },
+      { asin:'B09LMPB183', title:'Credenza Stile Moderno Roque Bianco e Grigio 140cm', portfolio:'APARADORES', spend:7.67, adSales:179.51, acos:4.27, units:1, impressions:6395, clicks:57 },
+      { asin:'B09MMG8Z47', title:'Credenza a tre ante con LED Natolia Bianco 150cm', portfolio:'APARADORES', spend:21.5, adSales:179.51, acos:11.98, units:1, impressions:15181, clicks:150 },
+      { asin:'B0F8W6YCHG', title:'Credenza a due ante e tre cassetti Madia Soggiorno…', portfolio:'APARADORES', spend:72.35, adSales:0.0, acos:0, units:0, impressions:47266, clicks:499 },
+      { asin:'B07JR57YZ8', title:'Credenza Madia Soggiorno Luke A2 Nero e Bianco 120cm', portfolio:'APARADORES', spend:50.98, adSales:0.0, acos:0, units:0, impressions:67032, clicks:390 },
+      { asin:'B0FPMD6W2T', title:'Credenza Bassa Kai con 3 Ante Nero e Sonoma 130cm', portfolio:'APARADORES', spend:43.07, adSales:0.0, acos:0, units:0, impressions:36592, clicks:316 },
+      { asin:'B0D925QV5C', title:'Mobile TV Sospeso a Parete Aitana M1 Bianco 120cm', portfolio:'MUEBLES TV', spend:37.6, adSales:284.42, acos:13.22, units:3, impressions:23708, clicks:324 },
+      { asin:'B0FPMFLV8C', title:'Set di Mobili Nero e Sonoma', portfolio:'MUEBLES TV', spend:6.99, adSales:273.77, acos:2.55, units:2, impressions:4615, clicks:59 },
+      { asin:'B07KGFC4F4', title:'Mobile TV Selma Nero 160cm', portfolio:'MUEBLES TV', spend:4.23, adSales:154.92, acos:2.73, units:1, impressions:6338, clicks:33 },
+      { asin:'B07RMJKX74', title:'Mobile TV con Piedini 2cm Luke H2 Nero 160cm', portfolio:'MUEBLES TV', spend:7.99, adSales:122.13, acos:6.54, units:1, impressions:8316, clicks:64 },
+      { asin:'B0FLQBBYTC', title:'Mobile TV con piedini Nora H2 Nero 160cm', portfolio:'MUEBLES TV', spend:13.53, adSales:106.61, acos:12.69, units:1, impressions:6513, clicks:115 },
+      { asin:'B01M1BN67C', title:'Mobile TV Sospeso a Parete Nora H2 Nero 160cm', portfolio:'MUEBLES TV', spend:21.54, adSales:89.34, acos:24.11, units:1, impressions:13879, clicks:177 },
+      { asin:'B0FM3TXQ4J', title:'Mobile TV con piedini Aitana M2 Rovere 180cm', portfolio:'MUEBLES TV', spend:25.6, adSales:0.0, acos:0, units:0, impressions:20392, clicks:218 },
+      { asin:'B0D923FPZH', title:'Mobile TV Sospeso a Parete Aitana M2 Bianco 180cm', portfolio:'MUEBLES TV', spend:22.76, adSales:0.0, acos:0, units:0, impressions:25153, clicks:192 },
+      { asin:'B0D8TQK2SY', title:'Mobile TV Sospeso a Parete Aitana M2 Rovere 180cm', portfolio:'MUEBLES TV', spend:19.84, adSales:0.0, acos:0, units:0, impressions:18713, clicks:173 },
+      { asin:'B0888WC4Z8', title:'Credenza Stile Moderno Roque Nero e Sonoma 140cm', portfolio:'Top Ventas', spend:0.73, adSales:179.51, acos:0.41, units:1, impressions:1806, clicks:14 },
+      { asin:'B09PC6SSNY', title:'Credenza a tre ante con LED Natolia Nero 150cm', portfolio:'Top Ventas', spend:0.26, adSales:179.51, acos:0.14, units:1, impressions:376, clicks:5 }
+    ],
+    de: [
+      { asin:'B0FD43LKP7', title:'Sideboard Renzo Eiche Alba 120cm', portfolio:'APARADORES', spend:165.69, adSales:501.69, acos:33.03, units:3, impressions:93992, clicks:874 },
+      { asin:'B0F8W33TBY', title:'Sideboard Weiß und Sonoma 160cm', portfolio:'APARADORES', spend:119.6, adSales:418.48, acos:28.58, units:2, impressions:29402, clicks:536 },
+      { asin:'B07PDYL56Q', title:'Sideboard Wohzimmer Schwarz', portfolio:'APARADORES', spend:36.9, adSales:401.68, acos:9.19, units:2, impressions:13310, clicks:160 },
+      { asin:'B0F8W6YCHG', title:'Sideboard Weiß 160cm', portfolio:'APARADORES', spend:93.08, adSales:368.06, acos:25.29, units:2, impressions:28138, clicks:422 },
+      { asin:'B0GBY7KTD1', title:'Sideboard Weiss 120cm', portfolio:'APARADORES', spend:33.49, adSales:334.46, acos:10.01, units:2, impressions:16439, clicks:179 },
+      { asin:'B0CNDCH8SR', title:'Sideboard Wohnzimmer möbel Weiß', portfolio:'APARADORES', spend:68.14, adSales:232.77, acos:29.27, units:3, impressions:32106, clicks:371 },
+      { asin:'B0CXYV9M1L', title:'Sideboard Wohnzimmer Schwarz mit Hochglanz Finish', portfolio:'APARADORES', spend:10.78, adSales:200.84, acos:5.37, units:1, impressions:5774, clicks:52 },
+      { asin:'B09LMR77GN', title:'Modernes Sideboard Wohnzimmer oder Esszimmer Matte…', portfolio:'APARADORES', spend:58.31, adSales:192.44, acos:30.3, units:1, impressions:35167, clicks:276 },
+      { asin:'B08HDKNRJ9', title:'Sideboard Wohzimmer Grau', portfolio:'APARADORES', spend:23.7, adSales:192.44, acos:12.32, units:1, impressions:9235, clicks:111 },
+      { asin:'B0888TSXBJ', title:'Modernes Sideboard Wohnzimmer oder Esszimmer', portfolio:'APARADORES', spend:60.82, adSales:175.63, acos:34.63, units:1, impressions:43128, clicks:306 },
+      { asin:'B08HDJZ5BK', title:'Sideboard Wohzimmer Sonoma', portfolio:'APARADORES', spend:19.95, adSales:175.63, acos:11.36, units:1, impressions:12266, clicks:94 },
+      { asin:'B0FM86V2VR', title:'Sideboard Wohnzimmer möbel Walnuss und Beige', portfolio:'APARADORES', spend:5.29, adSales:108.4, acos:4.88, units:1, impressions:3301, clicks:23 },
+      { asin:'B085DQLFGQ', title:'Sideboard Wohnzimmer Weiß mit Hochglanz Finish', portfolio:'APARADORES', spend:75.75, adSales:0.0, acos:0, units:0, impressions:55480, clicks:345 },
+      { asin:'B085HWV6CD', title:'Sideboard Wohnzimmer Schwarz mit Hochglanz Finish', portfolio:'APARADORES', spend:57.36, adSales:0.0, acos:0, units:0, impressions:44905, clicks:264 },
+      { asin:'B07PFVLPQZ', title:'Sideboard Wohzimmer Weiß', portfolio:'APARADORES', spend:38.17, adSales:0.0, acos:0, units:0, impressions:18709, clicks:180 },
+      { asin:'B08HDJZ5BK', title:'Sideboard Wohzimmer Sonoma', portfolio:'MARCA', spend:7.12, adSales:192.44, acos:3.7, units:1, impressions:2323, clicks:19 },
+      { asin:'B08HDKNRJ9', title:'Sideboard Wohzimmer Grau', portfolio:'MARCA', spend:3.35, adSales:175.63, acos:1.91, units:1, impressions:921, clicks:8 },
+      { asin:'B09LHZZ2ZR', title:'Flurmöbel Sonoma und Weiß', portfolio:'MARCA', spend:0.31, adSales:108.4, acos:0.29, units:1, impressions:629, clicks:1 },
+      { asin:'B085GGV7NW', title:'Modernes TV-Lowboard Weiß', portfolio:'MARCA', spend:0.86, adSales:100.0, acos:0.86, units:1, impressions:534, clicks:3 },
+      { asin:'B09MMG8Z47', title:'Wohzimmer Esszimmer Schrank Möbel Sideboard Modell…', portfolio:'Top Ventas', spend:2.59, adSales:158.82, acos:1.63, units:1, impressions:707, clicks:22 },
+      { asin:'B07JQPHRMF', title:'Vitrinenschrank Luke V1 Schwarz', portfolio:'Top Ventas', spend:3.09, adSales:83.19, acos:3.71, units:1, impressions:1352, clicks:23 },
+      { asin:'B0FLQBBYTC', title:'TV-Möbel Nora H2 Schwarz 160cm', portfolio:'MUEBLES TV', spend:8.08, adSales:108.4, acos:7.45, units:1, impressions:2837, clicks:36 },
+      { asin:'B0D925QV5C', title:'Hängendes TV-Möbel Weiß', portfolio:'MUEBLES TV', spend:4.65, adSales:100.0, acos:4.65, units:1, impressions:2909, clicks:28 },
+      { asin:'B0FM3Q13ZG', title:'TV-Möbel Eiche', portfolio:'MUEBLES TV', spend:4.44, adSales:100.0, acos:4.44, units:1, impressions:1908, clicks:19 },
+      { asin:'B0D8TQK2SY', title:'Hängendes TV-Möbel Eiche', portfolio:'MUEBLES TV', spend:23.56, adSales:0.0, acos:0, units:0, impressions:12346, clicks:118 },
+      { asin:'B0FL2TVNLX', title:'Flurmöbel', portfolio:'RECIBIDORES', spend:46.1, adSales:83.19, acos:55.42, units:1, impressions:14259, clicks:113 },
+      { asin:'B09HXNC1ZH', title:'Flurmöbel Weiß', portfolio:'RECIBIDORES', spend:42.1, adSales:0.0, acos:0, units:0, impressions:12874, clicks:99 },
+      { asin:'B09SBMV4G3', title:'Flurmöbel Set Weiß und Schwarz', portfolio:'RECIBIDORES', spend:15.99, adSales:0.0, acos:0, units:0, impressions:12514, clicks:36 }
+    ]
+  }
+};
+
+// ── TOP 5 VENTAS POR CATEGORÍA · por mes: 7 = agosto, 8 = septiembre 2026 (MerchantSpring generateSalesByProductReport) ──
 // sales = ventas reales totales (ads + orgánico) por ASIN · adSales = ventas Ads Pacvue (cross-check)
 // global = ASIN agregado sumando ES+FR+IT+DE (mkts = mercados donde vende)
 const TOP5_CATEGORY = {
-  es: {
-    'APARADORES': [
-      {asin:'B0FPMD6W2T',title:'Aparador bajo Kai con 3 Puertas para Salón Comedor Moderno',sales:3202.64,units:36,adSales:1250.35},
-      {asin:'B0F8W33TBY',title:'Aparador con Puertas y cajones Yanis para Salón Comedor...',sales:2929.32,units:14,adSales:345.44},
-      {asin:'B09LMR77GN',title:'Aparador Roque Mueble Auxiliar Moderno de Salón y Comed...',sales:2702.83,units:17,adSales:163.62},
-      {asin:'B0888VW41V',title:'Aparador Roque Mueble Auxiliar Moderno de Salón y Comed...',sales:2225.86,units:14,adSales:525.58},
-      {asin:'B085DQLFGQ',title:'Aparador Clark con 3 Puertas para Salón con Luz LED',sales:1919.76,units:12,adSales:989.94}
-    ],
-    'MESA ALTA': [
-      {asin:'B0FMFLM8YT',title:'Mesa Alta de Cocina con 2 Taburetes Estilo Industrial',sales:1031.91,units:8,adSales:0.0},
-      {asin:'B0FMFFNY83',title:'Mesa Alta de Cocina con 2 Taburetes Estilo Industrial',sales:975.23,units:7,adSales:114.87},
-      {asin:'B0FMFMQFKK',title:'Mesa Alta de Cocina con 2 Taburetes Estilo Industrial',sales:833.95,units:6,adSales:0.0},
-      {asin:'B0FMFMN4B4',title:'Mesa Alta de Cocina Estilo Industrial Modelo Ani',sales:791.2,units:10,adSales:261.12},
-      {asin:'B0FNDDS39P',title:'Mesa Alta de Cocina Estilo Industrial Modelo Ani',sales:721.31,units:8,adSales:223.08}
-    ],
-    'MUEBLES TV': [
-      {asin:'B0FM3TXQ4J',title:'Mueble TV bajo con Patas Aitana M2 para Salón Moderno',sales:2972.75,units:25,adSales:1571.79},
-      {asin:'B0D8TQK2SY',title:'Mueble TV Colgante Aitana M2 para Salón Moderno',sales:951.92,units:8,adSales:393.36},
-      {asin:'B0D923FPZH',title:'Mueble TV Colgante Aitana M2 para Salón Moderno',sales:951.92,units:8,adSales:196.68},
-      {asin:'B0CJ3453TM',title:'Mueble TV Colgante Aydin para Salón Moderno',sales:620.91,units:9,adSales:228.08},
-      {asin:'B0FM3S6YM1',title:'Mueble TV bajo con Patas Aitana M2 para Salón Moderno',sales:596.92,units:5,adSales:98.34}
-    ],
-    'CAMAS': [
-      {asin:'B07DY9LLWB',title:'Cama de Matrimonio Nitas para Colchón de 150x190 cm',sales:1899.9,units:5,adSales:0.0},
-      {asin:'B07N1RFJ5C',title:'Cama de Matrimonio Nitas para Colchón de 150x190 cm',sales:1139.94,units:3,adSales:0.0},
-      {asin:'B07M5M22S8',title:'Cama de Matrimonio Rodas para Colchón de 180x200 cm',sales:979.96,units:2,adSales:0.0},
-      {asin:'B07JH94KW7',title:'Cama de Matrimonio Nitas para Colchón de 160x200 cm',sales:779.96,units:2,adSales:0.0},
-      {asin:'B0D8BT87VW',title:'Cama de Matrimonio Nitas con Colchón de 150x190 cm',sales:609.98,units:1,adSales:0.0}
-    ],
-    'RECIBIDORES': [
-      {asin:'B09MV14ZGT',title:'Conjunto Recibidor Paola Set con Zapatero Espejo',sales:1430.91,units:9,adSales:0.0},
-      {asin:'B0D37W28K6',title:'Recibidor Suspendido Neo con Espejo Modular y Cajón',sales:839.76,units:12,adSales:173.49},
-      {asin:'B0CJ2MSD4L',title:'Recibidor Suspendido Neo con Espejo Modular y Cajón',sales:699.8,units:10,adSales:0.0},
-      {asin:'B08NTHT243',title:'Recibidor Zapatero Paola con Luz LED para Recibidor',sales:659.88,units:6,adSales:0.0},
-      {asin:'B0FHBQ6DX4',title:'Recibidor Colgante Amira con Espejo Blanco',sales:639.84,units:8,adSales:264.4}
-    ],
-    'VITRINAS': [
-      {asin:'B09L8LV6ZX',title:'Vitrina con Patas 2 cm Luke V6 para Salón o Comedor Mod...',sales:1250.91,units:9,adSales:0.0},
-      {asin:'B07XTJVF8Y',title:'Vitrina con Patas 2 cm Luke V5 para Salón o Comedor Mod...',sales:1114.22,units:8,adSales:0.0},
-      {asin:'B07JNP7W7M',title:'Vitrina Colgante Luke V5 para Salón o Comedor Moderno c...',sales:833.94,units:6,adSales:0.0},
-      {asin:'B09L8LC5TQ',title:'Vitrina Colgante Luke V5 para Salón o Comedor Moderno c...',sales:416.97,units:3,adSales:0.0},
-      {asin:'B07JNQV812',title:'Vitrina con Patas 2 cm Luke V5 para Salón o Comedor Mod...',sales:416.97,units:3,adSales:0.0}
-    ]
+  7: {
+    es: {
+      'APARADORES': [
+        {asin:'B0FPMD6W2T',title:'Aparador bajo Kai con 3 Puertas para Salón Comedor Moderno',sales:3202.64,units:36,adSales:1250.35},
+        {asin:'B0F8W33TBY',title:'Aparador con Puertas y cajones Yanis para Salón Comedor...',sales:2929.32,units:14,adSales:345.44},
+        {asin:'B09LMR77GN',title:'Aparador Roque Mueble Auxiliar Moderno de Salón y Comed...',sales:2702.83,units:17,adSales:163.62},
+        {asin:'B0888VW41V',title:'Aparador Roque Mueble Auxiliar Moderno de Salón y Comed...',sales:2225.86,units:14,adSales:525.58},
+        {asin:'B085DQLFGQ',title:'Aparador Clark con 3 Puertas para Salón con Luz LED',sales:1919.76,units:12,adSales:989.94}
+      ],
+      'MESA ALTA': [
+        {asin:'B0FMFLM8YT',title:'Mesa Alta de Cocina con 2 Taburetes Estilo Industrial',sales:1031.91,units:8,adSales:0.0},
+        {asin:'B0FMFFNY83',title:'Mesa Alta de Cocina con 2 Taburetes Estilo Industrial',sales:975.23,units:7,adSales:114.87},
+        {asin:'B0FMFMQFKK',title:'Mesa Alta de Cocina con 2 Taburetes Estilo Industrial',sales:833.95,units:6,adSales:0.0},
+        {asin:'B0FMFMN4B4',title:'Mesa Alta de Cocina Estilo Industrial Modelo Ani',sales:791.2,units:10,adSales:261.12},
+        {asin:'B0FNDDS39P',title:'Mesa Alta de Cocina Estilo Industrial Modelo Ani',sales:721.31,units:8,adSales:223.08}
+      ],
+      'MUEBLES TV': [
+        {asin:'B0FM3TXQ4J',title:'Mueble TV bajo con Patas Aitana M2 para Salón Moderno',sales:2972.75,units:25,adSales:1571.79},
+        {asin:'B0D8TQK2SY',title:'Mueble TV Colgante Aitana M2 para Salón Moderno',sales:951.92,units:8,adSales:393.36},
+        {asin:'B0D923FPZH',title:'Mueble TV Colgante Aitana M2 para Salón Moderno',sales:951.92,units:8,adSales:196.68},
+        {asin:'B0CJ3453TM',title:'Mueble TV Colgante Aydin para Salón Moderno',sales:620.91,units:9,adSales:228.08},
+        {asin:'B0FM3S6YM1',title:'Mueble TV bajo con Patas Aitana M2 para Salón Moderno',sales:596.92,units:5,adSales:98.34}
+      ],
+      'CAMAS': [
+        {asin:'B07DY9LLWB',title:'Cama de Matrimonio Nitas para Colchón de 150x190 cm',sales:1899.9,units:5,adSales:0.0},
+        {asin:'B07N1RFJ5C',title:'Cama de Matrimonio Nitas para Colchón de 150x190 cm',sales:1139.94,units:3,adSales:0.0},
+        {asin:'B07M5M22S8',title:'Cama de Matrimonio Rodas para Colchón de 180x200 cm',sales:979.96,units:2,adSales:0.0},
+        {asin:'B07JH94KW7',title:'Cama de Matrimonio Nitas para Colchón de 160x200 cm',sales:779.96,units:2,adSales:0.0},
+        {asin:'B0D8BT87VW',title:'Cama de Matrimonio Nitas con Colchón de 150x190 cm',sales:609.98,units:1,adSales:0.0}
+      ],
+      'RECIBIDORES': [
+        {asin:'B09MV14ZGT',title:'Conjunto Recibidor Paola Set con Zapatero Espejo',sales:1430.91,units:9,adSales:0.0},
+        {asin:'B0D37W28K6',title:'Recibidor Suspendido Neo con Espejo Modular y Cajón',sales:839.76,units:12,adSales:173.49},
+        {asin:'B0CJ2MSD4L',title:'Recibidor Suspendido Neo con Espejo Modular y Cajón',sales:699.8,units:10,adSales:0.0},
+        {asin:'B08NTHT243',title:'Recibidor Zapatero Paola con Luz LED para Recibidor',sales:659.88,units:6,adSales:0.0},
+        {asin:'B0FHBQ6DX4',title:'Recibidor Colgante Amira con Espejo Blanco',sales:639.84,units:8,adSales:264.4}
+      ],
+      'VITRINAS': [
+        {asin:'B09L8LV6ZX',title:'Vitrina con Patas 2 cm Luke V6 para Salón o Comedor Mod...',sales:1250.91,units:9,adSales:0.0},
+        {asin:'B07XTJVF8Y',title:'Vitrina con Patas 2 cm Luke V5 para Salón o Comedor Mod...',sales:1114.22,units:8,adSales:0.0},
+        {asin:'B07JNP7W7M',title:'Vitrina Colgante Luke V5 para Salón o Comedor Moderno c...',sales:833.94,units:6,adSales:0.0},
+        {asin:'B09L8LC5TQ',title:'Vitrina Colgante Luke V5 para Salón o Comedor Moderno c...',sales:416.97,units:3,adSales:0.0},
+        {asin:'B07JNQV812',title:'Vitrina con Patas 2 cm Luke V5 para Salón o Comedor Mod...',sales:416.97,units:3,adSales:0.0}
+      ]
+    },
+    fr: {
+      'APARADORES': [
+        {asin:'B0888WC4Z8',title:'Buffet Roque pour Salon et Salle à Manger Moderne',sales:2588.65,units:13,adSales:663.32},
+        {asin:'B085GGY8ZB',title:'Buffet Salle à Manger Aker - Bahut Salon Design Moderne...',sales:2409.0,units:11,adSales:555.83},
+        {asin:'B085DQLFGQ',title:'Buffet Clark avec Lumière LED et 3 Portes pour Salon et...',sales:2189.0,units:11,adSales:829.15},
+        {asin:'B0FPMD6W2T',title:'Bahut Bas Kai avec 3 Portes pour Salon et Salle à Mange...',sales:2023.0,units:17,adSales:595.01},
+        {asin:'B0888VG5GK',title:'Buffet Roque pour Salon et Salle à Manger Moderne',sales:1592.0,units:8,adSales:165.83}
+      ],
+      'MESA ALTA': [
+        {asin:'B0DBM5HDCH',title:'Table Haute de Cuisine Kyra avec 3 Étagères de Rangement',sales:1335.0,units:15,adSales:593.36},
+        {asin:'B0FMFMVFN6',title:'Table Haute de Cuisine Kyra avec 3 Étagères de Rangement',sales:697.17,units:8,adSales:370.85},
+        {asin:'B0FMFMQFKK',title:'Table de Bar Haute ANI avec Deux tabourets pour 2 Perso...',sales:596.0,units:4,adSales:0.0},
+        {asin:'B0H4GRBQ5Q',title:'Ensemble Table Haute et 2 Tabourets Kyra Mange-Debout d...',sales:596.0,units:4,adSales:0.0},
+        {asin:'B0FMFLX6QS',title:'Ensemble Table Haute et 2 Tabourets Kyra Mange-Debout d...',sales:477.0,units:3,adSales:0.0}
+      ],
+      'MUEBLES TV': [
+        {asin:'B0FM3TXQ4J',title:'Meuble TV avec Pieds Aitana M2 pour Salon Moderne',sales:2064.0,units:16,adSales:537.5},
+        {asin:'B0D8TQK2SY',title:'Meuble TV Mural Aitana M2 pour Salon Moderne',sales:1290.0,units:10,adSales:430.0},
+        {asin:'B0D925QV5C',title:'Meuble TV Mural Aitana M1 pour Salon Moderne',sales:654.0,units:6,adSales:181.66},
+        {asin:'B0FPMJ1D87',title:'Meuble TV Bas Kai avec 1 Porte pour Salon Moderne',sales:649.0,units:11,adSales:147.51},
+        {asin:'B01M1BN67C',title:'Meuble TV Mural Nora H2 pour Salon Moderne',sales:447.0,units:3,adSales:248.34}
+      ],
+      'CAMAS': [
+        {asin:'B0DWN56PFZ',title:'Lit Double Diana avec Matelas 150x190cm Design Flottant...',sales:699.0,units:1,adSales:0.0},
+        {asin:'B07DY4G37G',title:'Lit Double Nitas pour Matelas 160x200 cm Lumière LED',sales:539.0,units:1,adSales:449.17}
+      ],
+      'RECIBIDORES': [
+        {asin:'B0D37W28K6',title:'Meuble d’Entrée Mural Neo avec Miroir et Tiroir',sales:436.0,units:4,adSales:0.0},
+        {asin:'B0FL2TVNLX',title:'Meuble d’Entrée Mural Neo avec Miroir et Tiroir',sales:218.0,units:2,adSales:0.0},
+        {asin:'B09MV14ZGT',title:'Ensemble Meuble d’Entrée Paola Set avec Meuble à Chauss...',sales:179.0,units:1,adSales:0.0},
+        {asin:'B09LHZZ2ZR',title:'Meuble d’Entrée Meuble à Chaussures Paola avec Lumière LED',sales:119.0,units:1,adSales:0.0},
+        {asin:'B0CJ2MSD4L',title:'Meuble d’Entrée Mural Neo avec Miroir et Tiroir',sales:109.0,units:1,adSales:0.0}
+      ],
+      'VITRINAS': [
+        {asin:'B07XTJVF8Y',title:'Vitrine avec Pieds 2 cm Luke V5 pour Salon ou Salle à M...',sales:596.0,units:4,adSales:0.0},
+        {asin:'B09L8LQRXX',title:'Vitrine Luke V5 avec pieds standard',sales:149.0,units:1,adSales:0.0},
+        {asin:'B08T1FXV65',title:'Vitrine Mural Luke V3 pour Salon ou Salle à Manger Mode...',sales:57.0,units:1,adSales:0.0}
+      ]
+    },
+    it: {
+      'APARADORES': [
+        {asin:'B0FPMD6W2T',title:'Credenza Bassa Kai con 3 Ante per Soggiorno e Sala da P...',sales:1116.22,units:9,adSales:529.57},
+        {asin:'B0CXYV9M1L',title:'Credenza Madia Clark L Soggiorno Moderno LED',sales:876.0,units:4,adSales:0.0},
+        {asin:'B0GBY7KTD1',title:'Credenza con ante scanalate Renzo per Soggiorno-Pranzo...',sales:846.6,units:5,adSales:156.2},
+        {asin:'B09LMR77GN',title:'Credenza Stile Moderno Roque Melamina Sonoma',sales:796.0,units:4,adSales:0.0},
+        {asin:'B0DTTYQD15',title:'Credenza Madia Soggiorno Zoel Melamina Opaca',sales:765.0,units:9,adSales:278.68}
+      ],
+      'MESA ALTA': [
+        {asin:'B0FMFFNY83',title:'Tavolo Alto da bar con 2 Sgabelli Ani Barra da cucina i...',sales:149.0,units:1,adSales:0.0},
+        {asin:'B0FMFJM2H5',title:'Tavolo Alto da bar Ani Barra da cucina in Stile Minimal...',sales:109.0,units:1,adSales:0.0}
+      ],
+      'MUEBLES TV': [
+        {asin:'B0FLQBBYTC',title:'Mobile TV con piedini Nora H2 Soggiorno Moderno',sales:596.0,units:4,adSales:0.0},
+        {asin:'B0FM3TXQ4J',title:'Mobile TV con piedini Aitana M2 Soggiorno Moderno',sales:516.0,units:4,adSales:105.74},
+        {asin:'B0D923FPZH',title:'Mobile TV Sospeso a Parete Aitana M2 Soggiorno Moderno',sales:278.0,units:2,adSales:227.86},
+        {asin:'B0FLQ5KKD9',title:'Mobile TV con piedini Tibi Soggiorno Moderno',sales:189.0,units:1,adSales:0.0},
+        {asin:'B0FLQB8XQT',title:'Mobile TV con piedini Nora H2 Soggiorno Moderno',sales:149.0,units:1,adSales:0.0}
+      ],
+      'CAMAS': [
+        {asin:'B0FHBQ5MFP',title:'Toeletta Sospesa con Specchio Velia Toeletta con Cassetto',sales:414.05,units:4,adSales:0.0},
+        {asin:'B07N4BG9RC',title:'Letto Matrimoniale Alessia Legno e Ecoleather',sales:389.0,units:1,adSales:0.0}
+      ],
+      'RECIBIDORES': [
+        {asin:'B0FL2TVNLX',title:'Mobile Ingresso Sospeso Neo con Specchio e Cassetto',sales:218.0,units:2,adSales:0.0},
+        {asin:'B0CJ2PXN2N',title:'Mobile Ingresso Sospeso Neo con Specchio e Cassetto',sales:218.0,units:2,adSales:0.0},
+        {asin:'B08NTHT243',title:'Scarpiera Paola con luce LED per ingresso design moderno',sales:129.0,units:1,adSales:0.0}
+      ],
+      'VITRINAS': [
+        {asin:'B07JMZJP9Y',title:'Vetrina Pensile Luke V5 LED Melamina Finitura Lucida',sales:477.0,units:3,adSales:0.0},
+        {asin:'B07JNP7W7M',title:'Vetrina Pensile Luke V5 LED Melamina Finitura Lucida',sales:477.0,units:3,adSales:0.0},
+        {asin:'B07JNDM1TW',title:'Vetrina Pensile Luke V3 LED Melamina Finitura Lucida',sales:201.0,units:3,adSales:0.0},
+        {asin:'B09L8LC5TQ',title:'Vetrina Pensile Luke V5 LED Melamina Finitura Opaca e L...',sales:159.0,units:1,adSales:0.0},
+        {asin:'B07JNQV812',title:'Vetrina Con Piedini 2cm Luke V5 LED Melamina',sales:159.0,units:1,adSales:0.0}
+      ]
+    },
+    de: {
+      'APARADORES': [
+        {asin:'B0FD43LKP7',title:'Sideboard Renzo mit gerillten Türen für modernes Wohn-...',sales:1831.14,units:10,adSales:1505.07},
+        {asin:'B0F8W6YCHG',title:'Sideboard mit Türen und Schubladen Yanis für modernes W...',sales:747.0,units:3,adSales:209.24},
+        {asin:'B07DYCZR3W',title:'Modernes Sideboard Wohnzimmer oder Esszimmer',sales:627.0,units:3,adSales:0.0},
+        {asin:'B085GGM485',title:'Modernes Sideboard Breite 155 x Höhe 91',sales:478.0,units:2,adSales:401.68},
+        {asin:'B0CXYV9M1L',title:'Sideboard Wohnzimmer',sales:458.0,units:2,adSales:0.0}
+      ],
+      'MUEBLES TV': [
+        {asin:'B0FM3TXQ4J',title:'TV-Möbel mit Füßen TV-Lowboard Farbe Eiche',sales:516.0,units:4,adSales:0.0},
+        {asin:'B0FM3S6YM1',title:'TV-Möbel mit Füßen TV-Lowboard Farbe Weiß',sales:129.0,units:1,adSales:0.0},
+        {asin:'B0D8TQK2SY',title:'Hängendes TV-Möbel TV-Lowboard Farbe Eiche',sales:129.0,units:1,adSales:108.4},
+        {asin:'B0FM3RFS98',title:'TV-Möbel mit Füßen TV-Lowboard Farbe Weiß',sales:119.0,units:1,adSales:100.0}
+      ],
+      'RECIBIDORES': [
+        {asin:'B09HXNC1ZH',title:'Flurmöbel mit Schuhschrank',sales:387.0,units:3,adSales:216.8},
+        {asin:'B0D3VBJ1WF',title:'Flurmöbel Set mit Schuhschrank Spiegel und Garderobe',sales:378.0,units:2,adSales:158.82},
+        {asin:'B09SBMV4G3',title:'Flurmöbel Set mit Schuhschrank Spiegel und Garderobe',sales:189.0,units:1,adSales:0.0},
+        {asin:'B0FL2TVNLX',title:'Flurmöbel mit Spiegel und Schublade Dielenmöbel',sales:109.0,units:1,adSales:0.0}
+      ],
+      'VITRINAS': [
+        {asin:'B07XTJVF8Y',title:'Vitrinenschrank Luke V5',sales:318.0,units:2,adSales:267.22},
+        {asin:'B07XTFVGJF',title:'Vitrinenschrank Luke V6',sales:298.0,units:2,adSales:0.0},
+        {asin:'B07JMZH75L',title:'Vitrinenschrank Luke V6',sales:149.0,units:1,adSales:0.0},
+        {asin:'B07JNLP43M',title:'Vitrinenschrank Luke V3',sales:134.0,units:2,adSales:0.0},
+        {asin:'B07JN2WH63',title:'Vitrinenschrank Luke V4',sales:119.0,units:1,adSales:0.0}
+      ]
+    },
+    global: {
+      'APARADORES': [
+        {asin:'B0FPMD6W2T',title:'Credenza Bassa Kai con 3 Ante per Soggiorno e Sala da P...',sales:6341.86,units:62,adSales:2374.93,mkts:['es','fr','it']},
+        {asin:'B085GGY8ZB',title:'Modernes Sideboard Breite 155 x Höhe 91',sales:4896.9,units:23,adSales:1413.13,mkts:['de','es','fr','it']},
+        {asin:'B085DQLFGQ',title:'Credenza Madia Clark Soggiorno Moderno LED',sales:4735.76,units:26,adSales:1990.4,mkts:['es','fr','it']},
+        {asin:'B0FD43LKP7',title:'Sideboard Renzo mit gerillten Türen für modernes Wohn-...',sales:4724.06,units:27,adSales:2695.94,mkts:['de','es','fr','it']},
+        {asin:'B09LMR77GN',title:'Modernes Sideboard Wohnzimmer oder Esszimmer',sales:4702.83,units:27,adSales:329.45,mkts:['de','es','fr','it']}
+      ],
+      'MESA ALTA': [
+        {asin:'B0DBM5HDCH',title:'Table Haute de Cuisine Kyra avec 3 Étagères de Rangement',sales:1690.96,units:19,adSales:666.91,mkts:['es','fr']},
+        {asin:'B0FMFMQFKK',title:'Table de Bar Haute ANI avec Deux tabourets pour 2 Perso...',sales:1429.95,units:10,adSales:0.0,mkts:['es','fr']},
+        {asin:'B0FMFFNY83',title:'Tavolo Alto da bar con 2 Sgabelli Ani Barra da cucina i...',sales:1422.23,units:10,adSales:114.87,mkts:['es','fr','it']},
+        {asin:'B0FMFLM8YT',title:'Table de Bar Haute ANI avec Deux tabourets pour 2 Perso...',sales:1309.91,units:10,adSales:0.0,mkts:['es','fr']},
+        {asin:'B0FMFLX6QS',title:'Ensemble Table Haute et 2 Tabourets Kyra Mange-Debout d...',sales:992.96,units:7,adSales:319.8,mkts:['es','fr']}
+      ],
+      'MUEBLES TV': [
+        {asin:'B0FM3TXQ4J',title:'TV-Möbel mit Füßen TV-Lowboard Farbe Eiche',sales:6068.75,units:49,adSales:2215.03,mkts:['de','es','fr','it']},
+        {asin:'B0D8TQK2SY',title:'Hängendes TV-Möbel TV-Lowboard Farbe Eiche',sales:2370.92,units:19,adSales:931.76,mkts:['de','es','fr']},
+        {asin:'B0FPMJ1D87',title:'Mobile TV Basso Kai con 1 Anta per Soggiorno Moderno',sales:1317.91,units:22,adSales:545.32,mkts:['es','fr','it']},
+        {asin:'B0D923FPZH',title:'Mobile TV Sospeso a Parete Aitana M2 Soggiorno Moderno',sales:1229.92,units:10,adSales:424.54,mkts:['es','it']},
+        {asin:'B0FLQBBYTC',title:'Mobile TV con piedini Nora H2 Soggiorno Moderno',sales:1184.92,units:9,adSales:0.0,mkts:['es','fr','it']}
+      ],
+      'CAMAS': [
+        {asin:'B07DY9LLWB',title:'Cama de Matrimonio Nitas para Colchón de 150x190 cm',sales:1899.9,units:5,adSales:0.0,mkts:['es']},
+        {asin:'B07N1RFJ5C',title:'Cama de Matrimonio Nitas para Colchón de 150x190 cm',sales:1139.94,units:3,adSales:0.0,mkts:['es']},
+        {asin:'B07M5M22S8',title:'Cama de Matrimonio Rodas para Colchón de 180x200 cm',sales:979.96,units:2,adSales:0.0,mkts:['es']},
+        {asin:'B07JH94KW7',title:'Cama de Matrimonio Nitas para Colchón de 160x200 cm',sales:779.96,units:2,adSales:0.0,mkts:['es']},
+        {asin:'B0DWN56PFZ',title:'Lit Double Diana avec Matelas 150x190cm Design Flottant...',sales:699.0,units:1,adSales:0.0,mkts:['fr']}
+      ],
+      'RECIBIDORES': [
+        {asin:'B09MV14ZGT',title:'Ensemble Meuble d’Entrée Paola Set avec Meuble à Chauss...',sales:1609.91,units:10,adSales:0.0,mkts:['es','fr']},
+        {asin:'B0D37W28K6',title:'Meuble d’Entrée Mural Neo avec Miroir et Tiroir',sales:1275.76,units:16,adSales:173.49,mkts:['es','fr']},
+        {asin:'B0FL2TVNLX',title:'Flurmöbel mit Spiegel und Schublade Dielenmöbel',sales:1034.86,units:12,adSales:0.0,mkts:['de','es','fr','it']},
+        {asin:'B0CJ2MSD4L',title:'Meuble d’Entrée Mural Neo avec Miroir et Tiroir',sales:808.8,units:11,adSales:0.0,mkts:['es','fr']},
+        {asin:'B08NTHT243',title:'Scarpiera Paola con luce LED per ingresso design moderno',sales:788.88,units:7,adSales:0.0,mkts:['es','it']}
+      ],
+      'VITRINAS': [
+        {asin:'B07XTJVF8Y',title:'Vitrinenschrank Luke V5',sales:2028.22,units:14,adSales:267.22,mkts:['de','es','fr']},
+        {asin:'B07JNP7W7M',title:'Vetrina Pensile Luke V5 LED Melamina Finitura Lucida',sales:1310.94,units:9,adSales:0.0,mkts:['es','it']},
+        {asin:'B07XTFVGJF',title:'Vitrinenschrank Luke V6',sales:585.99,units:4,adSales:0.0,mkts:['de','es','fr']},
+        {asin:'B09L8LC5TQ',title:'Vetrina Pensile Luke V5 LED Melamina Finitura Opaca e L...',sales:575.97,units:4,adSales:0.0,mkts:['es','it']},
+        {asin:'B07JNQV812',title:'Vetrina Con Piedini 2cm Luke V5 LED Melamina',sales:575.97,units:4,adSales:0.0,mkts:['es','it']}
+      ]
+    }
   },
-  fr: {
-    'APARADORES': [
-      {asin:'B0888WC4Z8',title:'Buffet Roque pour Salon et Salle à Manger Moderne',sales:2588.65,units:13,adSales:663.32},
-      {asin:'B085GGY8ZB',title:'Buffet Salle à Manger Aker - Bahut Salon Design Moderne...',sales:2409.0,units:11,adSales:555.83},
-      {asin:'B085DQLFGQ',title:'Buffet Clark avec Lumière LED et 3 Portes pour Salon et...',sales:2189.0,units:11,adSales:829.15},
-      {asin:'B0FPMD6W2T',title:'Bahut Bas Kai avec 3 Portes pour Salon et Salle à Mange...',sales:2023.0,units:17,adSales:595.01},
-      {asin:'B0888VG5GK',title:'Buffet Roque pour Salon et Salle à Manger Moderne',sales:1592.0,units:8,adSales:165.83}
-    ],
-    'MESA ALTA': [
-      {asin:'B0DBM5HDCH',title:'Table Haute de Cuisine Kyra avec 3 Étagères de Rangement',sales:1335.0,units:15,adSales:593.36},
-      {asin:'B0FMFMVFN6',title:'Table Haute de Cuisine Kyra avec 3 Étagères de Rangement',sales:697.17,units:8,adSales:370.85},
-      {asin:'B0FMFMQFKK',title:'Table de Bar Haute ANI avec Deux tabourets pour 2 Perso...',sales:596.0,units:4,adSales:0.0},
-      {asin:'B0H4GRBQ5Q',title:'Ensemble Table Haute et 2 Tabourets Kyra Mange-Debout d...',sales:596.0,units:4,adSales:0.0},
-      {asin:'B0FMFLX6QS',title:'Ensemble Table Haute et 2 Tabourets Kyra Mange-Debout d...',sales:477.0,units:3,adSales:0.0}
-    ],
-    'MUEBLES TV': [
-      {asin:'B0FM3TXQ4J',title:'Meuble TV avec Pieds Aitana M2 pour Salon Moderne',sales:2064.0,units:16,adSales:537.5},
-      {asin:'B0D8TQK2SY',title:'Meuble TV Mural Aitana M2 pour Salon Moderne',sales:1290.0,units:10,adSales:430.0},
-      {asin:'B0D925QV5C',title:'Meuble TV Mural Aitana M1 pour Salon Moderne',sales:654.0,units:6,adSales:181.66},
-      {asin:'B0FPMJ1D87',title:'Meuble TV Bas Kai avec 1 Porte pour Salon Moderne',sales:649.0,units:11,adSales:147.51},
-      {asin:'B01M1BN67C',title:'Meuble TV Mural Nora H2 pour Salon Moderne',sales:447.0,units:3,adSales:248.34}
-    ],
-    'CAMAS': [
-      {asin:'B0DWN56PFZ',title:'Lit Double Diana avec Matelas 150x190cm Design Flottant...',sales:699.0,units:1,adSales:0.0},
-      {asin:'B07DY4G37G',title:'Lit Double Nitas pour Matelas 160x200 cm Lumière LED',sales:539.0,units:1,adSales:449.17}
-    ],
-    'RECIBIDORES': [
-      {asin:'B0D37W28K6',title:'Meuble d’Entrée Mural Neo avec Miroir et Tiroir',sales:436.0,units:4,adSales:0.0},
-      {asin:'B0FL2TVNLX',title:'Meuble d’Entrée Mural Neo avec Miroir et Tiroir',sales:218.0,units:2,adSales:0.0},
-      {asin:'B09MV14ZGT',title:'Ensemble Meuble d’Entrée Paola Set avec Meuble à Chauss...',sales:179.0,units:1,adSales:0.0},
-      {asin:'B09LHZZ2ZR',title:'Meuble d’Entrée Meuble à Chaussures Paola avec Lumière LED',sales:119.0,units:1,adSales:0.0},
-      {asin:'B0CJ2MSD4L',title:'Meuble d’Entrée Mural Neo avec Miroir et Tiroir',sales:109.0,units:1,adSales:0.0}
-    ],
-    'VITRINAS': [
-      {asin:'B07XTJVF8Y',title:'Vitrine avec Pieds 2 cm Luke V5 pour Salon ou Salle à M...',sales:596.0,units:4,adSales:0.0},
-      {asin:'B09L8LQRXX',title:'Vitrine Luke V5 avec pieds standard',sales:149.0,units:1,adSales:0.0},
-      {asin:'B08T1FXV65',title:'Vitrine Mural Luke V3 pour Salon ou Salle à Manger Mode...',sales:57.0,units:1,adSales:0.0}
-    ]
-  },
-  it: {
-    'APARADORES': [
-      {asin:'B0FPMD6W2T',title:'Credenza Bassa Kai con 3 Ante per Soggiorno e Sala da P...',sales:1116.22,units:9,adSales:529.57},
-      {asin:'B0CXYV9M1L',title:'Credenza Madia Clark L Soggiorno Moderno LED',sales:876.0,units:4,adSales:0.0},
-      {asin:'B0GBY7KTD1',title:'Credenza con ante scanalate Renzo per Soggiorno-Pranzo...',sales:846.6,units:5,adSales:156.2},
-      {asin:'B09LMR77GN',title:'Credenza Stile Moderno Roque Melamina Sonoma',sales:796.0,units:4,adSales:0.0},
-      {asin:'B0DTTYQD15',title:'Credenza Madia Soggiorno Zoel Melamina Opaca',sales:765.0,units:9,adSales:278.68}
-    ],
-    'MESA ALTA': [
-      {asin:'B0FMFFNY83',title:'Tavolo Alto da bar con 2 Sgabelli Ani Barra da cucina i...',sales:149.0,units:1,adSales:0.0},
-      {asin:'B0FMFJM2H5',title:'Tavolo Alto da bar Ani Barra da cucina in Stile Minimal...',sales:109.0,units:1,adSales:0.0}
-    ],
-    'MUEBLES TV': [
-      {asin:'B0FLQBBYTC',title:'Mobile TV con piedini Nora H2 Soggiorno Moderno',sales:596.0,units:4,adSales:0.0},
-      {asin:'B0FM3TXQ4J',title:'Mobile TV con piedini Aitana M2 Soggiorno Moderno',sales:516.0,units:4,adSales:105.74},
-      {asin:'B0D923FPZH',title:'Mobile TV Sospeso a Parete Aitana M2 Soggiorno Moderno',sales:278.0,units:2,adSales:227.86},
-      {asin:'B0FLQ5KKD9',title:'Mobile TV con piedini Tibi Soggiorno Moderno',sales:189.0,units:1,adSales:0.0},
-      {asin:'B0FLQB8XQT',title:'Mobile TV con piedini Nora H2 Soggiorno Moderno',sales:149.0,units:1,adSales:0.0}
-    ],
-    'CAMAS': [
-      {asin:'B0FHBQ5MFP',title:'Toeletta Sospesa con Specchio Velia Toeletta con Cassetto',sales:414.05,units:4,adSales:0.0},
-      {asin:'B07N4BG9RC',title:'Letto Matrimoniale Alessia Legno e Ecoleather',sales:389.0,units:1,adSales:0.0}
-    ],
-    'RECIBIDORES': [
-      {asin:'B0FL2TVNLX',title:'Mobile Ingresso Sospeso Neo con Specchio e Cassetto',sales:218.0,units:2,adSales:0.0},
-      {asin:'B0CJ2PXN2N',title:'Mobile Ingresso Sospeso Neo con Specchio e Cassetto',sales:218.0,units:2,adSales:0.0},
-      {asin:'B08NTHT243',title:'Scarpiera Paola con luce LED per ingresso design moderno',sales:129.0,units:1,adSales:0.0}
-    ],
-    'VITRINAS': [
-      {asin:'B07JMZJP9Y',title:'Vetrina Pensile Luke V5 LED Melamina Finitura Lucida',sales:477.0,units:3,adSales:0.0},
-      {asin:'B07JNP7W7M',title:'Vetrina Pensile Luke V5 LED Melamina Finitura Lucida',sales:477.0,units:3,adSales:0.0},
-      {asin:'B07JNDM1TW',title:'Vetrina Pensile Luke V3 LED Melamina Finitura Lucida',sales:201.0,units:3,adSales:0.0},
-      {asin:'B09L8LC5TQ',title:'Vetrina Pensile Luke V5 LED Melamina Finitura Opaca e L...',sales:159.0,units:1,adSales:0.0},
-      {asin:'B07JNQV812',title:'Vetrina Con Piedini 2cm Luke V5 LED Melamina',sales:159.0,units:1,adSales:0.0}
-    ]
-  },
-  de: {
-    'APARADORES': [
-      {asin:'B0FD43LKP7',title:'Sideboard Renzo mit gerillten Türen für modernes Wohn-...',sales:1831.14,units:10,adSales:1505.07},
-      {asin:'B0F8W6YCHG',title:'Sideboard mit Türen und Schubladen Yanis für modernes W...',sales:747.0,units:3,adSales:209.24},
-      {asin:'B07DYCZR3W',title:'Modernes Sideboard Wohnzimmer oder Esszimmer',sales:627.0,units:3,adSales:0.0},
-      {asin:'B085GGM485',title:'Modernes Sideboard Breite 155 x Höhe 91',sales:478.0,units:2,adSales:401.68},
-      {asin:'B0CXYV9M1L',title:'Sideboard Wohnzimmer',sales:458.0,units:2,adSales:0.0}
-    ],
-    'MUEBLES TV': [
-      {asin:'B0FM3TXQ4J',title:'TV-Möbel mit Füßen TV-Lowboard Farbe Eiche',sales:516.0,units:4,adSales:0.0},
-      {asin:'B0FM3S6YM1',title:'TV-Möbel mit Füßen TV-Lowboard Farbe Weiß',sales:129.0,units:1,adSales:0.0},
-      {asin:'B0D8TQK2SY',title:'Hängendes TV-Möbel TV-Lowboard Farbe Eiche',sales:129.0,units:1,adSales:108.4},
-      {asin:'B0FM3RFS98',title:'TV-Möbel mit Füßen TV-Lowboard Farbe Weiß',sales:119.0,units:1,adSales:100.0}
-    ],
-    'RECIBIDORES': [
-      {asin:'B09HXNC1ZH',title:'Flurmöbel mit Schuhschrank',sales:387.0,units:3,adSales:216.8},
-      {asin:'B0D3VBJ1WF',title:'Flurmöbel Set mit Schuhschrank Spiegel und Garderobe',sales:378.0,units:2,adSales:158.82},
-      {asin:'B09SBMV4G3',title:'Flurmöbel Set mit Schuhschrank Spiegel und Garderobe',sales:189.0,units:1,adSales:0.0},
-      {asin:'B0FL2TVNLX',title:'Flurmöbel mit Spiegel und Schublade Dielenmöbel',sales:109.0,units:1,adSales:0.0}
-    ],
-    'VITRINAS': [
-      {asin:'B07XTJVF8Y',title:'Vitrinenschrank Luke V5',sales:318.0,units:2,adSales:267.22},
-      {asin:'B07XTFVGJF',title:'Vitrinenschrank Luke V6',sales:298.0,units:2,adSales:0.0},
-      {asin:'B07JMZH75L',title:'Vitrinenschrank Luke V6',sales:149.0,units:1,adSales:0.0},
-      {asin:'B07JNLP43M',title:'Vitrinenschrank Luke V3',sales:134.0,units:2,adSales:0.0},
-      {asin:'B07JN2WH63',title:'Vitrinenschrank Luke V4',sales:119.0,units:1,adSales:0.0}
-    ]
-  },
-  global: {
-    'APARADORES': [
-      {asin:'B0FPMD6W2T',title:'Credenza Bassa Kai con 3 Ante per Soggiorno e Sala da P...',sales:6341.86,units:62,adSales:2374.93,mkts:['es','fr','it']},
-      {asin:'B085GGY8ZB',title:'Modernes Sideboard Breite 155 x Höhe 91',sales:4896.9,units:23,adSales:1413.13,mkts:['de','es','fr','it']},
-      {asin:'B085DQLFGQ',title:'Credenza Madia Clark Soggiorno Moderno LED',sales:4735.76,units:26,adSales:1990.4,mkts:['es','fr','it']},
-      {asin:'B0FD43LKP7',title:'Sideboard Renzo mit gerillten Türen für modernes Wohn-...',sales:4724.06,units:27,adSales:2695.94,mkts:['de','es','fr','it']},
-      {asin:'B09LMR77GN',title:'Modernes Sideboard Wohnzimmer oder Esszimmer',sales:4702.83,units:27,adSales:329.45,mkts:['de','es','fr','it']}
-    ],
-    'MESA ALTA': [
-      {asin:'B0DBM5HDCH',title:'Table Haute de Cuisine Kyra avec 3 Étagères de Rangement',sales:1690.96,units:19,adSales:666.91,mkts:['es','fr']},
-      {asin:'B0FMFMQFKK',title:'Table de Bar Haute ANI avec Deux tabourets pour 2 Perso...',sales:1429.95,units:10,adSales:0.0,mkts:['es','fr']},
-      {asin:'B0FMFFNY83',title:'Tavolo Alto da bar con 2 Sgabelli Ani Barra da cucina i...',sales:1422.23,units:10,adSales:114.87,mkts:['es','fr','it']},
-      {asin:'B0FMFLM8YT',title:'Table de Bar Haute ANI avec Deux tabourets pour 2 Perso...',sales:1309.91,units:10,adSales:0.0,mkts:['es','fr']},
-      {asin:'B0FMFLX6QS',title:'Ensemble Table Haute et 2 Tabourets Kyra Mange-Debout d...',sales:992.96,units:7,adSales:319.8,mkts:['es','fr']}
-    ],
-    'MUEBLES TV': [
-      {asin:'B0FM3TXQ4J',title:'TV-Möbel mit Füßen TV-Lowboard Farbe Eiche',sales:6068.75,units:49,adSales:2215.03,mkts:['de','es','fr','it']},
-      {asin:'B0D8TQK2SY',title:'Hängendes TV-Möbel TV-Lowboard Farbe Eiche',sales:2370.92,units:19,adSales:931.76,mkts:['de','es','fr']},
-      {asin:'B0FPMJ1D87',title:'Mobile TV Basso Kai con 1 Anta per Soggiorno Moderno',sales:1317.91,units:22,adSales:545.32,mkts:['es','fr','it']},
-      {asin:'B0D923FPZH',title:'Mobile TV Sospeso a Parete Aitana M2 Soggiorno Moderno',sales:1229.92,units:10,adSales:424.54,mkts:['es','it']},
-      {asin:'B0FLQBBYTC',title:'Mobile TV con piedini Nora H2 Soggiorno Moderno',sales:1184.92,units:9,adSales:0.0,mkts:['es','fr','it']}
-    ],
-    'CAMAS': [
-      {asin:'B07DY9LLWB',title:'Cama de Matrimonio Nitas para Colchón de 150x190 cm',sales:1899.9,units:5,adSales:0.0,mkts:['es']},
-      {asin:'B07N1RFJ5C',title:'Cama de Matrimonio Nitas para Colchón de 150x190 cm',sales:1139.94,units:3,adSales:0.0,mkts:['es']},
-      {asin:'B07M5M22S8',title:'Cama de Matrimonio Rodas para Colchón de 180x200 cm',sales:979.96,units:2,adSales:0.0,mkts:['es']},
-      {asin:'B07JH94KW7',title:'Cama de Matrimonio Nitas para Colchón de 160x200 cm',sales:779.96,units:2,adSales:0.0,mkts:['es']},
-      {asin:'B0DWN56PFZ',title:'Lit Double Diana avec Matelas 150x190cm Design Flottant...',sales:699.0,units:1,adSales:0.0,mkts:['fr']}
-    ],
-    'RECIBIDORES': [
-      {asin:'B09MV14ZGT',title:'Ensemble Meuble d’Entrée Paola Set avec Meuble à Chauss...',sales:1609.91,units:10,adSales:0.0,mkts:['es','fr']},
-      {asin:'B0D37W28K6',title:'Meuble d’Entrée Mural Neo avec Miroir et Tiroir',sales:1275.76,units:16,adSales:173.49,mkts:['es','fr']},
-      {asin:'B0FL2TVNLX',title:'Flurmöbel mit Spiegel und Schublade Dielenmöbel',sales:1034.86,units:12,adSales:0.0,mkts:['de','es','fr','it']},
-      {asin:'B0CJ2MSD4L',title:'Meuble d’Entrée Mural Neo avec Miroir et Tiroir',sales:808.8,units:11,adSales:0.0,mkts:['es','fr']},
-      {asin:'B08NTHT243',title:'Scarpiera Paola con luce LED per ingresso design moderno',sales:788.88,units:7,adSales:0.0,mkts:['es','it']}
-    ],
-    'VITRINAS': [
-      {asin:'B07XTJVF8Y',title:'Vitrinenschrank Luke V5',sales:2028.22,units:14,adSales:267.22,mkts:['de','es','fr']},
-      {asin:'B07JNP7W7M',title:'Vetrina Pensile Luke V5 LED Melamina Finitura Lucida',sales:1310.94,units:9,adSales:0.0,mkts:['es','it']},
-      {asin:'B07XTFVGJF',title:'Vitrinenschrank Luke V6',sales:585.99,units:4,adSales:0.0,mkts:['de','es','fr']},
-      {asin:'B09L8LC5TQ',title:'Vetrina Pensile Luke V5 LED Melamina Finitura Opaca e L...',sales:575.97,units:4,adSales:0.0,mkts:['es','it']},
-      {asin:'B07JNQV812',title:'Vetrina Con Piedini 2cm Luke V5 LED Melamina',sales:575.97,units:4,adSales:0.0,mkts:['es','it']}
-    ]
+  8: {
+    es: {
+      'APARADORES': [
+        {asin:'B0FPMD6W2T',title:'Aparador bajo Kai con 3 Puertas para Salón Comedor Moderno',sales:4003.55,units:45,adSales:3132.85},
+        {asin:'B09LMR77GN',title:'Aparador Roque Mueble Auxiliar Moderno de Salón y Comed...',sales:3020.81,units:19,adSales:1437.93},
+        {asin:'B0F8W6YCHG',title:'Aparador con Puertas y cajones Yanis para Salón Comedor...',sales:2237.89,units:12,adSales:1537.12},
+        {asin:'B0FPMFLV8C',title:'Conjunto de Mueble de Salón Kai con Aparador y Mueble TV',sales:1810.12,units:14,adSales:253.7},
+        {asin:'B0CNDD8KPB',title:'Aparador pequeño Lander L2 para Salón Moderno',sales:1652.69,units:28,adSales:0.0}
+      ],
+      'MESA ALTA': [
+        {asin:'B0H4GRBQ5Q',title:'Mesa Alta Bar con 2 Taburetes Kyra Barra Cocina de Esti...',sales:1031.92,units:8,adSales:0.0},
+        {asin:'B0FMFLM8YT',title:'Mesa Alta de Cocina con 2 Taburetes Estilo Industrial',sales:1031.91,units:8,adSales:114.87},
+        {asin:'B0FMFFNY83',title:'Mesa Alta de Cocina con 2 Taburetes Estilo Industrial',sales:833.94,units:6,adSales:0.0},
+        {asin:'B0FMFJM2H5',title:'Mesa Alta de Cocina Estilo Industrial Modelo Ani',sales:719.82,units:8,adSales:73.55},
+        {asin:'B0FMFKMK37',title:'Mesa Alta de Cocina Estilo Industrial Modelo Ani',sales:622.93,units:7,adSales:212.38}
+      ],
+      'MUEBLES TV': [
+        {asin:'B0FM3TXQ4J',title:'Mueble TV bajo con Patas Aitana M2 para Salón Moderno',sales:2617.75,units:22,adSales:655.32},
+        {asin:'B0D8TQK2SY',title:'Mueble TV Colgante Aitana M2 para Salón Moderno',sales:1429.85,units:12,adSales:899.1},
+        {asin:'B0D8TRG533',title:'Mueble TV Colgante Aitana M1 para Salón Moderno',sales:1112.89,units:11,adSales:373.52},
+        {asin:'B0D923FPZH',title:'Mueble TV Colgante Aitana M2 para Salón Moderno',sales:951.92,units:8,adSales:378.46},
+        {asin:'B0FM3S6YM1',title:'Mueble TV bajo con Patas Aitana M2 para Salón Moderno',sales:713.94,units:6,adSales:98.34}
+      ],
+      'CAMAS': [
+        {asin:'B07N1RFJ5C',title:'Cama de Matrimonio Nitas para Colchón de 150x190 cm',sales:759.96,units:2,adSales:0.0},
+        {asin:'B07MMTTGXH',title:'Cama de Matrimonio Rodas para Colchón de 180x200 cm',sales:489.98,units:1,adSales:0.0},
+        {asin:'B07MN1XN9K',title:'Cama de Matrimonio Rodas para Colchón de 150x190 cm',sales:449.98,units:1,adSales:0.0},
+        {asin:'B07DY9LLWB',title:'Cama de Matrimonio Nitas para Colchón de 150x190 cm',sales:379.98,units:1,adSales:0.0},
+        {asin:'B07N43N73G',title:'Cama de Matrimonio Alessia para Colchón de 180x200 cm',sales:259.98,units:1,adSales:0.0}
+      ],
+      'RECIBIDORES': [
+        {asin:'B0D37W28K6',title:'Recibidor Suspendido Neo con Espejo Modular y Cajón',sales:2099.4,units:30,adSales:404.81},
+        {asin:'B08NTFFCQ6',title:'Conjunto Recibidor Paola Set con Zapatero Espejo',sales:794.95,units:5,adSales:352.87},
+        {asin:'B08NTHT243',title:'Recibidor Zapatero Paola con Luz LED para Recibidor',sales:764.91,units:7,adSales:0.0},
+        {asin:'B0F99LVL87',title:'Recibidor Zapatero Paola con Luz LED Diseño Moderno',sales:546.93,units:5,adSales:98.34},
+        {asin:'B0FL2TVNLX',title:'Recibidor Suspendido Neo con Espejo Modular y Cajón',sales:489.85,units:7,adSales:594.12}
+      ],
+      'VITRINAS': [
+        {asin:'B07XTJVF8Y',title:'Vitrina con Patas 2 cm Luke V5 para Salón o Comedor Mod...',sales:922.93,units:7,adSales:0.0},
+        {asin:'B07XTFVGJF',title:'Vitrina con Patas 2 cm Luke V6 para Salón o Comedor Mod...',sales:555.96,units:4,adSales:0.0},
+        {asin:'B09L8LQRXX',title:'Vitrina con Patas 2 cm Luke V5 para Salón o Comedor Mod...',sales:535.96,units:4,adSales:0.0},
+        {asin:'B09L8LV6ZX',title:'Vitrina con Patas 2 cm Luke V6 para Salón o Comedor Mod...',sales:525.96,units:4,adSales:0.0},
+        {asin:'B07JN9RLYC',title:'Vitrina con Patas 2 cm Luke V6 para Salón o Comedor Mod...',sales:435.96,units:4,adSales:0.0}
+      ]
+    },
+    fr: {
+      'APARADORES': [
+        {asin:'B0888VG5GK',title:'Buffet Roque pour Salon et Salle à Manger Moderne',sales:2787.65,units:14,adSales:861.64},
+        {asin:'B09LMR77GN',title:'Buffet Roque pour Salon et Salle à Manger Moderne',sales:1791.0,units:9,adSales:663.32},
+        {asin:'B0FPMD6W2T',title:'Bahut Bas Kai avec 3 Portes pour Salon et Salle à Mange...',sales:1666.0,units:14,adSales:827.51},
+        {asin:'B0888VW41V',title:'Buffet Roque pour Salon et Salle à Manger Moderne',sales:1592.0,units:8,adSales:331.66},
+        {asin:'B085GGY8ZB',title:'Buffet Salle à Manger Aker - Bahut Salon Design Moderne...',sales:1533.0,units:7,adSales:182.5}
+      ],
+      'MESA ALTA': [
+        {asin:'B0FMFKCFSD',title:'Table de Bar Haute ANI avec Deux tabourets pour 2 Perso...',sales:516.0,units:4,adSales:0.0},
+        {asin:'B0FMFLX6QS',title:'Ensemble Table Haute et 2 Tabourets Kyra Mange-Debout d...',sales:477.0,units:3,adSales:0.0},
+        {asin:'B0FMFMVFN6',title:'Table Haute de Cuisine Kyra avec 3 Étagères de Rangement',sales:445.0,units:5,adSales:346.68},
+        {asin:'B0DBM5HDCH',title:'Table Haute de Cuisine Kyra avec 3 Étagères de Rangement',sales:445.0,units:5,adSales:148.34},
+        {asin:'B0FMFMQFKK',title:'Table de Bar Haute ANI avec Deux tabourets pour 2 Perso...',sales:422.17,units:3,adSales:124.17}
+      ],
+      'MUEBLES TV': [
+        {asin:'B0FM3TXQ4J',title:'Meuble TV avec Pieds Aitana M2 pour Salon Moderne',sales:2967.0,units:23,adSales:633.33},
+        {asin:'B0D8TQK2SY',title:'Meuble TV Mural Aitana M2 pour Salon Moderne',sales:1032.0,units:8,adSales:729.16},
+        {asin:'B0FM3S6YM1',title:'Meuble TV avec Pieds Aitana M2 pour Salon Moderne',sales:774.0,units:6,adSales:206.67},
+        {asin:'B0FM3Q13ZG',title:'Meuble TV avec Pieds Aitana M1 pour Salon Moderne',sales:575.0,units:5,adSales:107.5},
+        {asin:'B091BBPQC9',title:'Meuble TV 1 Porte Meuble TV de salon avec LED',sales:517.08,units:4,adSales:107.5}
+      ],
+      'CAMAS': [
+        {asin:'B01ITQR9PU',title:'Lit Double Alessia avec Coffre de Rangement',sales:239.0,units:1,adSales:0.0}
+      ],
+      'RECIBIDORES': [
+        {asin:'B0D37W28K6',title:'Meuble d’Entrée Mural Neo avec Miroir et Tiroir',sales:317.0,units:3,adSales:0.0},
+        {asin:'B08NTHT243',title:'Meuble d’Entrée Meuble à Chaussures Paola avec Lumière LED',sales:238.0,units:2,adSales:0.0},
+        {asin:'B09SBLRXV3',title:'Meuble d’Entrée Meuble à Chaussures Paola avec Lumière LED',sales:238.0,units:2,adSales:0.0},
+        {asin:'B0F99LVL87',title:'Meuble d’Entrée Meuble à Chaussures Paola avec Lumière LED',sales:119.0,units:1,adSales:0.0},
+        {asin:'B0FL2TVNLX',title:'Meuble d’Entrée Mural Neo avec Miroir et Tiroir',sales:109.0,units:1,adSales:90.83}
+      ],
+      'VITRINAS': [
+        {asin:'B09L8LQRXX',title:'Vitrine Luke V5 avec pieds standard',sales:298.0,units:2,adSales:0.0},
+        {asin:'B07XTJVF8Y',title:'Vitrine avec Pieds 2 cm Luke V5 pour Salon ou Salle à M...',sales:150.25,units:1,adSales:0.0},
+        {asin:'B07XTFVGJF',title:'Armoire vitrée Luke V6 en mélaminé brillant avec pieds...',sales:149.0,units:1,adSales:0.0},
+        {asin:'B07JNQV812',title:'Vitrine avec Pieds 2 cm Luke V5 pour Salon ou Salle à M...',sales:149.0,units:1,adSales:0.0},
+        {asin:'B07JNDM1TW',title:'Vitrine Mural Luke V3 pour Salon ou Salle à Manger Mode...',sales:57.0,units:1,adSales:0.0}
+      ]
+    },
+    it: {
+      'APARADORES': [
+        {asin:'B0DTTYQD15',title:'Credenza Madia Soggiorno Zoel Melamina Opaca',sales:1005.0,units:11,adSales:290.16},
+        {asin:'B0FD43LKP7',title:'Credenza con ante scanalate Renzo per Soggiorno Sala da...',sales:928.2,units:5,adSales:309.84},
+        {asin:'B0F8W6YCHG',title:'Credenza a due ante e tre cassetti Madia Soggiorno Yanis',sales:914.52,units:4,adSales:403.31},
+        {asin:'B09LMR77GN',title:'Credenza Stile Moderno Roque Melamina Sonoma',sales:746.92,units:4,adSales:163.11},
+        {asin:'B0FPMD6W2T',title:'Credenza Bassa Kai con 3 Ante per Soggiorno e Sala da P...',sales:693.0,units:5,adSales:0.0}
+      ],
+      'MESA ALTA': [
+        {asin:'B0FMFJM2H5',title:'Tavolo Alto da bar Ani Barra da cucina in Stile Minimal...',sales:109.0,units:1,adSales:0.0},
+        {asin:'B0FMFL3TYW',title:'Tavolo Alto da bar Ani Barra da cucina in Stile Minimal...',sales:109.0,units:1,adSales:0.0}
+      ],
+      'MUEBLES TV': [
+        {asin:'B085GGV7NW',title:'Mobile TV Aker Soggiorno Moderno LED Melamina',sales:417.0,units:3,adSales:455.72},
+        {asin:'B0D925QV5C',title:'Mobile TV Sospeso a Parete Aitana M1 Soggiorno Moderno',sales:337.0,units:3,adSales:284.42},
+        {asin:'B01M1BN67C',title:'Mobile TV Sospeso a Parete Nora H2 Soggiorno Moderno',sales:288.0,units:2,adSales:89.34},
+        {asin:'B0FLQBBYTC',title:'Mobile TV con piedini Nora H2 Soggiorno Moderno',sales:278.0,units:2,adSales:106.61},
+        {asin:'B091BBPQC9',title:'Mobile TV Lilian Soggiorno Moderno LED RGB',sales:268.0,units:2,adSales:0.0}
+      ],
+      'CAMAS': [
+        {asin:'B073QQZK4Y',title:'Letto Contenitore Abbattibile Parisina Legno e Ecoleather',sales:529.0,units:1,adSales:0.0}
+      ],
+      'RECIBIDORES': [
+        {asin:'B0CJ2MSD4L',title:'Mobile Ingresso Sospeso Neo con Specchio e Cassetto',sales:307.0,units:3,adSales:0.0},
+        {asin:'B0D37W28K6',title:'Mobile Ingresso Sospeso Neo con Specchio e Cassetto',sales:99.0,units:1,adSales:0.0},
+        {asin:'B0FL2TVNLX',title:'Mobile Ingresso Sospeso Neo con Specchio e Cassetto',sales:90.08,units:1,adSales:0.0}
+      ],
+      'VITRINAS': [
+        {asin:'B07JNP7W7M',title:'Vetrina Pensile Luke V5 LED Melamina Finitura Lucida',sales:953.99,units:6,adSales:0.0},
+        {asin:'B09L8LC5TQ',title:'Vetrina Pensile Luke V5 LED Melamina Finitura Opaca e L...',sales:477.0,units:3,adSales:0.0},
+        {asin:'B07XTFVGJF',title:'Vetrina Con Piedini 2cm Luke V6 LED Melamina',sales:298.0,units:2,adSales:0.0},
+        {asin:'B07JNQV812',title:'Vetrina Con Piedini 2cm Luke V5 LED Melamina',sales:159.0,units:1,adSales:0.0},
+        {asin:'B07XTJVF8Y',title:'Vetrina Con Piedini 2cm Luke V5 LED Melamina',sales:159.0,units:1,adSales:0.0}
+      ]
+    },
+    de: {
+      'APARADORES': [
+        {asin:'B0FD43LKP7',title:'Sideboard Renzo mit gerillten Türen für modernes Wohn-...',sales:1194.0,units:6,adSales:501.69},
+        {asin:'B0F8W33TBY',title:'Sideboard mit Türen und Schubladen Yanis für modernes W...',sales:747.0,units:3,adSales:418.48},
+        {asin:'B085GGM485',title:'Modernes Sideboard Breite 155 x Höhe 91',sales:439.84,units:2,adSales:0.0},
+        {asin:'B0F8W6YCHG',title:'Sideboard mit Türen und Schubladen Yanis für modernes W...',sales:438.0,units:2,adSales:368.06},
+        {asin:'B0888TSXBJ',title:'Modernes Sideboard Wohnzimmer oder Esszimmer',sales:438.0,units:2,adSales:175.63}
+      ],
+      'MESA ALTA': [
+        {asin:'B0FMFLZCM5',title:'Küchentisch mit Zwei Hockern mit Metallstruktur',sales:149.0,units:1,adSales:0.0},
+        {asin:'B0FMFJM2H5',title:'Küchentisch mit Metallstruktur Bartresen für küche',sales:100.0,units:1,adSales:0.0}
+      ],
+      'MUEBLES TV': [
+        {asin:'B0FM3Q13ZG',title:'TV-Lowboard Aitana M1 Eiche',sales:476.0,units:4,adSales:100.0},
+        {asin:'B0D8TQK2SY',title:'Hängendes TV-Möbel Aitana M2 Eiche',sales:407.0,units:3,adSales:0.0},
+        {asin:'B0D8TRG533',title:'Hängendes TV-Möbel Aitana M1 Eiche',sales:238.0,units:2,adSales:0.0},
+        {asin:'B085GG6FD1',title:'Modernes TV-Lowboard Breite 155 x Höhe 91',sales:139.0,units:1,adSales:0.0},
+        {asin:'B0FLQBBYTC',title:'TV-Möbel Nora H2 mit Füßen für modernes Wohnzimmer',sales:129.0,units:1,adSales:108.4}
+      ],
+      'RECIBIDORES': [
+        {asin:'B0D3V9W27W',title:'Flurmöbel mit Schuhschrank',sales:387.0,units:3,adSales:0.0},
+        {asin:'B0D3VBJ1WF',title:'Flurmöbel Set mit Schuhschrank Spiegel und Garderobe',sales:189.0,units:1,adSales:0.0},
+        {asin:'B09SBLRXV3',title:'Flurmöbel mit Schuhschrank',sales:129.0,units:1,adSales:0.0},
+        {asin:'B09LHZZ2ZR',title:'Flurmöbel mit Schuhschrank',sales:129.0,units:1,adSales:108.4},
+        {asin:'B0FL2TVNLX',title:'Flurmöbel mit Spiegel und Schublade Dielenmöbel',sales:109.0,units:1,adSales:83.19}
+      ],
+      'VITRINAS': [
+        {asin:'B09L8LC5TQ',title:'Vitrinenschrank Luke V5',sales:159.0,units:1,adSales:0.0},
+        {asin:'B07JNRLKQ5',title:'Vitrinenschrank Luke V2',sales:154.0,units:2,adSales:0.0},
+        {asin:'B09L8LV6ZX',title:'Vitrinenschrank Luke V6',sales:149.0,units:1,adSales:0.0},
+        {asin:'B08W2CSHY1',title:'Vitrinenschrank Luke V6',sales:149.0,units:1,adSales:0.0},
+        {asin:'B07XTFVBPQ',title:'Vitrinenschrank Luke V4',sales:119.0,units:1,adSales:0.0}
+      ]
+    },
+    global: {
+      'APARADORES': [
+        {asin:'B0FPMD6W2T',title:'Aparador bajo Kai con 3 Puertas para Salón Comedor Moderno',sales:6491.55,units:65,adSales:3960.36,mkts:['es','fr','it','de']},
+        {asin:'B09LMR77GN',title:'Aparador Roque Mueble Auxiliar Moderno de Salón y Comed...',sales:5787.73,units:33,adSales:2456.8,mkts:['es','fr','it','de']},
+        {asin:'B0F8W6YCHG',title:'Aparador con Puertas y cajones Yanis para Salón Comedor...',sales:3819.41,units:19,adSales:2308.49,mkts:['es','fr','it','de']},
+        {asin:'B085GGY8ZB',title:'Aparador Mueble TV con LED Armario para Salón Comedor M...',sales:3164.92,units:15,adSales:494.88,mkts:['es','fr','de']},
+        {asin:'B0888VG5GK',title:'Aparador Roque Mueble Auxiliar Moderno de Salón y Comed...',sales:3105.63,units:16,adSales:1337.64,mkts:['es','fr']}
+      ],
+      'MESA ALTA': [
+        {asin:'B0H4GRBQ5Q',title:'Mesa Alta Bar con 2 Taburetes Kyra Barra Cocina de Esti...',sales:1180.92,units:9,adSales:0.0,mkts:['es','fr']},
+        {asin:'B0FMFLM8YT',title:'Mesa Alta de Cocina con 2 Taburetes Estilo Industrial',sales:1170.91,units:9,adSales:230.7,mkts:['es','fr']},
+        {asin:'B0DBM5HDCH',title:'Mesa Alta Bar Kyra Barra Cocina de Estilo Moderno con 3...',sales:1067.93,units:12,adSales:516.07,mkts:['es','fr']},
+        {asin:'B0FMFLX6QS',title:'Mesa Alta Bar con 2 Taburetes Kyra Barra Cocina de Esti...',sales:992.96,units:7,adSales:533.0,mkts:['es','fr']},
+        {asin:'B0FMFK1QQK',title:'Mesa Alta de Cocina con 2 Taburetes Estilo Industrial',sales:981.95,units:8,adSales:222.37,mkts:['es','fr']}
+      ],
+      'MUEBLES TV': [
+        {asin:'B0FM3TXQ4J',title:'Mueble TV bajo con Patas Aitana M2 para Salón Moderno',sales:5836.36,units:47,adSales:1288.65,mkts:['es','fr','it']},
+        {asin:'B0D8TQK2SY',title:'Mueble TV Colgante Aitana M2 para Salón Moderno',sales:3126.85,units:25,adSales:1628.26,mkts:['es','fr','it','de']},
+        {asin:'B085GGV7NW',title:'Mueble TV con LED Mueble TV para Salón Comedor Moderno',sales:1865.96,units:14,adSales:1390.41,mkts:['es','fr','it']},
+        {asin:'B0D8TRG533',title:'Mueble TV Colgante Aitana M1 para Salón Moderno',sales:1795.72,units:17,adSales:373.52,mkts:['es','fr','it','de']},
+        {asin:'B0D923FPZH',title:'Mueble TV Colgante Aitana M2 para Salón Moderno',sales:1616.92,units:13,adSales:593.46,mkts:['es','fr','it']}
+      ],
+      'CAMAS': [
+        {asin:'B07N1RFJ5C',title:'Cama de Matrimonio Nitas para Colchón de 150x190 cm',sales:759.96,units:2,adSales:0.0,mkts:['es']},
+        {asin:'B073QQZK4Y',title:'Letto Contenitore Abbattibile Parisina Legno e Ecoleather',sales:529.0,units:1,adSales:0.0,mkts:['it']},
+        {asin:'B07MMTTGXH',title:'Cama de Matrimonio Rodas para Colchón de 180x200 cm',sales:489.98,units:1,adSales:0.0,mkts:['es']},
+        {asin:'B07MN1XN9K',title:'Cama de Matrimonio Rodas para Colchón de 150x190 cm',sales:449.98,units:1,adSales:0.0,mkts:['es']},
+        {asin:'B07DY9LLWB',title:'Cama de Matrimonio Nitas para Colchón de 150x190 cm',sales:379.98,units:1,adSales:0.0,mkts:['es']}
+      ],
+      'RECIBIDORES': [
+        {asin:'B0D37W28K6',title:'Recibidor Suspendido Neo con Espejo Modular y Cajón',sales:2515.4,units:34,adSales:404.81,mkts:['es','fr','it']},
+        {asin:'B08NTHT243',title:'Recibidor Zapatero Paola con Luz LED para Recibidor',sales:1002.91,units:9,adSales:0.0,mkts:['es','fr']},
+        {asin:'B0FL2TVNLX',title:'Recibidor Suspendido Neo con Espejo Modular y Cajón',sales:797.93,units:10,adSales:768.14,mkts:['es','fr','it','de']},
+        {asin:'B08NTFFCQ6',title:'Conjunto Recibidor Paola Set con Zapatero Espejo',sales:794.95,units:5,adSales:352.87,mkts:['es']},
+        {asin:'B0CJ2MSD4L',title:'Recibidor Suspendido Neo con Espejo Modular y Cajón',sales:755.9,units:9,adSales:115.66,mkts:['es','it','de']}
+      ],
+      'VITRINAS': [
+        {asin:'B07XTJVF8Y',title:'Vitrina con Patas 2 cm Luke V5 para Salón o Comedor Mod...',sales:1232.18,units:9,adSales:0.0,mkts:['es','fr','it']},
+        {asin:'B07JNP7W7M',title:'Vitrina Colgante Luke V5 para Salón o Comedor Moderno c...',sales:1211.97,units:8,adSales:0.0,mkts:['es','it']},
+        {asin:'B07XTFVGJF',title:'Vitrina con Patas 2 cm Luke V6 para Salón o Comedor Mod...',sales:1002.96,units:7,adSales:0.0,mkts:['es','fr','it']},
+        {asin:'B09L8LC5TQ',title:'Vitrina Colgante Luke V5 para Salón o Comedor Moderno c...',sales:918.58,units:6,adSales:0.0,mkts:['es','it','de']},
+        {asin:'B09L8LQRXX',title:'Vitrina con Patas 2 cm Luke V5 para Salón o Comedor Mod...',sales:833.96,units:6,adSales:0.0,mkts:['es','fr']}
+      ]
+    }
   }
 };
 
@@ -739,8 +1178,8 @@ const PRIME_DAY = {
   de: { sales:2176, pctJun:39.9, uplift:199.2, spend:270, acos:12.4, orders:null }
 };
 
-// ── CAMPAIGN TYPE DATA (Pacvue · Ene–Ago 2026) ────────────────────────────────
-// idx: 0=Ene, 1=Feb, 2=Mar, 3=Abr, 4=May, 5=Jun
+// ── CAMPAIGN TYPE DATA (Pacvue · Ene–Sep 2026) ────────────────────────────────
+// idx: 0=Ene, 1=Feb, 2=Mar, 3=Abr, 4=May, 5=Jun, 6=Jul, 7=Ago, 8=Sep
 const CAMPAIGN_TYPE = {
   es: [
     {SP:{spend:3495.01,sales:20390.36,acos:17.14,roas:5.83,impr:2221125,clicks:22910,conv:184},SB:{spend:0,sales:0,acos:0,roas:0,impr:0,clicks:0,conv:0},SD:{spend:683.62,sales:1891.62,acos:36.14,roas:2.77,impr:536109,clicks:1647,conv:16}},
@@ -749,7 +1188,9 @@ const CAMPAIGN_TYPE = {
     {SP:{spend:3601.23,sales:24284.45,acos:14.83,roas:6.74,impr:2499714,clicks:25308,conv:217},SB:{spend:329.80,sales:0,acos:0,roas:0,impr:114111,clicks:1620,conv:0},SD:{spend:530.03,sales:1758.56,acos:30.14,roas:3.32,impr:367310,clicks:1481,conv:14}},
     {SP:{spend:3511.01,sales:22720.78,acos:15.45,roas:6.47,impr:2498650,clicks:23918,conv:223},SB:{spend:162.78,sales:0,acos:0,roas:0,impr:51463,clicks:973,conv:0},SD:{spend:586.83,sales:1486.66,acos:39.47,roas:2.53,impr:375042,clicks:1917,conv:12}},
     {SP:{spend:4036.18,sales:28139.01,acos:14.34,roas:6.97,impr:2509956,clicks:24922,conv:264},SB:{spend:111.15,sales:0,acos:0,roas:0,impr:37746,clicks:713,conv:0},SD:{spend:551.67,sales:992.59,acos:55.58,roas:1.80,impr:355651,clicks:1708,conv:8}},
-    {SP:{spend:4053.40,sales:28020.33,acos:14.47,roas:6.91,impr:2593861,clicks:26239,conv:242},SB:{spend:113.61,sales:0,acos:0,roas:0,impr:34091,clicks:718,conv:0},SD:{spend:606.41,sales:1746.17,acos:34.73,roas:2.88,impr:378196,clicks:1966,conv:14}}
+    {SP:{spend:4053.40,sales:28020.33,acos:14.47,roas:6.91,impr:2593861,clicks:26239,conv:242},SB:{spend:113.61,sales:0,acos:0,roas:0,impr:34091,clicks:718,conv:0},SD:{spend:606.41,sales:1746.17,acos:34.73,roas:2.88,impr:378196,clicks:1966,conv:14}},
+    {SP:{spend:4846.36,sales:33528.06,acos:14.45,roas:6.92,impr:3082801,clicks:34890,conv:302},SB:{spend:188.55,sales:674.33,acos:27.96,roas:3.58,impr:52028,clicks:1188,conv:5},SD:{spend:386.66,sales:2002.31,acos:19.31,roas:5.18,impr:299058,clicks:1141,conv:16}},
+    {SP:{spend:4803.70,sales:33161.22,acos:14.49,roas:6.90,impr:3399993,clicks:36914,conv:307},SB:{spend:0,sales:0,acos:0,roas:0,impr:0,clicks:0,conv:0},SD:{spend:111.41,sales:2095.64,acos:5.32,roas:18.81,impr:56965,clicks:213,conv:19}}
   ],
   fr: [
     {SP:{spend:1996.28,sales:17189.88,acos:11.61,roas:8.61,impr:1244395,clicks:11483,conv:122},SB:{spend:0,sales:0,acos:0,roas:0,impr:0,clicks:0,conv:0},SD:{spend:36.69,sales:0,acos:0,roas:0,impr:26716,clicks:85,conv:0}},
@@ -758,7 +1199,9 @@ const CAMPAIGN_TYPE = {
     {SP:{spend:1758.22,sales:13466.67,acos:13.06,roas:7.66,impr:1135725,clicks:10797,conv:108},SB:{spend:259.88,sales:0,acos:0,roas:0,impr:271912,clicks:1102,conv:0},SD:{spend:30.82,sales:430.83,acos:7.15,roas:13.98,impr:25030,clicks:244,conv:3}},
     {SP:{spend:1791.49,sales:16002.49,acos:11.20,roas:8.93,impr:1184392,clicks:10594,conv:115},SB:{spend:224.84,sales:0,acos:0,roas:0,impr:209170,clicks:1034,conv:0},SD:{spend:38.85,sales:65.83,acos:59.02,roas:1.69,impr:25552,clicks:245,conv:1}},
     {SP:{spend:2733.21,sales:22092.16,acos:12.37,roas:8.08,impr:1914067,clicks:14629,conv:162},SB:{spend:198.27,sales:0,acos:0,roas:0,impr:55289,clicks:834,conv:0},SD:{spend:31.18,sales:464.17,acos:6.72,roas:14.89,impr:19663,clicks:214,conv:2}},
-    {SP:{spend:2888.19,sales:17710.03,acos:16.31,roas:6.13,impr:1830100,clicks:14310,conv:134},SB:{spend:470.39,sales:0,acos:0,roas:0,impr:159955,clicks:2100,conv:0},SD:{spend:50.97,sales:165.83,acos:30.74,roas:3.25,impr:45871,clicks:393,conv:1}}
+    {SP:{spend:2888.19,sales:17710.03,acos:16.31,roas:6.13,impr:1830100,clicks:14310,conv:134},SB:{spend:470.39,sales:0,acos:0,roas:0,impr:159955,clicks:2100,conv:0},SD:{spend:50.97,sales:165.83,acos:30.74,roas:3.25,impr:45871,clicks:393,conv:1}},
+    {SP:{spend:3100.40,sales:18942.50,acos:16.37,roas:6.11,impr:1924632,clicks:15076,conv:139},SB:{spend:251.32,sales:1459.17,acos:17.22,roas:5.81,impr:90825,clicks:1474,conv:9},SD:{spend:54.87,sales:894.99,acos:6.13,roas:16.31,impr:90121,clicks:404,conv:6}},
+    {SP:{spend:2927.67,sales:15600.70,acos:18.77,roas:5.33,impr:1973128,clicks:12502,conv:111},SB:{spend:60.12,sales:546.66,acos:11.00,roas:9.09,impr:17396,clicks:391,conv:3},SD:{spend:74.77,sales:290.00,acos:25.78,roas:3.88,impr:90779,clicks:581,conv:2}}
   ],
   it: [
     {SP:{spend:1898.58,sales:13342.10,acos:14.23,roas:7.03,impr:1680885,clicks:13817,conv:83},SB:{spend:0,sales:0,acos:0,roas:0,impr:0,clicks:0,conv:0},SD:{spend:0,sales:0,acos:0,roas:0,impr:0,clicks:0,conv:0}},
@@ -767,7 +1210,9 @@ const CAMPAIGN_TYPE = {
     {SP:{spend:1636.43,sales:8295.72,acos:19.73,roas:5.07,impr:1329913,clicks:10878,conv:56},SB:{spend:251.49,sales:0,acos:0,roas:0,impr:244376,clicks:1162,conv:0},SD:{spend:0.59,sales:0,acos:0,roas:0,impr:2241,clicks:3,conv:0}},
     {SP:{spend:1718.64,sales:6687.64,acos:25.70,roas:3.89,impr:1502228,clicks:11702,conv:45},SB:{spend:65.12,sales:0,acos:0,roas:0,impr:22204,clicks:364,conv:0},SD:{spend:2.31,sales:0,acos:0,roas:0,impr:4404,clicks:12,conv:0}},
     {SP:{spend:2293.30,sales:10322.78,acos:22.22,roas:4.50,impr:1758279,clicks:16635,conv:73},SB:{spend:42.57,sales:0,acos:0,roas:0,impr:14775,clicks:218,conv:0},SD:{spend:14.47,sales:0,acos:0,roas:0,impr:12083,clicks:78,conv:0}},
-    {SP:{spend:1890.30,sales:10456.39,acos:18.08,roas:5.53,impr:1458150,clicks:14035,conv:68},SB:{spend:111.18,sales:0,acos:0,roas:0,impr:60222,clicks:725,conv:0},SD:{spend:34.69,sales:0,acos:0,roas:0,impr:38758,clicks:226,conv:0}}
+    {SP:{spend:1890.30,sales:10456.39,acos:18.08,roas:5.53,impr:1458150,clicks:14035,conv:68},SB:{spend:111.18,sales:0,acos:0,roas:0,impr:60222,clicks:725,conv:0},SD:{spend:34.69,sales:0,acos:0,roas:0,impr:38758,clicks:226,conv:0}},
+    {SP:{spend:2159.13,sales:10845.03,acos:19.91,roas:5.02,impr:1645299,clicks:16417,conv:79},SB:{spend:0,sales:0,acos:0,roas:0,impr:0,clicks:0,conv:0},SD:{spend:28.38,sales:163.11,acos:17.40,roas:5.75,impr:43321,clicks:77,conv:1}},
+    {SP:{spend:1881.73,sales:7443.27,acos:25.28,roas:3.96,impr:1558047,clicks:14446,conv:51},SB:{spend:0,sales:0,acos:0,roas:0,impr:0,clicks:0,conv:0},SD:{spend:38.05,sales:0,acos:0,roas:0,impr:42061,clicks:91,conv:0}}
   ],
   de: [
     {SP:{spend:1520.79,sales:5885.56,acos:25.84,roas:3.87,impr:467693,clicks:4367,conv:43},SB:{spend:0,sales:0,acos:0,roas:0,impr:0,clicks:0,conv:0},SD:{spend:0,sales:0,acos:0,roas:0,impr:0,clicks:0,conv:0}},
@@ -776,12 +1221,14 @@ const CAMPAIGN_TYPE = {
     {SP:{spend:1352.77,sales:4296.63,acos:31.48,roas:3.18,impr:554816,clicks:4829,conv:35},SB:{spend:89.64,sales:0,acos:0,roas:0,impr:130646,clicks:396,conv:0},SD:{spend:0,sales:0,acos:0,roas:0,impr:0,clicks:0,conv:0}},
     {SP:{spend:1299.91,sales:5410.91,acos:24.02,roas:4.16,impr:622097,clicks:5112,conv:36},SB:{spend:0,sales:0,acos:0,roas:0,impr:0,clicks:0,conv:0},SD:{spend:0,sales:0,acos:0,roas:0,impr:33,clicks:0,conv:0}},
     {SP:{spend:1389.31,sales:5548.07,acos:25.04,roas:3.99,impr:644881,clicks:6018,conv:42},SB:{spend:0,sales:0,acos:0,roas:0,impr:0,clicks:0,conv:0},SD:{spend:4.99,sales:0,acos:0,roas:0,impr:5279,clicks:18,conv:0}},
-    {SP:{spend:1252.05,sales:3499.14,acos:35.78,roas:2.80,impr:577574,clicks:5181,conv:25},SB:{spend:0,sales:0,acos:0,roas:0,impr:0,clicks:0,conv:0},SD:{spend:28.93,sales:175.63,acos:16.47,roas:6.07,impr:17210,clicks:95,conv:1}}
+    {SP:{spend:1252.05,sales:3499.14,acos:35.78,roas:2.80,impr:577574,clicks:5181,conv:25},SB:{spend:0,sales:0,acos:0,roas:0,impr:0,clicks:0,conv:0},SD:{spend:28.93,sales:175.63,acos:16.47,roas:6.07,impr:17210,clicks:95,conv:1}},
+    {SP:{spend:1543.37,sales:5852.10,acos:26.37,roas:3.79,impr:698218,clicks:6603,conv:35},SB:{spend:0,sales:0,acos:0,roas:0,impr:0,clicks:0,conv:0},SD:{spend:13.38,sales:376.47,acos:3.55,roas:28.14,impr:13223,clicks:48,conv:2}},
+    {SP:{spend:1537.74,sales:4512.59,acos:34.08,roas:2.93,impr:743533,clicks:6969,conv:30},SB:{spend:0,sales:0,acos:0,roas:0,impr:0,clicks:0,conv:0},SD:{spend:14.72,sales:0,acos:0,roas:0,impr:17216,clicks:63,conv:0}}
   ]
 };
 
 // ── SEARCH TERMS DATA (Pacvue · Top términos por impresiones) ─────────────────
-// Datos disponibles: ES/FR idx 0 (Ene) y todos los mercados idx 5 (Jun) y idx 6 (Jul 2026)
+// Datos disponibles: ES/FR idx 0 (Ene) y todos los mercados idx 5 (Jun), 6 (Jul), 7 (Ago) y 8 (Sep 2026)
 const SEARCH_TERMS = {
   es: {
     0:[
@@ -823,6 +1270,16 @@ const SEARCH_TERMS = {
       {q:'mb muebles bonitos aparadores para salon',impr:45468,clicks:295,spend:89.53,sales:730.55,acos:12.26,conv:6},
       {q:'mueble tv blanco',impr:24950,clicks:232,spend:37.30,sales:189.23,acos:19.71,conv:2},
       {q:'recibidores de entrada con espejo',impr:24873,clicks:193,spend:29.38,sales:0,acos:0,conv:0}
+    ],
+    8:[
+      {q:'aparadores para salon',impr:450633,clicks:4068,spend:589.00,sales:2828.75,acos:20.82,conv:27},
+      {q:'aparador salon',impr:115504,clicks:1279,spend:188.51,sales:1594.08,acos:11.83,conv:14},
+      {q:'muebles de salon',impr:90497,clicks:956,spend:138.72,sales:1132.16,acos:12.25,conv:10},
+      {q:'aparador',impr:68515,clicks:753,spend:94.26,sales:1256.04,acos:7.50,conv:10},
+      {q:'mb muebles bonitos aparadores para salon',impr:42840,clicks:255,spend:67.46,sales:271.05,acos:24.89,conv:3},
+      {q:'mueble tv blanco',impr:24071,clicks:320,spend:36.88,sales:368.56,acos:10.01,conv:4},
+      {q:'muebles bonitos',impr:22126,clicks:219,spend:41.77,sales:880.09,acos:4.75,conv:7},
+      {q:'mueble salon',impr:21098,clicks:298,spend:42.81,sales:353.69,acos:12.10,conv:3}
     ]
   },
   fr: {
@@ -865,6 +1322,16 @@ const SEARCH_TERMS = {
       {q:'mange debout',impr:10209,clicks:121,spend:27.48,sales:0,acos:0,conv:0},
       {q:'b0dxptcjrl',impr:8959,clicks:105,spend:13.35,sales:322.50,acos:4.14,conv:3},
       {q:'buffet salon',impr:8887,clicks:172,spend:26.94,sales:514.16,acos:5.24,conv:3}
+    ],
+    8:[
+      {q:'meuble salle a manger',impr:486122,clicks:1913,spend:925.35,sales:3397.45,acos:27.24,conv:20},
+      {q:'meuble tv',impr:120116,clicks:562,spend:126.05,sales:1175.82,acos:10.72,conv:8},
+      {q:'buffet blanc et bois',impr:14425,clicks:57,spend:13.75,sales:165.83,acos:8.29,conv:1},
+      {q:'meuble tv blanc',impr:13958,clicks:87,spend:22.14,sales:0,acos:0,conv:0},
+      {q:'meuble tv suspendu',impr:13415,clicks:142,spend:15.56,sales:65.83,acos:23.64,conv:1},
+      {q:'meuble de salle a manger',impr:10178,clicks:53,spend:22.88,sales:0,acos:0,conv:0},
+      {q:'buffet noir et bois',impr:8992,clicks:58,spend:14.63,sales:165.83,acos:8.82,conv:1},
+      {q:'meuble tv haut',impr:7309,clicks:54,spend:14.15,sales:165.83,acos:8.53,conv:1}
     ]
   },
   it: {
@@ -897,6 +1364,16 @@ const SEARCH_TERMS = {
       {q:'b0fghmyhrw',impr:23422,clicks:225,spend:28.95,sales:748.36,acos:3.87,conv:5},
       {q:'credenza soggiorno',impr:18353,clicks:244,spend:30.61,sales:319.38,acos:9.58,conv:2},
       {q:'b08kdc39vc',impr:17065,clicks:228,spend:30.06,sales:0,acos:0,conv:0}
+    ],
+    8:[
+      {q:'madia soggiorno moderna',impr:109123,clicks:968,spend:140.25,sales:709.83,acos:19.76,conv:4},
+      {q:'madia',impr:47209,clicks:419,spend:60.99,sales:154.92,acos:39.37,conv:1},
+      {q:'madia soggiorno',impr:36373,clicks:359,spend:51.32,sales:0,acos:0,conv:0},
+      {q:'madia cucina',impr:33194,clicks:363,spend:52.31,sales:69.67,acos:75.08,conv:1},
+      {q:'credenza soggiorno',impr:22558,clicks:340,spend:43.95,sales:105.74,acos:41.56,conv:1},
+      {q:'credenza cucina',impr:12271,clicks:200,spend:24.18,sales:0,acos:0,conv:0},
+      {q:'mobile soggiorno moderno',impr:8256,clicks:80,spend:11.46,sales:105.74,acos:10.84,conv:1},
+      {q:'madia ingresso',impr:7281,clicks:89,spend:12.57,sales:154.92,acos:8.11,conv:1}
     ]
   },
   de: {
@@ -929,11 +1406,21 @@ const SEARCH_TERMS = {
       {q:'schuhschrank weiss',impr:12388,clicks:100,spend:43.03,sales:108.40,acos:39.69,conv:1},
       {q:'vitrinenschrank',impr:10364,clicks:186,spend:34.28,sales:112.60,acos:30.44,conv:1},
       {q:'vitrine',impr:4930,clicks:89,spend:15.70,sales:0,acos:0,conv:0}
+    ],
+    8:[
+      {q:'sideboard',impr:99185,clicks:981,spend:223.33,sales:594.11,acos:37.59,conv:3},
+      {q:'sideboard wohnzimmer',impr:85368,clicks:693,spend:166.28,sales:945.38,acos:17.59,conv:5},
+      {q:'schuhschrank mit spiegel',impr:30323,clicks:119,spend:52.32,sales:0,acos:0,conv:0},
+      {q:'kommode',impr:23770,clicks:286,spend:62.91,sales:192.44,acos:32.69,conv:1},
+      {q:'flur möbel',impr:14223,clicks:110,spend:42.13,sales:83.19,acos:50.64,conv:1},
+      {q:'kommoden & sideboards',impr:14038,clicks:160,spend:39.04,sales:0,acos:0,conv:0},
+      {q:'schuhschrank weiss',impr:6567,clicks:66,spend:28.50,sales:0,acos:0,conv:0},
+      {q:'vitrinenschrank',impr:3099,clicks:67,spend:8.82,sales:83.19,acos:10.60,conv:1}
     ]
   }
 };
 
-// ── ANOTACIONES MENSUALES (análisis Roicos · Ene–Ago 2026) ───────────────────
+// ── ANOTACIONES MENSUALES (análisis Roicos · Ene–Sep 2026) ───────────────────
 const ANNOTATIONS = {
   es:[
     {insights:['SP ACOS 17.1% — sobre objetivo global del 10%. SD muy alto (36%). Camas aparecen con volumen pero sin conversión.'],hypotheses:['El término "cama matrimonio" genera 34K impresiones pero 0 ventas — posible arrastre por targeting amplio en campañas de aparadores/recibidores.'],actions:['Revisar targeting SD: alto ACOS sugiere posicionamiento en placements de bajo CVR.'],negatives:['Negativizar en campañas de aparadores/recibidores: "cama matrimonio", "cama matrimonio 150x190", "cama 180x200".']},
@@ -943,7 +1430,8 @@ const ANNOTATIONS = {
     {insights:['SP 15.5% ACOS — estable. SD empeora a 39.5%. SB activa (163€, 0 ventas).'],hypotheses:['SD sigue sin mejorar en ES. La audiencia de display puede no coincidir con el perfil del comprador de muebles de salón.'],actions:['Considerar reformular campañas SD en ES o pausarlas si no hay mejora en junio. Enfocar presupuesto en SP.'],negatives:[]},
     {insights:['Mejor mes en SP: 28.139€ ventas, ACOS 14.3%. SD alcanza máximo histórico de ACOS (55.6%). Prime Day (23–26 jun) representa el 19.3% de las ventas del mes.'],hypotheses:['"Muebles bonitos" con 42K impresiones señala fuerte búsqueda de marca — buen reconocimiento. "Aparador entrada" con ACOS 6.9% es el término estrella: alta intención de compra.'],actions:['Valorar pausa completa de SD en ES (ACOS >55% no sostenible). Aumentar bids en "aparador entrada" y "recibidores de entrada modernos" para julio.'],negatives:['Revisar: "aparador salon modernos" (4.2K impr, 0 ventas), "mueble salon" (3.6K impr, 0 ventas) — negativizar o bajar bid.']},
     {insights:['España firma su mejor mes del año: 31.047€ ventas (+5,8% vs jun), ACOS 15,37% con CPC un 4% más barato. Crecimiento repartido — Aparador Roque +2.067€, entran ~3.000€ de nuevas referencias (vitrinas, camas, mueble TV). Campañas de puja baja: 2.370€ ventas con ROAS 23,5x (1% de inversión → 4,8% de facturación). 5 referencias con rotura de stock (Aitana desde 13-jul): impacto estimado 900€.'],hypotheses:['El ACOS baja junto con la venta porque la segmentación compra tráfico más barato. La puja baja es la palanca más eficiente de la cuenta — se desplegó en julio y el resultado valida la estrategia.'],actions:['Ampliar campañas de puja baja a más referencias de aparadores en agosto. Reforzar Mesa Alta (mejor conversión de la cuenta — perdió visibilidad en julio, -49% ventas). Gestionar rotura de stock Aitana y Factory R1. Revisar segmentación RECIBIDORES (ACOS 29,1%).'],negatives:['Mesa Alta -49% ventas vs junio — pérdida de visibilidad; revisar bids y segmentación urgente.']},
-    {insights:['ES mejor mes del año en ventas ads: 36.106€ (+16,3% vs julio), ACOS 15,02% — nueva mejora. Nueva estructura de captación segmentada (por acabado LED, tamaño, color): ACOS 8,1% sobre 6,5% del presupuesto → 13,5% de las ventas. CPC baja a 0,15€ (−10% MoM). GMV total 81.901€ (+18,1% MoM). TACOS ES: 6,6% — dentro del objetivo 6–7%.'],hypotheses:['La segmentación por atributo compite en subastas menos saturadas, reduciendo CPC y mejorando la selección de tráfico. Es la palanca más eficiente desplegada en el año.'],actions:['Escalar la estructura segmentada de captación al resto de mercados. Mantener el impulso en Aparadores. Recuperar Mesa Alta tras la pérdida de visibilidad de julio.'],negatives:['Recibidores ES sigue con ACOS elevado — revisar segmentación y añadir negativos de términos no convertibles.']}
+    {insights:['ES mejor mes del año en ventas ads: 36.106€ (+16,3% vs julio), ACOS 15,02% — nueva mejora. Nueva estructura de captación segmentada (por acabado LED, tamaño, color): ACOS 8,1% sobre 6,5% del presupuesto → 13,5% de las ventas. CPC baja a 0,15€ (−10% MoM). GMV total 81.901€ (+18,1% MoM). TACOS ES: 6,6% — dentro del objetivo 6–7%.'],hypotheses:['La segmentación por atributo compite en subastas menos saturadas, reduciendo CPC y mejorando la selección de tráfico. Es la palanca más eficiente desplegada en el año.'],actions:['Escalar la estructura segmentada de captación al resto de mercados. Mantener el impulso en Aparadores. Recuperar Mesa Alta tras la pérdida de visibilidad de julio.'],negatives:['Recibidores ES sigue con ACOS elevado — revisar segmentación y añadir negativos de términos no convertibles.']},
+    {insights:['España: 34.396€ ventas ads (−4,7% vs agosto) con un 9,4% menos de inversión (4.916€). ACOS 14,29% — en línea con el objetivo del 14% y tercer mes consecutivo de mejora (15,37% → 15,02% → 14,29%). ROAS 7,00x. Es el 55% de la venta publicitaria de la cuenta. Aparadores vende un +12,5% gastando un 14% menos (ACOS 16,8% → 12,9%) y Mesa Alta crece un +56,7% (41 pedidos vs 25). GMV total 84.676€ — mejor mes del año (+3,4% MoM · +41,9% YoY). TACOS 5,8% (6,6% en agosto).'],hypotheses:['El crecimiento se concentra donde la cola larga ya está montada y madura (Aparadores y Mesa Alta): es la misma estrategia que en el resto de mercados, desplegada con continuidad. Muebles TV (−30%) y Marca (−30,9%) retroceden. El término principal "aparadores para salon" gana alcance (451K impresiones vs 296K en agosto) pero su ACOS sube al 20,8% (14,1% en agosto).'],actions:['Mantener la estructura actual: en objetivo y con tres meses de mejora, no tocar lo que funciona. Seguimiento de Muebles TV (−30% de venta con la misma inversión) y de Camas (ACOS 40,5%). Negativizar los términos genéricos sin conversión.'],negatives:['"aparador salon modernos" (16,2K impr · 41€ · 0 ventas) — ya señalado en junio','"mueble tv negro" (19,9K impr · 35€ · 0 ventas)','"muebles de salon modernos" (13K impr · 28€ · 0 ventas)']}
   ],
   fr:[
     {insights:['Francia: mercado más eficiente. SP ACOS 11.6%. SD no convierte (0 ventas con 85 clics).'],hypotheses:['"Buffet salle à manger" es el término dominante con alta intención de compra. Francia tiene buyer intent más focalizado en categoría específica vs ES.'],actions:['Mantener estrategia SP actual. Analizar SI SD puede convertir con audiencias de remarketing más precisas.'],negatives:['Negativizar en SD/SP: "olivier artificiel" (7.4K impr, €21 spend, 0 ventas), "ilot central cuisine" (4.6K impr, 0 ventas), "lit double" (4.9K impr, 0 ventas) — no son del catálogo.']},
@@ -953,7 +1441,8 @@ const ANNOTATIONS = {
     {insights:['Recuperación a 16.002€ ventas, ACOS 11.2%. SB activa (225€). "Mange debout" (mesa bar) empieza a aparecer como término emergente.'],hypotheses:['Mayo es pre-verano: búsquedas de mobiliario de exterior/cocina empiezan a ganar peso. "Mange debout" con ACOS 3% es señal de alta conversión en mesa alta.'],actions:['Preparar campañas específicas de Mesa Alta / Mange Debout para verano.'],negatives:[]},
     {insights:['22.092€ ventas SP, ACOS 12.4%. SD recupera con €464 ventas (ACOS 6.7% — excelente). Prime Day: 18.2% de ventas del mes. "Meuble salle à manger" domina con 156K impr y €1.789 ventas.'],hypotheses:['"Mange debout" destaca con ACOS 3.0% y 4 conversiones — tendencia clara de verano. "Meuble tv" con 38K impr y 0 ventas puede no tener buen match de producto.'],actions:['Escalar inversión en "mange debout" para julio. SD en FR funciona — mantener y aumentar budget. Revisar match de "meuble tv" con el catálogo disponible.'],negatives:['"Meuble tv" (38K impr, 0 ventas) — revisar si el catálogo de muebles TV en FR está activo o negativizar temporalmente.']},
     {insights:['Francia: 18.664€ ventas (+32,2% vs mayo, último mes comparable). ACOS 18,27%. Campañas de puja baja: 671€ ventas con ROAS 56x. "Meuble salle à manger" crece un 78% (1.623€→2.892€, 11→20 pedidos). Se redujo inversión en aparadores de mayor volumen al caer su rentabilidad por debajo del umbral de eficiencia.'],hypotheses:['Junio operó con precio promocionado en aparadores; julio vuelve a tarifa normal — la comparación MoM no refleja caída real de rendimiento. La referencia correcta es mayo: sobre mayo FR crece +32,2%.'],actions:['Desplegar campañas de cola larga en agosto sobre términos ya validados (objetivo +1.500/2.500€). Cambiar "bahut" por "buffet" en títulos FR — es el término dominante en búsquedas. Mantener defensa de marca (9,3x ROAS).'],negatives:['Recibidores FR ACOS 47,3% — pausar o revisar segmentación urgente.']},
-    {insights:['Francia: 21.288€ ventas ads (+14,1% vs julio) con inversión prácticamente idéntica (3.407€ vs 3.410€). ACOS mejora de 18,27% a 16,00%. ROAS 6,25x. La redistribución interna de presupuesto (de Top Ventas 32,6% ACOS → hacia Aparadores, Muebles TV, Mesa Alta, Camas) es el único driver del crecimiento.'],hypotheses:['Top Ventas operaba en julio por encima del umbral de eficiencia. Al redirigir ese presupuesto hacia categorías con mejor CVR se generan más ventas con el mismo coste total.'],actions:['Mantener la nueva distribución de presupuesto en FR. Escalar inversión en Mesa Alta / "mange debout" (mejor ACOS de la cuenta FR). Valorar reintroducir Top Ventas con bids más bajos y lista de negativos reforzada.'],negatives:['Monitorizar términos de marca en FR — Top Ventas reducido puede reducir visibilidad de búsquedas branded.']}
+    {insights:['Francia: 21.288€ ventas ads (+14,1% vs julio) con inversión prácticamente idéntica (3.407€ vs 3.410€). ACOS mejora de 18,27% a 16,00%. ROAS 6,25x. La redistribución interna de presupuesto (de Top Ventas 32,6% ACOS → hacia Aparadores, Muebles TV, Mesa Alta, Camas) es el único driver del crecimiento.'],hypotheses:['Top Ventas operaba en julio por encima del umbral de eficiencia. Al redirigir ese presupuesto hacia categorías con mejor CVR se generan más ventas con el mismo coste total.'],actions:['Mantener la nueva distribución de presupuesto en FR. Escalar inversión en Mesa Alta / "mange debout" (mejor ACOS de la cuenta FR). Valorar reintroducir Top Ventas con bids más bajos y lista de negativos reforzada.'],negatives:['Monitorizar términos de marca en FR — Top Ventas reducido puede reducir visibilidad de búsquedas branded.']},
+    {insights:['Francia: 16.206€ ventas ads (−23,9% vs agosto) con 3.065€ de inversión (−10,0%). ACOS 18,91% frente al objetivo del 13%. ROAS 5,29x. Aparadores explica la mayor parte del retroceso (−15,5%, ACOS 17,2% → 20,0%) y Mesa Alta cae un −31%. Muebles TV mejora su rentabilidad (ACOS 13,5% → 11,9%) y Marca crece un +36%. Camas y Top Ventas caen a cero al no tener inversión durante el mes. GMV total 40.643€ (−14,5% MoM · −16,2% YoY) — único mercado en negativo interanual.'],hypotheses:['La demanda no se ha contraído: agosto fue el mes más buscado del semestre en Francia. Las campañas que sostienen el volumen han agotado su presupuesto diario de forma recurrente durante el mes, y una campaña que se apaga a media jornada no compite en las horas de mayor conversión. "Meuble salle a manger" concentra el 30% de la inversión con ACOS 27,2% (23,8% en agosto); "meuble tv" mejora con fuerza (1.176€ de ventas, ACOS 10,7% vs 86,5% en agosto).'],actions:['Garantizar la continuidad de inversión en Aparadores y Mesa Alta para que el presupuesto diario aguante la jornada completa. Optimizar pujas en "meuble salle a manger" (30% de la inversión, ACOS 27,2%). Revisar Recibidores (ACOS 50,3%).'],negatives:['"meuble tv blanc" (14K impr · 22€ · 0 ventas)','"meuble de salle a manger" (10,2K impr · 23€ · 0 ventas)','"buffet blanc laqué" (5,4K impr · 12€ · 0 ventas)']}
   ],
   it:[
     {insights:['IT solo con SP activo. ACOS 14.2% — dentro de rango aceptable para el mercado.'],hypotheses:['Italia en fase SP pura. Las credenze (aparadores italianos) y mobili TV son las categorías principales.'],actions:['Explorar activar SB en IT para ganar visibilidad de marca. Analizar qué ASINs tienen mejor CVR.'],negatives:[]},
@@ -963,7 +1452,8 @@ const ANNOTATIONS = {
     {insights:['ACOS SP crítico: 25.7%. SB (65€, 0 ventas). Ventas en mínimos: 6.687€. Tendencia negativa consistente desde enero.'],hypotheses:['IT puede estar enfrentando presión de precio de competidores locales. El deterioro continuo de ACOS sugiere bids desalineados con CVR real.'],actions:['Auditoría completa de campañas IT. Reducir bids a ACOS objetivo por ASIN. Considerar pausa de campañas con ACOS > 40%.'],negatives:[]},
     {insights:['Recuperación: 10.322€ ventas, ACOS 22.2%. "Madia soggiorno" con ACOS 5.96% es el término estrella. "Credenza soggiorno" convierte a ACOS 29%.'],hypotheses:['"Madia soggiorno" (19K impr, €465 ventas, ACOS 5.96%) es el término más eficiente — campañas bien posicionadas en esta keyword. La mejora vs mayo indica que las optimizaciones están dando resultados.'],actions:['Aumentar bids en "madia soggiorno" — mejor término del mercado IT. Reducir bids en "credenza soggiorno" hasta bajar ACOS a <20%.'],negatives:['Revisar: "mobile tv" (9.7K impr, 0 ventas), "mb muebles bonitos" (6.3K impr, 0 ventas) — pueden ser búsquedas de marca sin catálogo activo en IT o términos fuera de target.']},
     {insights:['Italia gestiona julio de forma óptima: inversión -13,4% (2.036€) y facturación plana (-0,5%, 9.490€), lo que eleva el ROAS un 14,8% (4,7x) y reduce el ACOS 3,18 p.p. a 21,45%. Sobre mayo: +46,9% en ventas. GMV total 23.273€ (+54,4% YoY).'],hypotheses:['El punto de atención no está en publicidad sino en conversión: 0,43% vs 0,91% en España. Con 14.982 clics se cierran solo 64 pedidos — diferencia estructural que no se corrige con más inversión publicitaria; requiere mejora de ficha de producto.'],actions:['Mantener ajuste de inversión — la gestión de bids es correcta. Abordar la conversión a nivel de ficha (imágenes, descripción, precio competitivo) antes de escalar presupuesto. Replicar análisis estratégico de ES/FR en Italia.'],negatives:['APARADORES IT ACOS 23,7% — ligeramente alto; continuar optimización de bids.']},
-    {insights:['Italia: 11.008€ ventas ads (+16,0% vs julio), ACOS 19,88% (mejora desde 21,45%). ROAS 5,03x vs 4,66x. Mejor mes absoluto del año en ventas publicitarias. La inversión crece un +7,5% y las ventas aumentan proporcionalmente más — señal de mejora de eficiencia acumulada. GMV total 26.586€ (+14,3% MoM).'],hypotheses:['La optimización de bids iniciada desde mayo continúa dando resultados. IT mejora por cuarto mes consecutivo desde el mínimo de mayo. CVR (0,30%) sigue siendo el factor limitante estructural — no se corrige con publicidad.'],actions:['Continuar optimización de bids. Abordar CVR a nivel de ficha (imágenes, A+, precio competitivo) antes de escalar presupuesto. Preparar análisis de competencia IT para identificar ventajas de posicionamiento.'],negatives:['CVR IT 0,30% — el más bajo de los 4 mercados; requiere mejora de ficha, no de publicidad.']}
+    {insights:['Italia: 11.008€ ventas ads (+16,0% vs julio), ACOS 19,88% (mejora desde 21,45%). ROAS 5,03x vs 4,66x. Mejor mes absoluto del año en ventas publicitarias. La inversión crece un +7,5% y las ventas aumentan proporcionalmente más — señal de mejora de eficiencia acumulada. GMV total 26.586€ (+14,3% MoM).'],hypotheses:['La optimización de bids iniciada desde mayo continúa dando resultados. IT mejora por cuarto mes consecutivo desde el mínimo de mayo. CVR (0,30%) sigue siendo el factor limitante estructural — no se corrige con publicidad.'],actions:['Continuar optimización de bids. Abordar CVR a nivel de ficha (imágenes, A+, precio competitivo) antes de escalar presupuesto. Preparar análisis de competencia IT para identificar ventajas de posicionamiento.'],negatives:['CVR IT 0,30% — el más bajo de los 4 mercados; requiere mejora de ficha, no de publicidad.']},
+    {insights:['Italia: 7.264€ ventas ads (−34,0% vs agosto) y −37,5% de pedidos (50 vs 80), con 1.920€ de inversión (−12,3%). ACOS 26,44% frente al objetivo del 18%. ROAS 3,78x. Aparadores es el 69% de la venta del mercado y explica por sí sola la caída (−41,5%, ACOS 21,5% → 31,5%). Marca duplica su venta (+99,5%, ACOS 3,0%) gastando menos. GMV total 20.897€ (−21,4% MoM · +26,4% YoY). Buy Box 92,1% — el más bajo de los cuatro mercados.'],hypotheses:['La demanda se recupera desde junio, pero VASAGLE se lleva el volumen de clics vendiendo en torno a 88€ frente a nuestro precio medio de 145€: ningún producto nuestro está entre los tres más clicados en los 22 términos cabecera analizados. Es una cuestión de catálogo y surtido, no de pujas. Las campañas que sostienen el volumen han agotado su presupuesto diario de forma recurrente. La demanda de marca existe y está desatendida (Marca +99,5%).'],actions:['Trabajar Italia con el reparto de España (cola larga sobre términos ya probados) antes de ampliar inversión. Abrir la conversación de precio y surtido: con la diferencia actual, ninguna optimización de campaña compensa el salto frente al líder de categoría. Revisar el Buy Box (92,1%) y reforzar la cobertura de búsquedas de marca.'],negatives:['"madia soggiorno" (36,4K impr · 51€ · 0 ventas)','"credenza cucina" (12,3K impr · 24€ · 0 ventas)','"madia cucina" (33,2K impr · 52€ · ACOS 75%)']}
   ],
   de:[
     {insights:['DE solo con SP. ACOS 25.8% — mercado con mayor dificultad de eficiencia. Sin SB ni SD.'],hypotheses:['Alemania es un mercado muy competitivo en precio. Los sideboards/aparadores tienen mucha competencia local (IKEA, Otto, etc.).'],actions:['Evaluar precio competitivo de los productos clave en DE vs competencia local.'],negatives:[]},
@@ -973,11 +1463,12 @@ const ANNOTATIONS = {
     {insights:['Mejor mes en DE: ACOS 24%, ventas 5.410€. Mejor resultado relativo del período.'],hypotheses:['La mejora puede reflejar efecto de optimizaciones acumuladas y mayor demanda pre-verano de muebles.'],actions:['Identificar qué cambió en mayo para replicarlo en junio. Capitalizar la tendencia positiva.'],negatives:[]},
     {insights:['"Sideboard" domina con 35.6K impr y €444 ventas (ACOS 20.4%). "Kommode" segundo (13K impr, €128 ventas). "Schuhschrank mit spiegel" genera 6K impr sin conversión.'],hypotheses:['"Sideboard" es el principal driver de DE — alta intención de compra. "Schuhschrank mit spiegel" (zapatero con espejo) puede estar apareciendo por campañas de recibidores con targeting amplio.'],actions:['Aumentar bids en "sideboard" — balance volumen/conversión aceptable. Monitorizar "kommode" (ACOS 28.6%) para optimización.'],negatives:['"Schuhschrank mit spiegel" (6K impr, 0 ventas) — negativizar en campañas de aparadores/sideboards.']},
     {insights:['Alemania retrocede a 3.550€ (-34,9% vs junio). El 69% del retroceso corresponde a una única referencia (Buffet Renzo): pasa de 1.475€ a 167€ tras perder el 74% de sus visitas pese a mantener stock disponible, precio estable desde abril y valoración 4,7★. ACOS 36,09% — mercado en fase de aprendizaje.'],hypotheses:['Alemania es el mercado más joven de los cuatro — sus indicadores todavía reflejan una etapa de maduración. La caída está concentrada en Buffet Renzo (en diagnóstico con la gestora de la cuenta), no es una tendencia generalizada.'],actions:['Diagnosticar y resolver la pérdida de visibilidad de Buffet Renzo (algoritmo, Buy Box, contenido de ficha). Reducir bids en APARADORES (ACOS 42,4%) y RECIBIDORES (ACOS 37,9%) — objetivo <30% antes de escalar.'],negatives:['Buffet Renzo — causa de caída de visibilidad sin identificar; prioridad de diagnóstico.']},
-    {insights:['Alemania: mejor mes del año. 6.229€ ventas ads (+75,5% vs julio 3.550€), ACOS 25,12% (vs 36,09% julio — mejora de 11 p.p.). ROAS 3,98x vs 2,77x. Aparadores triplica sus ventas. Renzo Sideboard se recupera tras el diagnóstico del mes anterior. Inversión +22% (1.564€ vs 1.281€). GMV total 10.974€ (+45,4% MoM).'],hypotheses:['La recuperación de Renzo Sideboard y la reactivación de Aparadores son el driver principal del salto. El trabajo de diagnóstico de julio (visibilidad, Buy Box, contenido de ficha) ha tenido impacto inmediato y medible.'],actions:['Capitalizar la recuperación: aumentar inversión en Aparadores DE con ACOS controlado. Replicar el diagnóstico de visibilidad en otras referencias DE con caídas sin explicar. Continuar reduciendo bids donde ACOS > 30%.'],negatives:['ACOS DE 25,12% — aún por encima del objetivo 10–12%; mercado en maduración con tendencia clara de mejora.']}
+    {insights:['Alemania: mejor mes del año. 6.229€ ventas ads (+75,5% vs julio 3.550€), ACOS 25,12% (vs 36,09% julio — mejora de 11 p.p.). ROAS 3,98x vs 2,77x. Aparadores triplica sus ventas. Renzo Sideboard se recupera tras el diagnóstico del mes anterior. Inversión +22% (1.564€ vs 1.281€). GMV total 10.974€ (+45,4% MoM).'],hypotheses:['La recuperación de Renzo Sideboard y la reactivación de Aparadores son el driver principal del salto. El trabajo de diagnóstico de julio (visibilidad, Buy Box, contenido de ficha) ha tenido impacto inmediato y medible.'],actions:['Capitalizar la recuperación: aumentar inversión en Aparadores DE con ACOS controlado. Replicar el diagnóstico de visibilidad en otras referencias DE con caídas sin explicar. Continuar reduciendo bids donde ACOS > 30%.'],negatives:['ACOS DE 25,12% — aún por encima del objetivo 10–12%; mercado en maduración con tendencia clara de mejora.']},
+    {insights:['Alemania: 4.513€ ventas ads (−27,5% vs agosto) con inversión estable (1.555€, −0,6%). ACOS 34,45% frente al objetivo del 22%. ROAS 2,90x. Mercado pequeño y volátil: 30 pedidos en el mes, por lo que un solo pedido mueve el ACOS varios puntos. Aparadores retrocede un −22,4% (ACOS 24,0% → 33,3%); Marca (+228%) y Muebles TV (+48%) crecen. GMV total 11.089€ (+1,1% MoM · +129% YoY) con Buy Box del 98,0%.'],hypotheses:['La demanda se mantiene estable. VASAGLE lidera los clics vendiendo en torno a 75€ frente a nuestro precio medio de 150€, y no tenemos presencia en el top 3 de clics en ninguno de los 40 términos cabecera. "Sideboard wohnzimmer" es el término más eficiente (5 pedidos, ACOS 17,6%), mientras que el genérico "sideboard" concentra volumen con ACOS 37,6%.'],actions:['Revisar Recibidores antes de seguir invirtiendo (195€ de inversión · 83€ de ventas). Replicar en Aparadores el reparto de España y abrir la conversación de precio y surtido. Priorizar "sideboard wohnzimmer" frente al genérico "sideboard".'],negatives:['"schuhschrank mit spiegel" (30,3K impr · 52€ · 0 ventas)','"kommoden & sideboards" (14K impr · 39€ · 0 ventas)','"schuhschrank weiss" (6,6K impr · 28,5€ · 0 ventas)']}
   ]
 };
 
-let state = { market:'global', period:7 };
+let state = { market:'global', period:8 };
 let chartSales = null, chartAds = null;
 
 // ── UTILITIES ─────────────────────────────────────────────────────────────────
@@ -1053,15 +1544,16 @@ function getPfKey(pfName) {
   return pfName.replace('ROICOS - ','').trim();
 }
 
-function getAsinsByPortfolio(m, pfName) {
+function getAsinsByPortfolio(m, pfName, idx) {
   const key = getPfKey(pfName);
+  const src = ASINS_BY_MONTH[idx] || ASINS;
   if(m === 'global') {
     const all = ['es','fr','it','de'].flatMap(mk =>
-      (ASINS[mk]||[]).map(a => ({...a, _mkt:mk}))
+      (src[mk]||[]).map(a => ({...a, _mkt:mk, _mkts:[mk]}))
     );
     return all.filter(a => a.portfolio === key).sort((a,b) => b.adSales - a.adSales);
   }
-  return (ASINS[m]||[]).filter(a => a.portfolio === key).sort((a,b) => b.adSales - a.adSales);
+  return (src[m]||[]).filter(a => a.portfolio === key).sort((a,b) => b.adSales - a.adSales);
 }
 
 function getTopAsins(m, n) {
@@ -1162,11 +1654,11 @@ function renderSalesSection(m, idx) {
           <div class="kpi-sub">Atribución publicidad</div></div>
       </div>
       <div class="chart-wrap">
-        <div class="chart-title">Evolución ventas &amp; tráfico — ene–ago 2026</div>
+        <div class="chart-title">Evolución ventas &amp; tráfico — ene–sep 2026</div>
         <div class="chart-canvas"><canvas id="chartSales"></canvas></div>
       </div>
     </div>
-    <div class="sec-foot"><div class="sec-source">Fuente: <span class="src-badge">MerchantSpring</span> <span style="color:var(--text-soft)">Ene–Ago 2026 &amp; 2025 · EUR bruto con IVA</span></div></div>
+    <div class="sec-foot"><div class="sec-source">Fuente: <span class="src-badge">MerchantSpring</span> <span style="color:var(--text-soft)">Ene–Sep 2026 &amp; 2025 · EUR bruto con IVA</span></div></div>
   </div>`;
 }
 
@@ -1220,13 +1712,13 @@ function renderAdsSection(m, idx) {
         <div class="kpi"><div class="kpi-label">AOV Ads</div><div class="kpi-val xs">${aovAds!==null?fmt(aovAds):'—'}</div>
           ${kpiComps(delta(aovAds,prevAov),'')}</div>
       </div>
-      ${hasYoy?`<div class="info-note" style="margin-top:10px">ℹ YoY publicidad disponible para junio 2026 vs junio 2025 en ES y FR (Inversión, Ventas Ads, ACoS, ROAS).</div>`:''}
+      ${hasYoy?`<div class="info-note" style="margin-top:10px">${idx===8?'ℹ YoY publicidad: septiembre 2026 vs septiembre 2025 en los 4 mercados (Inversión, Ventas Ads, ACoS, ROAS, Pedidos).':'ℹ YoY publicidad disponible para junio 2026 vs junio 2025 en ES y FR (Inversión, Ventas Ads, ACoS, ROAS).'}</div>`:''}
       <div class="chart-wrap">
         <div class="chart-title">Evolución mensual — Inversión &amp; Ventas Ads · ACoS</div>
         <div class="chart-canvas"><canvas id="chartAds"></canvas></div>
       </div>
     </div>
-    <div class="sec-foot"><div class="sec-source">Fuente: <span class="src-badge">Pacvue</span> <span style="color:var(--text-soft)">Enero–Agosto 2026</span></div></div>
+    <div class="sec-foot"><div class="sec-source">Fuente: <span class="src-badge">Pacvue</span> <span style="color:var(--text-soft)">Enero–Septiembre 2026</span></div></div>
   </div>`;
 }
 
@@ -1261,11 +1753,12 @@ function renderPrimeDaySection(m, idx) {
   </div>`;
 }
 
-function getPortfolioList(m) {
-  if(m!=='global') return (PORTFOLIOS[m]||[]).map(p=>({...p}));
+function getPortfolioList(m, idx) {
+  const src = PORTFOLIOS_BY_MONTH[idx] || PORTFOLIOS;
+  if(m!=='global') return (src[m]||[]).map(p=>({...p}));
   const map={};
   ['es','fr','it','de'].forEach(mk=>{
-    (PORTFOLIOS[mk]||[]).forEach(pf=>{
+    (src[mk]||[]).forEach(pf=>{
       if(!map[pf.name]) map[pf.name]={name:pf.name,spend:0,sales:0,orders:0,impressions:0,clicks:0};
       map[pf.name].spend+=pf.spend; map[pf.name].sales+=pf.sales;
       map[pf.name].orders+=pf.orders; map[pf.name].impressions+=pf.impressions; map[pf.name].clicks+=pf.clicks;
@@ -1274,8 +1767,8 @@ function getPortfolioList(m) {
   return Object.values(map).map(p=>({...p, acos:p.sales?p.spend/p.sales*100:0})).sort((a,b)=>b.sales-a.sales);
 }
 
-function renderAsinDetailContent(m, pf) {
-  const asins = getAsinsByPortfolio(m, pf.name);
+function renderAsinDetailContent(m, pf, idx) {
+  const asins = getAsinsByPortfolio(m, pf.name, idx);
   const isGlobal = m === 'global';
 
   if(asins.length === 0) {
@@ -1305,7 +1798,7 @@ function renderAsinDetailContent(m, pf) {
   const mktHeader = isGlobal ? '<th style="text-align:center">Mkt</th>' : '';
   return `<div style="margin-bottom:6px;display:flex;align-items:center;gap:8px">
     <strong style="color:var(--acc-dark);font-size:12px">${pf.name}</strong>
-    <span class="info-note" style="margin-top:0">${asins.length} ASIN${asins.length>1?'s':''} · Datos publicidad (Pacvue · jul 2026)</span>
+    <span class="info-note" style="margin-top:0">${asins.length} ASIN${asins.length>1?'s':''} · Datos publicidad (Pacvue · ${ASINS_BY_MONTH[idx]?MONTHS_S[idx].toLowerCase()+' 2026':'jul 2026'})</span>
   </div>
   <div style="overflow-x:auto">
     <table class="asin-table">
@@ -1327,7 +1820,7 @@ function renderAsinDetailContent(m, pf) {
 
 function renderPortfolioSection(m, idx) {
   const mktNames={es:'España',fr:'Francia',it:'Italia',de:'Alemania'};
-  const pfList=getPortfolioList(m);
+  const pfList=getPortfolioList(m, idx);
   const maxSales=pfList.length?Math.max(...pfList.map(p=>p.sales)):1;
   let rows='', gtSpend=0, gtSales=0, gtOrders=0, gtImpr=0, gtClicks=0;
 
@@ -1336,7 +1829,7 @@ function renderPortfolioSection(m, idx) {
     const acos=pf.acos!==undefined?pf.acos:(pf.sales?pf.spend/pf.sales*100:0);
     const barW=Math.round(pf.sales/maxSales*80);
     gtSpend+=pf.spend; gtSales+=pf.sales; gtOrders+=pf.orders; gtImpr+=pf.impressions; gtClicks+=pf.clicks;
-    const detailContent = renderAsinDetailContent(m, pf);
+    const detailContent = renderAsinDetailContent(m, pf, idx);
 
     rows+=`<tr class="port-pf-row" onclick="togglePf('${pfId}',this)">
       <td><span class="pf-toggle" id="${pfId}-t">▶</span> ${pf.name}</td>
@@ -1361,7 +1854,7 @@ function renderPortfolioSection(m, idx) {
   return `<div class="section">
     <div class="sec-head">
       <h2>Portfolios Publicidad</h2>
-      <span class="sec-badge">${label} · Julio 2026</span>
+      <span class="sec-badge">${label} · ${PORTFOLIOS_BY_MONTH[idx]?MONTHS[idx]+' 2026':'Julio 2026'}</span>
     </div>
     <div class="sec-body">
       <div style="overflow-x:auto">
@@ -1437,9 +1930,11 @@ function renderTopSection(m, idx) {
 }
 
 function renderTop5CategorySection(m, idx) {
-  if(idx!==7) return '';
-  const data = TOP5_CATEGORY[m];
+  const monthData = TOP5_CATEGORY[idx];
+  if(!monthData) return '';
+  const data = monthData[m];
   if(!data) return '';
+  const mesL = MONTHS[idx].toLowerCase()+' 2026';
   const CATS=['APARADORES','MESA ALTA','MUEBLES TV','CAMAS','RECIBIDORES','VITRINAS'];
   const flag={es:'🇪🇸',fr:'🇫🇷',it:'🇮🇹',de:'🇩🇪'};
   const isGlobal = m==='global';
@@ -1475,25 +1970,25 @@ function renderTop5CategorySection(m, idx) {
 
   const crossNote = isGlobal
     ? 'ℹ <strong>Ventas reales</strong> y <strong>Uds.</strong> = MerchantSpring (ventas totales, ads + orgánico), ASIN agregado sumando ES+FR+IT+DE.'
-    : 'ℹ <strong>Ventas reales</strong> y <strong>Uds.</strong> = MerchantSpring (ventas totales, ads + orgánico) para agosto 2026.';
+    : `ℹ <strong>Ventas reales</strong> y <strong>Uds.</strong> = MerchantSpring (ventas totales, ads + orgánico) para ${mesL}.`;
 
   return `<div class="section">
     <div class="sec-head">
       <h2>Top 5 Ventas por Categoría</h2>
-      <span class="sec-badge">${label} · Agosto 2026 · ventas reales</span>
+      <span class="sec-badge">${label} · ${MONTHS[idx]} 2026 · ventas reales</span>
     </div>
     <div class="sec-body">
       ${blocks}
       <div class="info-note">${crossNote}</div>
     </div>
-    <div class="sec-foot"><div class="sec-source">Fuente: <span class="src-badge">MerchantSpring</span> <span style="color:var(--text-soft)">Sales by Product Report agosto 2026</span></div></div>
+    <div class="sec-foot"><div class="sec-source">Fuente: <span class="src-badge">MerchantSpring</span> <span style="color:var(--text-soft)">Sales by Product Report ${mesL}</span></div></div>
   </div>`;
 }
 
 function renderPeriodBanner(m, idx) {
   const flags={global:'🌍',es:'🇪🇸',fr:'🇫🇷',it:'🇮🇹',de:'🇩🇪'}, names={global:'Global Pan-EU',es:'España',fr:'Francia',it:'Italia',de:'Alemania'};
-  const periodLabel=idx===-1?'YTD Ene–Ago 2026':MONTHS[idx]+' 2026';
-  const prevLabel=idx>0?'vs '+MONTHS[idx-1]+' 2026 (MoM) · vs '+MONTHS[idx]+' 2025 (YoY)':idx===-1?'8 meses acumulados · comparativa 2025':'';
+  const periodLabel=idx===-1?'YTD Ene–Sep 2026':MONTHS[idx]+' 2026';
+  const prevLabel=idx>0?'vs '+MONTHS[idx-1]+' 2026 (MoM) · vs '+MONTHS[idx]+' 2025 (YoY)':idx===-1?'9 meses acumulados · comparativa 2025':'';
   return `<div class="period-banner"><div class="pb-icon">${flags[m]}</div><div>
     <div class="pb-title">${flags[m]} ${names[m]} · ${periodLabel}</div>
     <div class="pb-sub">${prevLabel}</div>
@@ -1597,7 +2092,7 @@ function renderCampaignTypeSection(m, idx) {
   }
 
   if(!rows.length) return '';
-  const periodLabel=idx===-1?'YTD Ene–Ago 2026':MONTHS[idx]+' 2026';
+  const periodLabel=idx===-1?'YTD Ene–Sep 2026':MONTHS[idx]+' 2026';
   return `<div class="section">
     <div class="sec-head"><h2>Tipo de Campaña</h2><span class="sec-badge">${mktNames[m]||m} · ${periodLabel}</span></div>
     <div class="sec-body">
@@ -1609,7 +2104,7 @@ function renderCampaignTypeSection(m, idx) {
       </div>
       <div class="info-note" style="margin-top:10px">ℹ Ventas SB = atribución indirecta (halo). ACoS SB no se calcula sobre ventas directas.</div>
     </div>
-    <div class="sec-foot"><div class="sec-source">Fuente: <span class="src-badge">Pacvue</span> <span style="color:var(--text-soft)">Ene–Ago 2026 · SP+SB+SD</span></div></div>
+    <div class="sec-foot"><div class="sec-source">Fuente: <span class="src-badge">Pacvue</span> <span style="color:var(--text-soft)">Ene–Sep 2026 · SP+SB+SD</span></div></div>
   </div>`;
 }
 
@@ -1649,11 +2144,11 @@ function renderSearchTermsSection(m, idx) {
   if(!hasData){
     return `<div class="section">
       <div class="sec-head"><h2>Términos de Búsqueda</h2><span class="sec-badge">${mktNames[m]||m} · ${MONTHS[idx]||'YTD'} 2026</span></div>
-      <div class="sec-body"><div class="info-note">ℹ Datos de términos de búsqueda disponibles para enero, junio, julio y agosto 2026. Selecciona uno de esos períodos para ver el desglose.</div></div>
+      <div class="sec-body"><div class="info-note">ℹ Datos de términos de búsqueda disponibles para enero, junio, julio, agosto y septiembre 2026. Selecciona uno de esos períodos para ver el desglose.</div></div>
     </div>`;
   }
 
-  const dataNote=idx===7?'agosto 2026 (más reciente)':`${(MONTHS[idx]||'').toLowerCase()} 2026`;
+  const dataNote=idx===8?'septiembre 2026 (más reciente)':`${(MONTHS[idx]||'').toLowerCase()} 2026`;
   const periodLabel=idx===-1?'YTD':MONTHS[idx]+' 2026';
   return `<div class="section">
     <div class="sec-head"><h2>Términos de Búsqueda</h2><span class="sec-badge">${mktNames[m]||m} · ${periodLabel} · por volumen</span></div>
@@ -1692,7 +2187,7 @@ function renderAnnotationsSection(m, idx) {
   });
 
   if(!html) return '';
-  const periodLabel=idx===-1?'YTD Ene–Ago 2026':MONTHS[idx]+' 2026';
+  const periodLabel=idx===-1?'YTD Ene–Sep 2026':MONTHS[idx]+' 2026';
   return `<div class="section">
     <div class="sec-head"><h2>Anotaciones del Período</h2><span class="sec-badge">${mktNames[m]||m} · ${periodLabel}</span></div>
     <div class="sec-body">${html}</div>
@@ -1702,7 +2197,7 @@ function renderAnnotationsSection(m, idx) {
 
 // ── GLOBAL CONCLUSIONS ────────────────────────────────────────────────────────
 function renderGlobalConclusionsSection(idx) {
-  if(idx!==6 && idx!==7) return '';
+  if(idx!==6 && idx!==7 && idx!==8) return '';
   const row=(icon,color,t)=>`<div style="display:flex;gap:8px;margin-bottom:5px"><span style="color:${color};flex-shrink:0">${icon}</span><span style="font-size:11.5px">${t}</span></div>`;
   if(idx===6) return `<div class="section">
     <div class="sec-head"><h2>Conclusiones Julio 2026</h2><span class="sec-badge">Global Pan-EU</span></div>
@@ -1732,7 +2227,7 @@ function renderGlobalConclusionsSection(idx) {
     <div class="sec-foot"><div class="sec-source">Fuente: <span class="src-badge">Análisis Roicos</span> <span style="color:var(--text-soft)">Síntesis Julio 2026 · Pacvue + MerchantSpring</span></div></div>
   </div>`;
   // ── Agosto 2026 ──
-  return `<div class="section">
+  if(idx===7) return `<div class="section">
     <div class="sec-head"><h2>Conclusiones Agosto 2026</h2><span class="sec-badge">Global Pan-EU</span></div>
     <div class="sec-body">
       <div style="margin-bottom:14px">
@@ -1763,6 +2258,41 @@ function renderGlobalConclusionsSection(idx) {
     </div>
     <div class="sec-foot"><div class="sec-source">Fuente: <span class="src-badge">Análisis Roicos</span> <span style="color:var(--text-soft)">Síntesis Agosto 2026 · Pacvue + MerchantSpring</span></div></div>
   </div>`;
+  // ── Septiembre 2026 ──
+  return `<div class="section">
+    <div class="sec-head"><h2>Conclusiones Septiembre 2026</h2><span class="sec-badge">Global Pan-EU</span></div>
+    <div class="sec-body">
+      <div style="margin-bottom:14px">
+        <div style="font-size:11px;font-weight:700;color:var(--text-soft);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">Rendimiento del mes</div>
+        ${row('◆','var(--acc-dark)','Sell-out total <strong>157.306€ (−5,8% MoM · +21,5% YoY)</strong>. España firma su mejor mes del año (84.676€, +41,9% YoY); Francia es el único mercado en negativo interanual (−16,2%). Buy Box global 96,4%.')}
+        ${row('◆','var(--acc-dark)','Publicidad: 62.378€ ventas ads · 11.456€ inversión → ACOS 18,37% · ROAS 5,45x · TACOS 7,3%. La cuenta vuelve a niveles de julio (62.750€ · ACOS 18,3%) tras un agosto excepcional.')}
+        ${row('◆','var(--acc-dark)','<strong>España entra en objetivo</strong> (ACOS 14,29% vs 14%), tercer mes consecutivo de mejora y 55% de la venta publicitaria. Francia (−23,9%), Italia (−34,0%) y Alemania (−27,5%) pierden venta ads y empeoran rentabilidad.')}
+        ${row('◆','var(--acc-dark)','La demanda no se ha contraído: agosto fue el mes más buscado del semestre en España y Francia, Italia se recupera desde junio y Alemania se mantiene estable.')}
+      </div>
+      <div style="background:rgba(180,40,40,.07);border-left:3px solid #B42828;border-radius:0 6px 6px 0;padding:10px 12px;margin-bottom:14px">
+        <div style="font-size:11px;font-weight:700;color:#B42828;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">⚠ Alertas y discrepancias</div>
+        ${row('!','#B42828','<strong>ACOS global 18,37%</strong> — por encima del objetivo de cuenta del 12%. Por mercado: ES 14,29% (obj. 14%) · FR 18,91% (obj. 13%) · IT 26,44% (obj. 18%) · DE 34,45% (obj. 22%).')}
+        ${row('!','#B42828','<strong>Continuidad de inversión</strong> — las campañas que sostienen el volumen en Francia, Italia y Alemania han agotado su presupuesto diario de forma recurrente durante el mes.')}
+        ${row('!','#B42828','<strong>Precio y presencia</strong> — VASAGLE lidera los clics en Italia (~88€) y Alemania (~75€) frente a nuestro precio medio de 145–150€. Fuera de España (1 de 28 términos), ningún producto nuestro está entre los tres más clicados en los términos cabecera.')}
+      </div>
+      <div style="background:rgba(139,105,20,.07);border-left:3px solid #C9A227;border-radius:0 6px 6px 0;padding:10px 12px;margin-bottom:14px">
+        <div style="font-size:11px;font-weight:700;color:#8B6914;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">Categorías destacadas</div>
+        ${row('◆','#C9A227','<strong>Aparadores</strong> — misma categoría y misma estrategia, resultados opuestos: ES +12,5% gastando un 14% menos (ACOS 12,9%); FR (−15,5%), IT (−41,5%) y DE (−22,4%) explican la mayor parte del retroceso.')}
+        ${row('◆','#C9A227','<strong>Mesa Alta ES</strong> — +56,7% en venta (41 pedidos vs 25) con ACOS 13,5%: la cola larga ya está madura.')}
+        ${row('◆','#C9A227','<strong>Marca</strong> — crece en Italia (+99,5%, ACOS 3,0%), Alemania (+228%) y Francia (+36%): hay demanda de marca que hoy está desatendida.')}
+      </div>
+      <div style="background:rgba(46,107,72,.07);border-left:3px solid #2E6B48;border-radius:0 6px 6px 0;padding:10px 12px">
+        <div style="font-size:11px;font-weight:700;color:#2E6B48;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">Next steps</div>
+        ${row('→','#2E6B48','<strong>Global:</strong> Garantizar que las categorías rentables no se quedan sin inversión a media jornada — la acción que más venta recupera y la de menor riesgo.')}
+        ${row('→','#2E6B48','<strong>ES:</strong> Mantener la estructura actual — en objetivo y tercer mes consecutivo de mejora.')}
+        ${row('→','#2E6B48','<strong>FR:</strong> Continuidad de inversión en Aparadores y Mesa Alta. Optimizar "meuble salle a manger" (30% de la inversión, ACOS 27%).')}
+        ${row('→','#2E6B48','<strong>IT:</strong> Replicar el reparto de España antes de ampliar inversión. Revisar el Buy Box (92,1%).')}
+        ${row('→','#2E6B48','<strong>DE:</strong> Revisar Recibidores (195€ de inversión · 83€ de ventas) antes de seguir invirtiendo.')}
+        ${row('→','#2E6B48','<strong>IT + DE:</strong> Abrir la conversación de precio y surtido, y ampliar la cobertura de catálogo con referencias con stock y venta orgánica que aún no están en campañas.')}
+      </div>
+    </div>
+    <div class="sec-foot"><div class="sec-source">Fuente: <span class="src-badge">Análisis Roicos</span> <span style="color:var(--text-soft)">Síntesis Septiembre 2026 · Pacvue + MerchantSpring</span></div></div>
+  </div>`;
 }
 
 function render() {
@@ -1782,7 +2312,7 @@ function render() {
   document.getElementById('content').innerHTML=html;
   setTimeout(()=>{initChartSales(m);initChartAds(m);},50);
   document.querySelectorAll('.nav-markets button').forEach(b=>b.classList.toggle('active',b.getAttribute('onclick').includes(`'${m}'`)));
-  document.querySelectorAll('.nav-periods button').forEach((b,i)=>b.classList.toggle('active',[0,1,2,3,4,5,6,7,-1][i]===idx));
+  document.querySelectorAll('.nav-periods button').forEach((b,i)=>b.classList.toggle('active',[0,1,2,3,4,5,6,7,8,-1][i]===idx));
 }
 
 function setMarket(m){state.market=m;render();window.scrollTo({top:0,behavior:'smooth'});}
