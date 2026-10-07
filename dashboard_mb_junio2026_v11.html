@@ -211,7 +211,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
 </div>
 
 <div class="footer">
-  Datos: <strong>MerchantSpring</strong> (ventas ene–sep 2026 &amp; 2025, EUR bruto con IVA) · <strong>Pacvue</strong> (publicidad ene–sep 2026) · <strong>Muebles Bonitos</strong> Amazon Seller Pan-EU · Elaborado por Roicos
+  Datos: <strong>MerchantSpring</strong> (ventas y publicidad ene–sep 2026 &amp; 2025, EUR bruto con IVA) · <strong>Pacvue</strong> (pedidos Ads, tipo de campaña, portfolios y términos de búsqueda) · <strong>Muebles Bonitos</strong> Amazon Seller Pan-EU · Elaborado por Roicos
 </div>
 
 <script>
@@ -221,44 +221,44 @@ const MONTHS_S = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep'];
 // ── VENTAS 2026 (MerchantSpring, EUR bruto con IVA) ───────────────────────────
 const SALES = {
   global: {
-    gmv:    [180610,157989,165750,131257,129870,145190,142145, 167022, 157306],
-    orders: [1258,  1123,  1173,  959,   929,   1023,  998,   1174, 1165],
-    units:  [1269,  1150,  1224,  985,   955,   1054,  1030,  1218, 1237],
-    pv:     [343701,262267,256620,230077,222427,219057,219201, 262943, 255344],
-    cvr:    [0.369, 0.439, 0.477, 0.428, 0.429, 0.481, 0.470, 0.463, 0.484],
+    gmv:    [180610, 157989, 165750, 131257, 129870, 145190, 142145, 167022, 156821],
+    orders: [1258, 1123, 1173, 959, 930, 1024, 1001, 1181, 1160],
+    units:  [1269, 1150, 1224, 985, 955, 1054, 1030, 1218, 1230],
+    pv:     [343701, 262267, 256620, 230077, 222427, 219057, 219201, 262967, 255344],
+    cvr:    [0.369, 0.438, 0.477, 0.428, 0.429, 0.481, 0.470, 0.463, 0.482],
     buybox: [97.5,  97.4,  96.4,  95.8,  95.0,  96.9,  96.6,  96.9, 96.4]
   },
   es: {
-    gmv:    [75601, 65222, 70594, 64037, 63684, 67046, 69434, 81901, 84676],
-    orders: [597,   512,   537,   505,   515,   534,   534,   621, 690],
-    units:  [607,   538,   571,   535,   526,   560,   559,   644, 741],
-    pv:     [173457,128294,124443,122992,114715,106456,111299, 136705, 145534],
-    cvr:    [0.350, 0.419, 0.459, 0.435, 0.459, 0.526, 0.502, 0.471, 0.509],
-    buybox: [97.0,  96.5,  95.5,  95.8,  95.0,  96.6,  96.2,  96.7, 97.1]
+    gmv:    [75601, 65222, 70594, 64037, 63684, 67046, 69137, 81901, 84259],
+    orders: [597, 512, 537, 505, 516, 535, 534, 622, 685],
+    units:  [607, 538, 571, 535, 526, 560, 556, 644, 735],
+    pv:     [173457, 128294, 124443, 122992, 114715, 106456, 111299, 136729, 145534],
+    cvr:    [0.350, 0.419, 0.459, 0.435, 0.459, 0.526, 0.500, 0.471, 0.505],
+    buybox: [97.0, 96.5, 95.5, 95.8, 95.0, 96.6, 96.2, 96.7, 97.1]
   },
   fr: {
     gmv:    [59008, 59082, 59978, 38645, 36672, 43423, 42187, 47561, 40643],
-    orders: [386,   392,   402,   274,   239,   278,   274,   325, 264],
-    units:  [385,   396,   412,   275,   250,   286,   278,   333, 277],
-    pv:     [70633,63242, 61355, 45996, 45586, 45978, 47045, 53034, 43100],
-    cvr:    [0.545, 0.626, 0.671, 0.598, 0.549, 0.622, 0.591, 0.628, 0.643],
-    buybox: [98.2,  98.6,  98.1,  97.7,  96.4,  98.6,  98.7,  98.5, 96.8]
+    orders: [386, 392, 402, 274, 239, 278, 276, 328, 264],
+    units:  [385, 396, 412, 275, 250, 286, 278, 333, 277],
+    pv:     [70633, 63242, 61355, 45996, 45586, 45978, 47045, 53034, 43100],
+    cvr:    [0.545, 0.626, 0.672, 0.598, 0.548, 0.622, 0.591, 0.628, 0.643],
+    buybox: [98.2, 98.6, 98.1, 97.7, 96.4, 98.6, 98.7, 98.5, 96.8]
   },
   it: {
-    gmv:    [33961, 24461, 24017, 20078, 19745, 23876, 23273, 26586, 20897],
-    orders: [195,   151,   158,   115,   105,   131,   138,   164, 138],
-    units:  [196,   154,   161,   115,   107,   133,   147,   173, 145],
-    pv:     [80854,57698, 57520, 45559, 46246, 50424, 46752, 56752, 49604],
-    cvr:    [0.242, 0.267, 0.280, 0.252, 0.231, 0.264, 0.314, 0.305, 0.292],
-    buybox: [99.5,  99.3,  96.9,  93.9,  94.3,  94.7,  94.3,  94.6, 92.1]
+    gmv:    [33961, 24461, 24017, 20078, 19745, 23876, 23273, 26586, 20830],
+    orders: [195, 151, 158, 115, 105, 131, 138, 167, 138],
+    units:  [196, 154, 161, 115, 107, 133, 147, 173, 144],
+    pv:     [80854, 57698, 57520, 45559, 46246, 50424, 46752, 56752, 49604],
+    cvr:    [0.242, 0.267, 0.280, 0.252, 0.231, 0.264, 0.314, 0.305, 0.290],
+    buybox: [99.5, 99.3, 96.9, 93.9, 94.3, 94.7, 94.3, 94.6, 92.1]
   },
   de: {
-    gmv:    [12040, 9224,  11161, 8497,  9769,  10845, 7548,  10974, 11089],
-    orders: [80,    68,    76,    65,    70,    80,    52,    64, 73],
-    units:  [81,    62,    80,    60,    72,    75,    49,    68, 74],
+    gmv:    [12040, 9224, 11161, 8497, 9769, 10845, 7548, 10974, 11089],
+    orders: [80, 68, 76, 65, 70, 80, 53, 64, 73],
+    units:  [81, 62, 80, 60, 72, 75, 49, 68, 74],
     pv:     [18757, 13033, 13302, 15530, 15880, 16199, 14105, 16452, 17106],
-    cvr:    [0.432, 0.476, 0.601, 0.386, 0.454, 0.463, 0.347, 0.413, 0.433],
-    buybox: [92.5,  93.2,  92.7,  90.3,  91.3,  96.0,  95.6,  97.8, 98.0]
+    cvr:    [0.432, 0.476, 0.601, 0.386, 0.453, 0.463, 0.347, 0.413, 0.433],
+    buybox: [92.5, 93.2, 92.7, 90.3, 91.3, 96.0, 95.6, 97.8, 98.0]
   }
 };
 
@@ -301,77 +301,77 @@ const SALES_YOY = {
   }
 };
 
-// ── ADS 2026 (Pacvue ene–sep · Documentos Ads mensuales) ─────────────────────
+// ── ADS 2026 (MerchantSpring ene–sep: inversión, ventas, impresiones, clics · pedidos = Pacvue/informes Ads) ──
 const ADS = {
   global: {
-    spend:       [9632,  7617,  9372,  9841,  9402, 11412, 11500, 12583, 11456],
-    adSales:     [58700, 56024, 62756, 52534, 51117,66774, 62750, 74631, 62378],
+    spend:       [9576, 7649, 9399, 9811, 9475, 11477, 11391, 12630, 11408],
+    adSales:     [59411, 55245, 60971, 49973, 51756, 67260, 63542, 74750, 63167],
     orders:      [448,   423,   500,   433,   427,  538,   490,   593, 512],
-    acos:        [16.4,  13.6,  14.9,  18.7,  18.4, 17.1,  18.33, 16.86, 18.37],
-    roas:        [6.09,  7.35,  6.70,  5.34,  5.44, 5.85,  5.46,  5.93, 5.45],
-    impressions: [6176923,4729551,6315234,6675794,5166864,7328361,7193958, 7939874, 7899118],
-    clicks:      [54309, 44409, 54157, 57820, 44059,66033, 65983,  77377, 72170],
+    acos:        [16.12, 13.85, 15.42, 19.63, 18.31, 17.06, 17.93, 16.90, 18.06],
+    roas:        [6.20, 7.22, 6.49, 5.09, 5.46, 5.86, 5.58, 5.92, 5.54],
+    impressions: [6152948, 4753408, 6361323, 6659347, 6519229, 7389066, 7099273, 8003479, 7845982],
+    clicks:      [54250, 44539, 54253, 57787, 56070, 66321, 65618, 77781, 72010],
     adUnits:     [null,  null,  null,  null,  null,  null,  null,   null, null]
   },
   es: {
-    spend:       [4179, 3124, 4047, 4461, 4261, 4701, 4773, 5424, 4916],
-    adSales:     [22282,19431,23371,26043,25826,29222,31047, 36106, 34396],
+    spend:       [4132, 3155, 4069, 4413, 4322, 4709, 4721, 5466, 4910],
+    adSales:     [24994, 20316, 24353, 26441, 26336, 29164, 31243, 36453, 35413],
     orders:      [200,  170,  213,  231,  248,  267,  262,  322, 318],
-    acos:        [18.8, 16.1, 17.3, 17.1, 16.5, 16.1, 15.37, 15.02, 14.29],
-    roas:        [5.33, 6.22, 5.78, 5.84, 6.06, 6.22, 6.50, 6.66, 7.00],
-    impressions: [2757234,2013100,2759253,2981135,2275657,2523353,3006136, 3434019, 3456958],
-    clicks:      [24557,18071,23988,28409,19834,23191,28922, 37231, 37127],
+    acos:        [16.53, 15.53, 16.71, 16.69, 16.41, 16.15, 15.11, 15.00, 13.86],
+    roas:        [6.05, 6.44, 5.98, 5.99, 6.09, 6.19, 6.62, 6.67, 7.21],
+    impressions: [2729704, 2039761, 2769858, 2960578, 2941722, 2918749, 2968751, 3475061, 3436849],
+    clicks:      [24404, 18227, 24116, 28237, 26971, 27396, 28790, 37654, 37119],
     adUnits:     [null, null, null, null, null, null, null, null, null]
   },
   fr: {
-    spend:       [2033, 1924, 2626, 2049, 2055, 2964, 3410, 3407, 3065],
-    adSales:     [17190,22565,26677,13898,14122,22620,18664, 21288, 16206],
+    spend:       [2040, 1935, 2616, 2049, 2069, 3008, 3405, 3377, 3069],
+    adSales:     [17403, 22206, 24994, 12423, 14229, 22702, 19460, 21355, 16030],
     orders:      [122,  159,  193,  111,  105,  164,  139,  154, 114],
-    acos:        [11.8, 8.5,  9.8,  14.7, 14.6, 13.1, 18.27, 16.00, 18.91],
-    roas:        [8.46, 11.73,10.16,6.78, 6.87, 7.63, 5.47, 6.25, 5.29],
-    impressions: [1271111,1176309,1826533,1432667,740241,1119243,2035926, 2105632, 2081303],
-    clicks:      [11568,12331,15533,12143, 7035, 9496, 16803, 16957, 13474],
+    acos:        [11.72, 8.72, 10.47, 16.49, 14.54, 13.25, 17.50, 15.81, 19.14],
+    roas:        [8.53, 11.47, 9.56, 6.06, 6.88, 7.55, 5.71, 6.32, 5.22],
+    impressions: [1279919, 1182982, 1836633, 1423303, 1424462, 2024484, 2015525, 2096862, 2081540],
+    clicks:      [11682, 12374, 15476, 12154, 11856, 15917, 16737, 16796, 13527],
     adUnits:     [null, null, null, null, null, null, null, null, null]
   },
   it: {
-    spend:       [1899, 1475, 1512, 1889, 1786, 2354, 2036, 2189, 1920],
-    adSales:     [11565,9319, 8039, 7800, 6460, 9477,  9490, 11008, 7264],
+    spend:       [1895, 1468, 1520, 1910, 1780, 2342, 2047, 2186, 1908],
+    adSales:     [11671, 9523, 8047, 7531, 6623, 9771, 9624, 10547, 7379],
     orders:      [71,   57,   58,   51,   43,   66,   64,   80, 50],
-    acos:        [16.4, 15.8, 18.8, 24.2, 27.6, 24.8, 21.45, 19.88, 26.44],
-    roas:        [6.09, 6.32, 5.32, 4.13, 3.62, 4.03, 4.66, 5.03, 3.78],
-    impressions: [1680885,1213267,1354619,1576530,1528836,1785167,1557115, 1688709, 1600108],
-    clicks:      [13817,11064,11277,12043,12078,16931,14982, 16500, 14537],
+    acos:        [16.23, 15.42, 18.89, 25.37, 26.87, 23.96, 21.26, 20.73, 25.85],
+    roas:        [6.16, 6.49, 5.29, 3.94, 3.72, 4.17, 4.70, 4.82, 3.87],
+    impressions: [1681835, 1203889, 1377266, 1584468, 1525315, 1783289, 1555054, 1695361, 1582967],
+    clicks:      [13822, 11002, 11288, 12152, 12092, 16883, 15059, 16493, 14442],
     adUnits:     [null, null, null, null, null, null, null, null, null]
   },
   de: {
-    spend:       [1521, 1094, 1187, 1442, 1300, 1393, 1281, 1564, 1555],
-    adSales:     [5610, 3084, 3628, 3335, 4710, 5456, 3550, 6229, 4513],
+    spend:       [1510, 1090, 1195, 1439, 1304, 1418, 1218, 1601, 1522],
+    adSales:     [5343, 3201, 3577, 3578, 4568, 5623, 3215, 6396, 4345],
     orders:      [41,   26,   30,   29,   31,   41,   25,   37, 30],
-    acos:        [27.1, 35.5, 32.7, 43.3, 27.6, 25.5, 36.09, 25.12, 34.45],
-    roas:        [3.69, 2.82, 3.06, 2.31, 3.62, 3.92, 2.77, 3.98, 2.90],
-    impressions: [467693,326875,374829,685462,622130,650165,594781, 711514, 760749],
-    clicks:      [4367, 2943, 3359, 5225, 5112, 6038, 5276, 6689, 7032],
+    acos:        [28.26, 34.07, 33.40, 40.22, 28.55, 25.22, 37.88, 25.03, 35.04],
+    roas:        [3.54, 2.94, 2.99, 2.49, 3.50, 3.97, 2.64, 3.99, 2.85],
+    impressions: [461490, 326776, 377566, 690998, 627730, 662544, 559943, 736195, 744626],
+    clicks:      [4342, 2936, 3373, 5244, 5151, 6125, 5032, 6838, 6922],
     adUnits:     [null, null, null, null, null, null, null, null, null]
   }
 };
 
-// ── YOY ADS (junio 2026 vs junio 2025 · solo ES y FR disponible) ───────────────
+// ── YOY ADS · 2025: MerchantSpring en ES (y FR jul–sep) · Pacvue en FR jun e IT/DE (sin histórico en MerchantSpring) · pedidos25 = Pacvue ──
 const YOY = {
   5: {
-    es: { spend25:3499, adSales25:27006, orders25:null, acos25:12.96, roas25:7.72 },
+    es: { spend25:3482, adSales25:30330, orders25:null, acos25:11.48, roas25:8.71 },
     fr: { spend25:1629, adSales25:16220, orders25:null, acos25:10.04, roas25:9.96 }
   },
   7: {
-    global: { spend25:5533, adSales25:45632, orders25:334, acos25:12.12, roas25:8.25 },
-    es:     { spend25:3295, adSales25:25067, orders25:188, acos25:13.15, roas25:7.61 },
-    fr:     { spend25:1880, adSales25:17394, orders25:126, acos25:10.81, roas25:9.25 },
+    global: { spend25:5775, adSales25:46749, orders25:334, acos25:12.35, roas25:8.09 },
+    es:     { spend25:3481, adSales25:25445, orders25:188, acos25:13.68, roas25:7.31 },
+    fr:     { spend25:1937, adSales25:18133, orders25:126, acos25:10.68, roas25:9.36 },
     it:     { spend25:249,  adSales25:2754,  orders25:16,  acos25:9.04,  roas25:11.06 },
     de:     { spend25:108,  adSales25:417,   orders25:4,   acos25:25.91, roas25:3.86 }
   },
   8: {
-    global: { spend25:7911, adSales25:53188, orders25:396, acos25:14.87, roas25:6.72 },
-    es:     { spend25:4336, adSales25:27450, orders25:224, acos25:15.80, roas25:6.33 },
-    fr:     { spend25:2079, adSales25:18732, orders25:129, acos25:11.10, roas25:9.01 },
+    global: { spend25:7807, adSales25:52576, orders25:396, acos25:14.85, roas25:6.73 },
+    es:     { spend25:4267, adSales25:27683, orders25:224, acos25:15.41, roas25:6.49 },
+    fr:     { spend25:2043, adSales25:17887, orders25:129, acos25:11.42, roas25:8.75 },
     it:     { spend25:1038, adSales25:5610,  orders25:34,  acos25:18.51, roas25:5.40 },
     de:     { spend25:458,  adSales25:1396,  orders25:9,   acos25:32.82, roas25:3.05 }
   }
@@ -772,7 +772,7 @@ const ASINS_BY_MONTH = {
   }
 };
 
-// ── TOP 5 VENTAS POR CATEGORÍA · por mes: 7 = agosto, 8 = septiembre 2026 (MerchantSpring generateSalesByProductReport) ──
+// ── TOP 5 VENTAS POR CATEGORÍA · por mes: 7 = agosto, 8 = septiembre 2026 (MerchantSpring generateSalesByProductReport con productos sin stock incluidos, 07/10) ──
 // sales = ventas reales totales (ads + orgánico) por ASIN · adSales = ventas Ads Pacvue (cross-check)
 // global = ASIN agregado sumando ES+FR+IT+DE (mkts = mercados donde vende)
 const TOP5_CATEGORY = {
@@ -856,6 +856,8 @@ const TOP5_CATEGORY = {
       ],
       'VITRINAS': [
         {asin:'B07XTJVF8Y',title:'Vitrine avec Pieds 2 cm Luke V5 pour Salon ou Salle à M...',sales:596.0,units:4,adSales:0.0},
+        {asin:'B09L8LV6ZX',title:'Armoire vitrée Luke V6 en mélaminé brillant avec pieds...',sales:298.0,units:2,adSales:0.0},
+        {asin:'B07XTFVGJF',title:'Armoire vitrée Luke V6 en mélaminé brillant avec pieds...',sales:149.0,units:1,adSales:0.0},
         {asin:'B09L8LQRXX',title:'Vitrine Luke V5 avec pieds standard',sales:149.0,units:1,adSales:0.0},
         {asin:'B08T1FXV65',title:'Vitrine Mural Luke V3 pour Salon ou Salle à Manger Mode...',sales:57.0,units:1,adSales:0.0}
       ]
@@ -880,7 +882,6 @@ const TOP5_CATEGORY = {
         {asin:'B0FLQB8XQT',title:'Mobile TV con piedini Nora H2 Soggiorno Moderno',sales:149.0,units:1,adSales:0.0}
       ],
       'CAMAS': [
-        {asin:'B0FHBQ5MFP',title:'Toeletta Sospesa con Specchio Velia Toeletta con Cassetto',sales:414.05,units:4,adSales:0.0},
         {asin:'B07N4BG9RC',title:'Letto Matrimoniale Alessia Legno e Ecoleather',sales:389.0,units:1,adSales:0.0}
       ],
       'RECIBIDORES': [
@@ -902,13 +903,16 @@ const TOP5_CATEGORY = {
         {asin:'B0F8W6YCHG',title:'Sideboard mit Türen und Schubladen Yanis für modernes W...',sales:747.0,units:3,adSales:209.24},
         {asin:'B07DYCZR3W',title:'Modernes Sideboard Wohnzimmer oder Esszimmer',sales:627.0,units:3,adSales:0.0},
         {asin:'B085GGM485',title:'Modernes Sideboard Breite 155 x Höhe 91',sales:478.0,units:2,adSales:401.68},
-        {asin:'B0CXYV9M1L',title:'Sideboard Wohnzimmer',sales:458.0,units:2,adSales:0.0}
+        {asin:'B0CXYV9M1L',title:'Sideboard Clark L Schwarz Hochglanz',sales:458.0,units:2,adSales:0.0}
+      ],
+      'MESA ALTA': [
+        {asin:'B0FMFL1YM4',title:'Küchentisch mit Metallstruktur Bartresen für küche',sales:99.0,units:1,adSales:0.0}
       ],
       'MUEBLES TV': [
-        {asin:'B0FM3TXQ4J',title:'TV-Möbel mit Füßen TV-Lowboard Farbe Eiche',sales:516.0,units:4,adSales:0.0},
-        {asin:'B0FM3S6YM1',title:'TV-Möbel mit Füßen TV-Lowboard Farbe Weiß',sales:129.0,units:1,adSales:0.0},
-        {asin:'B0D8TQK2SY',title:'Hängendes TV-Möbel TV-Lowboard Farbe Eiche',sales:129.0,units:1,adSales:108.4},
-        {asin:'B0FM3RFS98',title:'TV-Möbel mit Füßen TV-Lowboard Farbe Weiß',sales:119.0,units:1,adSales:100.0}
+        {asin:'B0FM3TXQ4J',title:'TV-Lowboard Aitana M2 Eiche',sales:516.0,units:4,adSales:0.0},
+        {asin:'B0FM3S6YM1',title:'TV-Lowboard Aitana M2 Weiß',sales:129.0,units:1,adSales:0.0},
+        {asin:'B0D8TQK2SY',title:'Hängendes TV-Möbel Aitana M2 Eiche',sales:129.0,units:1,adSales:108.4},
+        {asin:'B0FM3RFS98',title:'TV-Lowboard Aitana M1 Weiß',sales:119.0,units:1,adSales:100.0}
       ],
       'RECIBIDORES': [
         {asin:'B09HXNC1ZH',title:'Flurmöbel mit Schuhschrank',sales:387.0,units:3,adSales:216.8},
@@ -926,25 +930,25 @@ const TOP5_CATEGORY = {
     },
     global: {
       'APARADORES': [
-        {asin:'B0FPMD6W2T',title:'Credenza Bassa Kai con 3 Ante per Soggiorno e Sala da P...',sales:6341.86,units:62,adSales:2374.93,mkts:['es','fr','it']},
-        {asin:'B085GGY8ZB',title:'Modernes Sideboard Breite 155 x Höhe 91',sales:4896.9,units:23,adSales:1413.13,mkts:['de','es','fr','it']},
-        {asin:'B085DQLFGQ',title:'Credenza Madia Clark Soggiorno Moderno LED',sales:4735.76,units:26,adSales:1990.4,mkts:['es','fr','it']},
-        {asin:'B0FD43LKP7',title:'Sideboard Renzo mit gerillten Türen für modernes Wohn-...',sales:4724.06,units:27,adSales:2695.94,mkts:['de','es','fr','it']},
-        {asin:'B09LMR77GN',title:'Modernes Sideboard Wohnzimmer oder Esszimmer',sales:4702.83,units:27,adSales:329.45,mkts:['de','es','fr','it']}
+        {asin:'B0FPMD6W2T',title:'Aparador bajo Kai con 3 Puertas para Salón Comedor Moderno',sales:6341.86,units:62,adSales:2374.93,mkts:['es','fr','it']},
+        {asin:'B085GGY8ZB',title:'Aparador Mueble TV con LED Armario para Salón Comedor M...',sales:4896.9,units:23,adSales:1413.13,mkts:['es','fr','it','de']},
+        {asin:'B085DQLFGQ',title:'Aparador Clark con 3 Puertas para Salón con Luz LED',sales:4735.76,units:26,adSales:1990.4,mkts:['es','fr','it']},
+        {asin:'B0FD43LKP7',title:'Aparador Salón Roble Alba 120 cm Renzo Mueble Auxiliar...',sales:4724.06,units:27,adSales:2695.94,mkts:['es','fr','it','de']},
+        {asin:'B09LMR77GN',title:'Aparador Roque Mueble Auxiliar Moderno de Salón y Comed...',sales:4702.83,units:27,adSales:329.45,mkts:['es','fr','it','de']}
       ],
       'MESA ALTA': [
-        {asin:'B0DBM5HDCH',title:'Table Haute de Cuisine Kyra avec 3 Étagères de Rangement',sales:1690.96,units:19,adSales:666.91,mkts:['es','fr']},
-        {asin:'B0FMFMQFKK',title:'Table de Bar Haute ANI avec Deux tabourets pour 2 Perso...',sales:1429.95,units:10,adSales:0.0,mkts:['es','fr']},
-        {asin:'B0FMFFNY83',title:'Tavolo Alto da bar con 2 Sgabelli Ani Barra da cucina i...',sales:1422.23,units:10,adSales:114.87,mkts:['es','fr','it']},
-        {asin:'B0FMFLM8YT',title:'Table de Bar Haute ANI avec Deux tabourets pour 2 Perso...',sales:1309.91,units:10,adSales:0.0,mkts:['es','fr']},
-        {asin:'B0FMFLX6QS',title:'Ensemble Table Haute et 2 Tabourets Kyra Mange-Debout d...',sales:992.96,units:7,adSales:319.8,mkts:['es','fr']}
+        {asin:'B0DBM5HDCH',title:'Mesa Alta Bar Kyra Barra Cocina de Estilo Moderno con 3...',sales:1690.96,units:19,adSales:666.91,mkts:['es','fr']},
+        {asin:'B0FMFMQFKK',title:'Mesa Alta de Cocina con 2 Taburetes Estilo Industrial',sales:1429.95,units:10,adSales:0.0,mkts:['es','fr']},
+        {asin:'B0FMFFNY83',title:'Mesa Alta de Cocina con 2 Taburetes Estilo Industrial',sales:1422.23,units:10,adSales:114.87,mkts:['es','fr','it']},
+        {asin:'B0FMFLM8YT',title:'Mesa Alta de Cocina con 2 Taburetes Estilo Industrial',sales:1309.91,units:10,adSales:0.0,mkts:['es','fr']},
+        {asin:'B0FMFLX6QS',title:'Mesa Alta Bar con 2 Taburetes Kyra Barra Cocina de Esti...',sales:992.96,units:7,adSales:319.8,mkts:['es','fr']}
       ],
       'MUEBLES TV': [
-        {asin:'B0FM3TXQ4J',title:'TV-Möbel mit Füßen TV-Lowboard Farbe Eiche',sales:6068.75,units:49,adSales:2215.03,mkts:['de','es','fr','it']},
-        {asin:'B0D8TQK2SY',title:'Hängendes TV-Möbel TV-Lowboard Farbe Eiche',sales:2370.92,units:19,adSales:931.76,mkts:['de','es','fr']},
-        {asin:'B0FPMJ1D87',title:'Mobile TV Basso Kai con 1 Anta per Soggiorno Moderno',sales:1317.91,units:22,adSales:545.32,mkts:['es','fr','it']},
-        {asin:'B0D923FPZH',title:'Mobile TV Sospeso a Parete Aitana M2 Soggiorno Moderno',sales:1229.92,units:10,adSales:424.54,mkts:['es','it']},
-        {asin:'B0FLQBBYTC',title:'Mobile TV con piedini Nora H2 Soggiorno Moderno',sales:1184.92,units:9,adSales:0.0,mkts:['es','fr','it']}
+        {asin:'B0FM3TXQ4J',title:'Mueble TV bajo con Patas Aitana M2 para Salón Moderno',sales:6068.75,units:49,adSales:2215.03,mkts:['es','fr','it','de']},
+        {asin:'B0D8TQK2SY',title:'Mueble TV Colgante Aitana M2 para Salón Moderno',sales:2370.92,units:19,adSales:931.76,mkts:['es','fr','de']},
+        {asin:'B0FPMJ1D87',title:'Mueble TV bajo Kai con 1 Puerta para Salón Moderno',sales:1317.91,units:22,adSales:545.32,mkts:['es','fr','it']},
+        {asin:'B0D923FPZH',title:'Mueble TV Colgante Aitana M2 para Salón Moderno',sales:1229.92,units:10,adSales:424.54,mkts:['es','it']},
+        {asin:'B0FLQBBYTC',title:'Mueble TV Nora H2 Negro',sales:1184.92,units:9,adSales:0.0,mkts:['es','fr','it']}
       ],
       'CAMAS': [
         {asin:'B07DY9LLWB',title:'Cama de Matrimonio Nitas para Colchón de 150x190 cm',sales:1899.9,units:5,adSales:0.0,mkts:['es']},
@@ -954,18 +958,18 @@ const TOP5_CATEGORY = {
         {asin:'B0DWN56PFZ',title:'Lit Double Diana avec Matelas 150x190cm Design Flottant...',sales:699.0,units:1,adSales:0.0,mkts:['fr']}
       ],
       'RECIBIDORES': [
-        {asin:'B09MV14ZGT',title:'Ensemble Meuble d’Entrée Paola Set avec Meuble à Chauss...',sales:1609.91,units:10,adSales:0.0,mkts:['es','fr']},
-        {asin:'B0D37W28K6',title:'Meuble d’Entrée Mural Neo avec Miroir et Tiroir',sales:1275.76,units:16,adSales:173.49,mkts:['es','fr']},
-        {asin:'B0FL2TVNLX',title:'Flurmöbel mit Spiegel und Schublade Dielenmöbel',sales:1034.86,units:12,adSales:0.0,mkts:['de','es','fr','it']},
-        {asin:'B0CJ2MSD4L',title:'Meuble d’Entrée Mural Neo avec Miroir et Tiroir',sales:808.8,units:11,adSales:0.0,mkts:['es','fr']},
-        {asin:'B08NTHT243',title:'Scarpiera Paola con luce LED per ingresso design moderno',sales:788.88,units:7,adSales:0.0,mkts:['es','it']}
+        {asin:'B09MV14ZGT',title:'Conjunto Recibidor Paola Set con Zapatero Espejo',sales:1609.91,units:10,adSales:0.0,mkts:['es','fr']},
+        {asin:'B0D37W28K6',title:'Recibidor Suspendido Neo con Espejo Modular y Cajón',sales:1275.76,units:16,adSales:173.49,mkts:['es','fr']},
+        {asin:'B0FL2TVNLX',title:'Recibidor Suspendido Neo con Espejo Modular y Cajón',sales:1034.86,units:12,adSales:0.0,mkts:['es','fr','it','de']},
+        {asin:'B0CJ2MSD4L',title:'Recibidor Suspendido Neo con Espejo Modular y Cajón',sales:808.8,units:11,adSales:0.0,mkts:['es','fr']},
+        {asin:'B08NTHT243',title:'Recibidor Zapatero Paola con Luz LED para Recibidor',sales:788.88,units:7,adSales:0.0,mkts:['es','it']}
       ],
       'VITRINAS': [
-        {asin:'B07XTJVF8Y',title:'Vitrinenschrank Luke V5',sales:2028.22,units:14,adSales:267.22,mkts:['de','es','fr']},
-        {asin:'B07JNP7W7M',title:'Vetrina Pensile Luke V5 LED Melamina Finitura Lucida',sales:1310.94,units:9,adSales:0.0,mkts:['es','it']},
-        {asin:'B07XTFVGJF',title:'Vitrinenschrank Luke V6',sales:585.99,units:4,adSales:0.0,mkts:['de','es','fr']},
-        {asin:'B09L8LC5TQ',title:'Vetrina Pensile Luke V5 LED Melamina Finitura Opaca e L...',sales:575.97,units:4,adSales:0.0,mkts:['es','it']},
-        {asin:'B07JNQV812',title:'Vetrina Con Piedini 2cm Luke V5 LED Melamina',sales:575.97,units:4,adSales:0.0,mkts:['es','it']}
+        {asin:'B07XTJVF8Y',title:'Vitrina con Patas 2 cm Luke V5 para Salón o Comedor Mod...',sales:2028.22,units:14,adSales:267.22,mkts:['es','fr','de']},
+        {asin:'B09L8LV6ZX',title:'Vitrina con Patas 2 cm Luke V6 para Salón o Comedor Mod...',sales:1548.91,units:11,adSales:0.0,mkts:['es','fr']},
+        {asin:'B07JNP7W7M',title:'Vitrina Colgante Luke V5 para Salón o Comedor Moderno c...',sales:1310.94,units:9,adSales:0.0,mkts:['es','it']},
+        {asin:'B07XTFVGJF',title:'Vitrina con Patas 2 cm Luke V6 para Salón o Comedor Mod...',sales:585.99,units:4,adSales:0.0,mkts:['es','fr','de']},
+        {asin:'B09L8LC5TQ',title:'Vitrina Colgante Luke V5 para Salón o Comedor Moderno c...',sales:575.97,units:4,adSales:0.0,mkts:['es','it']}
       ]
     }
   },
@@ -1000,7 +1004,7 @@ const TOP5_CATEGORY = {
         {asin:'B07N43N73G',title:'Cama de Matrimonio Alessia para Colchón de 180x200 cm',sales:259.98,units:1,adSales:0.0}
       ],
       'RECIBIDORES': [
-        {asin:'B0D37W28K6',title:'Recibidor Suspendido Neo con Espejo Modular y Cajón',sales:2099.4,units:30,adSales:404.81},
+        {asin:'B0D37W28K6',title:'Recibidor Suspendido Neo con Espejo Modular y Cajón',sales:1889.46,units:27,adSales:404.81},
         {asin:'B08NTFFCQ6',title:'Conjunto Recibidor Paola Set con Zapatero Espejo',sales:794.95,units:5,adSales:352.87},
         {asin:'B08NTHT243',title:'Recibidor Zapatero Paola con Luz LED para Recibidor',sales:764.91,units:7,adSales:0.0},
         {asin:'B0F99LVL87',title:'Recibidor Zapatero Paola con Luz LED Diseño Moderno',sales:546.93,units:5,adSales:98.34},
@@ -1116,11 +1120,11 @@ const TOP5_CATEGORY = {
         {asin:'B0FL2TVNLX',title:'Flurmöbel mit Spiegel und Schublade Dielenmöbel',sales:109.0,units:1,adSales:83.19}
       ],
       'VITRINAS': [
+        {asin:'B09L8L7RVW',title:'Vitrinenschrank Luke V3',sales:201.0,units:3,adSales:0.0},
         {asin:'B09L8LC5TQ',title:'Vitrinenschrank Luke V5',sales:159.0,units:1,adSales:0.0},
         {asin:'B07JNRLKQ5',title:'Vitrinenschrank Luke V2',sales:154.0,units:2,adSales:0.0},
         {asin:'B09L8LV6ZX',title:'Vitrinenschrank Luke V6',sales:149.0,units:1,adSales:0.0},
-        {asin:'B08W2CSHY1',title:'Vitrinenschrank Luke V6',sales:149.0,units:1,adSales:0.0},
-        {asin:'B07XTFVBPQ',title:'Vitrinenschrank Luke V4',sales:119.0,units:1,adSales:0.0}
+        {asin:'B08W2CSHY1',title:'Vitrinenschrank Luke V6',sales:149.0,units:1,adSales:0.0}
       ]
     },
     global: {
@@ -1153,7 +1157,7 @@ const TOP5_CATEGORY = {
         {asin:'B07DY9LLWB',title:'Cama de Matrimonio Nitas para Colchón de 150x190 cm',sales:379.98,units:1,adSales:0.0,mkts:['es']}
       ],
       'RECIBIDORES': [
-        {asin:'B0D37W28K6',title:'Recibidor Suspendido Neo con Espejo Modular y Cajón',sales:2515.4,units:34,adSales:404.81,mkts:['es','fr','it']},
+        {asin:'B0D37W28K6',title:'Recibidor Suspendido Neo con Espejo Modular y Cajón',sales:2305.46,units:31,adSales:404.81,mkts:['es','fr','it']},
         {asin:'B08NTHT243',title:'Recibidor Zapatero Paola con Luz LED para Recibidor',sales:1002.91,units:9,adSales:0.0,mkts:['es','fr']},
         {asin:'B0FL2TVNLX',title:'Recibidor Suspendido Neo con Espejo Modular y Cajón',sales:797.93,units:10,adSales:768.14,mkts:['es','fr','it','de']},
         {asin:'B08NTFFCQ6',title:'Conjunto Recibidor Paola Set con Zapatero Espejo',sales:794.95,units:5,adSales:352.87,mkts:['es']},
@@ -1171,11 +1175,11 @@ const TOP5_CATEGORY = {
 };
 
 const PRIME_DAY = {
-  global: { sales:15084, pctJun:22.6 },
+  global: { sales:15084, pctJun:22.4 },
   es: { sales:5632, pctJun:19.3, uplift:44.6, spend:714, acos:12.7, orders:50 },
-  fr: { sales:4112, pctJun:18.2, uplift:36.4, spend:552, acos:13.4, orders:31 },
-  it: { sales:3163, pctJun:33.4, uplift:150.3, spend:445, acos:14.1, orders:21 },
-  de: { sales:2176, pctJun:39.9, uplift:199.2, spend:270, acos:12.4, orders:null }
+  fr: { sales:4112, pctJun:18.1, uplift:36.4, spend:552, acos:13.4, orders:31 },
+  it: { sales:3163, pctJun:32.4, uplift:150.3, spend:445, acos:14.1, orders:21 },
+  de: { sales:2176, pctJun:38.7, uplift:199.2, spend:270, acos:12.4, orders:null }
 };
 
 // ── CAMPAIGN TYPE DATA (Pacvue · Ene–Sep 2026) ────────────────────────────────
@@ -1429,9 +1433,9 @@ const ANNOTATIONS = {
     {insights:['Mejor mes SP hasta la fecha: 24.284€ ventas, ACOS 14.8%. SB escala a 329.80€ — solo impresiones (branding). SD ACOS 30%.'],hypotheses:['Posible efecto pre-verano: mayor demanda de muebles de salón y recibidores. SB genera visibilidad de marca sin conversión directa medible — efecto halo en búsquedas de marca.'],actions:['SP rinde bien: valorar aumentar presupuesto. Revisar si SD puede mejorar con bids más bajos o segmentar por ASIN.'],negatives:[]},
     {insights:['SP 15.5% ACOS — estable. SD empeora a 39.5%. SB activa (163€, 0 ventas).'],hypotheses:['SD sigue sin mejorar en ES. La audiencia de display puede no coincidir con el perfil del comprador de muebles de salón.'],actions:['Considerar reformular campañas SD en ES o pausarlas si no hay mejora en junio. Enfocar presupuesto en SP.'],negatives:[]},
     {insights:['Mejor mes en SP: 28.139€ ventas, ACOS 14.3%. SD alcanza máximo histórico de ACOS (55.6%). Prime Day (23–26 jun) representa el 19.3% de las ventas del mes.'],hypotheses:['"Muebles bonitos" con 42K impresiones señala fuerte búsqueda de marca — buen reconocimiento. "Aparador entrada" con ACOS 6.9% es el término estrella: alta intención de compra.'],actions:['Valorar pausa completa de SD en ES (ACOS >55% no sostenible). Aumentar bids en "aparador entrada" y "recibidores de entrada modernos" para julio.'],negatives:['Revisar: "aparador salon modernos" (4.2K impr, 0 ventas), "mueble salon" (3.6K impr, 0 ventas) — negativizar o bajar bid.']},
-    {insights:['España firma su mejor mes del año: 31.047€ ventas (+5,8% vs jun), ACOS 15,37% con CPC un 4% más barato. Crecimiento repartido — Aparador Roque +2.067€, entran ~3.000€ de nuevas referencias (vitrinas, camas, mueble TV). Campañas de puja baja: 2.370€ ventas con ROAS 23,5x (1% de inversión → 4,8% de facturación). 5 referencias con rotura de stock (Aitana desde 13-jul): impacto estimado 900€.'],hypotheses:['El ACOS baja junto con la venta porque la segmentación compra tráfico más barato. La puja baja es la palanca más eficiente de la cuenta — se desplegó en julio y el resultado valida la estrategia.'],actions:['Ampliar campañas de puja baja a más referencias de aparadores en agosto. Reforzar Mesa Alta (mejor conversión de la cuenta — perdió visibilidad en julio, -49% ventas). Gestionar rotura de stock Aitana y Factory R1. Revisar segmentación RECIBIDORES (ACOS 29,1%).'],negatives:['Mesa Alta -49% ventas vs junio — pérdida de visibilidad; revisar bids y segmentación urgente.']},
-    {insights:['ES mejor mes del año en ventas ads: 36.106€ (+16,3% vs julio), ACOS 15,02% — nueva mejora. Nueva estructura de captación segmentada (por acabado LED, tamaño, color): ACOS 8,1% sobre 6,5% del presupuesto → 13,5% de las ventas. CPC baja a 0,15€ (−10% MoM). GMV total 81.901€ (+18,1% MoM). TACOS ES: 6,6% — dentro del objetivo 6–7%.'],hypotheses:['La segmentación por atributo compite en subastas menos saturadas, reduciendo CPC y mejorando la selección de tráfico. Es la palanca más eficiente desplegada en el año.'],actions:['Escalar la estructura segmentada de captación al resto de mercados. Mantener el impulso en Aparadores. Recuperar Mesa Alta tras la pérdida de visibilidad de julio.'],negatives:['Recibidores ES sigue con ACOS elevado — revisar segmentación y añadir negativos de términos no convertibles.']},
-    {insights:['España: 34.396€ ventas ads (−4,7% vs agosto) con un 9,4% menos de inversión (4.916€). ACOS 14,29% — en línea con el objetivo del 14% y tercer mes consecutivo de mejora (15,37% → 15,02% → 14,29%). ROAS 7,00x. Es el 55% de la venta publicitaria de la cuenta. Aparadores vende un +12,5% gastando un 14% menos (ACOS 16,8% → 12,9%) y Mesa Alta crece un +56,7% (41 pedidos vs 25). GMV total 84.676€ — mejor mes del año (+3,4% MoM · +41,9% YoY). TACOS 5,8% (6,6% en agosto).'],hypotheses:['El crecimiento se concentra donde la cola larga ya está montada y madura (Aparadores y Mesa Alta): es la misma estrategia que en el resto de mercados, desplegada con continuidad. Muebles TV (−30%) y Marca (−30,9%) retroceden. El término principal "aparadores para salon" gana alcance (451K impresiones vs 296K en agosto) pero su ACOS sube al 20,8% (14,1% en agosto).'],actions:['Mantener la estructura actual: en objetivo y con tres meses de mejora, no tocar lo que funciona. Seguimiento de Muebles TV (−30% de venta con la misma inversión) y de Camas (ACOS 40,5%). Negativizar los términos genéricos sin conversión.'],negatives:['"aparador salon modernos" (16,2K impr · 41€ · 0 ventas) — ya señalado en junio','"mueble tv negro" (19,9K impr · 35€ · 0 ventas)','"muebles de salon modernos" (13K impr · 28€ · 0 ventas)']}
+    {insights:['España firma su mejor mes del año: 31.243€ ventas (+7,1% vs jun), ACOS 15,11% con CPC un 5% más barato. Crecimiento repartido — Aparador Roque +2.067€, entran ~3.000€ de nuevas referencias (vitrinas, camas, mueble TV). Campañas de puja baja: 2.370€ ventas con ROAS 23,5x (1% de inversión → 4,8% de facturación). 5 referencias con rotura de stock (Aitana desde 13-jul): impacto estimado 900€.'],hypotheses:['El ACOS baja junto con la venta porque la segmentación compra tráfico más barato. La puja baja es la palanca más eficiente de la cuenta — se desplegó en julio y el resultado valida la estrategia.'],actions:['Ampliar campañas de puja baja a más referencias de aparadores en agosto. Reforzar Mesa Alta (mejor conversión de la cuenta — perdió visibilidad en julio, -49% ventas). Gestionar rotura de stock Aitana y Factory R1. Revisar segmentación RECIBIDORES (ACOS 29,1%).'],negatives:['Mesa Alta -49% ventas vs junio — pérdida de visibilidad; revisar bids y segmentación urgente.']},
+    {insights:['ES mejor mes del año en ventas ads: 36.453€ (+16,7% vs julio), ACOS 15,00% — nueva mejora. Nueva estructura de captación segmentada (por acabado LED, tamaño, color): ACOS 8,1% sobre 6,5% del presupuesto → 13,5% de las ventas. CPC baja a 0,15€ (−11% MoM). GMV total 81.901€ (+18,5% MoM). TACOS ES: 6,7% — dentro del objetivo 6–7%.'],hypotheses:['La segmentación por atributo compite en subastas menos saturadas, reduciendo CPC y mejorando la selección de tráfico. Es la palanca más eficiente desplegada en el año.'],actions:['Escalar la estructura segmentada de captación al resto de mercados. Mantener el impulso en Aparadores. Recuperar Mesa Alta tras la pérdida de visibilidad de julio.'],negatives:['Recibidores ES sigue con ACOS elevado — revisar segmentación y añadir negativos de términos no convertibles.']},
+    {insights:['España: 35.413€ ventas ads (−2,9% vs agosto) con un 10,2% menos de inversión (4.910€). ACOS 13,86% — dentro del objetivo del 14% y tercer mes consecutivo de mejora (15,11% → 15,00% → 13,86%). ROAS 7,21x. Es el 56% de la venta publicitaria de la cuenta. Aparadores vende un +12,5% gastando un 14% menos (ACOS 16,8% → 12,9%) y Mesa Alta crece un +56,7% (41 pedidos vs 25). GMV total 84.259€ — mejor mes del año (+2,9% MoM · +41,2% YoY). TACOS 5,8% (6,7% en agosto).'],hypotheses:['El crecimiento se concentra donde la cola larga ya está montada y madura (Aparadores y Mesa Alta): es la misma estrategia que en el resto de mercados, desplegada con continuidad. Muebles TV (−30%) y Marca (−30,9%) retroceden. El término principal "aparadores para salon" gana alcance (451K impresiones vs 296K en agosto) pero su ACOS sube al 20,8% (14,1% en agosto).'],actions:['Mantener la estructura actual: en objetivo y con tres meses de mejora, no tocar lo que funciona. Seguimiento de Muebles TV (−30% de venta con la misma inversión) y de Camas (ACOS 40,5%). Negativizar los términos genéricos sin conversión.'],negatives:['"aparador salon modernos" (16,2K impr · 41€ · 0 ventas) — ya señalado en junio','"mueble tv negro" (19,9K impr · 35€ · 0 ventas)','"muebles de salon modernos" (13K impr · 28€ · 0 ventas)']}
   ],
   fr:[
     {insights:['Francia: mercado más eficiente. SP ACOS 11.6%. SD no convierte (0 ventas con 85 clics).'],hypotheses:['"Buffet salle à manger" es el término dominante con alta intención de compra. Francia tiene buyer intent más focalizado en categoría específica vs ES.'],actions:['Mantener estrategia SP actual. Analizar SI SD puede convertir con audiencias de remarketing más precisas.'],negatives:['Negativizar en SD/SP: "olivier artificiel" (7.4K impr, €21 spend, 0 ventas), "ilot central cuisine" (4.6K impr, 0 ventas), "lit double" (4.9K impr, 0 ventas) — no son del catálogo.']},
@@ -1439,10 +1443,10 @@ const ANNOTATIONS = {
     {insights:['Máximo histórico FR: 26.610€ ventas SP, ACOS 9.7%. Inicio SB (4.40€ simbólico). SD con ACOS 66%.'],hypotheses:['Marzo es temporada alta en FR para muebles (renovaciones de primavera). "Meuble salle à manger" es el driver principal.'],actions:['Maximizar presupuesto en Q1 FR. FR es el mercado más rentable de todos — priorizar inversión aquí.'],negatives:[]},
     {insights:['Caída a 13.466€ ventas (vs 26K mar). ACOS sube a 13%. SB lanza con 259.88€ (solo impresiones). SD destaca con ACOS 7.15% (€431 ventas).'],hypotheses:['Caída post-Semana Santa y mayor competencia. La SD en abril muestra excelente eficiencia — potenciar este canal cuando las condiciones son favorables.'],actions:['Potenciar SD en FR para futuros meses — mejor ACOS que SP en este período. Revisar y reducir bids SP para mejorar ACOS.'],negatives:[]},
     {insights:['Recuperación a 16.002€ ventas, ACOS 11.2%. SB activa (225€). "Mange debout" (mesa bar) empieza a aparecer como término emergente.'],hypotheses:['Mayo es pre-verano: búsquedas de mobiliario de exterior/cocina empiezan a ganar peso. "Mange debout" con ACOS 3% es señal de alta conversión en mesa alta.'],actions:['Preparar campañas específicas de Mesa Alta / Mange Debout para verano.'],negatives:[]},
-    {insights:['22.092€ ventas SP, ACOS 12.4%. SD recupera con €464 ventas (ACOS 6.7% — excelente). Prime Day: 18.2% de ventas del mes. "Meuble salle à manger" domina con 156K impr y €1.789 ventas.'],hypotheses:['"Mange debout" destaca con ACOS 3.0% y 4 conversiones — tendencia clara de verano. "Meuble tv" con 38K impr y 0 ventas puede no tener buen match de producto.'],actions:['Escalar inversión en "mange debout" para julio. SD en FR funciona — mantener y aumentar budget. Revisar match de "meuble tv" con el catálogo disponible.'],negatives:['"Meuble tv" (38K impr, 0 ventas) — revisar si el catálogo de muebles TV en FR está activo o negativizar temporalmente.']},
-    {insights:['Francia: 18.664€ ventas (+32,2% vs mayo, último mes comparable). ACOS 18,27%. Campañas de puja baja: 671€ ventas con ROAS 56x. "Meuble salle à manger" crece un 78% (1.623€→2.892€, 11→20 pedidos). Se redujo inversión en aparadores de mayor volumen al caer su rentabilidad por debajo del umbral de eficiencia.'],hypotheses:['Junio operó con precio promocionado en aparadores; julio vuelve a tarifa normal — la comparación MoM no refleja caída real de rendimiento. La referencia correcta es mayo: sobre mayo FR crece +32,2%.'],actions:['Desplegar campañas de cola larga en agosto sobre términos ya validados (objetivo +1.500/2.500€). Cambiar "bahut" por "buffet" en títulos FR — es el término dominante en búsquedas. Mantener defensa de marca (9,3x ROAS).'],negatives:['Recibidores FR ACOS 47,3% — pausar o revisar segmentación urgente.']},
-    {insights:['Francia: 21.288€ ventas ads (+14,1% vs julio) con inversión prácticamente idéntica (3.407€ vs 3.410€). ACOS mejora de 18,27% a 16,00%. ROAS 6,25x. La redistribución interna de presupuesto (de Top Ventas 32,6% ACOS → hacia Aparadores, Muebles TV, Mesa Alta, Camas) es el único driver del crecimiento.'],hypotheses:['Top Ventas operaba en julio por encima del umbral de eficiencia. Al redirigir ese presupuesto hacia categorías con mejor CVR se generan más ventas con el mismo coste total.'],actions:['Mantener la nueva distribución de presupuesto en FR. Escalar inversión en Mesa Alta / "mange debout" (mejor ACOS de la cuenta FR). Valorar reintroducir Top Ventas con bids más bajos y lista de negativos reforzada.'],negatives:['Monitorizar términos de marca en FR — Top Ventas reducido puede reducir visibilidad de búsquedas branded.']},
-    {insights:['Francia: 16.206€ ventas ads (−23,9% vs agosto) con 3.065€ de inversión (−10,0%). ACOS 18,91% frente al objetivo del 13%. ROAS 5,29x. Aparadores explica la mayor parte del retroceso (−15,5%, ACOS 17,2% → 20,0%) y Mesa Alta cae un −31%. Muebles TV mejora su rentabilidad (ACOS 13,5% → 11,9%) y Marca crece un +36%. Camas y Top Ventas caen a cero al no tener inversión durante el mes. GMV total 40.643€ (−14,5% MoM · −16,2% YoY) — único mercado en negativo interanual.'],hypotheses:['La demanda no se ha contraído: agosto fue el mes más buscado del semestre en Francia. Las campañas que sostienen el volumen han agotado su presupuesto diario de forma recurrente durante el mes, y una campaña que se apaga a media jornada no compite en las horas de mayor conversión. "Meuble salle a manger" concentra el 30% de la inversión con ACOS 27,2% (23,8% en agosto); "meuble tv" mejora con fuerza (1.176€ de ventas, ACOS 10,7% vs 86,5% en agosto).'],actions:['Garantizar la continuidad de inversión en Aparadores y Mesa Alta para que el presupuesto diario aguante la jornada completa. Optimizar pujas en "meuble salle a manger" (30% de la inversión, ACOS 27,2%). Revisar Recibidores (ACOS 50,3%).'],negatives:['"meuble tv blanc" (14K impr · 22€ · 0 ventas)','"meuble de salle a manger" (10,2K impr · 23€ · 0 ventas)','"buffet blanc laqué" (5,4K impr · 12€ · 0 ventas)']}
+    {insights:['22.092€ ventas SP, ACOS 12.4%. SD recupera con €464 ventas (ACOS 6.7% — excelente). Prime Day: 18.1% de ventas del mes. "Meuble salle à manger" domina con 156K impr y €1.789 ventas.'],hypotheses:['"Mange debout" destaca con ACOS 3.0% y 4 conversiones — tendencia clara de verano. "Meuble tv" con 38K impr y 0 ventas puede no tener buen match de producto.'],actions:['Escalar inversión en "mange debout" para julio. SD en FR funciona — mantener y aumentar budget. Revisar match de "meuble tv" con el catálogo disponible.'],negatives:['"Meuble tv" (38K impr, 0 ventas) — revisar si el catálogo de muebles TV en FR está activo o negativizar temporalmente.']},
+    {insights:['Francia: 19.460€ ventas (+36,8% vs mayo, último mes comparable). ACOS 17,50%. Campañas de puja baja: 671€ ventas con ROAS 56x. "Meuble salle à manger" crece un 78% (1.623€→2.892€, 11→20 pedidos). Se redujo inversión en aparadores de mayor volumen al caer su rentabilidad por debajo del umbral de eficiencia.'],hypotheses:['Junio operó con precio promocionado en aparadores; julio vuelve a tarifa normal — la comparación MoM no refleja caída real de rendimiento. La referencia correcta es mayo: sobre mayo FR crece +36,8%.'],actions:['Desplegar campañas de cola larga en agosto sobre términos ya validados (objetivo +1.500/2.500€). Cambiar "bahut" por "buffet" en títulos FR — es el término dominante en búsquedas. Mantener defensa de marca (9,3x ROAS).'],negatives:['Recibidores FR ACOS 47,3% — pausar o revisar segmentación urgente.']},
+    {insights:['Francia: 21.355€ ventas ads (+9,7% vs julio) con inversión prácticamente idéntica (3.377€ vs 3.405€). ACOS mejora de 17,50% a 15,81%. ROAS 6,32x. La redistribución interna de presupuesto (de Top Ventas 32,6% ACOS → hacia Aparadores, Muebles TV, Mesa Alta, Camas) es el único driver del crecimiento.'],hypotheses:['Top Ventas operaba en julio por encima del umbral de eficiencia. Al redirigir ese presupuesto hacia categorías con mejor CVR se generan más ventas con el mismo coste total.'],actions:['Mantener la nueva distribución de presupuesto en FR. Escalar inversión en Mesa Alta / "mange debout" (mejor ACOS de la cuenta FR). Valorar reintroducir Top Ventas con bids más bajos y lista de negativos reforzada.'],negatives:['Monitorizar términos de marca en FR — Top Ventas reducido puede reducir visibilidad de búsquedas branded.']},
+    {insights:['Francia: 16.030€ ventas ads (−24,9% vs agosto) con 3.069€ de inversión (−9,1%). ACOS 19,14% frente al objetivo del 13%. ROAS 5,22x. Aparadores explica la mayor parte del retroceso (−15,5%, ACOS 17,2% → 20,0%) y Mesa Alta cae un −31%. Muebles TV mejora su rentabilidad (ACOS 13,5% → 11,9%) y Marca crece un +36%. Camas y Top Ventas caen a cero al no tener inversión durante el mes. GMV total 40.643€ (−14,5% MoM · −16,2% YoY) — único mercado en negativo interanual.'],hypotheses:['La demanda no se ha contraído: agosto fue el mes más buscado del semestre en Francia. Las campañas que sostienen el volumen han agotado su presupuesto diario de forma recurrente durante el mes, y una campaña que se apaga a media jornada no compite en las horas de mayor conversión. "Meuble salle a manger" concentra el 30% de la inversión con ACOS 27,2% (23,8% en agosto); "meuble tv" mejora con fuerza (1.176€ de ventas, ACOS 10,7% vs 86,5% en agosto).'],actions:['Garantizar la continuidad de inversión en Aparadores y Mesa Alta para que el presupuesto diario aguante la jornada completa. Optimizar pujas en "meuble salle a manger" (30% de la inversión, ACOS 27,2%). Revisar Recibidores (ACOS 50,3%).'],negatives:['"meuble tv blanc" (14K impr · 22€ · 0 ventas)','"meuble de salle a manger" (10,2K impr · 23€ · 0 ventas)','"buffet blanc laqué" (5,4K impr · 12€ · 0 ventas)']}
   ],
   it:[
     {insights:['IT solo con SP activo. ACOS 14.2% — dentro de rango aceptable para el mercado.'],hypotheses:['Italia en fase SP pura. Las credenze (aparadores italianos) y mobili TV son las categorías principales.'],actions:['Explorar activar SB en IT para ganar visibilidad de marca. Analizar qué ASINs tienen mejor CVR.'],negatives:[]},
@@ -1451,9 +1455,9 @@ const ANNOTATIONS = {
     {insights:['ACOS SP sube a 19.7%. SB activa agresivamente (251€, 0 conversiones). Ventas SP en mínimos (8.295€).'],hypotheses:['La activación agresiva de SB puede estar compitiendo por las mismas búsquedas que SP, elevando el CPC. Evaluar si SB canibaliza presupuesto SP.'],actions:['Revisar distribución de presupuesto SP vs SB. En IT, SP necesita optimización urgente antes de escalar SB.'],negatives:[]},
     {insights:['ACOS SP crítico: 25.7%. SB (65€, 0 ventas). Ventas en mínimos: 6.687€. Tendencia negativa consistente desde enero.'],hypotheses:['IT puede estar enfrentando presión de precio de competidores locales. El deterioro continuo de ACOS sugiere bids desalineados con CVR real.'],actions:['Auditoría completa de campañas IT. Reducir bids a ACOS objetivo por ASIN. Considerar pausa de campañas con ACOS > 40%.'],negatives:[]},
     {insights:['Recuperación: 10.322€ ventas, ACOS 22.2%. "Madia soggiorno" con ACOS 5.96% es el término estrella. "Credenza soggiorno" convierte a ACOS 29%.'],hypotheses:['"Madia soggiorno" (19K impr, €465 ventas, ACOS 5.96%) es el término más eficiente — campañas bien posicionadas en esta keyword. La mejora vs mayo indica que las optimizaciones están dando resultados.'],actions:['Aumentar bids en "madia soggiorno" — mejor término del mercado IT. Reducir bids en "credenza soggiorno" hasta bajar ACOS a <20%.'],negatives:['Revisar: "mobile tv" (9.7K impr, 0 ventas), "mb muebles bonitos" (6.3K impr, 0 ventas) — pueden ser búsquedas de marca sin catálogo activo en IT o términos fuera de target.']},
-    {insights:['Italia gestiona julio de forma óptima: inversión -13,4% (2.036€) y facturación plana (-0,5%, 9.490€), lo que eleva el ROAS un 14,8% (4,7x) y reduce el ACOS 3,18 p.p. a 21,45%. Sobre mayo: +46,9% en ventas. GMV total 23.273€ (+54,4% YoY).'],hypotheses:['El punto de atención no está en publicidad sino en conversión: 0,43% vs 0,91% en España. Con 14.982 clics se cierran solo 64 pedidos — diferencia estructural que no se corrige con más inversión publicitaria; requiere mejora de ficha de producto.'],actions:['Mantener ajuste de inversión — la gestión de bids es correcta. Abordar la conversión a nivel de ficha (imágenes, descripción, precio competitivo) antes de escalar presupuesto. Replicar análisis estratégico de ES/FR en Italia.'],negatives:['APARADORES IT ACOS 23,7% — ligeramente alto; continuar optimización de bids.']},
-    {insights:['Italia: 11.008€ ventas ads (+16,0% vs julio), ACOS 19,88% (mejora desde 21,45%). ROAS 5,03x vs 4,66x. Mejor mes absoluto del año en ventas publicitarias. La inversión crece un +7,5% y las ventas aumentan proporcionalmente más — señal de mejora de eficiencia acumulada. GMV total 26.586€ (+14,3% MoM).'],hypotheses:['La optimización de bids iniciada desde mayo continúa dando resultados. IT mejora por cuarto mes consecutivo desde el mínimo de mayo. CVR (0,30%) sigue siendo el factor limitante estructural — no se corrige con publicidad.'],actions:['Continuar optimización de bids. Abordar CVR a nivel de ficha (imágenes, A+, precio competitivo) antes de escalar presupuesto. Preparar análisis de competencia IT para identificar ventajas de posicionamiento.'],negatives:['CVR IT 0,30% — el más bajo de los 4 mercados; requiere mejora de ficha, no de publicidad.']},
-    {insights:['Italia: 7.264€ ventas ads (−34,0% vs agosto) y −37,5% de pedidos (50 vs 80), con 1.920€ de inversión (−12,3%). ACOS 26,44% frente al objetivo del 18%. ROAS 3,78x. Aparadores es el 69% de la venta del mercado y explica por sí sola la caída (−41,5%, ACOS 21,5% → 31,5%). Marca duplica su venta (+99,5%, ACOS 3,0%) gastando menos. GMV total 20.897€ (−21,4% MoM · +26,4% YoY). Buy Box 92,1% — el más bajo de los cuatro mercados.'],hypotheses:['La demanda se recupera desde junio, pero VASAGLE se lleva el volumen de clics vendiendo en torno a 88€ frente a nuestro precio medio de 145€: ningún producto nuestro está entre los tres más clicados en los 22 términos cabecera analizados. Es una cuestión de catálogo y surtido, no de pujas. Las campañas que sostienen el volumen han agotado su presupuesto diario de forma recurrente. La demanda de marca existe y está desatendida (Marca +99,5%).'],actions:['Trabajar Italia con el reparto de España (cola larga sobre términos ya probados) antes de ampliar inversión. Abrir la conversación de precio y surtido: con la diferencia actual, ninguna optimización de campaña compensa el salto frente al líder de categoría. Revisar el Buy Box (92,1%) y reforzar la cobertura de búsquedas de marca.'],negatives:['"madia soggiorno" (36,4K impr · 51€ · 0 ventas)','"credenza cucina" (12,3K impr · 24€ · 0 ventas)','"madia cucina" (33,2K impr · 52€ · ACOS 75%)']}
+    {insights:['Italia gestiona julio de forma óptima: inversión -12,6% (2.047€) y facturación plana (-1,5%, 9.624€), lo que eleva el ROAS un 12,7% (4,7x) y reduce el ACOS 2,70 p.p. a 21,26%. Sobre mayo: +45,3% en ventas. GMV total 23.273€ (+54,4% YoY).'],hypotheses:['El punto de atención no está en publicidad sino en conversión: 0,42% vs 0,91% en España. Con 15.059 clics se cierran solo 64 pedidos — diferencia estructural que no se corrige con más inversión publicitaria; requiere mejora de ficha de producto.'],actions:['Mantener ajuste de inversión — la gestión de bids es correcta. Abordar la conversión a nivel de ficha (imágenes, descripción, precio competitivo) antes de escalar presupuesto. Replicar análisis estratégico de ES/FR en Italia.'],negatives:['APARADORES IT ACOS 23,7% — ligeramente alto; continuar optimización de bids.']},
+    {insights:['Italia: 10.547€ ventas ads (+9,6% vs julio), ACOS 20,73% (mejora desde 21,26%). ROAS 4,82x vs 4,70x. Mejor mes desde enero en ventas publicitarias. La inversión crece un +6,8% y las ventas aumentan proporcionalmente más — señal de mejora de eficiencia acumulada. GMV total 26.586€ (+14,2% MoM).'],hypotheses:['La optimización de bids iniciada desde mayo continúa dando resultados. IT mejora por tercer mes consecutivo desde el mínimo de mayo. CVR (0,30%) sigue siendo el factor limitante estructural — no se corrige con publicidad.'],actions:['Continuar optimización de bids. Abordar CVR a nivel de ficha (imágenes, A+, precio competitivo) antes de escalar presupuesto. Preparar análisis de competencia IT para identificar ventajas de posicionamiento.'],negatives:['CVR IT 0,30% — el más bajo de los 4 mercados; requiere mejora de ficha, no de publicidad.']},
+    {insights:['Italia: 7.379€ ventas ads (−30,0% vs agosto) y −37,5% de pedidos (50 vs 80), con 1.908€ de inversión (−12,7%). ACOS 25,85% frente al objetivo del 18%. ROAS 3,87x. Aparadores es el 69% de la venta del mercado y explica por sí sola la caída (−41,5%, ACOS 21,5% → 31,5%). Marca duplica su venta (+99,5%, ACOS 3,0%) gastando menos. GMV total 20.830€ (−21,7% MoM · +26,0% YoY). Buy Box 92,1% — el más bajo de los cuatro mercados.'],hypotheses:['La demanda se recupera desde junio, pero VASAGLE se lleva el volumen de clics vendiendo en torno a 88€ frente a nuestro precio medio de 145€: ningún producto nuestro está entre los tres más clicados en los 22 términos cabecera analizados. Es una cuestión de catálogo y surtido, no de pujas. Las campañas que sostienen el volumen han agotado su presupuesto diario de forma recurrente. La demanda de marca existe y está desatendida (Marca +99,5%).'],actions:['Trabajar Italia con el reparto de España (cola larga sobre términos ya probados) antes de ampliar inversión. Abrir la conversación de precio y surtido: con la diferencia actual, ninguna optimización de campaña compensa el salto frente al líder de categoría. Revisar el Buy Box (92,1%) y reforzar la cobertura de búsquedas de marca.'],negatives:['"madia soggiorno" (36,4K impr · 51€ · 0 ventas)','"credenza cucina" (12,3K impr · 24€ · 0 ventas)','"madia cucina" (33,2K impr · 52€ · ACOS 75%)']}
   ],
   de:[
     {insights:['DE solo con SP. ACOS 25.8% — mercado con mayor dificultad de eficiencia. Sin SB ni SD.'],hypotheses:['Alemania es un mercado muy competitivo en precio. Los sideboards/aparadores tienen mucha competencia local (IKEA, Otto, etc.).'],actions:['Evaluar precio competitivo de los productos clave en DE vs competencia local.'],negatives:[]},
@@ -1462,9 +1466,9 @@ const ANNOTATIONS = {
     {insights:['ACOS sube a 31.5%. SB activa (89€, 0 ventas). Impresiones aumentan significativamente.'],hypotheses:['Mayor competencia en primavera. SB genera impresiones de marca pero sin conversión directa medible.'],actions:['Reducir presupuesto SB hasta que SP mejore. Auditar campañas con ACOS > 40%.'],negatives:[]},
     {insights:['Mejor mes en DE: ACOS 24%, ventas 5.410€. Mejor resultado relativo del período.'],hypotheses:['La mejora puede reflejar efecto de optimizaciones acumuladas y mayor demanda pre-verano de muebles.'],actions:['Identificar qué cambió en mayo para replicarlo en junio. Capitalizar la tendencia positiva.'],negatives:[]},
     {insights:['"Sideboard" domina con 35.6K impr y €444 ventas (ACOS 20.4%). "Kommode" segundo (13K impr, €128 ventas). "Schuhschrank mit spiegel" genera 6K impr sin conversión.'],hypotheses:['"Sideboard" es el principal driver de DE — alta intención de compra. "Schuhschrank mit spiegel" (zapatero con espejo) puede estar apareciendo por campañas de recibidores con targeting amplio.'],actions:['Aumentar bids en "sideboard" — balance volumen/conversión aceptable. Monitorizar "kommode" (ACOS 28.6%) para optimización.'],negatives:['"Schuhschrank mit spiegel" (6K impr, 0 ventas) — negativizar en campañas de aparadores/sideboards.']},
-    {insights:['Alemania retrocede a 3.550€ (-34,9% vs junio). El 69% del retroceso corresponde a una única referencia (Buffet Renzo): pasa de 1.475€ a 167€ tras perder el 74% de sus visitas pese a mantener stock disponible, precio estable desde abril y valoración 4,7★. ACOS 36,09% — mercado en fase de aprendizaje.'],hypotheses:['Alemania es el mercado más joven de los cuatro — sus indicadores todavía reflejan una etapa de maduración. La caída está concentrada en Buffet Renzo (en diagnóstico con la gestora de la cuenta), no es una tendencia generalizada.'],actions:['Diagnosticar y resolver la pérdida de visibilidad de Buffet Renzo (algoritmo, Buy Box, contenido de ficha). Reducir bids en APARADORES (ACOS 42,4%) y RECIBIDORES (ACOS 37,9%) — objetivo <30% antes de escalar.'],negatives:['Buffet Renzo — causa de caída de visibilidad sin identificar; prioridad de diagnóstico.']},
-    {insights:['Alemania: mejor mes del año. 6.229€ ventas ads (+75,5% vs julio 3.550€), ACOS 25,12% (vs 36,09% julio — mejora de 11 p.p.). ROAS 3,98x vs 2,77x. Aparadores triplica sus ventas. Renzo Sideboard se recupera tras el diagnóstico del mes anterior. Inversión +22% (1.564€ vs 1.281€). GMV total 10.974€ (+45,4% MoM).'],hypotheses:['La recuperación de Renzo Sideboard y la reactivación de Aparadores son el driver principal del salto. El trabajo de diagnóstico de julio (visibilidad, Buy Box, contenido de ficha) ha tenido impacto inmediato y medible.'],actions:['Capitalizar la recuperación: aumentar inversión en Aparadores DE con ACOS controlado. Replicar el diagnóstico de visibilidad en otras referencias DE con caídas sin explicar. Continuar reduciendo bids donde ACOS > 30%.'],negatives:['ACOS DE 25,12% — aún por encima del objetivo 10–12%; mercado en maduración con tendencia clara de mejora.']},
-    {insights:['Alemania: 4.513€ ventas ads (−27,5% vs agosto) con inversión estable (1.555€, −0,6%). ACOS 34,45% frente al objetivo del 22%. ROAS 2,90x. Mercado pequeño y volátil: 30 pedidos en el mes, por lo que un solo pedido mueve el ACOS varios puntos. Aparadores retrocede un −22,4% (ACOS 24,0% → 33,3%); Marca (+228%) y Muebles TV (+48%) crecen. GMV total 11.089€ (+1,1% MoM · +129% YoY) con Buy Box del 98,0%.'],hypotheses:['La demanda se mantiene estable. VASAGLE lidera los clics vendiendo en torno a 75€ frente a nuestro precio medio de 150€, y no tenemos presencia en el top 3 de clics en ninguno de los 40 términos cabecera. "Sideboard wohnzimmer" es el término más eficiente (5 pedidos, ACOS 17,6%), mientras que el genérico "sideboard" concentra volumen con ACOS 37,6%.'],actions:['Revisar Recibidores antes de seguir invirtiendo (195€ de inversión · 83€ de ventas). Replicar en Aparadores el reparto de España y abrir la conversación de precio y surtido. Priorizar "sideboard wohnzimmer" frente al genérico "sideboard".'],negatives:['"schuhschrank mit spiegel" (30,3K impr · 52€ · 0 ventas)','"kommoden & sideboards" (14K impr · 39€ · 0 ventas)','"schuhschrank weiss" (6,6K impr · 28,5€ · 0 ventas)']}
+    {insights:['Alemania retrocede a 3.215€ (-42,8% vs junio). El 54% del retroceso corresponde a una única referencia (Buffet Renzo): pasa de 1.475€ a 167€ tras perder el 74% de sus visitas pese a mantener stock disponible, precio estable desde abril y valoración 4,7★. ACOS 37,88% — mercado en fase de aprendizaje.'],hypotheses:['Alemania es el mercado más joven de los cuatro — sus indicadores todavía reflejan una etapa de maduración. La caída está concentrada en Buffet Renzo (en diagnóstico con la gestora de la cuenta), no es una tendencia generalizada.'],actions:['Diagnosticar y resolver la pérdida de visibilidad de Buffet Renzo (algoritmo, Buy Box, contenido de ficha). Reducir bids en APARADORES (ACOS 42,4%) y RECIBIDORES (ACOS 37,9%) — objetivo <30% antes de escalar.'],negatives:['Buffet Renzo — causa de caída de visibilidad sin identificar; prioridad de diagnóstico.']},
+    {insights:['Alemania: mejor mes del año. 6.396€ ventas ads (+98,9% vs julio 3.215€), ACOS 25,03% (vs 37,88% julio — mejora de 13 p.p.). ROAS 3,99x vs 2,64x. Aparadores triplica sus ventas. Renzo Sideboard se recupera tras el diagnóstico del mes anterior. Inversión +31,4% (1.601€ vs 1.218€). GMV total 10.974€ (+45,4% MoM).'],hypotheses:['La recuperación de Renzo Sideboard y la reactivación de Aparadores son el driver principal del salto. El trabajo de diagnóstico de julio (visibilidad, Buy Box, contenido de ficha) ha tenido impacto inmediato y medible.'],actions:['Capitalizar la recuperación: aumentar inversión en Aparadores DE con ACOS controlado. Replicar el diagnóstico de visibilidad en otras referencias DE con caídas sin explicar. Continuar reduciendo bids donde ACOS > 30%.'],negatives:['ACOS DE 25,03% — aún por encima del objetivo 10–12%; mercado en maduración con tendencia clara de mejora.']},
+    {insights:['Alemania: 4.345€ ventas ads (−32,1% vs agosto) con una inversión similar (1.522€, −4,9%). ACOS 35,04% frente al objetivo del 22%. ROAS 2,85x. Mercado pequeño y volátil: 30 pedidos en el mes, por lo que un solo pedido mueve el ACOS varios puntos. Aparadores retrocede un −22,4% (ACOS 24,0% → 33,3%); Marca (+228%) y Muebles TV (+48%) crecen. GMV total 11.089€ (+1,1% MoM · +129% YoY) con Buy Box del 98,0%.'],hypotheses:['La demanda se mantiene estable. VASAGLE lidera los clics vendiendo en torno a 75€ frente a nuestro precio medio de 150€, y no tenemos presencia en el top 3 de clics en ninguno de los 40 términos cabecera. "Sideboard wohnzimmer" es el término más eficiente (5 pedidos, ACOS 17,6%), mientras que el genérico "sideboard" concentra volumen con ACOS 37,6%.'],actions:['Revisar Recibidores antes de seguir invirtiendo (195€ de inversión · 83€ de ventas). Replicar en Aparadores el reparto de España y abrir la conversación de precio y surtido. Priorizar "sideboard wohnzimmer" frente al genérico "sideboard".'],negatives:['"schuhschrank mit spiegel" (30,3K impr · 52€ · 0 ventas)','"kommoden & sideboards" (14K impr · 39€ · 0 ventas)','"schuhschrank weiss" (6,6K impr · 28,5€ · 0 ventas)']}
   ]
 };
 
@@ -1718,7 +1722,7 @@ function renderAdsSection(m, idx) {
         <div class="chart-canvas"><canvas id="chartAds"></canvas></div>
       </div>
     </div>
-    <div class="sec-foot"><div class="sec-source">Fuente: <span class="src-badge">Pacvue</span> <span style="color:var(--text-soft)">Enero–Septiembre 2026</span></div></div>
+    <div class="sec-foot"><div class="sec-source">Fuente: <span class="src-badge">MerchantSpring</span> <span style="color:var(--text-soft)">Enero–Septiembre 2026 · pedidos Ads: Pacvue</span></div></div>
   </div>`;
 }
 
@@ -2204,10 +2208,10 @@ function renderGlobalConclusionsSection(idx) {
     <div class="sec-body">
       <div style="margin-bottom:14px">
         <div style="font-size:11px;font-weight:700;color:var(--text-soft);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">Rendimiento del mes</div>
-        ${row('◆','var(--acc-dark)','Sell-out total 142.145€ — estable vs junio (−2,1% comparativa Prime Day) · <strong>+15,1% YoY</strong>. Buy Box global 96,6%.')}
-        ${row('◆','var(--acc-dark)','Publicidad: 62.750€ ventas ads · 11.500€ inversión → ACOS 18,3% · ROAS 5,46x. <strong>España firma su mejor mes del año</strong> (31.047€, ACOS 15,4%).')}
-        ${row('◆','var(--acc-dark)','Francia consolida +32,2% vs mayo (referencia válida: junio operó con precio promocionado). Italia: mismo revenue con −13% inversión → ROAS +14,8%.')}
-        ${row('◆','var(--acc-dark)','Alemania retrocede concentrado en Buffet Renzo (69% del retroceso mensual) — no es tendencia generalizada.')}
+        ${row('◆','var(--acc-dark)','Sell-out total 142.145€ — estable vs junio (−2,1% comparativa Prime Day) · <strong>+15,0% YoY</strong>. Buy Box global 96,6%.')}
+        ${row('◆','var(--acc-dark)','Publicidad: 63.542€ ventas ads · 11.391€ inversión → ACOS 17,9% · ROAS 5,58x. <strong>España firma su mejor mes del año</strong> (31.243€, ACOS 15,1%).')}
+        ${row('◆','var(--acc-dark)','Francia consolida +36,8% vs mayo (referencia válida: junio operó con precio promocionado). Italia: mismo revenue con −13% inversión → ROAS +12,7%.')}
+        ${row('◆','var(--acc-dark)','Alemania retrocede concentrado en Buffet Renzo (54% del retroceso mensual) — no es tendencia generalizada.')}
       </div>
       <div style="background:rgba(139,105,20,.07);border-left:3px solid #C9A227;border-radius:0 6px 6px 0;padding:10px 12px;margin-bottom:14px">
         <div style="font-size:11px;font-weight:700;color:#8B6914;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">Categorías líderes</div>
@@ -2220,7 +2224,7 @@ function renderGlobalConclusionsSection(idx) {
         ${row('→','#2E6B48','<strong>Global:</strong> Ampliar campañas de puja baja a más referencias — ratio 1% inversión → 4,8% facturación validado en julio.')}
         ${row('→','#2E6B48','<strong>ES:</strong> Reforzar Mesa Alta (bids + segmentación urgente). Resolver rotura de stock Aitana/Factory R1 (est. −900€).')}
         ${row('→','#2E6B48','<strong>FR:</strong> Cola larga sobre términos validados (+1.500–2.500€ objetivo). Pausar/revisar Recibidores FR (ACOS 47%).')}
-        ${row('→','#2E6B48','<strong>IT:</strong> Mejorar fichas de producto antes de escalar — conversión 0,43% vs 0,91% ES.')}
+        ${row('→','#2E6B48','<strong>IT:</strong> Mejorar fichas de producto antes de escalar — conversión 0,42% vs 0,91% ES.')}
         ${row('→','#2E6B48','<strong>DE:</strong> Diagnóstico urgente Buffet Renzo. Reducir bids Aparadores (ACOS 42%) y Recibidores (ACOS 38%).')}
       </div>
     </div>
@@ -2233,18 +2237,18 @@ function renderGlobalConclusionsSection(idx) {
       <div style="margin-bottom:14px">
         <div style="font-size:11px;font-weight:700;color:var(--text-soft);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">Rendimiento del mes</div>
         ${row('◆','var(--acc-dark)','Sell-out total <strong>167.022€ (+17,5% MoM)</strong>. Crecimiento en los 4 mercados. Buy Box global 96,9%.')}
-        ${row('◆','var(--acc-dark)','Publicidad: 74.631€ ventas ads · 12.583€ inversión → ACOS 16,86% (vs 18,33% julio) · ROAS 5,93x. <strong>Primer mes del año en que los 4 mercados mejoran ACOS simultáneamente.</strong>')}
+        ${row('◆','var(--acc-dark)','Publicidad: 74.750€ ventas ads · 12.630€ inversión → ACOS 16,90% (vs 17,93% julio) · ROAS 5,92x. <strong>Segundo mes del año, tras junio, en que los 4 mercados mejoran ACOS a la vez.</strong>')}
         ${row('◆','var(--acc-dark)','Nueva estructura de captación segmentada (por atributo: acabado LED, tamaño, color) → ACOS 8,1% sobre 6,5% del presupuesto → 13,5% de las ventas publicitarias.')}
-        ${row('◆','var(--acc-dark)','Alemania: salto del +75,5% en ventas ads. España: mejor mes del año (36.106€ ads). Francia: +14,1% con inversión idéntica.')}
+        ${row('◆','var(--acc-dark)','Alemania: salto del +98,9% en ventas ads. España: mejor mes del año (36.453€ ads). Francia: +9,7% con inversión prácticamente idéntica.')}
       </div>
       <div style="background:rgba(180,40,40,.07);border-left:3px solid #B42828;border-radius:0 6px 6px 0;padding:10px 12px;margin-bottom:14px">
         <div style="font-size:11px;font-weight:700;color:#B42828;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">⚠ Alertas y discrepancias</div>
-        ${row('!','#B42828','<strong>ACOS global 16,86%</strong> — por encima del objetivo 10–12%. Todos los mercados mejoran, pero la distancia al objetivo sigue siendo relevante.')}
+        ${row('!','#B42828','<strong>ACOS global 16,90%</strong> — por encima del objetivo 10–12%. Todos los mercados mejoran, pero la distancia al objetivo sigue siendo relevante.')}
       </div>
       <div style="background:rgba(139,105,20,.07);border-left:3px solid #C9A227;border-radius:0 6px 6px 0;padding:10px 12px;margin-bottom:14px">
         <div style="font-size:11px;font-weight:700;color:#8B6914;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">Categorías destacadas</div>
         ${row('◆','#C9A227','<strong>Aparadores</strong> — motor en los 4 mercados. DE: Aparadores triplica ventas. ES: ACOS 15% con nueva segmentación.')}
-        ${row('◆','#C9A227','<strong>Alemania</strong> — recuperación de Renzo Sideboard y Aparadores: salto de 3.550€ a 6.229€ en ventas ads.')}
+        ${row('◆','#C9A227','<strong>Alemania</strong> — recuperación de Renzo Sideboard y Aparadores: salto de 3.215€ a 6.396€ en ventas ads.')}
         ${row('◆','#C9A227','<strong>Mesa Alta / "Mange debout"</strong> — mejor ROAS de la cuenta en ES y FR con campañas de puja baja.')}
       </div>
       <div style="background:rgba(46,107,72,.07);border-left:3px solid #2E6B48;border-radius:0 6px 6px 0;padding:10px 12px">
@@ -2264,14 +2268,14 @@ function renderGlobalConclusionsSection(idx) {
     <div class="sec-body">
       <div style="margin-bottom:14px">
         <div style="font-size:11px;font-weight:700;color:var(--text-soft);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">Rendimiento del mes</div>
-        ${row('◆','var(--acc-dark)','Sell-out total <strong>157.306€ (−5,8% MoM · +21,5% YoY)</strong>. España firma su mejor mes del año (84.676€, +41,9% YoY); Francia es el único mercado en negativo interanual (−16,2%). Buy Box global 96,4%.')}
-        ${row('◆','var(--acc-dark)','Publicidad: 62.378€ ventas ads · 11.456€ inversión → ACOS 18,37% · ROAS 5,45x · TACOS 7,3%. La cuenta vuelve a niveles de julio (62.750€ · ACOS 18,3%) tras un agosto excepcional.')}
-        ${row('◆','var(--acc-dark)','<strong>España entra en objetivo</strong> (ACOS 14,29% vs 14%), tercer mes consecutivo de mejora y 55% de la venta publicitaria. Francia (−23,9%), Italia (−34,0%) y Alemania (−27,5%) pierden venta ads y empeoran rentabilidad.')}
+        ${row('◆','var(--acc-dark)','Sell-out total <strong>156.821€ (−6,1% MoM · +21,1% YoY)</strong>. España firma su mejor mes del año (84.259€, +41,2% YoY); Francia es el único mercado en negativo interanual (−16,2%). Buy Box global 96,4%.')}
+        ${row('◆','var(--acc-dark)','Publicidad: 63.167€ ventas ads · 11.408€ inversión → ACOS 18,06% · ROAS 5,54x · TACOS 7,3%. La cuenta vuelve a niveles de julio (63.542€ · ACOS 17,9%) tras un agosto excepcional.')}
+        ${row('◆','var(--acc-dark)','<strong>España entra en objetivo</strong> (ACOS 13,86% vs 14%), tercer mes consecutivo de mejora y 56% de la venta publicitaria. Francia (−24,9%), Italia (−30,0%) y Alemania (−32,1%) pierden venta ads y empeoran rentabilidad.')}
         ${row('◆','var(--acc-dark)','La demanda no se ha contraído: agosto fue el mes más buscado del semestre en España y Francia, Italia se recupera desde junio y Alemania se mantiene estable.')}
       </div>
       <div style="background:rgba(180,40,40,.07);border-left:3px solid #B42828;border-radius:0 6px 6px 0;padding:10px 12px;margin-bottom:14px">
         <div style="font-size:11px;font-weight:700;color:#B42828;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">⚠ Alertas y discrepancias</div>
-        ${row('!','#B42828','<strong>ACOS global 18,37%</strong> — por encima del objetivo de cuenta del 12%. Por mercado: ES 14,29% (obj. 14%) · FR 18,91% (obj. 13%) · IT 26,44% (obj. 18%) · DE 34,45% (obj. 22%).')}
+        ${row('!','#B42828','<strong>ACOS global 18,06%</strong> — por encima del objetivo de cuenta del 12%. Por mercado: ES 13,86% (obj. 14%) · FR 19,14% (obj. 13%) · IT 25,85% (obj. 18%) · DE 35,04% (obj. 22%).')}
         ${row('!','#B42828','<strong>Continuidad de inversión</strong> — las campañas que sostienen el volumen en Francia, Italia y Alemania han agotado su presupuesto diario de forma recurrente durante el mes.')}
         ${row('!','#B42828','<strong>Precio y presencia</strong> — VASAGLE lidera los clics en Italia (~88€) y Alemania (~75€) frente a nuestro precio medio de 145–150€. Fuera de España (1 de 28 términos), ningún producto nuestro está entre los tres más clicados en los términos cabecera.')}
       </div>
